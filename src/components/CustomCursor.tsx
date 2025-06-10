@@ -42,21 +42,24 @@ const CustomCursor = () => {
     <>
       {/* Main cursor dot */}
       <div 
-        className="fixed w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full pointer-events-none z-[9999] transition-transform duration-75 mix-blend-screen"
+        className="fixed w-2 h-2 bg-white rounded-full pointer-events-none z-[9999] transition-all duration-100 mix-blend-difference shadow-lg"
         style={{
-          left: mousePosition.x - 6,
-          top: mousePosition.y - 6,
-          transform: isHovering ? 'scale(1.5)' : 'scale(1)',
+          left: mousePosition.x - 4,
+          top: mousePosition.y - 4,
+          transform: isHovering ? 'scale(2)' : 'scale(1)',
+          boxShadow: isHovering ? '0 0 20px rgba(255, 255, 255, 0.8)' : '0 0 10px rgba(255, 255, 255, 0.5)',
         }}
       />
       {/* Follower ring */}
       <div 
-        className="fixed border-2 border-blue-400/50 rounded-full pointer-events-none z-[9998] transition-all duration-300"
+        className="fixed border border-white/50 rounded-full pointer-events-none z-[9998] transition-all duration-500 mix-blend-difference"
         style={{
-          left: cursorPosition.x - (isHovering ? 20 : 16),
-          top: cursorPosition.y - (isHovering ? 20 : 16),
-          width: isHovering ? 40 : 32,
-          height: isHovering ? 40 : 32,
+          left: cursorPosition.x - (isHovering ? 24 : 20),
+          top: cursorPosition.y - (isHovering ? 24 : 20),
+          width: isHovering ? 48 : 40,
+          height: isHovering ? 48 : 40,
+          borderWidth: isHovering ? '2px' : '1px',
+          opacity: isHovering ? 0.8 : 0.5,
         }}
       />
     </>
