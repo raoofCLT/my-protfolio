@@ -89,12 +89,23 @@
 @layer base {
   * {
     @apply border-border;
+    cursor: none !important;
   }
 
   body {
     @apply bg-background text-foreground;
-    cursor: none;
+    cursor: none !important;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(to bottom right, #000000, #0f0f0f, #1a1a1a) !important;
+  }
+
+  /* Ensure cursor is hidden for all elements */
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+
+  a, button, input, textarea, select {
+    cursor: none !important;
   }
 
   /* Custom Scrollbar */
@@ -103,12 +114,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #111111;
+    background: #050505;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #718096, #2d3748);
+    background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
     border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #2a2a2a, #151515);
   }
 }
 
@@ -119,5 +134,9 @@
   
   .text-shadow-lg {
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .cursor-none-important {
+    cursor: none !important;
   }
 }
