@@ -25,10 +25,10 @@ const Footer = () => {
         
         <div className="space-y-4">
           <p className="text-slate-400 text-lg font-light">
-            Alex Chen
+            Abdul Raoof
           </p>
           <p className="text-slate-500 text-sm">
-            © 2024 Alex Chen. All rights reserved.
+            © 2025 Abdul Raoof. All rights reserved.
           </p>
         </div>
       </div>

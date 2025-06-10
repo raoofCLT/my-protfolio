@@ -22,7 +22,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="text-2xl font-bold gradient-text hover:scale-105 transition-all duration-500 card-3d">
-            Alex Chen
+            Abdul Raoof
           </Link>
 
           {/* Desktop Navigation */}

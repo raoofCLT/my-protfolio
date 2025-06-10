@@ -1,61 +1,74 @@
-
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const cursorRef = useRef({ x: 0, y: 0 });
+  const targetRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    let animationFrameId: number;
+
     const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      targetRef.current = { x: e.clientX, y: e.clientY };
     };
 
-    const updateCursorPosition = () => {
-      setCursorPosition(prev => ({
-        x: prev.x + (mousePosition.x - prev.x) * 0.15,
-        y: prev.y + (mousePosition.y - prev.y) * 0.15,
-      }));
+    const animate = () => {
+      // Smooth interpolation factor (0.1 = slower, 0.3 = faster)
+      const lerpFactor = 0.15;
+      
+      //0 Calculate new position using lerp
+      cursorRef.current.x += (targetRef.current.x - cursorRef.current.x) * lerpFactor;
+      cursorRef.current.y += (targetRef.current.y - cursorRef.current.y) * lerpFactor;
+      
+      setMousePosition({
+        x: cursorRef.current.x,
+        y: cursorRef.current.y
+      });
+
+      animationFrameId = requestAnimationFrame(animate);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('button') || target.closest('a')) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
+      const isInteractive =
+        target.tagName === 'A' ||
+        target.tagName === 'BUTTON' ||
+        target.closest('a') ||
+        target.closest('button');
+
+      setIsHovering(!!isInteractive);
     };
 
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('mouseover', handleMouseOver);
-    const animationId = setInterval(updateCursorPosition, 16);
+    animate();
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mouseover', handleMouseOver);
-      clearInterval(animationId);
+      cancelAnimationFrame(animationFrameId);
     };
-  }, [mousePosition]);
+  }, []);
 
   return (
     <>
-      {/* Main cursor dot */}
-      <div 
-        className="fixed w-2 h-2 bg-white rounded-full pointer-events-none z-[9999] transition-all duration-100 mix-blend-difference shadow-lg"
+      {/* Main Cursor Dot */}
+      <div
+        className="fixed w-2 h-2 bg-white rounded-full pointer-events-none z-[99999] mix-blend-difference shadow-lg transition-transform duration-100 will-change-transform"
         style={{
-          left: mousePosition.x - 4,
-          top: mousePosition.y - 4,
-          transform: isHovering ? 'scale(2)' : 'scale(1)',
-          boxShadow: isHovering ? '0 0 20px rgba(255, 255, 255, 0.8)' : '0 0 10px rgba(255, 255, 255, 0.5)',
+          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) scale(${isHovering ? 2 : 1})`,
+          boxShadow: isHovering
+            ? '0 0 20px rgba(255, 255, 255, 0.8)'
+            : '0 0 10px rgba(255, 255, 255, 0.5)',
         }}
       />
-      {/* Follower ring */}
-      <div 
-        className="fixed border border-white/50 rounded-full pointer-events-none z-[9998] transition-all duration-500 mix-blend-difference"
+
+      {/* Follower Ring */}
+      <div
+        className="fixed rounded-full border border-white/50 pointer-events-none z-[99998] transition-all duration-300 mix-blend-difference will-change-transform"
         style={{
-          left: cursorPosition.x - (isHovering ? 24 : 20),
-          top: cursorPosition.y - (isHovering ? 24 : 20),
+          transform: `translate(${mousePosition.x - (isHovering ? 24 : 20)}px, ${mousePosition.y - (isHovering ? 24 : 20)}px)`,
           width: isHovering ? 48 : 40,
           height: isHovering ? 48 : 40,
           borderWidth: isHovering ? '2px' : '1px',

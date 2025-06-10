@@ -27,19 +27,19 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "alex.chen@example.com",
+      value: "abdulraoof.k@gmail.com",
       description: "Best for project inquiries"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
+      value: "+91 9447000000",
       description: "Available during business hours"
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "San Francisco, CA",
+      value: "Kerala, India",
       description: "Open to remote opportunities"
     }
   ];
