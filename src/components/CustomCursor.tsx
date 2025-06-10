@@ -29,17 +29,17 @@ const CustomCursor = () => {
   return (
     <>
       <div 
-        className="fixed w-5 h-5 bg-white/80 rounded-full pointer-events-none z-[9999] transition-transform duration-100 mix-blend-difference"
+        className="fixed w-2 h-2 bg-white rounded-full pointer-events-none z-[9999] transition-transform duration-75 mix-blend-difference"
         style={{
-          left: mousePosition.x - 10,
-          top: mousePosition.y - 10,
+          left: mousePosition.x - 4,
+          top: mousePosition.y - 4,
         }}
       />
       <div 
-        className="fixed w-10 h-10 border-2 border-white/30 rounded-full pointer-events-none z-[9998] transition-all duration-300"
+        className="fixed w-8 h-8 border border-white/30 rounded-full pointer-events-none z-[9998] transition-all duration-300"
         style={{
-          left: cursorPosition.x - 20,
-          top: cursorPosition.y - 20,
+          left: cursorPosition.x - 16,
+          top: cursorPosition.y - 16,
         }}
       />
     </>

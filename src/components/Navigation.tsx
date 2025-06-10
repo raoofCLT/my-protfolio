@@ -15,18 +15,18 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-[1000] transition-all duration-300 ${
-      isScrolled ? 'bg-black/90 backdrop-blur-[20px] border-b border-white/10' : 'bg-transparent'
+      isScrolled ? 'bg-black/95 backdrop-blur-xl border-b border-slate-800' : 'bg-transparent'
     }`}>
-      <div className="max-w-6xl mx-auto px-8 py-4 flex justify-between items-center">
-        <div className="text-3xl font-extrabold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent transform transition-transform duration-300 hover:perspective-1000 hover:rotateY-3">
+      <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
+        <div className="text-2xl font-light text-white tracking-tight">
           Alex Chen
         </div>
-        <ul className="hidden md:flex gap-10">
+        <ul className="hidden md:flex gap-12">
           {['Home', 'About', 'Projects', 'Contact'].map((item) => (
             <li key={item}>
               <a 
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-300 font-medium transition-all duration-300 relative transform hover:text-white hover:perspective-1000 hover:rotateX-2 hover:-translate-y-1 after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-white after:to-gray-500 hover:after:w-full after:transition-all after:duration-300"
+                className="text-slate-300 font-light text-lg transition-all duration-300 relative hover:text-white after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-px after:bg-white hover:after:w-full after:transition-all after:duration-300"
               >
                 {item}
               </a>
