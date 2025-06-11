@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from 'react';
 
 const CustomCursor = () => {
@@ -5,28 +6,34 @@ const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
   const cursorRef = useRef({ x: 0, y: 0 });
   const targetRef = useRef({ x: 0, y: 0 });
+  const animationFrameId = useRef<number>();
 
   useEffect(() => {
-    let animationFrameId: number;
-
     const updateMousePosition = (e: MouseEvent) => {
       targetRef.current = { x: e.clientX, y: e.clientY };
     };
 
     const animate = () => {
-      // Smooth interpolation factor (0.1 = slower, 0.3 = faster)
-      const lerpFactor = 0.15;
+      // Smoother interpolation with better easing
+      const lerpFactor = 0.08;
       
-      //0 Calculate new position using lerp
-      cursorRef.current.x += (targetRef.current.x - cursorRef.current.x) * lerpFactor;
-      cursorRef.current.y += (targetRef.current.y - cursorRef.current.y) * lerpFactor;
+      // Calculate distance to determine if cursor should move
+      const dx = targetRef.current.x - cursorRef.current.x;
+      const dy = targetRef.current.y - cursorRef.current.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
       
-      setMousePosition({
-        x: cursorRef.current.x,
-        y: cursorRef.current.y
-      });
+      // Only update if there's meaningful movement (prevents jittering)
+      if (distance > 0.5) {
+        cursorRef.current.x += dx * lerpFactor;
+        cursorRef.current.y += dy * lerpFactor;
+        
+        setMousePosition({
+          x: cursorRef.current.x,
+          y: cursorRef.current.y
+        });
+      }
 
-      animationFrameId = requestAnimationFrame(animate);
+      animationFrameId.current = requestAnimationFrame(animate);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -35,19 +42,33 @@ const CustomCursor = () => {
         target.tagName === 'A' ||
         target.tagName === 'BUTTON' ||
         target.closest('a') ||
-        target.closest('button');
+        target.closest('button') ||
+        target.closest('[role="button"]') ||
+        target.closest('.cursor-pointer');
 
       setIsHovering(!!isInteractive);
     };
 
+    // Initialize cursor position to current mouse position
+    const initializeCursor = (e: MouseEvent) => {
+      cursorRef.current = { x: e.clientX, y: e.clientY };
+      targetRef.current = { x: e.clientX, y: e.clientY };
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('mouseenter', initializeCursor, { once: true });
+    
     animate();
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mouseover', handleMouseOver);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('mouseenter', initializeCursor);
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
     };
   }, []);
 
@@ -55,9 +76,9 @@ const CustomCursor = () => {
     <>
       {/* Main Cursor Dot */}
       <div
-        className="fixed w-2 h-2 bg-white rounded-full pointer-events-none z-[99999] mix-blend-difference shadow-lg transition-transform duration-100 will-change-transform"
+        className="fixed w-2 h-2 bg-white rounded-full pointer-events-none z-[99999] mix-blend-difference shadow-lg transition-all duration-200 will-change-transform"
         style={{
-          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) scale(${isHovering ? 2 : 1})`,
+          transform: `translate3d(${mousePosition.x - 4}px, ${mousePosition.y - 4}px, 0) scale(${isHovering ? 1.5 : 1})`,
           boxShadow: isHovering
             ? '0 0 20px rgba(255, 255, 255, 0.8)'
             : '0 0 10px rgba(255, 255, 255, 0.5)',
@@ -68,7 +89,7 @@ const CustomCursor = () => {
       <div
         className="fixed rounded-full border border-white/50 pointer-events-none z-[99998] transition-all duration-300 mix-blend-difference will-change-transform"
         style={{
-          transform: `translate(${mousePosition.x - (isHovering ? 24 : 20)}px, ${mousePosition.y - (isHovering ? 24 : 20)}px)`,
+          transform: `translate3d(${mousePosition.x - (isHovering ? 24 : 20)}px, ${mousePosition.y - (isHovering ? 24 : 20)}px, 0)`,
           width: isHovering ? 48 : 40,
           height: isHovering ? 48 : 40,
           borderWidth: isHovering ? '2px' : '1px',
