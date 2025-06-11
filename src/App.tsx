@@ -16,47 +16,85 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-gray-900 relative overflow-x-hidden">
-        {/* Enhanced 3D Background Elements */}
+      <div className="min-h-screen relative overflow-x-hidden">
+        {/* Space Background with Animated Stars */}
         <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl floating-slow" />
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-600/5 rounded-full blur-3xl floating-slow" style={{ animationDelay: '3s' }} />
-          <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gray-600/3 rounded-full blur-2xl floating-slow" style={{ animationDelay: '6s' }} />
+          {/* Starfield Background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-indigo-950 via-purple-950 to-black">
+            {/* Animated Stars */}
+            {[...Array(100)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 3}s`,
+                  opacity: Math.random() * 0.8 + 0.2,
+                }}
+              />
+            ))}
+            
+            {/* Larger moving stars */}
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={`star-${i}`}
+                className="absolute w-2 h-2 bg-blue-200 rounded-full floating-star"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 5}s`,
+                }}
+              />
+            ))}
+          </div>
           
-          {/* Interactive 3D Floating Objects */}
+          {/* Enhanced 3D Floating Objects */}
           <div className="absolute top-1/4 right-10 transform -translate-y-1/2 hidden lg:block">
-            <div className="interactive-3d-object">
-              <div className="cube-face"></div>
-              <div className="cube-face"></div>
-              <div className="cube-face"></div>
-              <div className="cube-face"></div>
-              <div className="cube-face"></div>
-              <div className="cube-face"></div>
+            <div className="space-cube">
+              <div className="cube-face front"></div>
+              <div className="cube-face back"></div>
+              <div className="cube-face right"></div>
+              <div className="cube-face left"></div>
+              <div className="cube-face top"></div>
+              <div className="cube-face bottom"></div>
             </div>
           </div>
           
           <div className="absolute top-3/4 left-10 transform -translate-y-1/2 hidden lg:block">
-            <div className="floating-sphere"></div>
+            <div className="space-sphere"></div>
           </div>
           
           <div className="absolute top-1/2 right-1/4 transform -translate-y-1/2 hidden lg:block">
-            <div className="floating-pyramid"></div>
+            <div className="space-pyramid"></div>
+          </div>
+          
+          <div className="absolute top-1/3 left-1/3 transform -translate-y-1/2 hidden lg:block">
+            <div className="space-torus"></div>
           </div>
         </div>
         
         <Navbar />
         
-        {/* Single Page Sections */}
-        <section id="home">
+        {/* Single Page Sections with Different Backgrounds */}
+        <section id="home" className="relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/20 via-purple-900/10 to-transparent"></div>
           <Home />
         </section>
-        <section id="about">
+        
+        <section id="about" className="relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-cyan-900/20 to-transparent"></div>
           <About />
         </section>
-        <section id="projects">
+        
+        <section id="projects" className="relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/25 via-teal-900/15 to-transparent"></div>
           <Projects />
         </section>
-        <section id="contact">
+        
+        <section id="contact" className="relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-900/30 via-fuchsia-900/20 to-transparent"></div>
           <Contact />
         </section>
       </div>
