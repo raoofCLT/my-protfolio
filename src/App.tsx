@@ -5,7 +5,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import CustomCursor from "./components/CustomCursor";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -29,7 +28,6 @@ const App = () => (
             <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gray-600/3 rounded-full blur-2xl floating-slow" style={{ animationDelay: '6s' }} />
           </div>
           
-          <CustomCursor />
           <ScrollToTop />
           <Navbar />
           <Routes>

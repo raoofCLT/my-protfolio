@@ -42,24 +42,13 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: none !important;
   }
 
   body {
     @apply bg-background text-foreground;
-    cursor: none !important;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #0f0f0f 75%, #000000 100%) !important;
     min-height: 100vh;
-  }
-
-  /* Ensure cursor is hidden for all elements */
-  *, *::before, *::after {
-    cursor: none !important;
-  }
-
-  a, button, input, textarea, select {
-    cursor: none !important;
   }
 
   /* Custom Scrollbar */
@@ -90,26 +79,22 @@
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
-  .cursor-none-important {
-    cursor: none !important;
-  }
-
-  .card-3d {
+  .card-hover {
     transform-style: preserve-3d;
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     perspective: 1000px;
   }
 
-  .card-3d:hover {
-    transform: perspective(1000px) rotateX(8deg) rotateY(-8deg) translateZ(30px) scale(1.02);
+  .card-hover:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateZ(20px) scale(1.02);
     box-shadow: 
-      0 25px 50px rgba(0, 0, 0, 0.5),
+      0 20px 40px rgba(0, 0, 0, 0.4),
       0 0 0 1px rgba(255, 255, 255, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
-  .card-3d-reverse:hover {
-    transform: perspective(1000px) rotateX(-8deg) rotateY(8deg) translateZ(30px) scale(1.02);
+  .card-hover-reverse:hover {
+    transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) translateZ(20px) scale(1.02);
   }
 
   .glass-effect {
@@ -146,6 +131,10 @@
     animation: floating-reverse 7s ease-in-out infinite;
   }
 
+  .floating-3d {
+    animation: floating-3d 10s ease-in-out infinite;
+  }
+
   @keyframes floating {
     0%, 100% { transform: translate(0, 0px) rotate(0deg); }
     33% { transform: translate(30px, -30px) rotate(120deg); }
@@ -164,6 +153,21 @@
     25% { transform: translate3d(-20px, 15px, 0) rotate(-90deg); }
     50% { transform: translate3d(15px, 25px, 0) rotate(-180deg); }
     75% { transform: translate3d(25px, -15px, 0) rotate(-270deg); }
+  }
+
+  @keyframes floating-3d {
+    0%, 100% { 
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0px);
+    }
+    25% { 
+      transform: perspective(1000px) rotateX(15deg) rotateY(15deg) rotateZ(5deg) translateZ(20px);
+    }
+    50% { 
+      transform: perspective(1000px) rotateX(-10deg) rotateY(30deg) rotateZ(-5deg) translateZ(10px);
+    }
+    75% { 
+      transform: perspective(1000px) rotateX(10deg) rotateY(-15deg) rotateZ(10deg) translateZ(30px);
+    }
   }
 
   .slide-up {
@@ -265,4 +269,28 @@
     opacity: 0.3;
     z-index: -1;
   }
+
+  .threed-object {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: floating-3d 10s ease-in-out infinite;
+  }
+
+  .cube-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+  .cube-face:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
+  .cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(100px); }
+  .cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(100px); }
+  .cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }
+  .cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }
+  .cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }
 }
