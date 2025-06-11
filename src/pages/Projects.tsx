@@ -1,5 +1,4 @@
-
-import { ExternalLink, Github, Code, Users, Clock, Award } from 'lucide-react';
+import { ExternalLink, Github, Code, Users, Clock, Award, ArrowRight } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
