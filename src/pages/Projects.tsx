@@ -5,180 +5,143 @@ const Projects = () => {
   const projects = [
     {
       title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with real-time inventory, payment processing, and admin dashboard. Built for scalability with microservices architecture.",
-      image: "/api/placeholder/500/300",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe", "AWS", "Docker"],
-      metrics: ["99.9% uptime", "50k+ daily users", "40% faster load time"],
-      links: {
-        demo: "#",
-        github: "#"
-      },
-      featured: true
+      description: "A modern, scalable e-commerce solution with real-time inventory management, secure payment processing, and advanced analytics dashboard.",
+      image: "/placeholder.svg",
+      technologies: ["React", "Node.js", "MongoDB", "Stripe", "AWS"],
+      features: ["Real-time updates", "Payment integration", "Admin dashboard", "Mobile responsive"],
+      liveUrl: "#",
+      githubUrl: "#",
+      stats: { users: "10k+", performance: "99.9%", rating: "4.8/5" }
     },
     {
-      title: "AI Analytics Dashboard",
-      description: "Machine learning powered analytics platform providing real-time insights and predictive analytics for business intelligence.",
-      image: "/api/placeholder/500/300",
-      technologies: ["Next.js", "Python", "TensorFlow", "PostgreSQL", "D3.js"],
-      metrics: ["95% accuracy", "10x faster insights", "Enterprise ready"],
-      links: {
-        demo: "#",
-        github: "#"
-      },
-      featured: true
+      title: "Task Management App",
+      description: "Collaborative project management tool with team chat, file sharing, and progress tracking capabilities.",
+      image: "/placeholder.svg",
+      technologies: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io"],
+      features: ["Team collaboration", "File sharing", "Progress tracking", "Real-time chat"],
+      liveUrl: "#",
+      githubUrl: "#",
+      stats: { users: "5k+", performance: "99.5%", rating: "4.9/5" }
     },
     {
-      title: "Real-time Chat Application",
-      description: "Scalable real-time messaging platform with file sharing, video calls, and team collaboration features.",
-      image: "/api/placeholder/500/300",
-      technologies: ["React", "Socket.io", "Node.js", "Redis", "WebRTC"],
-      metrics: ["10k+ concurrent users", "Sub-second latency", "99.5% uptime"],
-      links: {
-        demo: "#",
-        github: "#"
-      },
-      featured: false
-    },
-    {
-      title: "Task Management System",
-      description: "Comprehensive project management tool with kanban boards, time tracking, and team collaboration features.",
-      image: "/api/placeholder/500/300",
-      technologies: ["Vue.js", "Express", "PostgreSQL", "JWT", "Tailwind"],
-      metrics: ["5k+ active users", "Mobile responsive", "Real-time sync"],
-      links: {
-        demo: "#",
-        github: "#"
-      },
-      featured: false
+      title: "Analytics Dashboard",
+      description: "Comprehensive business intelligence platform with interactive charts, data visualization, and reporting tools.",
+      image: "/placeholder.svg",
+      technologies: ["React", "D3.js", "Python", "FastAPI", "Redis"],
+      features: ["Interactive charts", "Data export", "Custom reports", "API integration"],
+      liveUrl: "#",
+      githubUrl: "#",
+      stats: { users: "3k+", performance: "99.8%", rating: "4.7/5" }
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white pt-24">
-      <div className="max-w-7xl mx-auto px-8 py-12">
-        {/* Header */}
+    <div className="min-h-screen py-24 px-8 relative">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            My Projects
-          </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            A showcase of my recent work, featuring full-stack applications, 
-            innovative solutions, and cutting-edge technologies.
+          <h2 className="text-5xl lg:text-6xl font-bold gradient-text mb-6 tilt-hover">
+            Featured Projects
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Showcasing innovative solutions built with modern technologies and best practices
           </p>
         </div>
 
-        {/* Featured Projects */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-slate-200 mb-8 flex items-center gap-3">
-            <TrendingUp className="w-8 h-8 text-yellow-400" />
-            Featured Projects
-          </h2>
-          
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            {projects.filter(project => project.featured).map((project, index) => (
-              <div key={index} className="group glass-effect glass-effect-hover border border-slate-700 rounded-2xl overflow-hidden card-hover morphing-shadow glow-effect perspective-card">
-                <div className="relative overflow-hidden">
-                  <div className="w-full h-48 bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center">
-                    <div className="text-6xl opacity-50">🚀</div>
+        <div className="space-y-12">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className="glass-effect rounded-3xl p-8 lg:p-12 card-hover morphing-shadow glow-effect perspective-card slide-up"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-3xl font-bold text-white">
+                      {project.title}
+                    </h3>
+                    <div className="flex gap-2">
+                      <a
+                        href={project.liveUrl}
+                        className="p-2 glass-effect rounded-lg card-hover text-blue-400 hover:text-blue-300"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                      <a
+                        href={project.githubUrl}
+                        className="p-2 glass-effect rounded-lg card-hover text-gray-400 hover:text-gray-300"
+                      >
+                        <Github className="w-5 h-5" />
+                      </a>
+                    </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-blue-300 mb-3 group-hover:text-blue-200 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-300 mb-4 leading-relaxed">
+
+                  <p className="text-gray-300 text-lg leading-relaxed">
                     {project.description}
                   </p>
-                  
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-slate-400 mb-2">Key Metrics</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.metrics.map((metric, metricIndex) => (
-                        <span key={metricIndex} className="px-3 py-1 bg-green-600/20 border border-green-500/30 rounded-lg text-xs text-green-300 card-hover tilt-hover">
-                          {metric}
-                        </span>
+
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="glass-effect rounded-xl p-4 text-center card-hover">
+                      <Users className="w-6 h-6 text-blue-400 mx-auto mb-2" />
+                      <div className="text-sm text-gray-400">Users</div>
+                      <div className="text-lg font-bold text-white">{project.stats.users}</div>
+                    </div>
+                    <div className="glass-effect rounded-xl p-4 text-center card-hover">
+                      <TrendingUp className="w-6 h-6 text-green-400 mx-auto mb-2" />
+                      <div className="text-sm text-gray-400">Uptime</div>
+                      <div className="text-lg font-bold text-white">{project.stats.performance}</div>
+                    </div>
+                    <div className="glass-effect rounded-xl p-4 text-center card-hover">
+                      <Calendar className="w-6 h-6 text-purple-400 mx-auto mb-2" />
+                      <div className="text-sm text-gray-400">Rating</div>
+                      <div className="text-lg font-bold text-white">{project.stats.rating}</div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-3">Key Features</h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      {project.features.map((feature, featureIndex) => (
+                        <div
+                          key={featureIndex}
+                          className="flex items-center gap-2 text-gray-300"
+                        >
+                          <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                          <span className="text-sm">{feature}</span>
+                        </div>
                       ))}
                     </div>
                   </div>
-                  
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-slate-400 mb-2">Technologies</h4>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-3">Technologies</h4>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => (
-                        <span key={techIndex} className="px-3 py-1 bg-slate-700/50 border border-slate-600 rounded-lg text-xs text-slate-300 card-hover tilt-hover">
+                        <span
+                          key={techIndex}
+                          className="px-3 py-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-full text-sm text-blue-300 card-hover"
+                        >
                           {tech}
                         </span>
                       ))}
                     </div>
                   </div>
-                  
-                  <div className="flex gap-3">
-                    <a href={project.links.demo} className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-semibold text-center transition-all duration-300 hover:scale-105 card-hover flex items-center justify-center gap-2">
-                      <ExternalLink className="w-4 h-4" />
-                      Live Demo
-                    </a>
-                    <a href={project.links.github} className="px-4 py-2 border border-slate-600 rounded-lg font-semibold transition-all duration-300 hover:border-slate-400 hover:bg-slate-700/50 card-hover flex items-center gap-2">
-                      <Github className="w-4 h-4" />
-                      Code
-                    </a>
-                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
 
-        {/* All Projects */}
-        <section>
-          <h2 className="text-3xl font-bold text-slate-200 mb-8">All Projects</h2>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
-              <div key={index} className="glass-effect glass-effect-hover border border-slate-700 rounded-xl p-6 card-hover morphing-shadow glow-effect perspective-card">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-blue-300">{project.title}</h3>
-                  {project.featured && (
-                    <span className="px-2 py-1 bg-yellow-600/20 border border-yellow-500/30 rounded text-xs text-yellow-300 card-hover tilt-hover">
-                      Featured
-                    </span>
-                  )}
-                </div>
-                
-                <p className="text-slate-300 mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="mb-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.slice(0, 4).map((tech, techIndex) => (
-                      <span key={techIndex} className="px-2 py-1 bg-slate-700/50 rounded text-xs text-slate-300 card-hover tilt-hover">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 4 && (
-                      <span className="px-2 py-1 bg-slate-700/50 rounded text-xs text-slate-400 card-hover tilt-hover">
-                        +{project.technologies.length - 4} more
-                      </span>
-                    )}
+                <div className="relative">
+                  <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-gray-700 overflow-hidden card-hover morphing-shadow">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   </div>
                 </div>
-                
-                <div className="flex gap-3">
-                  <a href={project.links.demo} className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1 text-sm card-hover">
-                    <ExternalLink className="w-4 h-4" />
-                    Demo
-                  </a>
-                  <a href={project.links.github} className="text-slate-400 hover:text-slate-300 transition-colors flex items-center gap-1 text-sm card-hover">
-                    <Github className="w-4 h-4" />
-                    Code
-                  </a>
-                </div>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

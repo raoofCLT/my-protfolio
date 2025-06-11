@@ -44,6 +44,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -93,10 +97,6 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
-  .card-hover-reverse:hover {
-    transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) translateZ(20px) scale(1.02);
-  }
-
   .glass-effect {
     background: rgba(5, 5, 5, 0.8);
     backdrop-filter: blur(16px) saturate(180%);
@@ -106,12 +106,6 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
-  .glass-effect-hover:hover {
-    background: rgba(10, 10, 10, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-  }
-
   .gradient-text {
     background: linear-gradient(135deg, #ffffff, #94a3b8, #64748b);
     -webkit-background-clip: text;
@@ -119,26 +113,8 @@
     background-clip: text;
   }
 
-  .floating {
-    animation: floating 6s ease-in-out infinite;
-  }
-
   .floating-slow {
     animation: floating-slow 8s ease-in-out infinite;
-  }
-
-  .floating-reverse {
-    animation: floating-reverse 7s ease-in-out infinite;
-  }
-
-  .floating-3d {
-    animation: floating-3d 10s ease-in-out infinite;
-  }
-
-  @keyframes floating {
-    0%, 100% { transform: translate(0, 0px) rotate(0deg); }
-    33% { transform: translate(30px, -30px) rotate(120deg); }
-    66% { transform: translate(-20px, 20px) rotate(240deg); }
   }
 
   @keyframes floating-slow {
@@ -146,28 +122,6 @@
     25% { transform: translate3d(20px, -15px, 0) rotate(90deg) scale(1.05); }
     50% { transform: translate3d(-15px, -25px, 0) rotate(180deg) scale(0.95); }
     75% { transform: translate3d(-25px, 15px, 0) rotate(270deg) scale(1.02); }
-  }
-
-  @keyframes floating-reverse {
-    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-    25% { transform: translate3d(-20px, 15px, 0) rotate(-90deg); }
-    50% { transform: translate3d(15px, 25px, 0) rotate(-180deg); }
-    75% { transform: translate3d(25px, -15px, 0) rotate(-270deg); }
-  }
-
-  @keyframes floating-3d {
-    0%, 100% { 
-      transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0px);
-    }
-    25% { 
-      transform: perspective(1000px) rotateX(15deg) rotateY(15deg) rotateZ(5deg) translateZ(20px);
-    }
-    50% { 
-      transform: perspective(1000px) rotateX(-10deg) rotateY(30deg) rotateZ(-5deg) translateZ(10px);
-    }
-    75% { 
-      transform: perspective(1000px) rotateX(10deg) rotateY(-15deg) rotateZ(10deg) translateZ(30px);
-    }
   }
 
   .slide-up {
@@ -196,29 +150,125 @@
     }
   }
 
-  .parallax-bg {
+  /* Enhanced Interactive 3D Objects */
+  .interactive-3d-object {
+    width: 120px;
+    height: 120px;
+    position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.1s ease-out;
+    animation: floating-3d-interactive 12s ease-in-out infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 
-  .perspective-card {
-    perspective: 1500px;
-    transform-style: preserve-3d;
+  .interactive-3d-object:hover {
+    animation-play-state: paused;
+    transform: perspective(1000px) rotateX(25deg) rotateY(25deg) scale(1.2);
   }
 
-  .perspective-card > * {
-    transform-style: preserve-3d;
-    transition: transform 0.3s ease;
+  .cube-face {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2));
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
   }
 
-  .tilt-hover:hover {
-    animation: tilt 0.6s ease-in-out;
+  .interactive-3d-object:hover .cube-face {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(147, 51, 234, 0.4));
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
   }
 
-  @keyframes tilt {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(2deg) scale(1.02); }
-    75% { transform: rotate(-2deg) scale(1.02); }
+  .cube-face:nth-child(1) { transform: rotateY(0deg) translateZ(60px); }
+  .cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(60px); }
+  .cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(60px); }
+  .cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(60px); }
+  .cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(60px); }
+  .cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(60px); }
+
+  @keyframes floating-3d-interactive {
+    0%, 100% { 
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0px);
+    }
+    25% { 
+      transform: perspective(1000px) rotateX(15deg) rotateY(15deg) rotateZ(5deg) translateZ(20px);
+    }
+    50% { 
+      transform: perspective(1000px) rotateX(-10deg) rotateY(30deg) rotateZ(-5deg) translateZ(10px);
+    }
+    75% { 
+      transform: perspective(1000px) rotateX(10deg) rotateY(-15deg) rotateZ(10deg) translateZ(30px);
+    }
+  }
+
+  /* Floating Sphere */
+  .floating-sphere {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(59, 130, 246, 0.3));
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    animation: floating-sphere 10s ease-in-out infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+      0 0 40px rgba(236, 72, 153, 0.2),
+      inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+
+  .floating-sphere:hover {
+    transform: scale(1.3) translateY(-20px);
+    box-shadow: 
+      0 0 60px rgba(236, 72, 153, 0.4),
+      inset 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+
+  @keyframes floating-sphere {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.1); }
+  }
+
+  /* Floating Pyramid */
+  .floating-pyramid {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 80px solid rgba(34, 197, 94, 0.3);
+    filter: drop-shadow(0 0 20px rgba(34, 197, 94, 0.3));
+    animation: floating-pyramid 8s ease-in-out infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .floating-pyramid:hover {
+    transform: scale(1.5) rotateZ(180deg);
+    filter: drop-shadow(0 0 40px rgba(34, 197, 94, 0.6));
+  }
+
+  @keyframes floating-pyramid {
+    0%, 100% { transform: rotateZ(0deg) translateY(0); }
+    33% { transform: rotateZ(120deg) translateY(-20px); }
+    66% { transform: rotateZ(240deg) translateY(10px); }
+  }
+
+  /* Enhanced Card Effects */
+  .morphing-shadow {
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .morphing-shadow:hover {
+    box-shadow: 
+      0 20px 25px rgba(0, 0, 0, 0.15),
+      0 10px 10px rgba(0, 0, 0, 0.04),
+      0 0 40px rgba(59, 130, 246, 0.1);
   }
 
   .glow-effect {
@@ -240,57 +290,23 @@
     opacity: 1;
   }
 
-  .morphing-shadow {
-    box-shadow: 
-      0 4px 6px rgba(0, 0, 0, 0.1),
-      0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .morphing-shadow:hover {
-    box-shadow: 
-      0 20px 25px rgba(0, 0, 0, 0.15),
-      0 10px 10px rgba(0, 0, 0, 0.04),
-      0 0 40px rgba(59, 130, 246, 0.1);
-  }
-
-  .depth-layer {
-    position: relative;
-    z-index: 1;
-  }
-
-  .depth-layer::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: inherit;
-    border-radius: inherit;
-    transform: translateZ(-20px) scale(0.95);
-    opacity: 0.3;
-    z-index: -1;
-  }
-
-  .threed-object {
-    width: 200px;
-    height: 200px;
-    position: relative;
+  .perspective-card {
+    perspective: 1500px;
     transform-style: preserve-3d;
-    animation: floating-3d 10s ease-in-out infinite;
   }
 
-  .cube-face {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+  .perspective-card > * {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
   }
 
-  .cube-face:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
-  .cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(100px); }
-  .cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(100px); }
-  .cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }
-  .cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }
-  .cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }
+  .tilt-hover:hover {
+    animation: tilt 0.6s ease-in-out;
+  }
+
+  @keyframes tilt {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(2deg) scale(1.02); }
+    75% { transform: rotate(-2deg) scale(1.02); }
+  }
 }
