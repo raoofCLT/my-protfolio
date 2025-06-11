@@ -16,43 +16,43 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <div className="min-h-screen relative overflow-x-hidden">
-        {/* Space Background with Animated Stars */}
+      <div className="min-h-screen relative overflow-x-hidden bg-space-dark">
+        {/* Enhanced Space Background with Seamless Dark Theme */}
         <div className="fixed inset-0 pointer-events-none z-0">
-          {/* Starfield Background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-indigo-950 via-purple-950 to-black">
-            {/* Animated Stars */}
-            {[...Array(100)].map((_, i) => (
+          {/* Deep Space Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-gray-950 to-black">
+            {/* Animated Stars - More Subtle */}
+            {[...Array(150)].map((_, i) => (
               <div
                 key={i}
-                className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+                className="absolute w-0.5 h-0.5 bg-slate-300 rounded-full star-twinkle"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 3}s`,
-                  opacity: Math.random() * 0.8 + 0.2,
+                  animationDelay: `${Math.random() * 4}s`,
+                  animationDuration: `${3 + Math.random() * 2}s`,
+                  opacity: Math.random() * 0.6 + 0.2,
                 }}
               />
             ))}
             
-            {/* Larger moving stars */}
-            {[...Array(20)].map((_, i) => (
+            {/* Moving Constellation Points */}
+            {[...Array(30)].map((_, i) => (
               <div
-                key={`star-${i}`}
-                className="absolute w-2 h-2 bg-blue-200 rounded-full floating-star"
+                key={`constellation-${i}`}
+                className="absolute w-1 h-1 bg-blue-200/60 rounded-full constellation-drift"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 5}s`,
+                  animationDelay: `${Math.random() * 8}s`,
                 }}
               />
             ))}
           </div>
           
-          {/* Enhanced 3D Floating Objects */}
-          <div className="absolute top-1/4 right-10 transform -translate-y-1/2 hidden lg:block">
-            <div className="space-cube">
+          {/* Enhanced Professional 3D Objects */}
+          <div className="absolute top-1/5 right-12 transform -translate-y-1/2 hidden lg:block">
+            <div className="professional-cube">
               <div className="cube-face front"></div>
               <div className="cube-face back"></div>
               <div className="cube-face right"></div>
@@ -62,39 +62,43 @@ const App = () => (
             </div>
           </div>
           
-          <div className="absolute top-3/4 left-10 transform -translate-y-1/2 hidden lg:block">
-            <div className="space-sphere"></div>
+          <div className="absolute top-2/3 left-16 transform -translate-y-1/2 hidden lg:block">
+            <div className="professional-sphere"></div>
           </div>
           
-          <div className="absolute top-1/2 right-1/4 transform -translate-y-1/2 hidden lg:block">
-            <div className="space-pyramid"></div>
+          <div className="absolute top-1/2 right-1/5 transform -translate-y-1/2 hidden lg:block">
+            <div className="professional-pyramid"></div>
           </div>
           
-          <div className="absolute top-1/3 left-1/3 transform -translate-y-1/2 hidden lg:block">
-            <div className="space-torus"></div>
+          <div className="absolute top-1/4 left-1/4 transform -translate-y-1/2 hidden lg:block">
+            <div className="professional-torus"></div>
+          </div>
+          
+          <div className="absolute top-3/4 right-1/3 transform -translate-y-1/2 hidden lg:block">
+            <div className="professional-dodecahedron"></div>
           </div>
         </div>
         
         <Navbar />
         
-        {/* Single Page Sections with Different Backgrounds */}
-        <section id="home" className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/20 via-purple-900/10 to-transparent"></div>
+        {/* Seamless Section Layout - No Visible Boundaries */}
+        <section id="home" className="relative min-h-screen">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 via-transparent to-slate-800/20"></div>
           <Home />
         </section>
         
-        <section id="about" className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-cyan-900/20 to-transparent"></div>
+        <section id="about" className="relative min-h-screen">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-transparent to-indigo-900/15"></div>
           <About />
         </section>
         
-        <section id="projects" className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/25 via-teal-900/15 to-transparent"></div>
+        <section id="projects" className="relative min-h-screen">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-950/20 via-transparent to-violet-900/15"></div>
           <Projects />
         </section>
         
-        <section id="contact" className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-900/30 via-fuchsia-900/20 to-transparent"></div>
+        <section id="contact" className="relative min-h-screen">
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/20 via-transparent to-teal-900/15"></div>
           <Contact />
         </section>
       </div>
