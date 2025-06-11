@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -51,23 +50,24 @@ const App = () => (
           </div>
           
           {/* Enhanced Professional 3D Objects */}
-          <div className="absolute top-1/5 right-12 transform -translate-y-1/2 hidden lg:block">
-            <div className="professional-cube">
-              <div className="cube-face front"></div>
-              <div className="cube-face back"></div>
-              <div className="cube-face right"></div>
-              <div className="cube-face left"></div>
-              <div className="cube-face top"></div>
-              <div className="cube-face bottom"></div>
+          <div className="absolute top-1/3 right-12 transform -translate-y-1/2 hidden lg:block">
+            <div className="professional-sphere">
+              <div className="sphere-core"></div>
+              <div className="sphere-outer"></div>
+              <div className="sphere-glow"></div>
+              <div className="sphere-particles"></div>
             </div>
           </div>
           
-          <div className="absolute top-2/3 left-16 transform -translate-y-1/2 hidden lg:block">
-            <div className="professional-sphere"></div>
-          </div>
-          
           <div className="absolute top-1/2 right-1/5 transform -translate-y-1/2 hidden lg:block">
-            <div className="professional-pyramid"></div>
+            <div className="professional-pyramid">
+              <div className="face front"></div>
+              <div className="face back"></div>
+              <div className="face left"></div>
+              <div className="face right"></div>
+              <div className="base"></div>
+              <div className="glow"></div>
+            </div>
           </div>
           
           <div className="absolute top-1/4 left-1/4 transform -translate-y-1/2 hidden lg:block">

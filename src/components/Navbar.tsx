@@ -1,9 +1,9 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Home, User, Briefcase, Mail } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('#home');
 
   const navItems = [
     { href: '#home', label: 'Home', icon: Home },
@@ -11,6 +11,27 @@ const Navbar = () => {
     { href: '#projects', label: 'Projects', icon: Briefcase },
     { href: '#contact', label: 'Contact', icon: Mail },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map(item => item.href);
+      const currentSection = sections.find(section => {
+        const element = document.querySelector(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -40,7 +61,11 @@ const Navbar = () => {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
-                className="flex items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-500 card-hover text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:scale-105"
+                className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-500 card-hover text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:scale-105 ${
+                  activeSection === item.href 
+                    ? 'bg-gradient-to-r from-blue-600/30 to-purple-600/30 border border-blue-500/50 text-blue-300 shadow-lg shadow-blue-500/2' 
+                    : ''
+                }`}
               >
                 <item.icon className="w-4 h-4" />
                 {item.label}
@@ -66,7 +91,11 @@ const Navbar = () => {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
-                  className="flex items-center gap-3 px-4 py-4 rounded-2xl font-medium transition-all duration-500 card-hover text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50"
+                  className={`flex items-center gap-3 px-4 py-4 rounded-2xl font-medium transition-all duration-500 card-hover text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 ${
+                    activeSection === item.href 
+                      ? 'bg-gradient-to-r from-gray-800/50 to-gray-700/50 text-white' 
+                      : ''
+                  }`}
                 >
                   <item.icon className="w-5 h-5" />
                   {item.label}
