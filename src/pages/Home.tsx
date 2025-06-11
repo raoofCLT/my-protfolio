@@ -19,11 +19,11 @@ const Home = () => {
             <div className="relative inline-block">
               <div className="w-56 h-56 mx-auto lg:mx-0 rounded-3xl bg-gradient-to-br from-gray-800 via-gray-900 to-black border border-gray-700 overflow-hidden shadow-2xl card-3d glass-effect">
                 <div className="w-full h-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 flex items-center justify-center relative">
-                  <div className="text-7xl">👨‍💻</div>
+                  <img src="/profilepic.jpeg" alt="Abdul Raoof" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 </div>
               </div>
-              <div className="absolute -top-4 -right-4 w-10 h-10 bg-green-500 rounded-full border-4 border-black animate-pulse shadow-lg shadow-green-500/50" />
+              {/* <div className="absolute -top-4 -right-4 w-10 h-10 bg-green-500 rounded-full border-4 border-black animate-pulse shadow-lg shadow-green-500/50" /> */}
             </div>
 
             <div className="space-y-6">
@@ -70,12 +70,12 @@ const Home = () => {
           <div className="space-y-6 fade-in-scale" style={{ animationDelay: '0.3s' }}>
             <div className="grid grid-cols-2 gap-6">
               <div className="glass-effect rounded-2xl p-6 text-center card-3d hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500">
-                <div className="text-4xl font-bold text-blue-400 mb-2">50+</div>
+                <div className="text-4xl font-bold text-blue-400 mb-2">10+</div>
                 <div className="text-gray-400">Projects Completed</div>
                 <Star className="w-6 h-6 text-yellow-400 mx-auto mt-2" />
               </div>
               <div className="glass-effect rounded-2xl p-6 text-center card-3d hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-500">
-                <div className="text-4xl font-bold text-purple-400 mb-2">15+</div>
+                <div className="text-4xl font-bold text-purple-400 mb-2">10+</div>
                 <div className="text-gray-400">Technologies</div>
                 <Award className="w-6 h-6 text-green-400 mx-auto mt-2" />
               </div>
