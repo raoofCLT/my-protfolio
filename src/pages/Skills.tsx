@@ -1,6 +1,166 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Code, Database, Globe, Smartphone, Award, Users, Clock, Coffee } from 'lucide-react';
+
+// 3D Space Dog Component
+const SpaceDog = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const sceneRef = useRef<any>(null);
+  const dogRef = useRef<any>(null);
+  const animationRef = useRef<number>();
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    // Simple 3D space dog using canvas
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrame = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    const resizeCanvas = () => {
+      const container = canvas.parentElement;
+      if (container) {
+        canvas.width = Math.min(container.clientWidth, 300);
+        canvas.height = Math.min(container.clientHeight, 300);
+      }
+    };
+
+    const drawSpaceDog = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const time = animationFrame * 0.02;
+      
+      // Apply mouse movement
+      const offsetX = (mouseX - centerX) * 0.1;
+      const offsetY = (mouseY - centerY) * 0.1;
+      
+      // Dog body (3D effect with gradient)
+      ctx.save();
+      ctx.translate(centerX + offsetX, centerY + offsetY + Math.sin(time) * 5);
+      
+      // Body gradient
+      const bodyGradient = ctx.createRadialGradient(0, 0, 10, 0, 0, 40);
+      bodyGradient.addColorStop(0, '#ffffff');
+      bodyGradient.addColorStop(1, '#cccccc');
+      
+      ctx.fillStyle = bodyGradient;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 40, 30, 0, 0, 2 * Math.PI);
+      ctx.fill();
+      
+      // Head
+      const headGradient = ctx.createRadialGradient(0, -35, 5, 0, -35, 25);
+      headGradient.addColorStop(0, '#ffffff');
+      headGradient.addColorStop(1, '#dddddd');
+      
+      ctx.fillStyle = headGradient;
+      ctx.beginPath();
+      ctx.ellipse(0, -35, 25, 25, 0, 0, 2 * Math.PI);
+      ctx.fill();
+      
+      // Ears (floating)
+      ctx.fillStyle = '#ffaaaa';
+      ctx.beginPath();
+      ctx.ellipse(-15, -50 + Math.sin(time + 1) * 2, 8, 15, -0.3, 0, 2 * Math.PI);
+      ctx.fill();
+      
+      ctx.beginPath();
+      ctx.ellipse(15, -50 + Math.sin(time + 1.5) * 2, 8, 15, 0.3, 0, 2 * Math.PI);
+      ctx.fill();
+      
+      // Eyes
+      ctx.fillStyle = '#000000';
+      ctx.beginPath();
+      ctx.ellipse(-8, -40, 3, 3, 0, 0, 2 * Math.PI);
+      ctx.fill();
+      
+      ctx.beginPath();
+      ctx.ellipse(8, -40, 3, 3, 0, 0, 2 * Math.PI);
+      ctx.fill();
+      
+      // Nose
+      ctx.fillStyle = '#ff6666';
+      ctx.beginPath();
+      ctx.ellipse(0, -30, 2, 2, 0, 0, 2 * Math.PI);
+      ctx.fill();
+      
+      // Legs (floating)
+      ctx.fillStyle = '#ffffff';
+      for (let i = 0; i < 4; i++) {
+        const legX = (i % 2 === 0 ? -20 : 20);
+        const legY = 20 + Math.sin(time + i) * 3;
+        ctx.beginPath();
+        ctx.ellipse(legX, legY, 6, 12, 0, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+      
+      // Tail (wagging)
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 8;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(35, 0);
+      ctx.quadraticCurveTo(50 + Math.sin(time * 3) * 10, -10, 45 + Math.sin(time * 3) * 15, -25);
+      ctx.stroke();
+      
+      // Space helmet
+      ctx.strokeStyle = '#00ffff';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.ellipse(0, -35, 35, 35, 0, 0, 2 * Math.PI);
+      ctx.stroke();
+      
+      // Helmet reflection
+      ctx.fillStyle = 'rgba(0, 255, 255, 0.1)';
+      ctx.beginPath();
+      ctx.ellipse(-10, -45, 8, 12, -0.5, 0, 2 * Math.PI);
+      ctx.fill();
+      
+      ctx.restore();
+      
+      animationFrame++;
+      animationRef.current = requestAnimationFrame(drawSpaceDog);
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    };
+
+    canvas.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', resizeCanvas);
+    
+    resizeCanvas();
+    drawSpaceDog();
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+      canvas.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, []);
+
+  return (
+    <div className="w-full h-64 md:h-80 flex items-center justify-center">
+      <canvas
+        ref={canvasRef}
+        className="max-w-full max-h-full rounded-lg"
+        style={{ background: 'radial-gradient(circle, rgba(0,0,50,0.3) 0%, transparent 70%)' }}
+      />
+    </div>
+  );
+};
 
 const Skills = () => {
   const [counters, setCounters] = useState({
@@ -78,40 +238,38 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Technical Expertise Grid */}
-        <section className="mb-16">
-          <div className="flex items-center gap-3 mb-8">
-            <Code className="w-8 h-8 text-purple-400" />
-            <h2 className="text-3xl font-bold text-slate-200">Technical Expertise</h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {skillCategories.map((category, index) => (
-              <div
-                key={index}
-                className="enhanced-card-hover glass-effect rounded-xl p-6 morphing-shadow glow-effect perspective-card group"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${category.color} text-white mb-4`}>
-                  {category.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-emerald-200 mb-4 group-hover:text-emerald-100 transition-colors">
-                  {category.title}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <span
-                      key={skillIndex}
-                      className="px-3 py-1 bg-teal-900/30 text-teal-300 text-sm rounded-md border border-teal-700/30 enhanced-card-hover"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+        {/* 3D Space Dog */}
+        <div className="mb-16">
+          <SpaceDog />
+        </div>
+
+        {/* Skills Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {skillCategories.map((category, index) => (
+            <div
+              key={index}
+              className="enhanced-card-hover glass-effect rounded-xl p-6 morphing-shadow glow-effect perspective-card group"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${category.color} text-white mb-4`}>
+                {category.icon}
               </div>
-            ))}
-          </div>
-        </section>
+              <h3 className="text-xl font-semibold text-emerald-200 mb-4 group-hover:text-emerald-100 transition-colors">
+                {category.title}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill, skillIndex) => (
+                  <span
+                    key={skillIndex}
+                    className="px-3 py-1 bg-teal-900/30 text-teal-300 text-sm rounded-md border border-teal-700/30 enhanced-card-hover"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
