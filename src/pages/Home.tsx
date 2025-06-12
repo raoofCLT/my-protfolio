@@ -30,7 +30,7 @@ const Home = () => {
         {/* Profile Section */}
         <div className="text-center lg:text-left space-y-8 slide-up">
           <div className="relative inline-block perspective-card">
-            <div className="w-64 h-64 mx-auto lg:mx-0 rounded-3xl bg-gradient-to-br from-indigo-800/40 via-purple-900/30 to-black/50 border border-indigo-400/30 overflow-hidden shadow-2xl card-hover glass-effect morphing-shadow glow-effect">
+            <div className="w-64 h-64 mx-auto lg:mx-0 rounded-3xl bg-gradient-to-br from-indigo-800/40 via-purple-900/30 to-black/50 border border-indigo-400/30 overflow-hidden shadow-2xl glass-effect morphing-shadow glow-effect">
               <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center relative">
                 <img src="/profilepic.jpeg" alt="Abdul Raoof" className="w-full h-full object-cover rounded-3xl" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-indigo-500/20 rounded-3xl" />
@@ -40,7 +40,7 @@ const Home = () => {
           </div>
 
           <div className="space-y-6">
-            <h1 className="text-6xl lg:text-7xl font-bold gradient-text tilt-hover">
+            <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-300 via-gray-500 to-gray-800 bg-clip-text text-transparent tilt-hover">
               Abdul Raoof
             </h1>
             <p className="text-2xl text-indigo-200 font-light">
@@ -67,7 +67,7 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:hidden">
             <button
               onClick={handleDownloadCV}
-              className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-110 morphing-shadow glow-effect flex items-center gap-2 card-hover group"
+              className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-110 hover:translate-y-1 morphing-shadow glow-effect flex items-center gap-2 group"
             >
               <Download className="w-5 h-5 group-hover:animate-bounce" />
               Download CV
@@ -75,7 +75,7 @@ const Home = () => {
             <a 
               href="#projects"
               onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="px-8 py-4 glass-effect rounded-2xl font-semibold transition-all duration-500 hover:scale-105 morphing-shadow flex items-center gap-2 card-hover group"
+              className="px-8 py-4 glass-effect rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 morphing-shadow flex items-center gap-2 group"
             >
               View Projects
               <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
@@ -86,19 +86,19 @@ const Home = () => {
         {/* Stats/Skills Preview */}
         <div className="space-y-6 fade-in-scale" style={{ animationDelay: '0.3s' }}>
           <div className="grid grid-cols-2 gap-6">
-            <div className="glass-effect rounded-2xl p-6 text-center card-hover morphing-shadow glow-effect perspective-card">
+            <div className="glass-effect rounded-2xl p-6 text-center hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card">
               <div className="text-4xl font-bold text-indigo-400 mb-2">10+</div>
               <div className="text-indigo-300">Projects Completed</div>
               <Star className="w-6 h-6 text-yellow-400 mx-auto mt-2" />
             </div>
-            <div className="glass-effect rounded-2xl p-6 text-center card-hover morphing-shadow glow-effect perspective-card">
+            <div className="glass-effect rounded-2xl p-6 text-center hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card">
               <div className="text-4xl font-bold text-purple-400 mb-2">10+</div>
               <div className="text-indigo-300">Technologies</div>
               <Award className="w-6 h-6 text-green-400 mx-auto mt-2" />
             </div>
           </div>
 
-          <div className="glass-effect rounded-2xl p-6 card-hover morphing-shadow glow-effect perspective-card">
+          <div className="glass-effect rounded-2xl p-6 hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card">
             <h3 className="text-xl font-semibold mb-4 text-indigo-200 flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-green-400" />
               Core Technologies
@@ -107,7 +107,7 @@ const Home = () => {
               {['React', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'PostgreSQL'].map((tech, index) => (
                 <span 
                   key={tech} 
-                  className="px-4 py-2 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 border border-indigo-500/40 rounded-full text-sm text-indigo-300 hover:scale-110 morphing-shadow transition-all duration-300 card-hover tilt-hover"
+                  className="px-4 py-2 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 border border-indigo-500/40 rounded-full text-sm text-indigo-300 hover:scale-110 morphing-shadow transition-all duration-300 hover:translate-y-1 tilt-hover"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {tech}
@@ -120,7 +120,7 @@ const Home = () => {
           <div className="hidden lg:flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <button
               onClick={handleDownloadCV}
-              className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-110 morphing-shadow glow-effect flex items-center gap-2 card-hover group"
+              className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-110 hover:translate-y-1 morphing-shadow glow-effect flex items-center gap-2 group"
             >
               <Download className="w-5 h-5 group-hover:animate-bounce" />
               Download CV
@@ -128,7 +128,7 @@ const Home = () => {
             <a 
               href="#projects"
               onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="px-8 py-4 glass-effect rounded-2xl font-semibold transition-all duration-500 hover:scale-105 morphing-shadow flex items-center gap-2 card-hover group"
+              className="px-8 py-4 glass-effect rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 morphing-shadow flex items-center gap-2 group"
             >
               View Projects
               <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
