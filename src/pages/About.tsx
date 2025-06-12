@@ -1,4 +1,3 @@
-
 import { Code, Briefcase, GraduationCap, Award, TrendingUp, Users, Globe, Zap } from 'lucide-react';
 
 const About = () => {
@@ -162,36 +161,50 @@ const About = () => {
           </div>
         </section>
 
-        {/* Education & Certifications */}
+        {/* Education & Core Values */}
         <section>
           <div className="flex items-center gap-3 mb-8">
             <GraduationCap className="w-8 h-8 text-green-400" />
-            <h2 className="text-3xl font-bold text-slate-200">Education & Certifications</h2>
+            <h2 className="text-3xl font-bold text-slate-200">Education & Core Values</h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6">
+            <div className="enhanced-card-hover glass-effect rounded-xl p-6 morphing-shadow glow-effect">
               <div className="flex items-center gap-3 mb-3">
                 <GraduationCap className="w-6 h-6 text-green-400" />
                 <h3 className="text-xl font-semibold text-green-300">Education</h3>
               </div>
               <p className="text-slate-300 mb-2"><strong>Bachelor of Computer Science</strong></p>
-              <p className="text-slate-400 mb-4">University of California, Berkeley • 2015-2019</p>
-              <p className="text-sm text-slate-500">GPA: 3.8/4.0 • Magna Cum Laude</p>
+              <p className="text-slate-400 mb-4">University of Kerala • 2020-2024</p>
+              <p className="text-sm text-slate-500">First Class with Distinction</p>
             </div>
             
-            <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6">
+            <div className="enhanced-card-hover glass-effect rounded-xl p-6 morphing-shadow glow-effect">
               <div className="flex items-center gap-3 mb-4">
                 <Award className="w-6 h-6 text-yellow-400" />
-                <h3 className="text-xl font-semibold text-yellow-300">Professional Certifications</h3>
+                <h3 className="text-xl font-semibold text-yellow-300">Core Values</h3>
               </div>
               <ul className="text-slate-300 space-y-2">
-                {certifications.map((cert, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></span>
-                    <span className="text-sm">{cert}</span>
-                  </li>
-                ))}
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></span>
+                  <span className="text-sm">Quality-driven development</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></span>
+                  <span className="text-sm">Continuous learning mindset</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></span>
+                  <span className="text-sm">User-centric design approach</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></span>
+                  <span className="text-sm">Collaborative teamwork</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></span>
+                  <span className="text-sm">Innovation and creativity</span>
+                </li>
               </ul>
             </div>
           </div>

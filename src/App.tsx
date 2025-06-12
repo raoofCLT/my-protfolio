@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import Skills from "./pages/Skills";
 
 const queryClient = new QueryClient();
 
@@ -90,6 +91,11 @@ const App = () => (
         <section id="about" className="relative min-h-screen">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-transparent to-indigo-900/15"></div>
           <About />
+        </section>
+
+        <section id="skills" className="relative min-h-screen">
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-950/20 via-transparent to-purple-900/15"></div>
+          <Skills />
         </section>
         
         <section id="projects" className="relative min-h-screen">
