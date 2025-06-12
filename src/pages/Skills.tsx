@@ -134,11 +134,6 @@ const Skills = () => {
 
         {/* Skills Categories */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-slate-200 mb-8 flex items-center gap-3">
-            <Code className="w-8 h-8 text-blue-400" />
-            Technical Skills
-          </h2>
-          
           <div className="grid md:grid-cols-2 gap-6">
             {skillCategories.map((category, index) => (
               <div key={index} className={`enhanced-card-hover glass-effect rounded-2xl p-6 morphing-shadow glow-effect bg-gradient-to-br ${category.color} border ${category.borderColor}`}>
