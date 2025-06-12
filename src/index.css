@@ -88,10 +88,10 @@
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   }
 
-  /* Enhanced Card Hover Effects - Improved */
+  /* Enhanced Card Hover Effects */
   .enhanced-card-hover {
     transform-style: preserve-3d;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     perspective: 1500px;
     position: relative;
     overflow: hidden;
@@ -107,10 +107,10 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.1),
       transparent
     );
-    transition: left 0.5s ease;
+    transition: left 0.6s ease;
     z-index: 1;
     pointer-events: none;
   }
@@ -120,12 +120,12 @@
   }
 
   .enhanced-card-hover:hover {
-    transform: perspective(1500px) rotateX(2deg) rotateY(-2deg) translateZ(15px) scale(1.02);
+    transform: perspective(1500px) rotateX(5deg) rotateY(-5deg) translateZ(30px) scale(1.02);
     box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.3),
+      0 30px 60px rgba(0, 0, 0, 0.4),
       0 0 0 1px rgba(255, 255, 255, 0.05),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 0 30px rgba(99, 102, 241, 0.15);
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 0 40px rgba(99, 102, 241, 0.2);
   }
 
   .enhanced-card-hover > * {
@@ -135,13 +135,13 @@
 
   /* Enhanced Glass Effect */
   .glass-effect {
-    background: rgba(15, 15, 15, 0.6);
-    backdrop-filter: blur(15px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 15, 15, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 0 15px rgba(99, 102, 241, 0.1);
+      0 8px 40px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 0 20px rgba(99, 102, 241, 0.1);
   }
 
   .gradient-text {
@@ -615,63 +615,63 @@
     75% { transform: rotate(315deg) translateY(25px) scale(1.02); }
   }
 
-  /* Enhanced Card Effects - Improved */
+  /* Enhanced Card Effects */
   .morphing-shadow {
     box-shadow: 
-      0 4px 8px rgba(0, 0, 0, 0.15),
-      0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.4s ease;
+      0 4px 6px rgba(0, 0, 0, 0.2),
+      0 1px 3px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.6s ease;
   }
 
   .morphing-shadow:hover {
     box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.25),
-      0 10px 20px rgba(0, 0, 0, 0.15),
-      0 0 60px rgba(99, 102, 241, 0.1);
+      0 30px 60px rgba(0, 0, 0, 0.4),
+      0 15px 30px rgba(0, 0, 0, 0.2),
+      0 0 80px rgba(99, 102, 241, 0.15);
   }
 
   .glow-effect {
     position: relative;
   }
 
-  .glow-effect::after {
+  .glow-effect::before {
     content: '';
     position: absolute;
-    inset: -1px;
-    background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15), transparent);
+    inset: -2px;
+    background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2), transparent);
     border-radius: inherit;
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.6s ease;
   }
 
-  .glow-effect:hover::after {
+  .glow-effect:hover::before {
     opacity: 1;
-    animation: glow-pulse 2s ease-in-out infinite;
+    animation: glow-pulse 3s ease-in-out infinite;
   }
 
   @keyframes glow-pulse {
-    0%, 100% { opacity: 0.15; }
-    50% { opacity: 0.3; }
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.6; }
   }
 
   .perspective-card {
-    perspective: 2000px;
+    perspective: 2500px;
     transform-style: preserve-3d;
   }
 
   .perspective-card > * {
     transform-style: preserve-3d;
-    transition: transform 0.4s ease;
+    transition: transform 0.6s ease;
   }
 
   .tilt-hover:hover {
-    animation: tilt 0.8s ease-in-out;
+    animation: tilt 1s ease-in-out;
   }
 
   @keyframes tilt {
     0%, 100% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(1deg) scale(1.01); }
-    75% { transform: rotate(-1deg) scale(1.01); }
+    25% { transform: rotate(2deg) scale(1.01); }
+    75% { transform: rotate(-2deg) scale(1.01); }
   }
 }
