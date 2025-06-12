@@ -1,3 +1,5 @@
+
+import React, { useState, useEffect } from 'react';
 import { ExternalLink, Github, Code, Users, Clock, Award, ArrowRight } from 'lucide-react';
 
 const Projects = () => {
