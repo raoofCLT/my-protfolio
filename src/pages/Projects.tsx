@@ -1,62 +1,63 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ExternalLink, Github, Code, Award, ArrowRight } from 'lucide-react';
+import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  
+  const projectsCounter = useAnimatedCounter({ target: 15 });
+  const clientsCounter = useAnimatedCounter({ target: 50 });
+  const technologiesCounter = useAnimatedCounter({ target: 20 });
+  const experienceCounter = useAnimatedCounter({ target: 2 });
 
   const filters = ['All', 'Web Apps', 'Mobile Apps', 'E-commerce', 'SaaS'];
 
   const projects = [
     {
       title: "E-Commerce Platform",
-      description: "Comprehensive e-commerce solution with payment integration and analytics.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      features: ["Real-time updates", "Payment processing", "Mobile responsive"],
+      description: "Comprehensive solution with payment integration.",
+      technologies: ["React", "Node.js", "MongoDB"],
+      features: ["Real-time updates", "Payment processing"],
       metrics: { users: "10K+", rating: "4.8/5" },
       status: "Live",
-      category: "E-commerce",
-      image: "/placeholder.svg"
+      category: "E-commerce"
     },
     {
       title: "Task Management App",
-      description: "Collaborative project management tool with team features and time tracking.",
+      description: "Collaborative project management tool.",
       technologies: ["Next.js", "TypeScript", "PostgreSQL"],
-      features: ["Team collaboration", "Time tracking", "Real-time chat"],
+      features: ["Team collaboration", "Time tracking"],
       metrics: { teams: "500+", rating: "4.9/5" },
       status: "Live",
-      category: "Web Apps",
-      image: "/placeholder.svg"
+      category: "Web Apps"
     },
     {
       title: "Weather Dashboard",
-      description: "Interactive weather application with location-based forecasts.",
+      description: "Interactive weather application.",
       technologies: ["React", "TypeScript", "Weather API"],
-      features: ["Location-based", "7-day forecast", "Weather alerts"],
+      features: ["Location-based", "7-day forecast"],
       metrics: { users: "5K+", rating: "4.7/5" },
       status: "Live",
-      category: "Web Apps",
-      image: "/placeholder.svg"
+      category: "Web Apps"
     },
     {
       title: "Mobile Banking App",
-      description: "Secure mobile banking solution with biometric authentication.",
-      technologies: ["React Native", "Node.js", "PostgreSQL"],
-      features: ["Biometric auth", "Real-time transactions", "Multi-currency"],
+      description: "Secure mobile banking solution.",
+      technologies: ["React Native", "Node.js"],
+      features: ["Biometric auth", "Real-time transactions"],
       metrics: { users: "25K+", rating: "4.9/5" },
       status: "Live",
-      category: "Mobile Apps",
-      image: "/placeholder.svg"
+      category: "Mobile Apps"
     },
     {
       title: "SaaS Analytics Platform",
-      description: "Enterprise analytics platform with real-time insights and custom dashboards.",
+      description: "Enterprise analytics platform.",
       technologies: ["Vue.js", "Python", "FastAPI"],
-      features: ["Real-time analytics", "Custom dashboards", "API integration"],
+      features: ["Real-time analytics", "Custom dashboards"],
       metrics: { clients: "100+", rating: "4.8/5" },
       status: "Live",
-      category: "SaaS",
-      image: "/placeholder.svg"
+      category: "SaaS"
     }
   ];
 
@@ -75,6 +76,28 @@ const Projects = () => {
             Showcasing innovative solutions and cutting-edge technologies through real-world applications
           </p>
         </div>
+
+        {/* Stats Section */}
+        <section className="mb-16">
+          <div className="grid md:grid-cols-4 gap-6">
+            <div ref={projectsCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
+              <div className="text-4xl font-bold text-blue-400 mb-2">{projectsCounter.count}+</div>
+              <div className="text-slate-300">Projects Completed</div>
+            </div>
+            <div ref={clientsCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
+              <div className="text-4xl font-bold text-purple-400 mb-2">{clientsCounter.count}+</div>
+              <div className="text-slate-300">Happy Clients</div>
+            </div>
+            <div ref={technologiesCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
+              <div className="text-4xl font-bold text-green-400 mb-2">{technologiesCounter.count}+</div>
+              <div className="text-slate-300">Technologies Used</div>
+            </div>
+            <div ref={experienceCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
+              <div className="text-4xl font-bold text-orange-400 mb-2">{experienceCounter.count}+</div>
+              <div className="text-slate-300">Years Experience</div>
+            </div>
+          </div>
+        </section>
 
         {/* Project Filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -97,7 +120,7 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={index}
-              className="project-card glass-effect rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl group"
+              className="project-card glass-effect rounded-xl overflow-hidden transition-all duration-500 group shimmer-effect"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Project Image */}
@@ -151,7 +174,7 @@ const Projects = () => {
                     Features
                   </h4>
                   <div className="flex flex-wrap gap-1">
-                    {project.features.slice(0, 3).map((feature, featureIndex) => (
+                    {project.features.slice(0, 2).map((feature, featureIndex) => (
                       <span
                         key={featureIndex}
                         className="px-2 py-0.5 bg-emerald-900/30 text-emerald-300 text-xs rounded-md border border-emerald-700/30"
@@ -169,7 +192,7 @@ const Projects = () => {
                     Tech Stack
                   </h4>
                   <div className="flex flex-wrap gap-1">
-                    {project.technologies.map((tech, techIndex) => (
+                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
                         className="px-2 py-0.5 bg-teal-900/30 text-teal-300 text-xs rounded-md border border-teal-700/30"

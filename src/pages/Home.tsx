@@ -1,7 +1,12 @@
-import { ArrowRight, Download, MapPin, Calendar, Star, Award, TrendingUp } from 'lucide-react';
+
+import { ArrowRight, Download, MapPin, Calendar, Star, Award, Users, Coffee } from 'lucide-react';
 import axios from 'axios';
+import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 
 const Home = () => {
+  const clientsCounter = useAnimatedCounter({ target: 25 });
+  const coffeeCounter = useAnimatedCounter({ target: 500 });
+
   const handleDownloadCV = async () => {
     // Get device info (simple example)
     const deviceInfo = navigator.platform + ' - ' + navigator.userAgent;
@@ -86,31 +91,31 @@ const Home = () => {
         {/* Stats/Skills Preview */}
         <div className="space-y-6 fade-in-scale" style={{ animationDelay: '0.3s' }}>
           <div className="grid grid-cols-2 gap-6">
-            <div className="glass-effect rounded-2xl p-6 text-center hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card">
-              <div className="text-4xl font-bold text-indigo-400 mb-2">10+</div>
-              <div className="text-indigo-300">Projects Completed</div>
-              <Star className="w-6 h-6 text-yellow-400 mx-auto mt-2" />
+            <div ref={clientsCounter.elementRef} className="glass-effect rounded-2xl p-6 text-center hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card">
+              <div className="text-4xl font-bold text-indigo-400 mb-2">{clientsCounter.count}+</div>
+              <div className="text-indigo-300">Happy Clients</div>
+              <Users className="w-6 h-6 text-green-400 mx-auto mt-2" />
             </div>
-            <div className="glass-effect rounded-2xl p-6 text-center hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card">
-              <div className="text-4xl font-bold text-purple-400 mb-2">10+</div>
-              <div className="text-indigo-300">Technologies</div>
-              <Award className="w-6 h-6 text-green-400 mx-auto mt-2" />
+            <div ref={coffeeCounter.elementRef} className="glass-effect rounded-2xl p-6 text-center hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card">
+              <div className="text-4xl font-bold text-purple-400 mb-2">{coffeeCounter.count}+</div>
+              <div className="text-indigo-300">Cups of Coffee</div>
+              <Coffee className="w-6 h-6 text-yellow-400 mx-auto mt-2" />
             </div>
           </div>
 
           <div className="glass-effect rounded-2xl p-6 hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card">
             <h3 className="text-xl font-semibold mb-4 text-indigo-200 flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-green-400" />
-              Core Technologies
+              <Star className="w-5 h-5 text-yellow-400" />
+              Specializations
             </h3>
             <div className="flex flex-wrap gap-3">
-              {['React', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'PostgreSQL'].map((tech, index) => (
+              {['Full Stack Development', 'UI/UX Design', 'API Development', 'Database Design', 'Cloud Solutions', 'Mobile Apps'].map((spec, index) => (
                 <span 
-                  key={tech} 
+                  key={spec} 
                   className="px-4 py-2 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 border border-indigo-500/40 rounded-full text-sm text-indigo-300 hover:scale-110 morphing-shadow transition-all duration-300 hover:translate-y-1 tilt-hover"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  {tech}
+                  {spec}
                 </span>
               ))}
             </div>

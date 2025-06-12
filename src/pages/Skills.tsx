@@ -1,43 +1,12 @@
 
 import { Code, Database, Globe, Palette, Users, Zap, Trophy, Target } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 
 const Skills = () => {
-  const [counters, setCounters] = useState({
-    projects: 0,
-    technologies: 0,
-    clients: 0,
-    experience: 0
-  });
-
-  // Animated counter hook
-  useEffect(() => {
-    const targets = {
-      projects: 15,
-      technologies: 20,
-      clients: 50,
-      experience: 2
-    };
-
-    const animateCounter = (key: keyof typeof targets, target: number) => {
-      let current = 0;
-      const increment = target / 50; // 50 steps for smooth animation
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-          current = target;
-          clearInterval(timer);
-        }
-        setCounters(prev => ({ ...prev, [key]: Math.floor(current) }));
-      }, 30);
-    };
-
-    // Start animations with delays
-    setTimeout(() => animateCounter('projects', 15), 500);
-    setTimeout(() => animateCounter('technologies', 20), 700);
-    setTimeout(() => animateCounter('clients', 50), 900);
-    setTimeout(() => animateCounter('experience', 2), 1100);
-  }, []);
+  const projectsCounter = useAnimatedCounter({ target: 15 });
+  const technologiesCounter = useAnimatedCounter({ target: 20 });
+  const clientsCounter = useAnimatedCounter({ target: 50 });
+  const experienceCounter = useAnimatedCounter({ target: 2 });
 
   const skillCategories = [
     {
@@ -113,20 +82,20 @@ const Skills = () => {
         {/* Stats Section with Animated Counters */}
         <section className="mb-16">
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
-              <div className="text-4xl font-bold text-blue-400 mb-2">{counters.projects}+</div>
+            <div ref={projectsCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
+              <div className="text-4xl font-bold text-blue-400 mb-2">{projectsCounter.count}+</div>
               <div className="text-slate-300">Projects Completed</div>
             </div>
-            <div className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
-              <div className="text-4xl font-bold text-green-400 mb-2">{counters.technologies}+</div>
+            <div ref={technologiesCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
+              <div className="text-4xl font-bold text-green-400 mb-2">{technologiesCounter.count}+</div>
               <div className="text-slate-300">Technologies Mastered</div>
             </div>
-            <div className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
-              <div className="text-4xl font-bold text-purple-400 mb-2">{counters.clients}+</div>
+            <div ref={clientsCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
+              <div className="text-4xl font-bold text-purple-400 mb-2">{clientsCounter.count}+</div>
               <div className="text-slate-300">Happy Clients</div>
             </div>
-            <div className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
-              <div className="text-4xl font-bold text-orange-400 mb-2">{counters.experience}+</div>
+            <div ref={experienceCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
+              <div className="text-4xl font-bold text-orange-400 mb-2">{experienceCounter.count}+</div>
               <div className="text-slate-300">Years Experience</div>
             </div>
           </div>
