@@ -1,7 +1,29 @@
-
 import { ArrowRight, Download, MapPin, Calendar, Star, Award, TrendingUp } from 'lucide-react';
+import axios from 'axios';
 
 const Home = () => {
+  const handleDownloadCV = async () => {
+    // Get device info (simple example)
+    const deviceInfo = navigator.platform + ' - ' + navigator.userAgent;
+    
+    try {
+      await axios.post('http://localhost:5000/api/download-cv', {
+        name: 'Anonymous',
+        deviceInfo,
+      });
+    } catch (err) {
+      // Optionally handle error
+      console.error('Failed to send download notification:', err);
+    }
+    // Trigger download
+    const link = document.createElement('a');
+    link.href = '/Abdul Raoof.pdf';
+    link.download = 'Abdul_Raoof_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center relative pt-24 pb-4 z-10">
       <div className="relative z-10 max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-12 items-center">
@@ -43,7 +65,10 @@ const Home = () => {
 
           {/* Action Buttons - Mobile Only */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:hidden">
-            <button className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-110 morphing-shadow glow-effect flex items-center gap-2 card-hover group">
+            <button
+              onClick={handleDownloadCV}
+              className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-110 morphing-shadow glow-effect flex items-center gap-2 card-hover group"
+            >
               <Download className="w-5 h-5 group-hover:animate-bounce" />
               Download CV
             </button>
@@ -93,7 +118,10 @@ const Home = () => {
 
           {/* Action Buttons - Desktop Only */}
           <div className="hidden lg:flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-110 morphing-shadow glow-effect flex items-center gap-2 card-hover group">
+            <button
+              onClick={handleDownloadCV}
+              className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-110 morphing-shadow glow-effect flex items-center gap-2 card-hover group"
+            >
               <Download className="w-5 h-5 group-hover:animate-bounce" />
               Download CV
             </button>
