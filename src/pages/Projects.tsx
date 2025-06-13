@@ -15,7 +15,8 @@ const Projects = () => {
       metrics: ['50k+ users', '99.9% uptime'],
       category: 'Web Application',
       status: 'Live',
-      year: '2024'
+      year: '2024',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop'
     },
     {
       title: 'AI Analytics Dashboard',
@@ -24,7 +25,8 @@ const Projects = () => {
       metrics: ['40% accuracy boost', '15+ clients'],
       category: 'AI/ML Platform',
       status: 'Live',
-      year: '2023'
+      year: '2023',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'
     },
     {
       title: 'Real-time Chat App',
@@ -33,7 +35,8 @@ const Projects = () => {
       metrics: ['10k+ users', '99.5% uptime'],
       category: 'Communication Tool',
       status: 'Live',
-      year: '2023'
+      year: '2023',
+      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop'
     },
     {
       title: 'Task Management System',
@@ -42,30 +45,31 @@ const Projects = () => {
       metrics: ['5k+ teams', '4.8★ rating'],
       category: 'Productivity Tool',
       status: 'Live',
-      year: '2022'
+      year: '2022',
+      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop'
     }
   ];
 
   const achievements = [
     {
-      icon: <Trophy className="w-6 h-6" />,
+      icon: <Trophy className="w-8 h-8" />,
       title: "Excellence in Innovation",
-      description: "Recognized for developing cutting-edge solutions that drive business growth"
+      description: "Recognized for developing cutting-edge solutions that drive business growth and digital transformation"
     },
     {
-      icon: <Target className="w-6 h-6" />,
+      icon: <Target className="w-8 h-8" />,
       title: "Performance Leadership",
-      description: "Consistently delivered 40%+ performance improvements across all projects"
+      description: "Consistently delivered 40%+ performance improvements and reduced loading times across all projects"
     },
     {
-      icon: <Users className="w-6 h-6" />,
+      icon: <Users className="w-8 h-8" />,
       title: "Team Excellence",
-      description: "Led cross-functional teams and mentored 10+ junior developers"
+      description: "Led cross-functional teams of 5-8 developers and mentored 15+ junior developers throughout career"
     },
     {
-      icon: <Code2 className="w-6 h-6" />,
+      icon: <Code2 className="w-8 h-8" />,
       title: "Technical Innovation",
-      description: "Pioneered new development approaches reducing delivery time by 50%"
+      description: "Pioneered new development approaches and architectures reducing delivery time by 60%"
     }
   ];
 
@@ -74,7 +78,7 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto px-8 py-12">
         {/* Enhanced Header */}
         <div className="text-center mb-20">
-          <h1 className="text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+          <h1 className="text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
             Featured Projects
           </h1>
           <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
@@ -116,71 +120,83 @@ const Projects = () => {
 
         {/* Enhanced Projects Grid */}
         <section className="mb-20">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <div key={index} className="group enhanced-card-hover glass-effect rounded-3xl p-8 morphing-shadow glow-effect border border-slate-600/30 hover:border-indigo-400/50 transition-all duration-500">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
+              <div key={index} className="group enhanced-card-hover glass-effect rounded-3xl overflow-hidden morphing-shadow glow-effect border border-slate-600/30 hover:border-indigo-400/50 transition-all duration-500">
+                {/* Project Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute top-4 left-4 flex items-center gap-2">
                     <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-green-400 text-sm font-medium">{project.status}</span>
+                    <span className="text-green-400 text-sm font-medium bg-black/50 backdrop-blur-sm px-2 py-1 rounded-lg">
+                      {project.status}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-2 text-slate-400 text-sm">
+                  <div className="absolute top-4 right-4 flex items-center gap-2 text-white text-sm bg-black/50 backdrop-blur-sm px-3 py-1 rounded-lg">
                     <Calendar className="w-4 h-4" />
                     <span>{project.year}</span>
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-slate-200 mb-3 group-hover:text-indigo-300 transition-colors">
-                  {project.title}
-                </h3>
-                
-                <div className="text-sm text-indigo-400 mb-4 font-medium">
-                  {project.category}
-                </div>
+                {/* Project Content */}
+                <div className="p-8">
+                  <div className="text-sm text-indigo-400 mb-3 font-medium">
+                    {project.category}
+                  </div>
 
-                <p className="text-slate-300 leading-relaxed mb-6">
-                  {project.description}
-                </p>
+                  <h3 className="text-2xl font-bold text-slate-200 mb-4 group-hover:text-indigo-300 transition-colors">
+                    {project.title}
+                  </h3>
 
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="text-slate-200 font-medium mb-3 text-sm">Key Metrics</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.metrics.map((metric, metricIndex) => (
-                        <span
-                          key={metricIndex}
-                          className="bg-gradient-to-r from-green-600/20 to-blue-600/20 border border-green-500/30 text-green-300 px-3 py-1 rounded-lg text-sm font-medium"
-                        >
-                          {metric}
-                        </span>
-                      ))}
+                  <p className="text-slate-300 leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-slate-200 font-medium mb-3 text-sm">Key Metrics</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.metrics.map((metric, metricIndex) => (
+                          <span
+                            key={metricIndex}
+                            className="bg-gradient-to-r from-green-600/20 to-blue-600/20 border border-green-500/30 text-green-300 px-3 py-1 rounded-lg text-sm font-medium"
+                          >
+                            {metric}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-slate-200 font-medium mb-3 text-sm">Tech Stack</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="bg-gradient-to-r from-slate-700/50 to-slate-600/50 border border-slate-500/30 text-slate-300 px-3 py-1 rounded-lg text-sm"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  
-                  <div>
-                    <h4 className="text-slate-200 font-medium mb-3 text-sm">Tech Stack</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="bg-gradient-to-r from-slate-700/50 to-slate-600/50 border border-slate-500/30 text-slate-300 px-3 py-1 rounded-lg text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
 
-                <div className="flex gap-3 mt-6">
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl text-sm font-medium hover:scale-105 transition-transform">
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </button>
-                  <button className="flex items-center gap-2 px-4 py-2 glass-effect border border-slate-500/30 rounded-xl text-sm font-medium hover:scale-105 transition-transform">
-                    <Github className="w-4 h-4" />
-                    Code
-                  </button>
+                  <div className="flex gap-3 mt-6">
+                    <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl text-sm font-medium hover:scale-105 transition-transform">
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </button>
+                    <button className="flex items-center gap-2 px-4 py-2 glass-effect border border-slate-500/30 rounded-xl text-sm font-medium hover:scale-105 transition-transform">
+                      <Github className="w-4 h-4" />
+                      Code
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -190,8 +206,8 @@ const Projects = () => {
         {/* Enhanced Professional Experience Section */}
         <section>
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-200 mb-4 flex items-center justify-center gap-3">
-              <Zap className="w-10 h-10 text-yellow-400" />
+            <h2 className="text-5xl font-bold text-slate-200 mb-4 flex items-center justify-center gap-3">
+              <Zap className="w-12 h-12 text-yellow-400" />
               Professional Experience
             </h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
@@ -202,13 +218,15 @@ const Projects = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {achievements.map((achievement, index) => (
               <div key={index} className="enhanced-card-hover glass-effect rounded-3xl p-8 morphing-shadow glow-effect border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-500">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-xl text-yellow-400">
+                <div className="flex items-start gap-6 mb-4">
+                  <div className="p-4 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-2xl text-yellow-400 flex-shrink-0">
                     {achievement.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-yellow-300">{achievement.title}</h3>
+                  <div>
+                    <h3 className="text-xl font-semibold text-yellow-300 mb-3">{achievement.title}</h3>
+                    <p className="text-slate-300 leading-relaxed">{achievement.description}</p>
+                  </div>
                 </div>
-                <p className="text-slate-300 leading-relaxed">{achievement.description}</p>
               </div>
             ))}
           </div>

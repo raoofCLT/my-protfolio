@@ -61,15 +61,54 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center relative pt-24 pb-4 z-10">
-      {/* Name Loading Animation */}
+      {/* Enhanced Name Loading Animation */}
       {!nameAnimationComplete && (
-        <div className="fixed inset-0 z-50 bg-gradient-to-br from-slate-950 via-gray-950 to-black flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-400 bg-clip-text text-transparent animate-pulse">
-              Abdul Raoof
-            </h1>
-            <div className="mt-6 flex justify-center">
-              <div className="w-32 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+        <div className="fixed inset-0 z-50 bg-gradient-to-br from-slate-950 via-gray-950 to-black flex items-center justify-center overflow-hidden">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-500/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+          </div>
+          
+          <div className="text-center relative z-10">
+            {/* Enhanced Name Typography */}
+            <div className="relative">
+              <h1 className="text-8xl lg:text-9xl font-black bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-400 bg-clip-text text-transparent animate-pulse mb-4">
+                Abdul Raoof
+              </h1>
+              {/* Glowing effect behind text */}
+              <div className="absolute inset-0 text-8xl lg:text-9xl font-black text-blue-400/20 blur-sm animate-pulse">
+                Abdul Raoof
+              </div>
+            </div>
+            
+            {/* Animated subtitle */}
+            <p className="text-xl lg:text-2xl text-slate-400 font-light mb-8 animate-pulse" style={{ animationDelay: '0.5s' }}>
+              Full Stack Developer
+            </p>
+            
+            {/* Enhanced loading indicator */}
+            <div className="flex justify-center items-center gap-4">
+              <div className="w-40 h-2 bg-slate-800 rounded-full overflow-hidden">
+                <div className="w-full h-full bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 rounded-full animate-pulse"></div>
+              </div>
+            </div>
+            
+            {/* Floating particles */}
+            <div className="absolute inset-0 pointer-events-none">
+              {[...Array(20)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-1 bg-blue-400/40 rounded-full animate-ping"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    animationDelay: `${Math.random() * 2}s`,
+                    animationDuration: `${2 + Math.random() * 2}s`
+                  }}
+                ></div>
+              ))}
             </div>
           </div>
         </div>
@@ -153,19 +192,7 @@ const Home = () => {
 
           {/* Action Buttons Section */}
           <div className="glass-effect rounded-3xl p-8 hover:translate-y-2 hover:shadow-2xl transition-all duration-500 morphing-shadow glow-effect perspective-card border border-indigo-400/20">
-            <h3 className="text-xl font-semibold mb-6 text-indigo-200 text-center">
-              Get Started
-            </h3>
             <div className="flex flex-col gap-4">
-              <a 
-                href="#projects"
-                onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className="relative px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 morphing-shadow glow-effect flex items-center justify-center gap-3 group overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span className="relative z-10">Explore Projects</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform relative z-10" />
-              </a>
               <button
                 onClick={handleDownloadCV}
                 className="px-8 py-4 glass-effect rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 morphing-shadow flex items-center justify-center gap-3 group border border-indigo-400/30 hover:border-indigo-300/60"
@@ -173,6 +200,15 @@ const Home = () => {
                 <Download className="w-5 h-5 group-hover:animate-bounce" />
                 Download CV
               </button>
+              <a 
+                href="#projects"
+                onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="relative px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 morphing-shadow glow-effect flex items-center justify-center gap-3 group overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10">View Projects</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform relative z-10" />
+              </a>
             </div>
           </div>
         </div>
