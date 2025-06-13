@@ -1,5 +1,5 @@
 
-import { ArrowRight, Download, MapPin, Calendar, Star, Award, Code, Zap } from 'lucide-react';
+import { ArrowRight, Download, MapPin, Award, Zap } from 'lucide-react';
 import axios from 'axios';
 import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 import { useState, useEffect } from 'react';
@@ -10,9 +10,22 @@ const Home = () => {
   const [nameAnimationComplete, setNameAnimationComplete] = useState(false);
 
   useEffect(() => {
+    // Hide navbar during name animation
+    const navbar = document.querySelector('nav');
+    if (navbar) {
+      navbar.style.opacity = '0';
+      navbar.style.pointerEvents = 'none';
+    }
+
     // Show name animation first
     const nameTimer = setTimeout(() => {
       setNameAnimationComplete(true);
+      // Show navbar after name animation
+      if (navbar) {
+        navbar.style.opacity = '1';
+        navbar.style.pointerEvents = 'auto';
+        navbar.style.transition = 'opacity 0.5s ease-in-out';
+      }
     }, 2000);
 
     // Show rest of content after name animation
@@ -63,11 +76,11 @@ const Home = () => {
       )}
 
       {/* Main Content */}
-      <div className={`relative z-10 max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-12 items-center transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className={`relative z-10 max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-16 items-center transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         {/* Profile Section */}
         <div className="text-center lg:text-left space-y-8 slide-up">
           <div className="relative inline-block perspective-card">
-            <div className="w-64 h-64 mx-auto lg:mx-0 rounded-3xl bg-gradient-to-br from-indigo-800/40 via-purple-900/30 to-black/50 border border-indigo-400/30 overflow-hidden shadow-2xl glass-effect morphing-shadow glow-effect">
+            <div className="w-72 h-72 mx-auto lg:mx-0 rounded-3xl bg-gradient-to-br from-indigo-800/40 via-purple-900/30 to-black/50 border border-indigo-400/30 overflow-hidden shadow-2xl glass-effect morphing-shadow glow-effect">
               <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center relative">
                 <img src="/profilepic.jpeg" alt="Abdul Raoof" className="w-full h-full object-cover rounded-3xl" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-indigo-500/20 rounded-3xl" />
@@ -99,75 +112,68 @@ const Home = () => {
             Passionate about creating scalable, user-centric applications using cutting-edge technologies. 
             Experienced in leading teams and delivering high-impact solutions for enterprise clients.
           </p>
-
-          {/* Action Buttons - Enhanced Design */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a 
-              href="#projects"
-              onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="relative px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-110 hover:translate-y-1 morphing-shadow glow-effect flex items-center gap-2 group overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <Code className="w-5 h-5 group-hover:rotate-12 transition-transform relative z-10" />
-              <span className="relative z-10">Explore Projects</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform relative z-10" />
-            </a>
-            <button
-              onClick={handleDownloadCV}
-              className="px-8 py-4 glass-effect rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 morphing-shadow flex items-center gap-2 group border border-indigo-400/30 hover:border-indigo-300/60"
-            >
-              <Download className="w-5 h-5 group-hover:animate-bounce" />
-              Download CV
-            </button>
-          </div>
         </div>
 
-        {/* Single Stats Card + Specializations */}
-        <div className="space-y-6 fade-in-scale" style={{ animationDelay: '0.3s' }}>
+        {/* Enhanced Stats and Expertise Section */}
+        <div className="space-y-8 fade-in-scale" style={{ animationDelay: '0.3s' }}>
           {/* Single Stats Card */}
-          <div ref={clientsCounter.elementRef} className="glass-effect rounded-2xl p-8 text-center hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card">
+          <div ref={clientsCounter.elementRef} className="glass-effect rounded-3xl p-8 text-center hover:translate-y-2 hover:shadow-2xl transition-all duration-500 morphing-shadow glow-effect perspective-card border border-indigo-400/20">
             <div className="flex items-center justify-center gap-4 mb-4">
-              <Zap className="w-8 h-8 text-yellow-400" />
-              <div className="text-5xl font-bold text-indigo-400">{clientsCounter.count}+</div>
+              <Zap className="w-10 h-10 text-yellow-400" />
+              <div className="text-6xl font-bold text-indigo-400">{clientsCounter.count}+</div>
             </div>
             <div className="text-xl text-indigo-300 font-medium">Successful Projects Delivered</div>
             <div className="text-sm text-indigo-400 mt-2">With 99% Client Satisfaction Rate</div>
           </div>
 
-          {/* Enhanced Specializations */}
-          <div className="glass-effect rounded-2xl p-6 hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card">
-            <h3 className="text-xl font-semibold mb-4 text-indigo-200 flex items-center gap-2">
-              <Star className="w-5 h-5 text-yellow-400" />
+          {/* Enhanced Core Expertise */}
+          <div className="glass-effect rounded-3xl p-8 hover:translate-y-2 hover:shadow-2xl transition-all duration-500 morphing-shadow glow-effect perspective-card border border-indigo-400/20">
+            <h3 className="text-2xl font-semibold mb-6 text-indigo-200 text-center">
               Core Expertise
             </h3>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-4">
               {[
-                { name: 'Frontend Development', icon: '🎨' },
-                { name: 'Backend APIs', icon: '⚡' },
-                { name: 'Database Design', icon: '🗄️' },
-                { name: 'Cloud Solutions', icon: '☁️' },
-                { name: 'Mobile Development', icon: '📱' },
-                { name: 'DevOps & CI/CD', icon: '🚀' }
+                'Frontend Development',
+                'Backend APIs',
+                'Database Design',
+                'Cloud Solutions',
+                'Mobile Development',
+                'DevOps & CI/CD'
               ].map((spec, index) => (
                 <div
-                  key={spec.name} 
-                  className="px-3 py-2 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 border border-indigo-500/40 rounded-lg text-sm text-indigo-300 hover:scale-105 morphing-shadow transition-all duration-300 hover:translate-y-1 tilt-hover flex items-center gap-2"
+                  key={spec} 
+                  className="px-4 py-3 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 border border-indigo-500/40 rounded-xl text-sm text-indigo-300 hover:scale-105 morphing-shadow transition-all duration-300 hover:translate-y-1 tilt-hover text-center font-medium"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <span className="text-base">{spec.icon}</span>
-                  <span className="font-medium">{spec.name}</span>
+                  {spec}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Achievement Badge */}
-          <div className="glass-effect rounded-2xl p-4 hover:translate-y-1 hover:shadow-lg transition-all morphing-shadow glow-effect perspective-card text-center">
-            <div className="flex items-center justify-center gap-2 text-yellow-400 mb-2">
-              <Award className="w-6 h-6" />
-              <span className="font-semibold">Certified Professional</span>
+          {/* Action Buttons Section */}
+          <div className="glass-effect rounded-3xl p-8 hover:translate-y-2 hover:shadow-2xl transition-all duration-500 morphing-shadow glow-effect perspective-card border border-indigo-400/20">
+            <h3 className="text-xl font-semibold mb-6 text-indigo-200 text-center">
+              Get Started
+            </h3>
+            <div className="flex flex-col gap-4">
+              <a 
+                href="#projects"
+                onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="relative px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 morphing-shadow glow-effect flex items-center justify-center gap-3 group overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10">Explore Projects</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform relative z-10" />
+              </a>
+              <button
+                onClick={handleDownloadCV}
+                className="px-8 py-4 glass-effect rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 morphing-shadow flex items-center justify-center gap-3 group border border-indigo-400/30 hover:border-indigo-300/60"
+              >
+                <Download className="w-5 h-5 group-hover:animate-bounce" />
+                Download CV
+              </button>
             </div>
-            <div className="text-sm text-indigo-300">Full Stack Development & Cloud Architecture</div>
           </div>
         </div>
       </div>
