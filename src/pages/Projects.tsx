@@ -76,7 +76,7 @@ const Projects = () => {
   return (
     <div className="min-h-screen text-white pt-24">
       <div className="max-w-7xl mx-auto px-8 py-12">
-        {/* Enhanced Header */}
+        {/* Header */}
         <div className="text-center mb-20">
           <h1 className="text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
             Featured Projects
@@ -86,10 +86,10 @@ const Projects = () => {
           </p>
         </div>
 
-        {/* Enhanced Stats Section */}
+        {/* Stats Section */}
         <section className="mb-20">
           <div className="grid md:grid-cols-3 gap-8">
-            <div ref={projectsCounter.elementRef} className="enhanced-card-hover glass-effect rounded-3xl p-8 text-center morphing-shadow glow-effect border border-blue-400/20">
+            <div ref={projectsCounter.elementRef} className="glass-effect rounded-3xl p-8 text-center hover:transform hover:scale-105 transition-all duration-300 border border-blue-400/20">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <Code2 className="w-8 h-8 text-blue-400" />
                 <div className="text-5xl font-bold text-blue-400">{projectsCounter.count}+</div>
@@ -98,7 +98,7 @@ const Projects = () => {
               <div className="text-sm text-slate-400 mt-2">Across Various Industries</div>
             </div>
             
-            <div ref={clientsCounter.elementRef} className="enhanced-card-hover glass-effect rounded-3xl p-8 text-center morphing-shadow glow-effect border border-purple-400/20">
+            <div ref={clientsCounter.elementRef} className="glass-effect rounded-3xl p-8 text-center hover:transform hover:scale-105 transition-all duration-300 border border-purple-400/20">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <Users className="w-8 h-8 text-purple-400" />
                 <div className="text-5xl font-bold text-purple-400">{clientsCounter.count}+</div>
@@ -107,7 +107,7 @@ const Projects = () => {
               <div className="text-sm text-slate-400 mt-2">99% Satisfaction Rate</div>
             </div>
             
-            <div ref={experienceCounter.elementRef} className="enhanced-card-hover glass-effect rounded-3xl p-8 text-center morphing-shadow glow-effect border border-green-400/20">
+            <div ref={experienceCounter.elementRef} className="glass-effect rounded-3xl p-8 text-center hover:transform hover:scale-105 transition-all duration-300 border border-green-400/20">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <Award className="w-8 h-8 text-green-400" />
                 <div className="text-5xl font-bold text-green-400">{experienceCounter.count}+</div>
@@ -118,17 +118,17 @@ const Projects = () => {
           </div>
         </section>
 
-        {/* Enhanced Projects Grid */}
+        {/* Projects Grid */}
         <section className="mb-20">
           <div className="grid lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <div key={index} className="group enhanced-card-hover glass-effect rounded-3xl overflow-hidden morphing-shadow glow-effect border border-slate-600/30 hover:border-indigo-400/50 transition-all duration-500">
+              <div key={index} className="group glass-effect rounded-3xl overflow-hidden hover:transform hover:translateY-1 transition-all duration-300 border border-slate-600/30 hover:border-indigo-400/30">
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute top-4 left-4 flex items-center gap-2">
@@ -203,7 +203,7 @@ const Projects = () => {
           </div>
         </section>
 
-        {/* Enhanced Professional Experience Section */}
+        {/* Professional Experience Section */}
         <section>
           <div className="text-center mb-12">
             <h2 className="text-5xl font-bold text-slate-200 mb-4 flex items-center justify-center gap-3">
@@ -217,7 +217,7 @@ const Projects = () => {
           
           <div className="grid md:grid-cols-2 gap-8">
             {achievements.map((achievement, index) => (
-              <div key={index} className="enhanced-card-hover glass-effect rounded-3xl p-8 morphing-shadow glow-effect border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-500">
+              <div key={index} className="glass-effect rounded-3xl p-8 hover:transform hover:translateY-1 transition-all duration-300 border border-yellow-400/20 hover:border-yellow-400/40">
                 <div className="flex items-start gap-6 mb-4">
                   <div className="p-4 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-2xl text-yellow-400 flex-shrink-0">
                     {achievement.icon}
