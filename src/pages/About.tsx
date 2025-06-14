@@ -1,5 +1,5 @@
 
-import { Award, Users, Code, Rocket, Target, Lightbulb, Trophy, Star } from 'lucide-react';
+import { Award, Users, Code, Rocket, Target, Lightbulb, Trophy, Star, MapPin, Calendar, Heart } from 'lucide-react';
 import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 
 const About = () => {
@@ -14,78 +14,125 @@ const About = () => {
       title: "Senior Full Stack Developer",
       company: "Tech Innovations Inc.",
       period: "2022 - Present",
-      description: "Leading development of enterprise-scale applications, mentoring junior developers, and architecting scalable solutions.",
-      achievements: ["Led team of 8 developers", "Improved performance by 40%", "Delivered 15+ major projects"]
+      description: "Leading development of enterprise-scale applications, mentoring junior developers, and architecting scalable solutions that serve millions of users.",
+      achievements: ["Led team of 8 developers", "Improved performance by 40%", "Delivered 15+ major projects", "Implemented CI/CD pipelines"],
+      color: "from-blue-600/20 to-indigo-600/20",
+      borderColor: "border-blue-500/30"
     },
     {
       icon: <Rocket className="w-8 h-8" />,
       title: "Full Stack Developer",
       company: "Digital Solutions Corp",
       period: "2020 - 2022",
-      description: "Developed modern web applications using React, Node.js, and cloud technologies with focus on user experience.",
-      achievements: ["Built 20+ web applications", "Reduced loading time by 60%", "99.9% uptime achievement"]
+      description: "Developed modern web applications using React, Node.js, and cloud technologies with focus on user experience and scalable architecture.",
+      achievements: ["Built 20+ web applications", "Reduced loading time by 60%", "99.9% uptime achievement", "Mentored 5+ junior developers"],
+      color: "from-purple-600/20 to-violet-600/20",
+      borderColor: "border-purple-500/30"
     },
     {
       icon: <Target className="w-8 h-8" />,
       title: "Frontend Developer",
       company: "StartupXYZ",
       period: "2019 - 2020",
-      description: "Created responsive web applications and implemented modern UI/UX designs for various client projects.",
-      achievements: ["Designed 10+ user interfaces", "Increased user engagement by 35%", "Mobile-first approach"]
+      description: "Created responsive web applications and implemented modern UI/UX designs for various client projects with focus on mobile-first approach.",
+      achievements: ["Designed 10+ user interfaces", "Increased user engagement by 35%", "Mobile-first approach", "Cross-browser compatibility"],
+      color: "from-green-600/20 to-emerald-600/20",
+      borderColor: "border-green-500/30"
     }
   ];
 
+  const personalInfo = [
+    { icon: <MapPin className="w-5 h-5" />, label: "Based in Kerala, India" },
+    { icon: <Calendar className="w-5 h-5" />, label: "Available for remote work" },
+    { icon: <Heart className="w-5 h-5" />, label: "Passionate about clean code" }
+  ];
+
   const technicalSkills = [
-    { category: "Frontend", skills: ["React", "TypeScript", "Next.js", "Vue.js", "Tailwind CSS"], progress: 95, color: "text-blue-400" },
-    { category: "Backend", skills: ["Node.js", "Python", "Express", "Django", "GraphQL"], progress: 90, color: "text-green-400" },
-    { category: "Database", skills: ["MongoDB", "PostgreSQL", "Redis", "MySQL", "Firebase"], progress: 85, color: "text-purple-400" },
-    { category: "Cloud & DevOps", skills: ["AWS", "Docker", "Kubernetes", "Jenkins", "GitLab CI"], progress: 88, color: "text-orange-400" },
-    { category: "Mobile", skills: ["React Native", "Flutter", "Expo", "iOS", "Android"], progress: 78, color: "text-pink-400" },
-    { category: "Tools & Design", skills: ["Git", "Figma", "Adobe XD", "Webpack", "Vite"], progress: 82, color: "text-cyan-400" }
+    { 
+      category: "Frontend Development", 
+      skills: ["React", "TypeScript", "Next.js", "Vue.js", "Tailwind CSS"], 
+      progress: 95, 
+      color: "text-blue-400",
+      bgColor: "bg-blue-400" 
+    },
+    { 
+      category: "Backend Development", 
+      skills: ["Node.js", "Python", "Express", "Django", "GraphQL"], 
+      progress: 90, 
+      color: "text-green-400",
+      bgColor: "bg-green-400" 
+    },
+    { 
+      category: "Database & Cloud", 
+      skills: ["MongoDB", "PostgreSQL", "Redis", "AWS", "Docker"], 
+      progress: 85, 
+      color: "text-purple-400",
+      bgColor: "bg-purple-400" 
+    },
+    { 
+      category: "Mobile Development", 
+      skills: ["React Native", "Flutter", "Expo", "iOS", "Android"], 
+      progress: 78, 
+      color: "text-pink-400",
+      bgColor: "bg-pink-400" 
+    }
   ];
 
   return (
     <div className="min-h-screen text-white pt-24">
       <div className="max-w-7xl mx-auto px-8 py-12">
-        {/* Header */}
+        {/* Enhanced Header with Personal Touch */}
         <div className="text-center mb-20">
-          <h1 className="text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+          <div className="inline-block p-4 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl mb-8">
+            <Star className="w-12 h-12 text-indigo-400" />
+          </div>
+          <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
             About Me
           </h1>
-          <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-            Passionate full-stack developer with over 6 years of experience creating innovative digital solutions 
-            that drive business growth and enhance user experiences.
-          </p>
+          <div className="max-w-4xl mx-auto space-y-6">
+            <p className="text-xl text-slate-300 leading-relaxed">
+              Passionate full-stack developer with over 6 years of experience creating innovative digital solutions 
+              that drive business growth and enhance user experiences.
+            </p>
+            <div className="flex items-center justify-center gap-8 text-slate-400">
+              {personalInfo.map((info, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  {info.icon}
+                  <span className="text-sm">{info.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Stats Section */}
+        {/* Animated Stats Section */}
         <section className="mb-20">
           <div className="grid md:grid-cols-4 gap-8">
-            <div ref={experienceCounter.elementRef} className="text-center glass-effect rounded-3xl p-8 hover:transform hover:scale-105 transition-all duration-300 border border-blue-400/20">
+            <div ref={experienceCounter.elementRef} className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-blue-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300">
               <div className="text-5xl font-bold text-blue-400 mb-2">{experienceCounter.count}+</div>
               <div className="text-slate-300 font-medium">Years Experience</div>
             </div>
-            <div ref={projectsCounter.elementRef} className="text-center glass-effect rounded-3xl p-8 hover:transform hover:scale-105 transition-all duration-300 border border-purple-400/20">
+            <div ref={projectsCounter.elementRef} className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-purple-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300">
               <div className="text-5xl font-bold text-purple-400 mb-2">{projectsCounter.count}+</div>
               <div className="text-slate-300 font-medium">Projects Completed</div>
             </div>
-            <div ref={clientsCounter.elementRef} className="text-center glass-effect rounded-3xl p-8 hover:transform hover:scale-105 transition-all duration-300 border border-green-400/20">
+            <div ref={clientsCounter.elementRef} className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-green-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300">
               <div className="text-5xl font-bold text-green-400 mb-2">{clientsCounter.count}+</div>
               <div className="text-slate-300 font-medium">Happy Clients</div>
             </div>
-            <div ref={satisfactionCounter.elementRef} className="text-center glass-effect rounded-3xl p-8 hover:transform hover:scale-105 transition-all duration-300 border border-yellow-400/20">
+            <div ref={satisfactionCounter.elementRef} className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-yellow-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300">
               <div className="text-5xl font-bold text-yellow-400 mb-2">{satisfactionCounter.count}%</div>
               <div className="text-slate-300 font-medium">Client Satisfaction</div>
             </div>
           </div>
         </section>
 
-        {/* Professional Experience */}
+        {/* Enhanced Professional Experience */}
         <section className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-200 mb-4 flex items-center justify-center gap-3">
               <Trophy className="w-10 h-10 text-yellow-400" />
-              Professional Experience
+              Professional Journey
             </h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
               A journey of continuous learning, innovation, and delivering exceptional results
@@ -94,14 +141,18 @@ const About = () => {
           
           <div className="space-y-8">
             {experiences.map((exp, index) => (
-              <div key={index} className="glass-effect rounded-3xl p-8 hover:transform hover:-translate-y-2 transition-all duration-500 border border-slate-600/30 hover:border-indigo-400/50 hover:shadow-2xl hover:shadow-indigo-500/20">
+              <div 
+                key={index} 
+                className={`group bg-gradient-to-br ${exp.color} backdrop-blur-xl border ${exp.borderColor} rounded-2xl p-8 hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl`}
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="flex items-center gap-4 lg:min-w-0 lg:flex-shrink-0">
-                    <div className="p-4 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30">
+                    <div className="p-4 bg-gradient-to-r from-slate-800/50 to-slate-700/50 rounded-2xl text-indigo-400 border border-indigo-500/30">
                       {exp.icon}
                     </div>
                     <div className="min-w-0">
-                      <h3 className="text-xl font-semibold text-slate-200">{exp.title}</h3>
+                      <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
                       <p className="text-indigo-300 font-medium">{exp.company}</p>
                       <p className="text-slate-400 text-sm">{exp.period}</p>
                     </div>
@@ -109,14 +160,15 @@ const About = () => {
                   
                   <div className="flex-1 min-w-0">
                     <p className="text-slate-300 leading-relaxed mb-4">{exp.description}</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="grid grid-cols-2 gap-2">
                       {exp.achievements.map((achievement, achIndex) => (
-                        <span
+                        <div
                           key={achIndex}
-                          className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 text-blue-300 px-3 py-1 rounded-lg text-sm hover:from-blue-600/30 hover:to-purple-600/30 transition-all duration-300"
+                          className="flex items-center gap-2 text-sm text-slate-300"
                         >
+                          <div className="w-2 h-2 bg-indigo-400 rounded-full flex-shrink-0"></div>
                           {achievement}
-                        </span>
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -126,11 +178,11 @@ const About = () => {
           </div>
         </section>
 
-        {/* Technical Expertise - New Design */}
+        {/* Enhanced Technical Skills with Progress Bars */}
         <section>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-200 mb-4 flex items-center justify-center gap-3">
-              <Star className="w-10 h-10 text-blue-400" />
+              <Lightbulb className="w-10 h-10 text-yellow-400" />
               Technical Expertise
             </h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
@@ -138,57 +190,43 @@ const About = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {technicalSkills.map((skillGroup, index) => (
-              <div key={index} className="group">
-                {/* Circular Progress Design */}
-                <div className="relative w-48 h-48 mx-auto mb-6">
-                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                    {/* Background circle */}
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="40"
-                      fill="none"
-                      stroke="rgb(51 65 85)"
-                      strokeWidth="8"
-                      className="opacity-20"
-                    />
-                    {/* Progress circle */}
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="40"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="8"
-                      strokeLinecap="round"
-                      strokeDasharray={`${2.512 * skillGroup.progress} 251.2`}
-                      className={`${skillGroup.color} transition-all duration-1000 ease-out opacity-80 group-hover:opacity-100`}
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className={`text-3xl font-bold ${skillGroup.color}`}>
-                      {skillGroup.progress}%
-                    </span>
-                    <span className="text-slate-300 text-sm mt-1 text-center font-medium">
-                      {skillGroup.category}
-                    </span>
-                  </div>
+              <div 
+                key={index} 
+                className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 hover:-translate-y-1 transition-all duration-300"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className={`text-xl font-semibold ${skillGroup.color}`}>
+                    {skillGroup.category}
+                  </h3>
+                  <span className={`text-2xl font-bold ${skillGroup.color}`}>
+                    {skillGroup.progress}%
+                  </span>
                 </div>
                 
-                {/* Skills List */}
-                <div className="text-center space-y-2">
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {skillGroup.skills.map((skill, skillIndex) => (
-                      <span
-                        key={skillIndex}
-                        className="px-3 py-1 bg-slate-800/50 border border-slate-600/30 rounded-full text-sm text-slate-300 hover:border-slate-500/50 hover:bg-slate-700/50 transition-all duration-300"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                {/* Progress Bar */}
+                <div className="w-full bg-slate-700/50 rounded-full h-3 mb-6 overflow-hidden">
+                  <div 
+                    className={`h-full ${skillGroup.bgColor} rounded-full transition-all duration-1000 ease-out`}
+                    style={{ 
+                      width: `${skillGroup.progress}%`,
+                      animationDelay: `${index * 0.2}s`
+                    }}
+                  ></div>
+                </div>
+                
+                {/* Skills Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {skillGroup.skills.map((skill, skillIndex) => (
+                    <span
+                      key={skillIndex}
+                      className="px-3 py-2 bg-slate-800/50 border border-slate-600/30 rounded-lg text-sm text-slate-300 hover:border-slate-500/50 hover:bg-slate-700/50 transition-all duration-300"
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
