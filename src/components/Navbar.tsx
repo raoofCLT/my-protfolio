@@ -42,16 +42,23 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass-effect border-b border-gray-800">
+    <nav className="fixed top-0 w-full z-50 navbar-container border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <a 
             href="#home" 
             onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
-            className="text-2xl font-bold gradient-text hover:scale-105 transition-all duration-500 card-hover"
+            className="text-2xl font-bold relative group"
           >
-            Abdul Raoof
+            <span className="relative inline-block">
+              <span className="bg-gradient-to-r from-gray-300 via-gray-500 to-gray-600 bg-clip-text text-transparent">
+                Abdul Raoof
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-clip-text text-transparent">
+                Abdul Raoof
+              </span>
+            </span>
           </a>
 
           {/* Desktop Navigation */}
@@ -61,7 +68,7 @@ const Navbar = () => {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
-                className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-500 card-hover text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:scale-105 ${
+                className={`flex shine-effect items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-500 card-hover text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:scale-105 ${
                   activeSection === item.href 
                     ? 'bg-gradient-to-r from-blue-600/30 to-purple-600/30 border border-blue-500/50 text-blue-300 shadow-lg shadow-blue-500/2' 
                     : ''

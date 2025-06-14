@@ -1,4 +1,3 @@
-
 import { ArrowRight, Download, MapPin, Award, Zap } from 'lucide-react';
 import axios from 'axios';
 import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
@@ -156,7 +155,7 @@ const Home = () => {
         {/* Enhanced Stats and Expertise Section */}
         <div className="space-y-8 fade-in-scale" style={{ animationDelay: '0.3s' }}>
           {/* Single Stats Card */}
-          <div ref={clientsCounter.elementRef} className="glass-effect rounded-3xl p-8 text-center hover:translate-y-2 hover:shadow-2xl transition-all duration-500 morphing-shadow glow-effect perspective-card border border-indigo-400/20">
+          <div ref={clientsCounter.elementRef} className="glass-morphism rounded-3xl p-8 text-center hover:translate-y-2 hover:shadow-2xl transition-all duration-500 morphing-shadow glow-effect perspective-card border border-indigo-400/20">
             <div className="flex items-center justify-center gap-4 mb-4">
               <Zap className="w-10 h-10 text-yellow-400" />
               <div className="text-6xl font-bold text-indigo-400">{clientsCounter.count}+</div>
@@ -166,7 +165,7 @@ const Home = () => {
           </div>
 
           {/* Enhanced Core Expertise */}
-          <div className="glass-effect rounded-3xl p-8 hover:translate-y-2 hover:shadow-2xl transition-all duration-500 morphing-shadow glow-effect perspective-card border border-indigo-400/20">
+          {/* <div className="glass-effect rounded-3xl p-8 hover:translate-y-2 hover:shadow-2xl transition-all duration-500 morphing-shadow glow-effect perspective-card border border-indigo-400/20">
             <h3 className="text-2xl font-semibold mb-6 text-indigo-200 text-center">
               Core Expertise
             </h3>
@@ -188,26 +187,49 @@ const Home = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Action Buttons Section */}
-          <div className="glass-effect rounded-3xl p-8 hover:translate-y-2 hover:shadow-2xl transition-all duration-500 morphing-shadow glow-effect perspective-card border border-indigo-400/20">
-            <div className="flex flex-col gap-4">
+          <div className="glass-morphism rounded-3xl p-8 hover:translate-y-2 hover:shadow-2xl transition-all duration-500 morphing-shadow glow-effect perspective-card border border-indigo-400/20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button
                 onClick={handleDownloadCV}
-                className="px-8 py-4 glass-effect rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 morphing-shadow flex items-center justify-center gap-3 group border border-indigo-400/30 hover:border-indigo-300/60"
+                className="group relative px-8 py-4 glass-morphism rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 flex items-center justify-center gap-3 overflow-hidden"
+                aria-label="Download CV"
               >
-                <Download className="w-5 h-5 group-hover:animate-bounce" />
-                Download CV
+                {/* Hover effect overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Button content */}
+                <div className="relative z-10 flex items-center gap-3">
+                  <Download className="w-5 h-5 group-hover:animate-bounce" />
+                  <span>Download CV</span>
+                </div>
+                
+                {/* Shine effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
               </button>
+
               <a 
                 href="#projects"
                 onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className="relative px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 morphing-shadow glow-effect flex items-center justify-center gap-3 group overflow-hidden"
+                className="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 rounded-2xl font-semibold transition-all duration-500 hover:scale-105 hover:translate-y-1 flex items-center justify-center gap-3 overflow-hidden"
+                aria-label="View Projects"
               >
+                {/* Hover effect overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span className="relative z-10">View Projects</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform relative z-10" />
+                
+                {/* Button content */}
+                <div className="relative z-10 flex items-center gap-3">
+                  <span>View Projects</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                </div>
+                
+                {/* Shine effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                
+                {/* Focus ring */}
+                <div className="absolute inset-0 rounded-2xl ring-2 ring-white/0 group-focus-visible:ring-white/50 transition-all duration-300"></div>
               </a>
             </div>
           </div>
