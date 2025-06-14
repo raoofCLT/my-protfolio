@@ -1,5 +1,7 @@
+
 import { useState, useEffect } from 'react';
 import { Home, User, Briefcase, Mail } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,15 +80,21 @@ const Navbar = () => {
                 {item.label}
               </a>
             ))}
+            
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-3 rounded-2xl glass-effect border border-gray-700 text-gray-300 hover:text-white transition-all duration-500 hover:scale-110 card-hover"
-          >
-            {isOpen ? '✕' : '☰'}
-          </button>
+          <div className="md:hidden flex items-center gap-3">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-3 rounded-2xl glass-effect border border-gray-700 text-gray-300 hover:text-white transition-all duration-500 hover:scale-110 card-hover"
+            >
+              {isOpen ? '✕' : '☰'}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
