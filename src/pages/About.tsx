@@ -36,84 +36,86 @@ const About = () => {
   ];
 
   const technicalSkills = [
-    { category: "Frontend", skills: ["React", "TypeScript", "Next.js", "Vue.js", "Tailwind CSS"], progress: 95, color: "text-blue-400" },
-    { category: "Backend", skills: ["Node.js", "Python", "Express", "Django", "GraphQL"], progress: 90, color: "text-green-400" },
-    { category: "Database", skills: ["MongoDB", "PostgreSQL", "Redis", "MySQL", "Firebase"], progress: 85, color: "text-purple-400" },
-    { category: "Cloud & DevOps", skills: ["AWS", "Docker", "Kubernetes", "Jenkins", "GitLab CI"], progress: 88, color: "text-orange-400" },
-    { category: "Mobile", skills: ["React Native", "Flutter", "Expo", "iOS", "Android"], progress: 78, color: "text-pink-400" },
-    { category: "Tools & Design", skills: ["Git", "Figma", "Adobe XD", "Webpack", "Vite"], progress: 82, color: "text-cyan-400" }
+    { category: "Frontend", skills: ["React", "TypeScript", "Next.js", "Vue.js", "Tailwind CSS"], progress: 95, color: "from-blue-500 to-cyan-500" },
+    { category: "Backend", skills: ["Node.js", "Python", "Express", "Django", "GraphQL"], progress: 90, color: "from-green-500 to-emerald-500" },
+    { category: "Database", skills: ["MongoDB", "PostgreSQL", "Redis", "MySQL", "Firebase"], progress: 85, color: "from-purple-500 to-violet-500" },
+    { category: "Cloud & DevOps", skills: ["AWS", "Docker", "Kubernetes", "Jenkins", "GitLab CI"], progress: 88, color: "from-orange-500 to-red-500" },
+    { category: "Mobile", skills: ["React Native", "Flutter", "Expo", "iOS", "Android"], progress: 78, color: "from-pink-500 to-rose-500" },
+    { category: "Tools & Design", skills: ["Git", "Figma", "Adobe XD", "Webpack", "Vite"], progress: 82, color: "from-cyan-500 to-blue-500" }
   ];
 
   return (
     <div className="min-h-screen text-white pt-24">
-      <div className="max-w-7xl mx-auto px-8 py-12">
+      <div className="max-w-7xl mx-auto px-8 py-16">
         {/* Header */}
         <div className="text-center mb-20">
-          <h1 className="text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+          <h1 className="text-6xl lg:text-7xl font-black mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
             About Me
           </h1>
-          <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed font-light">
             Passionate full-stack developer with over 6 years of experience creating innovative digital solutions 
             that drive business growth and enhance user experiences.
           </p>
         </div>
 
         {/* Stats Section */}
-        <section className="mb-20">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div ref={experienceCounter.elementRef} className="text-center glass-effect rounded-3xl p-8 hover:transform hover:scale-105 transition-all duration-300 border border-blue-400/20">
-              <div className="text-5xl font-bold text-blue-400 mb-2">{experienceCounter.count}+</div>
-              <div className="text-slate-300 font-medium">Years Experience</div>
+        <section className="mb-24">
+          <div className="grid md:grid-cols-4 gap-6">
+            <div ref={experienceCounter.elementRef} className="group bg-gradient-to-br from-slate-800/40 via-slate-900/40 to-black/40 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/10 hover:border-blue-400/40 transition-all duration-300 hover:scale-105 shadow-xl">
+              <div className="text-6xl font-black text-blue-400 mb-3">{experienceCounter.count}+</div>
+              <div className="text-slate-300 font-medium text-lg">Years Experience</div>
             </div>
-            <div ref={projectsCounter.elementRef} className="text-center glass-effect rounded-3xl p-8 hover:transform hover:scale-105 transition-all duration-300 border border-purple-400/20">
-              <div className="text-5xl font-bold text-purple-400 mb-2">{projectsCounter.count}+</div>
-              <div className="text-slate-300 font-medium">Projects Completed</div>
+            <div ref={projectsCounter.elementRef} className="group bg-gradient-to-br from-slate-800/40 via-slate-900/40 to-black/40 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/10 hover:border-purple-400/40 transition-all duration-300 hover:scale-105 shadow-xl">
+              <div className="text-6xl font-black text-purple-400 mb-3">{projectsCounter.count}+</div>
+              <div className="text-slate-300 font-medium text-lg">Projects Completed</div>
             </div>
-            <div ref={clientsCounter.elementRef} className="text-center glass-effect rounded-3xl p-8 hover:transform hover:scale-105 transition-all duration-300 border border-green-400/20">
-              <div className="text-5xl font-bold text-green-400 mb-2">{clientsCounter.count}+</div>
-              <div className="text-slate-300 font-medium">Happy Clients</div>
+            <div ref={clientsCounter.elementRef} className="group bg-gradient-to-br from-slate-800/40 via-slate-900/40 to-black/40 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/10 hover:border-green-400/40 transition-all duration-300 hover:scale-105 shadow-xl">
+              <div className="text-6xl font-black text-green-400 mb-3">{clientsCounter.count}+</div>
+              <div className="text-slate-300 font-medium text-lg">Happy Clients</div>
             </div>
-            <div ref={satisfactionCounter.elementRef} className="text-center glass-effect rounded-3xl p-8 hover:transform hover:scale-105 transition-all duration-300 border border-yellow-400/20">
-              <div className="text-5xl font-bold text-yellow-400 mb-2">{satisfactionCounter.count}%</div>
-              <div className="text-slate-300 font-medium">Client Satisfaction</div>
+            <div ref={satisfactionCounter.elementRef} className="group bg-gradient-to-br from-slate-800/40 via-slate-900/40 to-black/40 backdrop-blur-xl rounded-3xl p-8 text-center border border-white/10 hover:border-yellow-400/40 transition-all duration-300 hover:scale-105 shadow-xl">
+              <div className="text-6xl font-black text-yellow-400 mb-3">{satisfactionCounter.count}%</div>
+              <div className="text-slate-300 font-medium text-lg">Client Satisfaction</div>
             </div>
           </div>
         </section>
 
         {/* Professional Experience */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-200 mb-4 flex items-center justify-center gap-3">
-              <Trophy className="w-10 h-10 text-yellow-400" />
+        <section className="mb-24">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-slate-200 mb-6 flex items-center justify-center gap-4">
+              <Trophy className="w-12 h-12 text-yellow-400" />
               Professional Experience
             </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto font-light">
               A journey of continuous learning, innovation, and delivering exceptional results
             </p>
           </div>
           
           <div className="space-y-8">
             {experiences.map((exp, index) => (
-              <div key={index} className="glass-effect rounded-3xl p-8 hover:transform hover:-translate-y-2 transition-all duration-500 border border-slate-600/30 hover:border-indigo-400/50 hover:shadow-2xl hover:shadow-indigo-500/20">
-                <div className="flex flex-col lg:flex-row gap-6">
-                  <div className="flex items-center gap-4 lg:min-w-0 lg:flex-shrink-0">
-                    <div className="p-4 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30">
-                      {exp.icon}
+              <div key={index} className="group bg-gradient-to-br from-slate-800/40 via-slate-900/40 to-black/40 backdrop-blur-xl rounded-3xl p-10 border border-white/10 hover:border-indigo-400/40 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  <div className="flex items-center gap-6 lg:min-w-0 lg:flex-shrink-0">
+                    <div className="p-5 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-3xl border border-indigo-400/30 group-hover:border-indigo-400/50 transition-all duration-300">
+                      <div className="text-indigo-400 group-hover:text-indigo-300 transition-colors duration-300">
+                        {exp.icon}
+                      </div>
                     </div>
                     <div className="min-w-0">
-                      <h3 className="text-xl font-semibold text-slate-200">{exp.title}</h3>
-                      <p className="text-indigo-300 font-medium">{exp.company}</p>
-                      <p className="text-slate-400 text-sm">{exp.period}</p>
+                      <h3 className="text-2xl font-bold text-slate-200 group-hover:text-white transition-colors duration-300">{exp.title}</h3>
+                      <p className="text-indigo-300 font-semibold text-lg">{exp.company}</p>
+                      <p className="text-slate-400">{exp.period}</p>
                     </div>
                   </div>
                   
                   <div className="flex-1 min-w-0">
-                    <p className="text-slate-300 leading-relaxed mb-4">{exp.description}</p>
-                    <div className="flex flex-wrap gap-2">
+                    <p className="text-slate-300 leading-relaxed mb-6 text-lg font-light">{exp.description}</p>
+                    <div className="flex flex-wrap gap-3">
                       {exp.achievements.map((achievement, achIndex) => (
                         <span
                           key={achIndex}
-                          className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 text-blue-300 px-3 py-1 rounded-lg text-sm hover:from-blue-600/30 hover:to-purple-600/30 transition-all duration-300"
+                          className="bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-indigo-500/20 border border-blue-400/30 text-blue-300 px-4 py-2 rounded-2xl font-medium hover:border-blue-400/50 hover:bg-gradient-to-r hover:from-blue-500/30 hover:via-purple-500/30 hover:to-indigo-500/30 transition-all duration-300"
                         >
                           {achievement}
                         </span>
@@ -126,69 +128,72 @@ const About = () => {
           </div>
         </section>
 
-        {/* Technical Expertise - New Design */}
+        {/* Technical Expertise */}
         <section>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-200 mb-4 flex items-center justify-center gap-3">
-              <Star className="w-10 h-10 text-blue-400" />
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-slate-200 mb-6 flex items-center justify-center gap-4">
+              <Star className="w-12 h-12 text-blue-400" />
               Technical Expertise
             </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto font-light">
               Comprehensive skill set across modern technologies and development practices
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {technicalSkills.map((skillGroup, index) => (
-              <div key={index} className="group">
-                {/* Circular Progress Design */}
-                <div className="relative w-48 h-48 mx-auto mb-6">
-                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                    {/* Background circle */}
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="40"
-                      fill="none"
-                      stroke="rgb(51 65 85)"
-                      strokeWidth="8"
-                      className="opacity-20"
-                    />
-                    {/* Progress circle */}
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="40"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="8"
-                      strokeLinecap="round"
-                      strokeDasharray={`${2.512 * skillGroup.progress} 251.2`}
-                      className={`${skillGroup.color} transition-all duration-1000 ease-out opacity-80 group-hover:opacity-100`}
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className={`text-3xl font-bold ${skillGroup.color}`}>
-                      {skillGroup.progress}%
-                    </span>
-                    <span className="text-slate-300 text-sm mt-1 text-center font-medium">
-                      {skillGroup.category}
-                    </span>
+              <div key={index} className="group bg-gradient-to-br from-slate-800/40 via-slate-900/40 to-black/40 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-105 shadow-xl">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-slate-200 mb-4">{skillGroup.category}</h3>
+                  
+                  {/* Progress Bar */}
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        fill="none"
+                        stroke="rgb(51 65 85)"
+                        strokeWidth="8"
+                        className="opacity-20"
+                      />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        fill="none"
+                        stroke="url(#gradient)"
+                        strokeWidth="8"
+                        strokeLinecap="round"
+                        strokeDasharray={`${2.512 * skillGroup.progress} 251.2`}
+                        className="transition-all duration-1000 ease-out"
+                      />
+                      <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" className={`bg-gradient-to-r ${skillGroup.color}`} stopColor="#3b82f6" />
+                          <stop offset="100%" className={`bg-gradient-to-r ${skillGroup.color}`} stopColor="#8b5cf6" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <span className="text-3xl font-black bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        {skillGroup.progress}%
+                      </span>
+                    </div>
                   </div>
                 </div>
                 
                 {/* Skills List */}
-                <div className="text-center space-y-2">
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {skillGroup.skills.map((skill, skillIndex) => (
-                      <span
-                        key={skillIndex}
-                        className="px-3 py-1 bg-slate-800/50 border border-slate-600/30 rounded-full text-sm text-slate-300 hover:border-slate-500/50 hover:bg-slate-700/50 transition-all duration-300"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                <div className="space-y-3">
+                  {skillGroup.skills.map((skill, skillIndex) => (
+                    <div
+                      key={skillIndex}
+                      className="bg-gradient-to-r from-slate-700/30 via-slate-600/30 to-slate-700/30 backdrop-blur-sm border border-slate-600/30 rounded-2xl px-4 py-3 text-center text-slate-300 hover:text-white hover:border-slate-500/50 transition-all duration-300 font-medium"
+                    >
+                      {skill}
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
