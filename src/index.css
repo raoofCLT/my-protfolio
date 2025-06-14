@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -414,4 +415,97 @@
   }
 }
 
-// ... keep existing code (keyframe animations, responsive design improvements, dark mode optimizations, reduced motion support, print styles)
+/* Keyframe animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes constellation-drift {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  33% {
+    transform: translateX(30px) translateY(-20px);
+  }
+  66% {
+    transform: translateX(-20px) translateY(30px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Enhanced responsiveness */
+@media (max-width: 768px) {
+  .glass-morphism,
+  .glass-card,
+  .glass-subtle,
+  .glass-container {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  .star-twinkle {
+    animation: star-twinkle 3s ease-in-out infinite;
+  }
+  
+  .constellation-drift {
+    animation: constellation-drift 8s ease-in-out infinite;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .star-twinkle,
+  .constellation-drift {
+    animation: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .glass-morphism,
+  .glass-card,
+  .glass-subtle,
+  .glass-container {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
