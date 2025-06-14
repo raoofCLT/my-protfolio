@@ -1,153 +1,169 @@
-
-import { Code2, Users, Award } from 'lucide-react';
-import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
-import ProjectCard from '../components/ProjectCard';
-import CallToAction from '../components/CallToAction';
+import { ExternalLink, Github, Calendar } from 'lucide-react';
 
 const Projects = () => {
-  const projectsCounter = useAnimatedCounter({ target: 15 });
-  const clientsCounter = useAnimatedCounter({ target: 50 });
-  const experienceCounter = useAnimatedCounter({ target: 2 });
-
   const projects = [
     {
       title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with real-time inventory, payment integration, and admin dashboard. Built with modern technologies for optimal performance.',
-      longDescription: 'A comprehensive e-commerce platform built for scalability and performance. Features include real-time inventory management, secure payment processing with Stripe, advanced analytics dashboard, and multi-vendor support. The platform handles 50k+ concurrent users with 99.9% uptime.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redis', 'AWS'],
-      metrics: ['50k+ users', '99.9% uptime', '$2M+ processed'],
-      category: 'Web Application',
-      status: 'Live',
-      year: '2024',
+      description: 'A modern e-commerce solution with real-time inventory management, secure payments, and admin dashboard.',
+      stack: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      role: 'Lead Developer',
+      outcome: '50k+ users, 99.9% uptime',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      features: [
-        'Real-time inventory management',
-        'Multi-vendor marketplace',
-        'Advanced analytics dashboard',
-        'Secure payment processing',
-        'Mobile-responsive design',
-        'SEO optimized'
-      ]
+      year: '2024',
+      featured: true
     },
     {
       title: 'AI Analytics Dashboard',
-      description: 'Machine learning powered analytics platform providing business insights and predictive analytics for enterprise clients.',
-      longDescription: 'An advanced analytics platform that leverages machine learning to provide actionable business insights. Built with Python and TensorFlow for the ML backend, React for the frontend, and deployed on AWS for scalability.',
-      tech: ['Python', 'React', 'TensorFlow', 'AWS', 'PostgreSQL', 'Docker'],
-      metrics: ['40% accuracy boost', '15+ clients', '10TB+ data processed'],
-      category: 'AI/ML Platform',
-      status: 'Live',
-      year: '2023',
+      description: 'Machine learning powered analytics platform providing business insights for enterprise clients.',
+      stack: ['Python', 'React', 'TensorFlow', 'AWS'],
+      role: 'Full Stack Developer',
+      outcome: '15+ enterprise clients',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-      features: [
-        'Predictive analytics engine',
-        'Real-time data visualization',
-        'Custom ML model training',
-        'Automated report generation',
-        'API integrations',
-        'Enterprise security'
-      ]
-    },
-    {
-      title: 'Real-time Chat App',
-      description: 'Scalable messaging platform with video calls, file sharing, and team collaboration features for modern workspaces.',
-      longDescription: 'A modern communication platform designed for teams and businesses. Features real-time messaging, video conferencing, file sharing, and collaboration tools. Built with Next.js and Socket.io for real-time capabilities.',
-      tech: ['Next.js', 'Socket.io', 'PostgreSQL', 'WebRTC', 'Redis', 'Docker'],
-      metrics: ['10k+ users', '99.5% uptime', '1M+ messages/day'],
-      category: 'Communication Tool',
-      status: 'Live',
       year: '2023',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
-      features: [
-        'Real-time messaging',
-        'Video conferencing',
-        'File sharing & storage',
-        'Team workspaces',
-        'Mobile applications',
-        'End-to-end encryption'
-      ]
+      featured: true
     },
     {
-      title: 'Task Management System',
-      description: 'Comprehensive project management tool with team collaboration, time tracking, and advanced reporting capabilities.',
-      longDescription: 'A feature-rich project management platform that helps teams organize, track, and complete projects efficiently. Includes Kanban boards, Gantt charts, time tracking, and comprehensive reporting.',
-      tech: ['Vue.js', 'Express', 'MySQL', 'Redis', 'Docker', 'AWS'],
-      metrics: ['5k+ teams', '4.8★ rating', '100k+ tasks completed'],
-      category: 'Productivity Tool',
-      status: 'Live',
-      year: '2022',
+      title: 'Team Collaboration App',
+      description: 'Real-time messaging and project management platform for distributed teams.',
+      stack: ['Next.js', 'Socket.io', 'PostgreSQL'],
+      role: 'Frontend Lead',
+      outcome: '10k+ active users',
       image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
-      features: [
-        'Kanban & Gantt charts',
-        'Time tracking',
-        'Team collaboration',
-        'Advanced reporting',
-        'Mobile apps',
-        'Third-party integrations'
-      ]
+      year: '2023',
+      featured: false
     }
   ];
 
+  const featuredProjects = projects.filter(project => project.featured);
+  const otherProjects = projects.filter(project => !project.featured);
+
   return (
-    <div className="min-h-screen text-white pt-24">
-      <div className="max-w-7xl mx-auto px-8 py-12">
-        {/* Enhanced Header */}
-        <div className="text-center mb-20">
-          <div className="inline-block p-4 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl mb-8">
-            <Code2 className="w-12 h-12 text-indigo-400" />
-          </div>
-          <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
+    <div className="min-h-screen px-6 py-20">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Featured Projects
-          </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Showcasing innovative solutions and cutting-edge applications that demonstrate 
-            expertise in modern web development and problem-solving
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            A selection of recent work showcasing my expertise in full-stack development
           </p>
         </div>
 
-        {/* Animated Stats Section */}
-        <section className="mb-20">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div ref={projectsCounter.elementRef} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-indigo-400/50">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Code2 className="w-8 h-8 text-blue-400" />
-                <div className="text-5xl font-bold text-blue-400">{projectsCounter.count}+</div>
+        {/* Featured Projects */}
+        <div className="space-y-20 mb-20">
+          {featuredProjects.map((project, index) => (
+            <div 
+              key={index}
+              className={`grid lg:grid-cols-2 gap-12 items-center ${
+                index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+              }`}
+            >
+              {/* Project Image */}
+              <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                <div className="relative group">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-80 object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gray-900/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
               </div>
-              <div className="text-lg text-slate-300 font-medium">Projects Completed</div>
-              <div className="text-sm text-slate-400 mt-2">Across Various Industries</div>
-            </div>
-            
-            <div ref={clientsCounter.elementRef} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-purple-400/50">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Users className="w-8 h-8 text-purple-400" />
-                <div className="text-5xl font-bold text-purple-400">{clientsCounter.count}+</div>
-              </div>
-              <div className="text-lg text-slate-300 font-medium">Happy Clients</div>
-              <div className="text-sm text-slate-400 mt-2">99% Satisfaction Rate</div>
-            </div>
-            
-            <div ref={experienceCounter.elementRef} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-green-400/50">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Award className="w-8 h-8 text-green-400" />
-                <div className="text-5xl font-bold text-green-400">{experienceCounter.count}+</div>
-              </div>
-              <div className="text-lg text-slate-300 font-medium">Years Experience</div>
-              <div className="text-sm text-slate-400 mt-2">Professional Development</div>
-            </div>
-          </div>
-        </section>
 
-        {/* Enhanced Projects Grid */}
-        <section className="mb-20">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} index={index} />
-            ))}
+              {/* Project Content */}
+              <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                <div className="flex items-center gap-3 text-sm text-gray-500">
+                  <Calendar size={16} />
+                  <span>{project.year}</span>
+                  <span>•</span>
+                  <span>{project.role}</span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className="space-y-3">
+                  <div>
+                    <span className="text-sm font-medium text-gray-900">Stack: </span>
+                    <span className="text-gray-600">{project.stack.join(', ')}</span>
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium text-gray-900">Outcome: </span>
+                    <span className="text-gray-600">{project.outcome}</span>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                    <ExternalLink size={16} />
+                    Live Demo
+                  </button>
+                  <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                    <Github size={16} />
+                    Code
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Other Projects */}
+        {otherProjects.length > 0 && (
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+              Other Projects
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {otherProjects.map((project, index) => (
+                <div key={index} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-lg font-semibold text-gray-900">
+                        {project.title}
+                      </h4>
+                      <span className="text-sm text-gray-500">{project.year}</span>
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                    <div className="text-xs text-gray-500">
+                      {project.stack.join(' • ')}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </section>
+        )}
 
         {/* Call to Action */}
-        <CallToAction />
+        <div className="text-center mt-20 pt-12 border-t border-gray-200">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+            Ready to start your project?
+          </h3>
+          <p className="text-gray-600 mb-6">
+            Let's discuss how I can help bring your ideas to life
+          </p>
+          <button
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+          >
+            Get in Touch
+          </button>
+        </div>
       </div>
     </div>
   );
