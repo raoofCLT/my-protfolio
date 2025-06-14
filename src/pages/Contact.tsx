@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Linkedin, Github, Twitter, MessageCircle, Clock, CheckCircle, Calendar, Star } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Clock, MessageCircle, User } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,10 +10,25 @@ const Contact = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
     console.log('Form submitted:', formData);
-    // Handle form submission logic here
+    setIsSubmitting(false);
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -23,180 +38,138 @@ const Contact = () => {
     });
   };
 
-  const contactMethods = [
+  const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
+      label: "Email",
       value: "abdulraoof.k@gmail.com",
-      description: "Best for project inquiries and collaboration",
-      color: "from-blue-500 to-cyan-500",
-      href: "mailto:abdulraoof.k@gmail.com"
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      value: "+91 9447000000",
-      description: "Available during business hours (9 AM - 6 PM IST)",
-      color: "from-green-500 to-emerald-500",
-      href: "tel:+919447000000"
+      description: "Best way to reach me",
+      color: "text-blue-400"
     },
     {
       icon: MapPin,
-      title: "Location",
-      value: "Kerala, India",
-      description: "Open to remote opportunities worldwide",
-      color: "from-purple-500 to-indigo-500",
-      href: "#"
+      label: "Location",
+      value: "India",
+      description: "Available for remote work",
+      color: "text-green-400"
+    },
+    {
+      icon: Clock,
+      label: "Response Time",
+      value: "Within 24 hours",
+      description: "Usually much faster",
+      color: "text-purple-400"
     }
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn", color: "text-blue-400 hover:text-blue-300" },
-    { icon: Github, href: "#", label: "GitHub", color: "text-slate-400 hover:text-slate-300" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "text-sky-400 hover:text-sky-300" },
-    { icon: MessageCircle, href: "#", label: "Discord", color: "text-indigo-400 hover:text-indigo-300" }
+    { icon: Github, href: "#", label: "GitHub", color: "hover:text-gray-300" },
+    { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-400" },
+    { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-blue-300" },
+    { icon: Mail, href: "mailto:abdulraoof.k@gmail.com", label: "Email", color: "hover:text-red-400" }
   ];
 
   return (
-    <div className="min-h-screen text-white pt-24">
-      <div className="max-w-7xl mx-auto px-8 py-12">
-        {/* Enhanced Header */}
+    <div className="pt-32 pb-20 px-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-block p-4 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl mb-8">
-            <MessageCircle className="w-12 h-12 text-indigo-400" />
-          </div>
-          <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
-            Let's Create Together
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent mb-6">
+            Let's Connect
           </h1>
-          <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-8">
-            Ready to bring your vision to life? Whether it's a startup idea, enterprise solution, 
-            or freelance project, I'm here to help you create exceptional digital experiences.
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            Have a project in mind or just want to chat? I'd love to hear from you. 
+            Let's discuss how we can bring your ideas to life.
           </p>
-          
-          {/* Enhanced Quick Stats */}
-          <div className="flex justify-center items-center gap-8 flex-wrap">
-            <div className="flex items-center gap-3 bg-gradient-to-r from-green-600/20 to-emerald-600/20 border border-green-500/30 rounded-xl px-4 py-3">
-              <CheckCircle className="w-5 h-5 text-green-400" />
-              <span className="text-sm font-medium text-green-300">99% Response Rate</span>
-            </div>
-            <div className="flex items-center gap-3 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/30 rounded-xl px-4 py-3">
-              <Clock className="w-5 h-5 text-blue-400" />
-              <span className="text-sm font-medium text-blue-300">24h Response Time</span>
-            </div>
-            <div className="flex items-center gap-3 bg-gradient-to-r from-purple-600/20 to-violet-600/20 border border-purple-500/30 rounded-xl px-4 py-3">
-              <Star className="w-5 h-5 text-purple-400" />
-              <span className="text-sm font-medium text-purple-300">5.0 Client Rating</span>
-            </div>
-          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Enhanced Contact Information */}
+          {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8">
-              <h2 className="text-3xl font-bold text-white mb-6">Let's Connect</h2>
-              <p className="text-slate-300 leading-relaxed mb-8">
-                I'm always interested in discussing new opportunities, innovative projects, 
-                and ways to help bring your vision to reality. Feel free to reach out through 
-                any of the channels below.
+            <div className="glass-container rounded-3xl p-8">
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                <MessageCircle className="w-6 h-6 text-indigo-400" />
+                Get in Touch
+              </h2>
+              <p className="text-slate-300 mb-8 leading-relaxed">
+                I'm always excited to work on new projects and collaborate with amazing people. 
+                Whether you're a startup looking to build your first product or an established 
+                company wanting to scale, I'm here to help.
               </p>
 
-              {/* Enhanced Contact Methods */}
-              <div className="space-y-4 mb-8">
-                {contactMethods.map((method, index) => (
-                  <a
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <div
                     key={index}
-                    href={method.href}
-                    className="group block bg-gradient-to-br from-slate-800/30 to-slate-700/20 border border-slate-600/50 rounded-xl p-6 hover:border-slate-500/70 hover:-translate-y-1 transition-all duration-300"
+                    className="glass-card rounded-2xl p-6 card-hover"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className={`w-14 h-14 bg-gradient-to-r ${method.color} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        <method.icon className="w-7 h-7 text-white" />
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 glass-subtle rounded-xl flex items-center justify-center flex-shrink-0">
+                        <info.icon className={`w-6 h-6 ${info.color}`} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-white group-hover:text-indigo-300 transition-colors">
-                          {method.title}
-                        </h3>
-                        <p className="text-indigo-300 font-medium">{method.value}</p>
-                        <p className="text-slate-400 text-sm mt-1">{method.description}</p>
+                        <h3 className="text-lg font-semibold text-white mb-1">{info.label}</h3>
+                        <p className="text-slate-300 font-medium mb-1">{info.value}</p>
+                        <p className="text-slate-400 text-sm">{info.description}</p>
                       </div>
                     </div>
-                  </a>
+                  </div>
                 ))}
-              </div>
-
-              {/* Enhanced Social Links */}
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-6">Follow My Work</h3>
-                <div className="flex gap-4">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.href}
-                      className={`w-14 h-14 bg-gradient-to-br from-slate-800/50 to-slate-700/30 border border-slate-600/50 rounded-xl flex items-center justify-center ${social.color} hover:border-slate-500/70 hover:scale-110 hover:rotate-3 transition-all duration-300`}
-                      aria-label={social.label}
-                    >
-                      <social.icon className="w-6 h-6" />
-                    </a>
-                  ))}
-                </div>
               </div>
             </div>
 
-            {/* Enhanced Availability Status */}
-            <div className="bg-gradient-to-br from-green-600/10 to-emerald-600/10 border border-green-500/30 rounded-2xl p-8 hover:from-green-600/15 hover:to-emerald-600/15 transition-all duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="relative">
-                  <div className="w-4 h-4 bg-green-400 rounded-full animate-pulse" />
-                  <div className="absolute inset-0 w-4 h-4 bg-green-400 rounded-full animate-ping opacity-75" />
-                </div>
-                <h3 className="text-xl font-semibold text-green-300">Currently Available</h3>
-              </div>
-              <p className="text-slate-300 leading-relaxed mb-4">
-                I'm open to new freelance projects and full-time opportunities. 
-                Typical response time is 24-48 hours for all inquiries.
-              </p>
-              <div className="flex items-center gap-2 text-sm text-green-400">
-                <Calendar className="w-4 h-4" />
-                <span>Next availability: Immediate</span>
+            {/* Social Links */}
+            <div className="glass-container rounded-3xl p-8">
+              <h3 className="text-xl font-bold text-white mb-6">Connect With Me</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    className={`glass-card rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:scale-105 ${social.color}`}
+                  >
+                    <social.icon className="w-5 h-5" />
+                    <span className="font-medium">{social.label}</span>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Enhanced Contact Form */}
-          <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 hover:border-slate-600/70 transition-all duration-300">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-white mb-3">Start a Conversation</h2>
-              <p className="text-slate-400">Tell me about your project and let's make it happen</p>
-            </div>
+          {/* Contact Form */}
+          <div className="glass-container rounded-3xl p-8">
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <User className="w-6 h-6 text-indigo-400" />
+              Send a Message
+            </h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-slate-300 mb-3 font-medium">
-                    Your Name *
+                  <label className="block text-slate-200 mb-3 text-sm font-medium">
+                    Your Name
                   </label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl px-4 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300"
+                    className="w-full glass-subtle rounded-xl px-4 py-4 text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent"
                     placeholder="John Doe"
                     required
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-slate-300 mb-3 font-medium">
-                    Email Address *
+                  <label className="block text-slate-200 mb-3 text-sm font-medium">
+                    Email Address
                   </label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl px-4 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300"
+                    className="w-full glass-subtle rounded-xl px-4 py-4 text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent"
                     placeholder="john@example.com"
                     required
                   />
@@ -204,52 +177,78 @@ const Contact = () => {
               </div>
               
               <div>
-                <label className="block text-slate-300 mb-3 font-medium">
-                  Project Type *
+                <label className="block text-slate-200 mb-3 text-sm font-medium">
+                  Subject
                 </label>
                 <input
                   type="text"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl px-4 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300"
-                  placeholder="Web App Development, Mobile App, Consultation, etc."
+                  className="w-full glass-subtle rounded-xl px-4 py-4 text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent"
+                  placeholder="Project Collaboration"
                   required
                 />
               </div>
               
               <div>
-                <label className="block text-slate-300 mb-3 font-medium">
-                  Project Details *
+                <label className="block text-slate-200 mb-3 text-sm font-medium">
+                  Message
                 </label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
-                  className="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl px-4 py-4 text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300 resize-none"
-                  placeholder="Tell me about your project goals, timeline, budget range, and any specific requirements..."
+                  className="w-full glass-subtle rounded-xl px-4 py-4 text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent resize-none"
+                  placeholder="Tell me about your project, timeline, and how I can help..."
                   required
                 />
               </div>
               
               <button
                 type="submit"
-                className="w-full px-8 py-5 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-indigo-500/25 flex items-center justify-center gap-3 group"
+                disabled={isSubmitting}
+                className="w-full px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-xl font-semibold text-lg hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/25 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                Send Message
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
+          </div>
+        </div>
 
-            <div className="mt-8 pt-8 border-t border-slate-700/50 text-center">
-              <p className="text-sm text-slate-400">
-                Prefer email? Reach me directly at{" "}
-                <a href="mailto:abdulraoof.k@gmail.com" className="text-indigo-400 hover:text-indigo-300 transition-colors">
-                  abdulraoof.k@gmail.com
-                </a>
-              </p>
+        {/* Additional CTA */}
+        <div className="mt-20 text-center">
+          <div className="glass-card rounded-3xl p-12">
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Ready to Start Your Project?
+            </h2>
+            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+              I'm currently available for new projects and would love to discuss your ideas. 
+              Let's create something amazing together!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="mailto:abdulraoof.k@gmail.com"
+                className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-2xl font-semibold text-lg hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/25 flex items-center justify-center gap-3"
+              >
+                <Mail className="w-5 h-5" />
+                Email Me Directly
+              </a>
+              <button className="px-8 py-4 glass-morphism border border-slate-600/50 rounded-2xl font-semibold text-lg hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3">
+                <Phone className="w-5 h-5" />
+                Schedule a Call
+              </button>
             </div>
           </div>
         </div>
