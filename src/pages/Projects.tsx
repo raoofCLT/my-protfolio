@@ -1,293 +1,153 @@
 
-import { useState } from 'react';
-import { ExternalLink, Github, Calendar, Star, ArrowRight } from 'lucide-react';
+import { Code2, Users, Award } from 'lucide-react';
+import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
+import ProjectCard from '../components/ProjectCard';
+import CallToAction from '../components/CallToAction';
 
 const Projects = () => {
-  const [filter, setFilter] = useState('all');
+  const projectsCounter = useAnimatedCounter({ target: 15 });
+  const clientsCounter = useAnimatedCounter({ target: 50 });
+  const experienceCounter = useAnimatedCounter({ target: 2 });
 
   const projects = [
     {
-      id: 1,
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with real-time inventory management, payment processing, and admin dashboard.",
-      longDescription: "Built a comprehensive e-commerce platform using React, Node.js, and PostgreSQL. Features include user authentication, product catalog, shopping cart, payment integration with Stripe, order management, and real-time inventory tracking.",
-      image: "/placeholder.svg",
-      technologies: ["React", "Node.js", "PostgreSQL", "Stripe", "AWS"],
-      category: "fullstack",
-      featured: true,
-      status: "Live",
-      year: "2024",
-      metrics: ["10k+ users", "99.9% uptime", "40% conversion rate"],
-      github: "#",
-      live: "#"
+      title: 'E-Commerce Platform',
+      description: 'Full-stack e-commerce solution with real-time inventory, payment integration, and admin dashboard. Built with modern technologies for optimal performance.',
+      longDescription: 'A comprehensive e-commerce platform built for scalability and performance. Features include real-time inventory management, secure payment processing with Stripe, advanced analytics dashboard, and multi-vendor support. The platform handles 50k+ concurrent users with 99.9% uptime.',
+      tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redis', 'AWS'],
+      metrics: ['50k+ users', '99.9% uptime', '$2M+ processed'],
+      category: 'Web Application',
+      status: 'Live',
+      year: '2024',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
+      features: [
+        'Real-time inventory management',
+        'Multi-vendor marketplace',
+        'Advanced analytics dashboard',
+        'Secure payment processing',
+        'Mobile-responsive design',
+        'SEO optimized'
+      ]
     },
     {
-      id: 2,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, team workspaces, and advanced filtering.",
-      longDescription: "Developed a productivity application using React and Firebase. Features include drag-and-drop task boards, real-time collaboration, team management, file attachments, and comprehensive reporting.",
-      image: "/placeholder.svg",
-      technologies: ["React", "Firebase", "Material-UI", "Socket.io"],
-      category: "frontend",
-      featured: true,
-      status: "Live",
-      year: "2023",
-      metrics: ["5k+ active users", "98% satisfaction", "50% productivity boost"],
-      github: "#",
-      live: "#"
+      title: 'AI Analytics Dashboard',
+      description: 'Machine learning powered analytics platform providing business insights and predictive analytics for enterprise clients.',
+      longDescription: 'An advanced analytics platform that leverages machine learning to provide actionable business insights. Built with Python and TensorFlow for the ML backend, React for the frontend, and deployed on AWS for scalability.',
+      tech: ['Python', 'React', 'TensorFlow', 'AWS', 'PostgreSQL', 'Docker'],
+      metrics: ['40% accuracy boost', '15+ clients', '10TB+ data processed'],
+      category: 'AI/ML Platform',
+      status: 'Live',
+      year: '2023',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+      features: [
+        'Predictive analytics engine',
+        'Real-time data visualization',
+        'Custom ML model training',
+        'Automated report generation',
+        'API integrations',
+        'Enterprise security'
+      ]
     },
     {
-      id: 3,
-      title: "Weather Dashboard",
-      description: "A responsive weather application with location-based forecasts, interactive maps, and weather alerts.",
-      longDescription: "Created a comprehensive weather dashboard using React and third-party APIs. Features include current weather, 7-day forecasts, interactive maps, severe weather alerts, and location-based suggestions.",
-      image: "/placeholder.svg",
-      technologies: ["React", "OpenWeather API", "Chart.js", "Tailwind CSS"],
-      category: "frontend",
-      featured: false,
-      status: "Live",
-      year: "2023",
-      metrics: ["Real-time data", "Global coverage", "Mobile optimized"],
-      github: "#",
-      live: "#"
+      title: 'Real-time Chat App',
+      description: 'Scalable messaging platform with video calls, file sharing, and team collaboration features for modern workspaces.',
+      longDescription: 'A modern communication platform designed for teams and businesses. Features real-time messaging, video conferencing, file sharing, and collaboration tools. Built with Next.js and Socket.io for real-time capabilities.',
+      tech: ['Next.js', 'Socket.io', 'PostgreSQL', 'WebRTC', 'Redis', 'Docker'],
+      metrics: ['10k+ users', '99.5% uptime', '1M+ messages/day'],
+      category: 'Communication Tool',
+      status: 'Live',
+      year: '2023',
+      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
+      features: [
+        'Real-time messaging',
+        'Video conferencing',
+        'File sharing & storage',
+        'Team workspaces',
+        'Mobile applications',
+        'End-to-end encryption'
+      ]
     },
     {
-      id: 4,
-      title: "API Gateway Service",
-      description: "A scalable API gateway built with Node.js, featuring rate limiting, authentication, and request routing.",
-      longDescription: "Designed and implemented a high-performance API gateway using Node.js and Express. Features include request routing, rate limiting, authentication middleware, logging, and comprehensive monitoring.",
-      image: "/placeholder.svg",
-      technologies: ["Node.js", "Express", "Redis", "JWT", "Docker"],
-      category: "backend",
-      featured: false,
-      status: "Live",
-      year: "2023",
-      metrics: ["1M+ requests/day", "99.99% uptime", "Sub-100ms latency"],
-      github: "#",
-      live: "#"
+      title: 'Task Management System',
+      description: 'Comprehensive project management tool with team collaboration, time tracking, and advanced reporting capabilities.',
+      longDescription: 'A feature-rich project management platform that helps teams organize, track, and complete projects efficiently. Includes Kanban boards, Gantt charts, time tracking, and comprehensive reporting.',
+      tech: ['Vue.js', 'Express', 'MySQL', 'Redis', 'Docker', 'AWS'],
+      metrics: ['5k+ teams', '4.8★ rating', '100k+ tasks completed'],
+      category: 'Productivity Tool',
+      status: 'Live',
+      year: '2022',
+      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
+      features: [
+        'Kanban & Gantt charts',
+        'Time tracking',
+        'Team collaboration',
+        'Advanced reporting',
+        'Mobile apps',
+        'Third-party integrations'
+      ]
     }
   ];
 
-  const categories = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'fullstack', label: 'Full Stack' },
-    { id: 'frontend', label: 'Frontend' },
-    { id: 'backend', label: 'Backend' }
-  ];
-
-  const filteredProjects = filter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === filter);
-
-  const featuredProjects = projects.filter(project => project.featured);
-
   return (
-    <div className="pt-32 pb-20 px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+    <div className="min-h-screen text-white pt-24">
+      <div className="max-w-7xl mx-auto px-8 py-12">
+        {/* Enhanced Header */}
         <div className="text-center mb-20">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent mb-6">
-            My Projects
+          <div className="inline-block p-4 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl mb-8">
+            <Code2 className="w-12 h-12 text-indigo-400" />
+          </div>
+          <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
+            Featured Projects
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            A showcase of my recent work, featuring full-stack applications, frontend interfaces, 
-            and backend services built with modern technologies.
+            Showcasing innovative solutions and cutting-edge applications that demonstrate 
+            expertise in modern web development and problem-solving
           </p>
         </div>
 
-        {/* Featured Projects */}
-        <div className="mb-20">
-          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-            <Star className="w-6 h-6 text-yellow-400" />
-            Featured Projects
-          </h2>
-          <div className="grid lg:grid-cols-2 gap-8">
-            {featuredProjects.map((project, index) => (
-              <div
-                key={project.id}
-                className="glass-project-card rounded-3xl overflow-hidden"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
-                  
-                  {/* Status Badge */}
-                  <div className="absolute top-4 left-4">
-                    <div className="flex items-center gap-2 bg-green-500/20 backdrop-blur-sm border border-green-500/30 rounded-full px-3 py-1">
-                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                      <span className="text-green-400 text-sm font-medium">{project.status}</span>
-                    </div>
-                  </div>
-
-                  {/* Year Badge */}
-                  <div className="absolute top-4 right-4">
-                    <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1">
-                      <Calendar className="w-4 h-4 text-white" />
-                      <span className="text-white text-sm">{project.year}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-                  <p className="text-slate-300 mb-4 leading-relaxed">{project.description}</p>
-                  
-                  {/* Metrics */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.metrics.map((metric, metricIndex) => (
-                      <span
-                        key={metricIndex}
-                        className="bg-gradient-to-r from-green-600/20 to-emerald-600/20 border border-green-500/30 text-green-300 px-3 py-1 rounded-lg text-xs font-medium"
-                      >
-                        {metric}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="glass-subtle px-3 py-1 rounded-lg text-xs text-slate-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex gap-3">
-                    <a
-                      href={project.live}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl font-medium hover:scale-105 transition-all duration-300"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Live Demo
-                    </a>
-                    <a
-                      href={project.github}
-                      className="flex items-center justify-center gap-2 px-4 py-3 glass-morphism border border-slate-600/30 rounded-xl font-medium hover:scale-105 transition-all duration-300"
-                    >
-                      <Github className="w-4 h-4" />
-                      Code
-                    </a>
-                  </div>
-                </div>
+        {/* Animated Stats Section */}
+        <section className="mb-20">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div ref={projectsCounter.elementRef} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-indigo-400/50">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <Code2 className="w-8 h-8 text-blue-400" />
+                <div className="text-5xl font-bold text-blue-400">{projectsCounter.count}+</div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Filter Tabs */}
-        <div className="mb-12">
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setFilter(category.id)}
-                className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
-                  filter === category.id
-                    ? 'glass-morphism border-indigo-400/50 text-indigo-300'
-                    : 'glass-subtle text-slate-400 hover:text-white'
-                }`}
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* All Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className="glass-card rounded-2xl overflow-hidden card-hover"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="relative h-40 overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
-                
-                {project.featured && (
-                  <div className="absolute top-3 left-3">
-                    <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                  </div>
-                )}
-              </div>
-
-              <div className="p-5">
-                <h3 className="text-lg font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-slate-400 text-sm mb-4 line-clamp-2">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="bg-slate-800/50 border border-slate-700/30 text-slate-300 px-2 py-1 rounded-lg text-xs"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="text-slate-500 text-xs px-2 py-1">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex gap-2">
-                  <a
-                    href={project.live}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg text-sm font-medium hover:scale-105 transition-transform"
-                  >
-                    <ExternalLink className="w-3 h-3" />
-                    Demo
-                  </a>
-                  <a
-                    href={project.github}
-                    className="flex items-center justify-center gap-2 px-3 py-2 glass-subtle rounded-lg text-sm font-medium hover:scale-105 transition-transform"
-                  >
-                    <Github className="w-3 h-3" />
-                    Code
-                  </a>
-                </div>
-              </div>
+              <div className="text-lg text-slate-300 font-medium">Projects Completed</div>
+              <div className="text-sm text-slate-400 mt-2">Across Various Industries</div>
             </div>
-          ))}
-        </div>
-
-        {/* CTA Section */}
-        <div className="mt-20 text-center">
-          <div className="glass-container rounded-3xl p-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Interested in Working Together?
-            </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              I'm always excited to take on new challenges and create amazing digital experiences.
-            </p>
-            <button
-              onClick={() => {
-                const element = document.querySelector('#contact');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="group px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-2xl font-semibold text-lg hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/25 flex items-center gap-3 mx-auto"
-            >
-              Let's Talk
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            
+            <div ref={clientsCounter.elementRef} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-purple-400/50">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <Users className="w-8 h-8 text-purple-400" />
+                <div className="text-5xl font-bold text-purple-400">{clientsCounter.count}+</div>
+              </div>
+              <div className="text-lg text-slate-300 font-medium">Happy Clients</div>
+              <div className="text-sm text-slate-400 mt-2">99% Satisfaction Rate</div>
+            </div>
+            
+            <div ref={experienceCounter.elementRef} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-green-400/50">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <Award className="w-8 h-8 text-green-400" />
+                <div className="text-5xl font-bold text-green-400">{experienceCounter.count}+</div>
+              </div>
+              <div className="text-lg text-slate-300 font-medium">Years Experience</div>
+              <div className="text-sm text-slate-400 mt-2">Professional Development</div>
+            </div>
           </div>
-        </div>
+        </section>
+
+        {/* Enhanced Projects Grid */}
+        <section className="mb-20">
+          <div className="grid lg:grid-cols-2 gap-8">
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project} index={index} />
+            ))}
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <CallToAction />
       </div>
     </div>
   );
