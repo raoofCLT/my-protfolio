@@ -1,5 +1,4 @@
 
-
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Clock, MessageCircle, User } from 'lucide-react';
 
@@ -71,11 +70,11 @@ const Contact = () => {
   ];
 
   return (
-    <div className="pt-32 pb-20 px-8">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen flex items-center justify-center py-16 px-8">
+      <div className="max-w-6xl mx-auto w-full">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent mb-6">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent mb-6">
             Let's Connect
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
@@ -84,7 +83,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Contact Information */}
           <div className="space-y-8">
             <div className="glass-container rounded-3xl p-8">
@@ -228,25 +227,24 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Additional CTA */}
-        <div className="mt-20 text-center">
-          <div className="glass-container rounded-3xl p-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Start Your Project?
+        {/* Quick Contact CTA */}
+        <div className="text-center">
+          <div className="glass-container rounded-3xl p-8">
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Prefer Direct Contact?
             </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              I'm currently available for new projects and would love to discuss your ideas. 
-              Let's create something amazing together!
+            <p className="text-lg text-slate-300 mb-6">
+              Feel free to reach out directly via email or schedule a call to discuss your project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:abdulraoof.k@gmail.com"
-                className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-2xl font-semibold text-lg hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/25 flex items-center justify-center gap-3"
+                className="px-6 py-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-xl font-semibold hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 flex items-center justify-center gap-3"
               >
                 <Mail className="w-5 h-5" />
                 Email Me Directly
               </a>
-              <button className="px-8 py-4 glass-morphism border border-slate-600/50 rounded-2xl font-semibold text-lg hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3">
+              <button className="px-6 py-3 glass-morphism border border-slate-600/50 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3">
                 <Phone className="w-5 h-5" />
                 Schedule a Call
               </button>
