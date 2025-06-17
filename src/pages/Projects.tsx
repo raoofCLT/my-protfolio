@@ -1,8 +1,6 @@
-
 import { Code2, Users, Award } from 'lucide-react';
 import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 import ProjectCard from '../components/ProjectCard';
-import CallToAction from '../components/CallToAction';
 
 const Projects = () => {
   const projectsCounter = useAnimatedCounter({ target: 15 });
@@ -145,9 +143,6 @@ const Projects = () => {
             ))}
           </div>
         </section>
-
-        {/* Call to Action */}
-        <CallToAction />
       </div>
     </div>
   );
