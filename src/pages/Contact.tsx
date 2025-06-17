@@ -70,47 +70,47 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-20 px-8">
-      <div className="max-w-7xl mx-auto w-full">
+    <div className="min-h-screen flex items-center justify-center py-16 px-8">
+      <div className="max-w-6xl mx-auto w-full">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h1 className="text-6xl lg:text-7xl font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent mb-8">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent mb-6">
             Let's Connect
           </h1>
-          <p className="text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Have a project in mind or just want to chat? I'd love to hear from you. 
-            Let's discuss how we can bring your ideas to life together.
+            Let's discuss how we can bring your ideas to life.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 mb-20">
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Contact Information */}
-          <div className="space-y-10">
-            <div className="glass-container rounded-3xl p-10">
-              <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-4">
-                <MessageCircle className="w-8 h-8 text-indigo-400" />
+          <div className="space-y-8">
+            <div className="glass-container rounded-3xl p-8">
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                <MessageCircle className="w-6 h-6 text-indigo-400" />
                 Get in Touch
               </h2>
-              <p className="text-lg text-slate-300 mb-10 leading-relaxed">
+              <p className="text-slate-300 mb-8 leading-relaxed">
                 I'm always excited to work on new projects and collaborate with amazing people. 
                 Whether you're a startup looking to build your first product or an established 
-                company wanting to scale, I'm here to help turn your vision into reality.
+                company wanting to scale, I'm here to help.
               </p>
 
-              <div className="space-y-8">
+              <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div
                     key={index}
-                    className="glass-card rounded-2xl p-8 card-hover"
+                    className="glass-card rounded-2xl p-6 card-hover"
                   >
-                    <div className="flex items-start gap-6">
-                      <div className="w-16 h-16 glass-subtle rounded-xl flex items-center justify-center flex-shrink-0">
-                        <info.icon className={`w-8 h-8 ${info.color}`} />
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 glass-subtle rounded-xl flex items-center justify-center flex-shrink-0">
+                        <info.icon className={`w-6 h-6 ${info.color}`} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-white mb-2">{info.label}</h3>
-                        <p className="text-lg text-slate-300 font-medium mb-2">{info.value}</p>
-                        <p className="text-slate-400">{info.description}</p>
+                        <h3 className="text-lg font-semibold text-white mb-1">{info.label}</h3>
+                        <p className="text-slate-300 font-medium mb-1">{info.value}</p>
+                        <p className="text-slate-400 text-sm">{info.description}</p>
                       </div>
                     </div>
                   </div>
@@ -119,17 +119,17 @@ const Contact = () => {
             </div>
 
             {/* Social Links */}
-            <div className="glass-container rounded-3xl p-10">
-              <h3 className="text-2xl font-bold text-white mb-8">Connect With Me</h3>
-              <div className="grid grid-cols-2 gap-6">
+            <div className="glass-container rounded-3xl p-8">
+              <h3 className="text-xl font-bold text-white mb-6">Connect With Me</h3>
+              <div className="grid grid-cols-2 gap-4">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.href}
-                    className={`glass-card rounded-xl p-6 flex items-center gap-4 transition-all duration-300 hover:scale-105 ${social.color}`}
+                    className={`glass-card rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:scale-105 ${social.color}`}
                   >
-                    <social.icon className="w-6 h-6" />
-                    <span className="font-medium text-lg">{social.label}</span>
+                    <social.icon className="w-5 h-5" />
+                    <span className="font-medium">{social.label}</span>
                   </a>
                 ))}
               </div>
@@ -137,16 +137,16 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="glass-container rounded-3xl p-10">
-            <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-4">
-              <User className="w-8 h-8 text-indigo-400" />
+          <div className="glass-container rounded-3xl p-8">
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <User className="w-6 h-6 text-indigo-400" />
               Send a Message
             </h2>
             
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-slate-200 mb-3 text-base font-medium">
+                  <label className="block text-slate-200 mb-3 text-sm font-medium">
                     Your Name
                   </label>
                   <input
@@ -154,14 +154,14 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full glass-subtle rounded-xl px-6 py-5 text-lg text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent"
+                    className="w-full glass-subtle rounded-xl px-4 py-4 text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent"
                     placeholder="John Doe"
                     required
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-slate-200 mb-3 text-base font-medium">
+                  <label className="block text-slate-200 mb-3 text-sm font-medium">
                     Email Address
                   </label>
                   <input
@@ -169,7 +169,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full glass-subtle rounded-xl px-6 py-5 text-lg text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent"
+                    className="w-full glass-subtle rounded-xl px-4 py-4 text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent"
                     placeholder="john@example.com"
                     required
                   />
@@ -177,7 +177,7 @@ const Contact = () => {
               </div>
               
               <div>
-                <label className="block text-slate-200 mb-3 text-base font-medium">
+                <label className="block text-slate-200 mb-3 text-sm font-medium">
                   Subject
                 </label>
                 <input
@@ -185,14 +185,14 @@ const Contact = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full glass-subtle rounded-xl px-6 py-5 text-lg text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent"
+                  className="w-full glass-subtle rounded-xl px-4 py-4 text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent"
                   placeholder="Project Collaboration"
                   required
                 />
               </div>
               
               <div>
-                <label className="block text-slate-200 mb-3 text-base font-medium">
+                <label className="block text-slate-200 mb-3 text-sm font-medium">
                   Message
                 </label>
                 <textarea
@@ -200,7 +200,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
-                  className="w-full glass-subtle rounded-xl px-6 py-5 text-lg text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent resize-none"
+                  className="w-full glass-subtle rounded-xl px-4 py-4 text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent resize-none"
                   placeholder="Tell me about your project, timeline, and how I can help..."
                   required
                 />
@@ -209,16 +209,16 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-5 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-xl font-semibold text-xl hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/25 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-xl font-semibold text-lg hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/25 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     Sending...
                   </>
                 ) : (
                   <>
-                    <Send className="w-6 h-6" />
+                    <Send className="w-5 h-5" />
                     Send Message
                   </>
                 )}
@@ -229,23 +229,23 @@ const Contact = () => {
 
         {/* Quick Contact CTA */}
         <div className="text-center">
-          <div className="glass-container rounded-3xl p-10">
-            <h2 className="text-3xl font-bold text-white mb-6">
+          <div className="glass-container rounded-3xl p-8">
+            <h2 className="text-2xl font-bold text-white mb-4">
               Prefer Direct Contact?
             </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Feel free to reach out directly via email or schedule a call to discuss your project in detail.
+            <p className="text-lg text-slate-300 mb-6">
+              Feel free to reach out directly via email or schedule a call to discuss your project.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:abdulraoof.k@gmail.com"
-                className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-xl font-semibold text-lg hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 flex items-center justify-center gap-3"
+                className="px-6 py-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-xl font-semibold hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 flex items-center justify-center gap-3"
               >
-                <Mail className="w-6 h-6" />
+                <Mail className="w-5 h-5" />
                 Email Me Directly
               </a>
-              <button className="px-8 py-4 glass-morphism border border-slate-600/50 rounded-xl font-semibold text-lg hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3">
-                <Phone className="w-6 h-6" />
+              <button className="px-6 py-3 glass-morphism border border-slate-600/50 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3">
+                <Phone className="w-5 h-5" />
                 Schedule a Call
               </button>
             </div>
