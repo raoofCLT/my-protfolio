@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Clock, MessageCircle, User } from 'lucide-react';
 
@@ -79,21 +80,21 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Connect With Me - Compact Version */}
+        {/* Connect With Me - Smaller Compact Version */}
         <section className="mb-12">
-          <div className="glass-container rounded-2xl p-6">
-            <h2 className="text-xl font-bold text-white mb-6 text-center">Connect With Me</h2>
-            <div className="grid md:grid-cols-4 gap-4">
+          <div className="glass-container rounded-2xl p-4">
+            <h2 className="text-lg font-bold text-white mb-4 text-center">Connect With Me</h2>
+            <div className="grid md:grid-cols-4 gap-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="glass-card rounded-xl p-4 flex flex-col items-center gap-2 transition-all duration-300 hover:scale-105 text-slate-300 hover:text-white text-center group"
+                  className="glass-card rounded-xl p-3 flex flex-col items-center gap-2 transition-all duration-300 hover:scale-105 text-slate-300 hover:text-white text-center group"
                 >
-                  <div className="w-10 h-10 glass-subtle rounded-xl flex items-center justify-center">
-                    <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <div className="w-8 h-8 glass-subtle rounded-xl flex items-center justify-center">
+                    <social.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   </div>
-                  <span className="font-medium text-sm">{social.label}</span>
+                  <span className="font-medium text-xs">{social.label}</span>
                 </a>
               ))}
             </div>
