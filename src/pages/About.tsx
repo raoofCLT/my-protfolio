@@ -50,31 +50,31 @@ const About = () => {
   const technicalSkills = [
     { 
       category: "Frontend Development", 
-      skills: ["React", "TypeScript", "Next.js", "Vue.js", "Tailwind CSS"], 
-      progress: 95, 
+      skills: ["React", "TypeScript", "Next.js", "Vue.js", "Tailwind CSS", "JavaScript", "HTML5", "CSS3"], 
       color: "text-blue-400",
-      bgColor: "bg-blue-400" 
+      bgColor: "from-blue-500/20 to-cyan-500/20",
+      borderColor: "border-blue-500/30"
     },
     { 
       category: "Backend Development", 
-      skills: ["Node.js", "Python", "Express", "Django", "GraphQL"], 
-      progress: 90, 
+      skills: ["Node.js", "Python", "Express", "Django", "GraphQL", "REST APIs", "Microservices"], 
       color: "text-green-400",
-      bgColor: "bg-green-400" 
+      bgColor: "from-green-500/20 to-emerald-500/20",
+      borderColor: "border-green-500/30"
     },
     { 
       category: "Database & Cloud", 
-      skills: ["MongoDB", "PostgreSQL", "Redis", "AWS", "Docker"], 
-      progress: 85, 
+      skills: ["MongoDB", "PostgreSQL", "Redis", "AWS", "Docker", "Kubernetes", "Firebase"], 
       color: "text-purple-400",
-      bgColor: "bg-purple-400" 
+      bgColor: "from-purple-500/20 to-violet-500/20",
+      borderColor: "border-purple-500/30"
     },
     { 
-      category: "Mobile Development", 
-      skills: ["React Native", "Flutter", "Expo", "iOS", "Android"], 
-      progress: 78, 
-      color: "text-pink-400",
-      bgColor: "bg-pink-400" 
+      category: "Tools & Methodologies", 
+      skills: ["Git", "VS Code", "Agile", "CI/CD", "Testing", "DevOps", "Linux"], 
+      color: "text-orange-400",
+      bgColor: "from-orange-500/20 to-yellow-500/20",
+      borderColor: "border-orange-500/30"
     }
   ];
 
@@ -178,7 +178,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* Enhanced Technical Skills with Progress Bars */}
+        {/* Enhanced Technical Skills without Progress Bars */}
         <section>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-200 mb-4 flex items-center justify-center gap-3">
@@ -194,38 +194,26 @@ const About = () => {
             {technicalSkills.map((skillGroup, index) => (
               <div 
                 key={index} 
-                className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 hover:-translate-y-1 transition-all duration-300"
+                className={`bg-gradient-to-br ${skillGroup.bgColor} backdrop-blur-xl border ${skillGroup.borderColor} rounded-2xl p-8 hover:-translate-y-1 transition-all duration-300 hover:shadow-xl`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className={`text-xl font-semibold ${skillGroup.color}`}>
+                <div className="flex items-center justify-center mb-6">
+                  <h3 className={`text-2xl font-bold ${skillGroup.color} text-center`}>
                     {skillGroup.category}
                   </h3>
-                  <span className={`text-2xl font-bold ${skillGroup.color}`}>
-                    {skillGroup.progress}%
-                  </span>
                 </div>
                 
-                {/* Progress Bar */}
-                <div className="w-full bg-slate-700/50 rounded-full h-3 mb-6 overflow-hidden">
-                  <div 
-                    className={`h-full ${skillGroup.bgColor} rounded-full transition-all duration-1000 ease-out`}
-                    style={{ 
-                      width: `${skillGroup.progress}%`,
-                      animationDelay: `${index * 0.2}s`
-                    }}
-                  ></div>
-                </div>
-                
-                {/* Skills Tags */}
-                <div className="flex flex-wrap gap-2">
+                {/* Skills Grid */}
+                <div className="grid grid-cols-2 gap-3">
                   {skillGroup.skills.map((skill, skillIndex) => (
-                    <span
+                    <div
                       key={skillIndex}
-                      className="px-3 py-2 bg-slate-800/50 border border-slate-600/30 rounded-lg text-sm text-slate-300 hover:border-slate-500/50 hover:bg-slate-700/50 transition-all duration-300"
+                      className="group bg-slate-800/30 border border-slate-600/30 rounded-xl p-4 text-center hover:border-slate-500/50 hover:bg-slate-700/40 transition-all duration-300 hover:scale-105"
                     >
-                      {skill}
-                    </span>
+                      <span className="text-slate-300 font-medium group-hover:text-white transition-colors">
+                        {skill}
+                      </span>
+                    </div>
                   ))}
                 </div>
               </div>

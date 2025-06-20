@@ -71,7 +71,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center py-16 px-8">
-      <div className="max-w-6xl mx-auto w-full">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent mb-6">
@@ -82,6 +82,27 @@ const Contact = () => {
             Let's discuss how we can bring your ideas to life.
           </p>
         </div>
+
+        {/* Connect With Me - Moved to Top in Single Row */}
+        <section className="mb-16">
+          <div className="glass-container rounded-3xl p-8">
+            <h2 className="text-2xl font-bold text-white mb-8 text-center">Connect With Me</h2>
+            <div className="grid md:grid-cols-4 gap-6">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className={`glass-card rounded-xl p-6 flex flex-col items-center gap-3 transition-all duration-300 hover:scale-105 ${social.color} text-center group`}
+                >
+                  <div className="w-12 h-12 glass-subtle rounded-xl flex items-center justify-center">
+                    <social.icon className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <span className="font-medium">{social.label}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Contact Information */}
@@ -114,23 +135,6 @@ const Contact = () => {
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="glass-container rounded-3xl p-8">
-              <h3 className="text-xl font-bold text-white mb-6">Connect With Me</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    className={`glass-card rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:scale-105 ${social.color}`}
-                  >
-                    <social.icon className="w-5 h-5" />
-                    <span className="font-medium">{social.label}</span>
-                  </a>
                 ))}
               </div>
             </div>
