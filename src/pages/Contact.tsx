@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Clock, MessageCircle, User } from 'lucide-react';
 
@@ -43,30 +42,27 @@ const Contact = () => {
       icon: Mail,
       label: "Email",
       value: "abdulraoof.k@gmail.com",
-      description: "Best way to reach me",
-      color: "text-blue-400"
+      description: "Best way to reach me"
     },
     {
       icon: MapPin,
       label: "Location",
       value: "India",
-      description: "Available for remote work",
-      color: "text-green-400"
+      description: "Available for remote work"
     },
     {
       icon: Clock,
       label: "Response Time",
       value: "Within 24 hours",
-      description: "Usually much faster",
-      color: "text-purple-400"
+      description: "Usually much faster"
     }
   ];
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub", color: "hover:text-gray-300" },
-    { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-400" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-blue-300" },
-    { icon: Mail, href: "mailto:abdulraoof.k@gmail.com", label: "Email", color: "hover:text-red-400" }
+    { icon: Github, href: "#", label: "GitHub" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Mail, href: "mailto:abdulraoof.k@gmail.com", label: "Email" }
   ];
 
   return (
@@ -83,21 +79,21 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Connect With Me - Moved to Top in Single Row */}
-        <section className="mb-16">
-          <div className="glass-container rounded-3xl p-8">
-            <h2 className="text-2xl font-bold text-white mb-8 text-center">Connect With Me</h2>
-            <div className="grid md:grid-cols-4 gap-6">
+        {/* Connect With Me - Compact Version */}
+        <section className="mb-12">
+          <div className="glass-container rounded-2xl p-6">
+            <h2 className="text-xl font-bold text-white mb-6 text-center">Connect With Me</h2>
+            <div className="grid md:grid-cols-4 gap-4">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className={`glass-card rounded-xl p-6 flex flex-col items-center gap-3 transition-all duration-300 hover:scale-105 ${social.color} text-center group`}
+                  className="glass-card rounded-xl p-4 flex flex-col items-center gap-2 transition-all duration-300 hover:scale-105 text-slate-300 hover:text-white text-center group"
                 >
-                  <div className="w-12 h-12 glass-subtle rounded-xl flex items-center justify-center">
-                    <social.icon className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                  <div className="w-10 h-10 glass-subtle rounded-xl flex items-center justify-center">
+                    <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   </div>
-                  <span className="font-medium">{social.label}</span>
+                  <span className="font-medium text-sm">{social.label}</span>
                 </a>
               ))}
             </div>
@@ -126,7 +122,7 @@ const Contact = () => {
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 glass-subtle rounded-xl flex items-center justify-center flex-shrink-0">
-                        <info.icon className={`w-6 h-6 ${info.color}`} />
+                        <info.icon className="w-6 h-6 text-indigo-400" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-lg font-semibold text-white mb-1">{info.label}</h3>

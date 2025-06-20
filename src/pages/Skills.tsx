@@ -13,33 +13,25 @@ const Skills = () => {
       icon: <Code className="w-8 h-8" />,
       title: "Frontend Development",
       skills: ["React", "Next.js", "TypeScript", "Vue.js", "Angular", "Tailwind CSS"],
-      level: "Expert",
-      color: "from-blue-500/20 to-cyan-500/20",
-      borderColor: "border-blue-500/30"
+      level: "Expert"
     },
     {
       icon: <Database className="w-8 h-8" />,
       title: "Backend Development",
       skills: ["Node.js", "Express", "Python", "Django", "GraphQL", "REST APIs"],
-      level: "Advanced",
-      color: "from-green-500/20 to-emerald-500/20",
-      borderColor: "border-green-500/30"
+      level: "Advanced"
     },
     {
       icon: <Globe className="w-8 h-8" />,
       title: "Database & Cloud",
       skills: ["MongoDB", "PostgreSQL", "MySQL", "AWS", "Docker", "Kubernetes"],
-      level: "Advanced",
-      color: "from-purple-500/20 to-violet-500/20",
-      borderColor: "border-purple-500/30"
+      level: "Advanced"
     },
     {
       icon: <Palette className="w-8 h-8" />,
       title: "Design & Tools",
       skills: ["Figma", "Adobe XD", "Photoshop", "Git", "VS Code", "Linux"],
-      level: "Intermediate",
-      color: "from-orange-500/20 to-yellow-500/20",
-      borderColor: "border-orange-500/30"
+      level: "Intermediate"
     }
   ];
 
@@ -82,20 +74,20 @@ const Skills = () => {
         {/* Stats Section with Animated Counters */}
         <section className="mb-16">
           <div className="grid md:grid-cols-4 gap-6">
-            <div ref={projectsCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
-              <div className="text-4xl font-bold text-blue-400 mb-2">{projectsCounter.count}+</div>
+            <div ref={projectsCounter.elementRef} className="glass-card rounded-2xl p-6 text-center card-hover">
+              <div className="text-4xl font-bold text-indigo-400 mb-2">{projectsCounter.count}+</div>
               <div className="text-slate-300">Projects Completed</div>
             </div>
-            <div ref={technologiesCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
-              <div className="text-4xl font-bold text-green-400 mb-2">{technologiesCounter.count}+</div>
+            <div ref={technologiesCounter.elementRef} className="glass-card rounded-2xl p-6 text-center card-hover">
+              <div className="text-4xl font-bold text-indigo-400 mb-2">{technologiesCounter.count}+</div>
               <div className="text-slate-300">Technologies Mastered</div>
             </div>
-            <div ref={clientsCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
-              <div className="text-4xl font-bold text-purple-400 mb-2">{clientsCounter.count}+</div>
+            <div ref={clientsCounter.elementRef} className="glass-card rounded-2xl p-6 text-center card-hover">
+              <div className="text-4xl font-bold text-indigo-400 mb-2">{clientsCounter.count}+</div>
               <div className="text-slate-300">Happy Clients</div>
             </div>
-            <div ref={experienceCounter.elementRef} className="enhanced-card-hover glass-effect rounded-2xl p-6 text-center morphing-shadow glow-effect">
-              <div className="text-4xl font-bold text-orange-400 mb-2">{experienceCounter.count}+</div>
+            <div ref={experienceCounter.elementRef} className="glass-card rounded-2xl p-6 text-center card-hover">
+              <div className="text-4xl font-bold text-indigo-400 mb-2">{experienceCounter.count}+</div>
               <div className="text-slate-300">Years Experience</div>
             </div>
           </div>
@@ -105,13 +97,13 @@ const Skills = () => {
         <section className="mb-16">
           <div className="grid md:grid-cols-2 gap-6">
             {skillCategories.map((category, index) => (
-              <div key={index} className={`enhanced-card-hover glass-effect rounded-2xl p-6 morphing-shadow glow-effect bg-gradient-to-br ${category.color} border ${category.borderColor}`}>
+              <div key={index} className="glass-card rounded-2xl p-6 card-hover">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="text-blue-400">
+                  <div className="text-indigo-400">
                     {category.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-slate-200">{category.title}</h3>
-                  <span className="ml-auto px-3 py-1 bg-gradient-to-r from-green-600/20 to-blue-600/20 border border-green-500/30 rounded-lg text-sm text-green-300">
+                  <span className="ml-auto px-3 py-1 glass-subtle rounded-lg text-sm text-indigo-300">
                     {category.level}
                   </span>
                 </div>
@@ -119,7 +111,7 @@ const Skills = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <span 
                       key={skillIndex}
-                      className="px-3 py-1 bg-gradient-to-r from-slate-700/50 to-slate-600/50 border border-slate-500/30 rounded-lg text-sm text-slate-300 enhanced-card-hover"
+                      className="px-3 py-1 glass-subtle rounded-lg text-sm text-slate-300"
                     >
                       {skill}
                     </span>
@@ -133,17 +125,17 @@ const Skills = () => {
         {/* Achievements */}
         <section>
           <h2 className="text-3xl font-bold text-slate-200 mb-8 flex items-center gap-3">
-            <Trophy className="w-8 h-8 text-yellow-400" />
+            <Trophy className="w-8 h-8 text-indigo-400" />
             Key Achievements
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {achievements.map((achievement, index) => (
-              <div key={index} className="enhanced-card-hover glass-effect rounded-2xl p-6 morphing-shadow glow-effect">
+              <div key={index} className="glass-card rounded-2xl p-6 card-hover">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="text-yellow-400">
+                  <div className="text-indigo-400">
                     {achievement.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-yellow-300">{achievement.title}</h3>
+                  <h3 className="text-xl font-semibold text-indigo-300">{achievement.title}</h3>
                 </div>
                 <p className="text-slate-300 leading-relaxed">{achievement.description}</p>
               </div>
