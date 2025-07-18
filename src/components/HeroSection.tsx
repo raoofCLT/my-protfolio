@@ -15,6 +15,16 @@ const HeroSection = () => {
         }}
       />
       
+      {/* Professional Sphere */}
+      <div className="absolute top-1/3 right-12 transform -translate-y-1/2 hidden lg:block z-[1]">
+        <div className="professional-sphere">
+          <div className="sphere-core"></div>
+          <div className="sphere-outer"></div>
+          <div className="sphere-glow"></div>
+          <div className="sphere-particles"></div>
+        </div>
+      </div>
+
       {/* Subtle geometric elements */}
       <div className="absolute inset-0 pointer-events-none z-[1]">
         <div className="absolute top-20 left-20 w-px h-32 bg-gradient-to-b from-transparent via-slate-400 to-transparent opacity-30" />
