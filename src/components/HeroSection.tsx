@@ -42,11 +42,11 @@ const HeroSection = () => {
         </h1>
         
         <p className="text-xl md:text-2xl text-slate-300 mb-6 font-light max-w-3xl mx-auto leading-relaxed opacity-0 animate-fadeInDelay1">
-          Building innovative digital experiences with modern technologies
+          Architecting scalable digital solutions with precision and innovation
         </p>
         
         <p className="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed opacity-0 animate-fadeInDelay2">
-          Passionate about creating seamless user experiences through clean code and thoughtful design.
+          Specializing in modern web technologies, cloud architecture, and user-centered design to deliver exceptional digital experiences.
         </p>
         
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center opacity-0 animate-fadeInDelay3">

@@ -7,7 +7,7 @@ import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import CustomCursor from '../components/CustomCursor';
-
+import LiquidBackground from '../components/LiquidBackground';
 import { initScrollAnimations } from '../utils/scrollAnimations';
 
 const Index = () => {
@@ -17,7 +17,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      
+      <LiquidBackground />
       <CustomCursor />
       <Navigation />
       <HeroSection />
