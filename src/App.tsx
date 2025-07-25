@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Skills from "./pages/Skills";
+import BackToTop from "./components/ui/BackToTop";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
         </div>
         
         <Navbar />
+        <BackToTop />
         
         {/* Seamless Section Layout - No Visible Boundaries */}
         <section id="home" className="relative min-h-screen">

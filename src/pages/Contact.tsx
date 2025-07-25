@@ -343,17 +343,6 @@ const Contact = () => {
             </div>
           </div>
         </div>
-
-        {/* Back to Top Button */}
-        <div className="fixed bottom-8 right-8 z-40">
-          <button
-            onClick={scrollToTop}
-            className="p-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-full shadow-lg hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 focus:outline-none focus:ring-2 focus:ring-indigo-400/50"
-            aria-label="Back to top"
-          >
-            <ArrowUp className="w-6 h-6 text-white" />
-          </button>
-        </div>
       </div>
     </div>
   );
