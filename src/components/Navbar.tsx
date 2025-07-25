@@ -1,16 +1,17 @@
 
 import { useState, useEffect } from 'react';
-import { Home, User, Briefcase, Mail } from 'lucide-react';
+import { Home, User, Briefcase, Mail, Code } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
 
   const navItems = [
-    { href: '#home', label: 'Home', icon: Home },
-    { href: '#about', label: 'About', icon: User },
-    { href: '#projects', label: 'Projects', icon: Briefcase },
-    { href: '#contact', label: 'Contact', icon: Mail },
+    { href: '#home', label: 'Home', icon: Home, key: '1' },
+    { href: '#about', label: 'About', icon: User, key: '2' },
+    { href: '#skills', label: 'Skills', icon: Code, key: '3' },
+    { href: '#projects', label: 'Projects', icon: Briefcase, key: '4' },
+    { href: '#contact', label: 'Contact', icon: Mail, key: '5' },
   ];
 
   useEffect(() => {
@@ -30,9 +31,45 @@ const Navbar = () => {
       }
     };
 
+    const handleKeyPress = (e: KeyboardEvent) => {
+      // ESC to close mobile menu
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+        return;
+      }
+
+      // Number keys 1-5 for navigation
+      const keyPressed = e.key;
+      const navItem = navItems.find(item => item.key === keyPressed);
+      if (navItem && (e.ctrlKey || e.metaKey || e.altKey)) {
+        e.preventDefault();
+        scrollToSection(navItem.href);
+      }
+
+      // Arrow keys for section navigation
+      if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+        e.preventDefault();
+        const currentIndex = navItems.findIndex(item => item.href === activeSection);
+        let nextIndex;
+        
+        if (e.key === 'ArrowDown') {
+          nextIndex = currentIndex < navItems.length - 1 ? currentIndex + 1 : 0;
+        } else {
+          nextIndex = currentIndex > 0 ? currentIndex - 1 : navItems.length - 1;
+        }
+        
+        scrollToSection(navItems[nextIndex].href);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('keydown', handleKeyPress);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [isOpen, activeSection]);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -69,11 +106,12 @@ const Navbar = () => {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
-                className={`flex shine-effect items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-500 card-hover text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:scale-105 ${
+                className={`flex shine-effect items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-500 card-hover text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-700/50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400/50 ${
                   activeSection === item.href 
-                    ? 'bg-gradient-to-r from-blue-600/30 to-purple-600/30 border border-blue-500/50 text-blue-300 shadow-lg shadow-blue-500/2' 
+                    ? 'bg-gradient-to-r from-blue-600/30 to-purple-600/30 border border-blue-500/50 text-blue-300 shadow-lg shadow-blue-500/25' 
                     : ''
                 }`}
+                title={`Navigate to ${item.label} (Alt+${item.key})`}
               >
                 <item.icon className="w-4 h-4" />
                 {item.label}
@@ -85,7 +123,9 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-3 rounded-2xl glass-effect border border-gray-700 text-gray-300 hover:text-white transition-all duration-500 hover:scale-110 card-hover"
+              className="p-3 rounded-2xl glass-effect border border-gray-700 text-gray-300 hover:text-white transition-all duration-500 hover:scale-110 card-hover focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              title="Toggle menu (ESC to close)"
             >
               {isOpen ? '✕' : '☰'}
             </button>
