@@ -21,7 +21,6 @@ const HeroSection = () => {
           <div className="sphere-core"></div>
           <div className="sphere-outer"></div>
           <div className="sphere-glow"></div>
-          <div className="sphere-particles"></div>
         </div>
       </div>
 
@@ -35,7 +34,7 @@ const HeroSection = () => {
       <div className="text-center z-10 max-w-5xl px-8 animate-fadeInUp">
         <h1 className="text-6xl md:text-7xl font-light mb-8 leading-[1.1] tracking-tight">
           <span className="block text-white font-extralight">
-            Alex Chen
+            Chen
           </span>
           <span className="block text-slate-400 font-light text-4xl md:text-5xl mt-4">
             Full Stack Developer
