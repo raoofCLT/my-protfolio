@@ -18,38 +18,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <div className="min-h-screen relative overflow-x-hidden bg-space-dark">
-        {/* Enhanced Space Background */}
+        {/* Clean Modern Background */}
         <div className="fixed inset-0 pointer-events-none z-0">
-          {/* Deep Space Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-gray-950 to-black">
-            {/* Animated Stars - More Subtle */}
-            {[...Array(150)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-0.5 h-0.5 bg-slate-300 rounded-full star-twinkle"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 4}s`,
-                  animationDuration: `${3 + Math.random() * 2}s`,
-                  opacity: Math.random() * 0.6 + 0.2,
-                }}
-              />
-            ))}
-            
-            {/* Moving Constellation Points */}
-            {[...Array(30)].map((_, i) => (
-              <div
-                key={`constellation-${i}`}
-                className="absolute w-1 h-1 bg-blue-200/60 rounded-full constellation-drift"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 8}s`,
-                }}
-              />
-            ))}
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-gray-950 to-black"></div>
         </div>
         
         <Navbar />
