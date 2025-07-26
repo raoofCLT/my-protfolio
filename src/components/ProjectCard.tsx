@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
-import { ExternalLink, Github, Calendar, Users, Award, X, ArrowRight } from 'lucide-react';
+import { ExternalLink, Github, Calendar, X, ArrowRight } from 'lucide-react';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 interface ProjectCardProps {
   project: {
@@ -22,13 +23,20 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { elementRef, hasBeenVisible } = useIntersectionObserver({ threshold: 0.1 });
 
   return (
     <>
-      {/* Enhanced Project Card */}
+      {/* Modern Project Card */}
       <div 
-        className="group relative bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl overflow-hidden hover:border-indigo-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/10"
-        style={{ animationDelay: `${index * 0.1}s` }}
+        ref={elementRef}
+        className={`group relative bg-gradient-to-br from-gray-900/80 to-slate-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden transition-all duration-700 hover:border-blue-400/50 hover:scale-105 hover:rotate-1 hover:shadow-2xl hover:shadow-blue-500/20 ${
+          hasBeenVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        }`}
+        style={{ 
+          animationDelay: `${index * 150}ms`,
+          transitionDelay: `${index * 150}ms`
+        }}
       >
         {/* Image with Overlay */}
         <div className="relative h-56 overflow-hidden">

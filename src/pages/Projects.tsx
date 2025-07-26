@@ -1,12 +1,10 @@
 
-import { Code2, Users, Award } from 'lucide-react';
-import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
+import { Code2 } from 'lucide-react';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import ProjectCard from '../components/ProjectCard';
 
 const Projects = () => {
-  const projectsCounter = useAnimatedCounter({ target: 15 });
-  const clientsCounter = useAnimatedCounter({ target: 50 });
-  const experienceCounter = useAnimatedCounter({ target: 2 });
+  const { elementRef, hasBeenVisible } = useIntersectionObserver({ threshold: 0.1 });
 
   const projects = [
     {
@@ -88,62 +86,29 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen text-white pt-24">
-      <div className="max-w-7xl mx-auto px-8 py-12">
-        {/* Enhanced Header */}
-        <div className="text-center mb-20">
-          <div className="inline-block p-4 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl mb-8">
-            <Code2 className="w-12 h-12 text-indigo-400" />
-          </div>
-          <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
+    <div className="min-h-screen bg-slate-950 text-white pt-24">
+      <div className="max-w-7xl mx-auto px-8 py-16">
+        {/* Header */}
+        <div 
+          ref={elementRef}
+          className={`text-center mb-16 transition-all duration-1000 ${
+            hasBeenVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <h1 className="text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
             Featured Projects
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Showcasing innovative solutions and cutting-edge applications that demonstrate 
-            expertise in modern web development and problem-solving
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            A glimpse into what I've built.
           </p>
         </div>
 
-        {/* Animated Stats Section */}
-        <section className="mb-20">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div ref={projectsCounter.elementRef} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-indigo-400/50">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Code2 className="w-8 h-8 text-blue-400" />
-                <div className="text-5xl font-bold text-blue-400">{projectsCounter.count}+</div>
-              </div>
-              <div className="text-lg text-slate-300 font-medium">Projects Completed</div>
-              <div className="text-sm text-slate-400 mt-2">Across Various Industries</div>
-            </div>
-            
-            <div ref={clientsCounter.elementRef} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-purple-400/50">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Users className="w-8 h-8 text-purple-400" />
-                <div className="text-5xl font-bold text-purple-400">{clientsCounter.count}+</div>
-              </div>
-              <div className="text-lg text-slate-300 font-medium">Happy Clients</div>
-              <div className="text-sm text-slate-400 mt-2">99% Satisfaction Rate</div>
-            </div>
-            
-            <div ref={experienceCounter.elementRef} className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-green-400/50">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Award className="w-8 h-8 text-green-400" />
-                <div className="text-5xl font-bold text-green-400">{experienceCounter.count}+</div>
-              </div>
-              <div className="text-lg text-slate-300 font-medium">Years Experience</div>
-              <div className="text-sm text-slate-400 mt-2">Professional Development</div>
-            </div>
-          </div>
-        </section>
-
-        {/* Enhanced Projects Grid */}
-        <section className="mb-20">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} index={index} />
-            ))}
-          </div>
-        </section>
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {projects.slice(0, 6).map((project, index) => (
+            <ProjectCard key={index} project={project} index={index} />
+          ))}
+        </div>
       </div>
     </div>
   );
