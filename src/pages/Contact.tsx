@@ -112,10 +112,10 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Mail, href: "mailto:abdulraoof.k@gmail.com", label: "Email" }
+    { icon: Github, href: "https://github.com/raoofkottayil", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/raoofkottayil/", label: "LinkedIn" },
+    { icon: Twitter, href: "https://x.com/raoofkottayil", label: "Twitter" },
+    { icon: Mail, href: "raoofkottayil@gmail.com", label: "Email" }
   ];
 
   return (
