@@ -17,6 +17,8 @@ interface ProjectCardProps {
     features?: string[];
     challenges?: string[];
     results?: string[];
+    liveUrl?: string;
+    githubUrl?: string;
   };
   index: number;
 }
@@ -119,14 +121,52 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
           {/* Action Buttons */}
           <div className="flex gap-3 pt-2">
-            <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl text-sm font-medium hover:scale-105 transition-transform duration-300">
-              <ExternalLink className="w-4 h-4" />
-              Live Demo
-            </button>
-            <button className="flex items-center justify-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-600/30 rounded-xl text-sm font-medium hover:scale-105 transition-transform duration-300">
-              <Github className="w-4 h-4" />
-              Code
-            </button>
+            {project.liveUrl && project.status === 'Live' ? (
+              <a 
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl text-sm font-medium hover:scale-105 transition-transform duration-300"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Live Demo
+              </a>
+            ) : project.status === 'Completed' || project.status === 'Completed (No Demo)' ? (
+              <button 
+                disabled
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-slate-700/50 border border-slate-600/30 rounded-xl text-sm font-medium text-slate-400 cursor-not-allowed"
+              >
+                <ExternalLink className="w-4 h-4" />
+                No Demo
+              </button>
+            ) : (
+              <button 
+                disabled
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-slate-700/50 border border-slate-600/30 rounded-xl text-sm font-medium text-slate-400 cursor-not-allowed"
+              >
+                <ExternalLink className="w-4 h-4" />
+                No Demo
+              </button>
+            )}
+            {project.githubUrl ? (
+              <a 
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-600/30 rounded-xl text-sm font-medium hover:scale-105 transition-transform duration-300"
+              >
+                <Github className="w-4 h-4" />
+                Code
+              </a>
+            ) : (
+              <button 
+                disabled
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-slate-700/50 border border-slate-600/30 rounded-xl text-sm font-medium text-slate-400 cursor-not-allowed"
+              >
+                <Github className="w-4 h-4" />
+                Private
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -223,14 +263,52 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
                 {/* Action Buttons */}
                 <div className="flex gap-4 pt-4">
-                  <button className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl font-medium hover:scale-105 transition-transform">
-                    <ExternalLink className="w-5 h-5" />
-                    View Live Project
-                  </button>
-                  <button className="flex items-center gap-2 px-6 py-3 bg-slate-800/50 border border-slate-600/30 rounded-xl font-medium hover:scale-105 transition-transform">
-                    <Github className="w-5 h-5" />
-                    View Source Code
-                  </button>
+                  {project.liveUrl && project.status === 'Live' ? (
+                    <a 
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl font-medium hover:scale-105 transition-transform"
+                    >
+                      <ExternalLink className="w-5 h-5" />
+                      View Live Project
+                    </a>
+                  ) : project.status === 'Completed' || project.status === 'Completed (No Demo)' ? (
+                    <button 
+                      disabled
+                      className="flex items-center gap-2 px-6 py-3 bg-slate-700/50 border border-slate-600/30 rounded-xl font-medium text-slate-400 cursor-not-allowed"
+                    >
+                      <ExternalLink className="w-5 h-5" />
+                      No Demo Available
+                    </button>
+                  ) : (
+                    <button 
+                      disabled
+                      className="flex items-center gap-2 px-6 py-3 bg-slate-700/50 border border-slate-600/30 rounded-xl font-medium text-slate-400 cursor-not-allowed"
+                    >
+                      <ExternalLink className="w-5 h-5" />
+                      No Demo Available
+                    </button>
+                  )}
+                  {project.githubUrl ? (
+                    <a 
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-6 py-3 bg-slate-800/50 border border-slate-600/30 rounded-xl font-medium hover:scale-105 transition-transform"
+                    >
+                      <Github className="w-5 h-5" />
+                      View Source Code
+                    </a>
+                  ) : (
+                    <button 
+                      disabled
+                      className="flex items-center gap-2 px-6 py-3 bg-slate-700/50 border border-slate-600/30 rounded-xl font-medium text-slate-400 cursor-not-allowed"
+                    >
+                      <Github className="w-5 h-5" />
+                      Private Repository
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

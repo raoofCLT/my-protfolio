@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Clock, MessageCircle, User, CheckCircle, AlertCircle, ArrowUp } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Facebook, Clock, MessageCircle, User, CheckCircle, AlertCircle, ArrowUp, Instagram } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
@@ -43,27 +43,40 @@ const Contact = () => {
 
     setIsSubmitting(true);
     
-    try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      toast({
-        title: "Message Sent Successfully!",
-        description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+    try { 
+      // Send form data to backend API
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      setErrors({});
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        toast({
+          title: "Message Sent Successfully!",
+          description: result.message || "Thank you for reaching out. I'll get back to you within 24 hours.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+        setErrors({});
+      } else {
+        throw new Error(result.message || 'Failed to send message');
+      }
     } catch (error) {
+      console.error('Form submission error:', error);
       toast({
         title: "Failed to Send Message",
-        description: "There was an error sending your message. Please try again.",
+        description: error instanceof Error ? error.message : "There was an error sending your message. Please try again or contact me directly.",
         variant: "destructive",
       });
     } finally {
@@ -94,28 +107,28 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "abdulraoof.k@gmail.com",
+      value: "raoofkottayil@gmail.com",
       description: "Best way to reach me"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "India",
-      description: "Available for remote work"
+      value: "Kerala, India",
+      description: "Available for remote work and relocation"
     },
     {
-      icon: Clock,
-      label: "Response Time",
-      value: "Within 24 hours",
-      description: "Usually much faster"
+      icon: Phone,
+      label: "Phone",
+      value: "+91 90728 93647",
+      description: "Available for remote work and relocation"
     }
   ];
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/raoofkottayil", label: "GitHub" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/raoofkottayil/", label: "LinkedIn" },
-    { icon: Twitter, href: "https://x.com/raoofkottayil", label: "Twitter" },
-    { icon: Mail, href: "raoofkottayil@gmail.com", label: "Email" }
+    { icon: Github, href: "https://github.com/raoofCLT", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/raoof-clt/", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/raoof_clt/", label: "Instagram" },
+    { icon: Facebook, href: "https://www.facebook.com/raoofCLT", label: "Facebook" }
   ];
 
   return (
@@ -141,6 +154,8 @@ const Contact = () => {
                 <a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="glass-card rounded-xl p-3 flex flex-col items-center gap-2 transition-all duration-300 hover:scale-105 text-slate-300 hover:text-white text-center group"
                 >
                   <div className="w-8 h-8 glass-subtle rounded-xl flex items-center justify-center">
@@ -280,6 +295,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
+                  maxLength={500}
                   className={`w-full glass-subtle rounded-xl px-4 py-4 text-white placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 focus:border-transparent resize-none ${
                     errors.message ? 'ring-2 ring-red-400/50 border-red-400/50' : ''
                   }`}
@@ -306,7 +322,7 @@ const Contact = () => {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Sending...
+                    Sending Message...
                   </>
                 ) : (
                   <>
@@ -330,16 +346,19 @@ const Contact = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:abdulraoof.k@gmail.com"
+                href="mailto:raoofkottayil@gmail.com"
                 className="px-6 py-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-xl font-semibold hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/25 flex items-center justify-center gap-3 focus:outline-none focus:ring-2 focus:ring-indigo-400/50"
               >
                 <Mail className="w-5 h-5" />
                 Email Me Directly
               </a>
-              <button className="px-6 py-3 glass-morphism border border-slate-600/50 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 focus:outline-none focus:ring-2 focus:ring-slate-400/50">
+              <a
+                href="tel:+919072893647"
+                className="px-6 py-3 glass-morphism border border-slate-600/50 rounded-xl font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 focus:outline-none focus:ring-2 focus:ring-slate-400/50"
+              >
                 <Phone className="w-5 h-5" />
-                Schedule a Call
-              </button>
+                Call Me Now
+              </a>
             </div>
           </div>
         </div>

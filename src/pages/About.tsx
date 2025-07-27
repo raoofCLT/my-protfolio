@@ -1,64 +1,134 @@
+import {
+  Award,
+  Users,
+  Code,
+  Rocket,
+  Target,
+  Lightbulb,
+  Trophy,
+  Star,
+  MapPin,
+  Calendar,
+  Heart,
+} from "lucide-react";
+import { useAnimatedCounter } from "../hooks/useAnimatedCounter";
+import { useState } from "react";
 
-import { Award, Users, Code, Rocket, Target, Lightbulb, Trophy, Star, MapPin, Calendar, Heart } from 'lucide-react';
-import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
+// Company Logo Component with fallback
+const CompanyLogo = ({ 
+  imageUrl, 
+  fallbackIcon, 
+  className = "w-8 h-8" 
+}: { 
+  imageUrl: string; 
+  fallbackIcon: React.ReactNode; 
+  className?: string;
+}) => {
+  const [imageError, setImageError] = useState(false);
+
+  if (imageError) {
+    return (
+      <div className="p-4 glass-subtle rounded-2xl text-indigo-400">
+        {fallbackIcon}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={imageUrl}
+      alt="Company Logo"
+      className="w-16 h-16 rounded-2xl"
+      onError={() => setImageError(true)}
+      style={{ objectFit: 'contain' }}
+    />
+  );
+};
 
 const About = () => {
-  const experienceCounter = useAnimatedCounter({ target: 6 });
-  const projectsCounter = useAnimatedCounter({ target: 50 });
+  const experienceCounter = useAnimatedCounter({ target: 1 });
+  const projectsCounter = useAnimatedCounter({ target: 6 });
   const clientsCounter = useAnimatedCounter({ target: 25 });
   const satisfactionCounter = useAnimatedCounter({ target: 99 });
 
   const experiences = [
     {
       icon: <Code className="w-8 h-8" />,
-      title: "Senior Full Stack Developer",
-      company: "Tech Innovations Inc.",
-      period: "2022 - Present",
-      description: "Leading development of enterprise-scale applications, mentoring junior developers, and architecting scalable solutions that serve millions of users.",
-      achievements: ["Led team of 8 developers", "Improved performance by 40%", "Delivered 15+ major projects", "Implemented CI/CD pipelines"]
-    },
-    {
-      icon: <Rocket className="w-8 h-8" />,
-      title: "Full Stack Developer",
-      company: "Digital Solutions Corp",
-      period: "2020 - 2022",
-      description: "Developed modern web applications using React, Node.js, and cloud technologies with focus on user experience and scalable architecture.",
-      achievements: ["Built 20+ web applications", "Reduced loading time by 60%", "99.9% uptime achievement", "Mentored 5+ junior developers"]
-    },
-    {
-      icon: <Target className="w-8 h-8" />,
+      logoUrl: "https://media.licdn.com/dms/image/v2/D4D0BAQERydTRc7i5Pg/company-logo_200_200/company-logo_200_200/0/1732527011160/codo_ai_logo?e=2147483647&v=beta&t=2wzNLgZPIoKlLXXpAT99SNiF1qpnV3goeaEjWT0_g_k",
       title: "Frontend Developer",
-      company: "StartupXYZ",
-      period: "2019 - 2020",
-      description: "Created responsive web applications and implemented modern UI/UX designs for various client projects with focus on mobile-first approach.",
-      achievements: ["Designed 10+ user interfaces", "Increased user engagement by 35%", "Mobile-first approach", "Cross-browser compatibility"]
+      company: "CODO AI Innovations",
+      location: "Remote | Kerala, India",
+      period: "Dec 2024 – Present",
+      description:
+        "Building responsive web interfaces using React and Tailwind CSS. Ensuring browser compatibility, collaborating with designers and backend teams, and fixing UI issues to improve performance.",
+      achievements: [
+        "Built responsive UIs with React & Tailwind CSS",
+        "Ensured cross-browser compatibility",
+        "Integrated REST APIs smoothly",
+        "Fixed UI bugs and improved performance"
+      ]
+    },
+    {
+      icon: <Code className="w-8 h-8" />,
+      logoUrl: "",
+      title: "Full Stack Developer",
+      company: "Freelance Projects",
+      location: "Remote",
+      period: "Oct 2024 – Present",
+      description:
+        "Developing full-stack web apps using React, Node.js, and MongoDB. Using Firebase for authentication and storage, and deploying projects with Vercel and CI/CD workflows.",
+      achievements: [
+        "Created full-stack apps with React & Node.js",
+        "Built and managed REST APIs",
+        "Used Firebase for auth and cloud features",
+        "Deployed projects with CI/CD on Vercel"
+      ]
     }
   ];
-
+  
   const personalInfo = [
-    { icon: <MapPin className="w-5 h-5" />, label: "Based in Kerala, India" },
-    { icon: <Calendar className="w-5 h-5" />, label: "Available for remote work" },
-    { icon: <Heart className="w-5 h-5" />, label: "Passionate about clean code" }
+    {
+      icon: <Calendar className="w-5 h-5" />,
+      label: "Available for remote work and full time",
+    },
+    {
+      icon: <Heart className="w-5 h-5" />,
+      label: "Passionate about clean code",
+    },
   ];
 
   const technicalSkills = [
-    { 
-      category: "Frontend Development", 
-      skills: ["React", "TypeScript", "Next.js", "Vue.js", "Tailwind CSS", "JavaScript", "HTML5", "CSS3"]
+    {
+      category: "Languages",
+      skills: ["JavaScript", "TypeScript", "HTML5", "CSS3"],
     },
-    { 
-      category: "Backend Development", 
-      skills: ["Node.js", "Python", "Express", "Django", "GraphQL", "REST APIs", "Microservices"]
+    {
+      category: "Frontend Development",
+      skills: [
+        "React",
+        "Next.js",
+        "React Native",
+        "Tailwind CSS",
+        "Redux",
+        "Chakra UI",
+      ],
     },
-    { 
-      category: "Database & Cloud", 
-      skills: ["MongoDB", "PostgreSQL", "Redis", "AWS", "Docker", "Kubernetes", "Firebase"]
+    {
+      category: "Backend Development",
+      skills: [
+        "Node.js",
+        "Express.js",
+        "GraphQL",
+        "JWT",
+        "Socket.io",
+      ],
     },
-    { 
-      category: "Tools & Methodologies", 
-      skills: ["Git", "VS Code", "Agile", "CI/CD", "Testing", "DevOps", "Linux"]
-    }
+    {
+      category: "Database & DevOps",
+      skills: ["MongoDB", "Firebase", "PostgreSQL", "Vercel", "CI/CD"],
+    },
   ];
+  
 
   return (
     <div className="min-h-screen text-white pt-24">
@@ -73,8 +143,9 @@ const About = () => {
           </h1>
           <div className="max-w-4xl mx-auto space-y-6">
             <p className="text-xl text-slate-300 leading-relaxed">
-              Passionate full-stack developer with over 6 years of experience creating innovative digital solutions 
-              that drive business growth and enhance user experiences.
+              Passionate full-stack developer with over 1+ years of experience
+              creating innovative digital solutions that drive business growth
+              and enhance user experiences.
             </p>
             <div className="flex items-center justify-center gap-8 text-slate-400">
               {personalInfo.map((info, index) => (
@@ -89,22 +160,41 @@ const About = () => {
 
         {/* Animated Stats Section */}
         <section className="mb-20">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div ref={experienceCounter.elementRef} className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-blue-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300">
-              <div className="text-5xl font-bold text-blue-400 mb-2">{experienceCounter.count}+</div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div
+              ref={experienceCounter.elementRef}
+              className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-blue-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300"
+            >
+              <div className="text-5xl font-bold text-blue-400 mb-2">
+                {experienceCounter.count}+
+              </div>
               <div className="text-slate-300 font-medium">Years Experience</div>
             </div>
-            <div ref={projectsCounter.elementRef} className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-purple-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300">
-              <div className="text-5xl font-bold text-purple-400 mb-2">{projectsCounter.count}+</div>
-              <div className="text-slate-300 font-medium">Projects Completed</div>
+            <div
+              ref={projectsCounter.elementRef}
+              className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-purple-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300"
+            >
+              <div className="text-5xl font-bold text-purple-400 mb-2">
+                {projectsCounter.count}+
+              </div>
+              <div className="text-slate-300 font-medium">
+                Projects Completed
+              </div>
             </div>
-            <div ref={clientsCounter.elementRef} className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-green-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300">
+            {/* <div ref={clientsCounter.elementRef} className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-green-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300">
               <div className="text-5xl font-bold text-green-400 mb-2">{clientsCounter.count}+</div>
               <div className="text-slate-300 font-medium">Happy Clients</div>
-            </div>
-            <div ref={satisfactionCounter.elementRef} className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-yellow-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300">
-              <div className="text-5xl font-bold text-yellow-400 mb-2">{satisfactionCounter.count}%</div>
-              <div className="text-slate-300 font-medium">Client Satisfaction</div>
+            </div> */}
+            <div
+              ref={satisfactionCounter.elementRef}
+              className="text-center bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-xl border border-yellow-400/20 rounded-2xl p-8 hover:scale-105 transition-all duration-300"
+            >
+              <div className="text-5xl font-bold text-yellow-400 mb-2">
+                {satisfactionCounter.count}%
+              </div>
+              <div className="text-slate-300 font-medium">
+                Client Satisfaction
+              </div>
             </div>
           </div>
         </section>
@@ -117,31 +207,45 @@ const About = () => {
               Professional Journey
             </h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-              A journey of continuous learning, innovation, and delivering exceptional results
+              A journey of continuous learning, innovation, and delivering
+              exceptional results
             </p>
           </div>
-          
+
           <div className="space-y-8">
             {experiences.map((exp, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="glass-card rounded-2xl p-8 hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="flex items-center gap-4 lg:min-w-0 lg:flex-shrink-0">
-                    <div className="p-4 glass-subtle rounded-2xl text-indigo-400">
-                      {exp.icon}
-                    </div>
+                    {exp.logoUrl ? (
+                      <CompanyLogo 
+                        imageUrl={exp.logoUrl} 
+                        fallbackIcon={exp.icon}
+                      />
+                    ) : (
+                      <div className="p-4 glass-subtle rounded-2xl text-indigo-400">
+                        {exp.icon}
+                      </div>
+                    )}
                     <div className="min-w-0">
-                      <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
-                      <p className="text-indigo-300 font-medium">{exp.company}</p>
+                      <h3 className="text-xl font-semibold text-white">
+                        {exp.title}
+                      </h3>
+                      <p className="text-indigo-300 font-medium">
+                        {exp.company}
+                      </p>
                       <p className="text-slate-400 text-sm">{exp.period}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex-1 min-w-0">
-                    <p className="text-slate-300 leading-relaxed mb-4">{exp.description}</p>
+                    <p className="text-slate-300 leading-relaxed mb-4">
+                      {exp.description}
+                    </p>
                     <div className="grid grid-cols-2 gap-2">
                       {exp.achievements.map((achievement, achIndex) => (
                         <div
@@ -154,49 +258,6 @@ const About = () => {
                       ))}
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Enhanced Technical Skills - Removed Colors */}
-        <section>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-200 mb-4 flex items-center justify-center gap-3">
-              <Lightbulb className="w-10 h-10 text-yellow-400" />
-              Technical Expertise
-            </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-              Comprehensive skill set across modern technologies and development practices
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {technicalSkills.map((skillGroup, index) => (
-              <div 
-                key={index} 
-                className="glass-card rounded-2xl p-8 hover:-translate-y-1 transition-all duration-300 hover:shadow-xl"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex items-center justify-center mb-6">
-                  <h3 className="text-2xl font-bold text-indigo-400 text-center">
-                    {skillGroup.category}
-                  </h3>
-                </div>
-                
-                {/* Skills Grid */}
-                <div className="grid grid-cols-2 gap-3">
-                  {skillGroup.skills.map((skill, skillIndex) => (
-                    <div
-                      key={skillIndex}
-                      className="glass-subtle rounded-xl p-4 text-center hover:scale-105 transition-all duration-300"
-                    >
-                      <span className="text-slate-300 font-medium">
-                        {skill}
-                      </span>
-                    </div>
-                  ))}
                 </div>
               </div>
             ))}

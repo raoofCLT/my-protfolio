@@ -1,5 +1,5 @@
 
-import { Code, Database, Globe, Palette, Users, Zap, Trophy, Target } from 'lucide-react';
+import { Code, Database, Globe, Palette, Users, Zap, Trophy, Target, Wrench } from 'lucide-react';
 import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 
 const Skills = () => {
@@ -12,25 +12,25 @@ const Skills = () => {
     {
       icon: <Code className="w-8 h-8" />,
       title: "Frontend Development",
-      skills: ["React", "Next.js", "TypeScript", "Vue.js", "Angular", "Tailwind CSS"],
+      skills: ["React", "React Native", "Next.js", "TypeScript","Tailwind CSS","Chakra UI","Redux"],
       level: "Expert"
     },
     {
       icon: <Database className="w-8 h-8" />,
       title: "Backend Development",
-      skills: ["Node.js", "Express", "Python", "Django", "GraphQL", "REST APIs"],
+      skills: ["Node.js", "Express", "GraphQL", "REST APIs","JWT","Socket.io"],
       level: "Advanced"
     },
     {
       icon: <Globe className="w-8 h-8" />,
       title: "Database & Cloud",
-      skills: ["MongoDB", "PostgreSQL", "MySQL", "AWS", "Docker", "Kubernetes"],
+      skills: ["MongoDB", "PostgreSQL", "MySQL", "AWS","Firebase",],
       level: "Advanced"
     },
     {
-      icon: <Palette className="w-8 h-8" />,
-      title: "Design & Tools",
-      skills: ["Figma", "Adobe XD", "Photoshop", "Git", "VS Code", "Linux"],
+      icon: <Wrench className="w-8 h-8" />,
+      title: "Tools & Platforms",
+      skills: ["Figma","Photoshop", "Git", "VS Code","Vercel","CI/CD"],
       level: "Intermediate"
     }
   ];
@@ -72,7 +72,7 @@ const Skills = () => {
         </div>
 
         {/* Stats Section with Animated Counters */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <div className="grid md:grid-cols-4 gap-6">
             <div ref={projectsCounter.elementRef} className="glass-card rounded-2xl p-6 text-center card-hover">
               <div className="text-4xl font-bold text-indigo-400 mb-2">{projectsCounter.count}+</div>
@@ -91,7 +91,7 @@ const Skills = () => {
               <div className="text-slate-300">Years Experience</div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Skills Categories */}
         <section className="mb-16">
@@ -103,9 +103,9 @@ const Skills = () => {
                     {category.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-slate-200">{category.title}</h3>
-                  <span className="ml-auto px-3 py-1 glass-subtle rounded-lg text-sm text-indigo-300">
+                  {/* <span className="ml-auto px-3 py-1 glass-subtle rounded-lg text-sm text-indigo-300">
                     {category.level}
-                  </span>
+                  </span> */}
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIndex) => (
@@ -123,7 +123,7 @@ const Skills = () => {
         </section>
 
         {/* Achievements */}
-        <section>
+        {/* <section>
           <h2 className="text-3xl font-bold text-slate-200 mb-8 flex items-center gap-3">
             <Trophy className="w-8 h-8 text-indigo-400" />
             Key Achievements
@@ -141,7 +141,7 @@ const Skills = () => {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
       </div>
     </div>
   );
