@@ -20,15 +20,15 @@ cp env.example .env
 2. Edit the `.env` file with your Gmail credentials:
 ```env
 EMAIL_SERVICE=gmail
-EMAIL_USER=raoofkottayil@gmail.com
+EMAIL_USER=example@gmail.com
 EMAIL_PASS=your-gmail-app-password
-EMAIL_TO=raoofkottayil@gmail.com
+EMAIL_TO=example@gmail.com
 PORT=5000
 NODE_ENV=development
 CORS_ORIGIN=http://localhost:5173
 ```
 
-**Important:** All contact form emails will be sent to `raoofkottayil@gmail.com` (your email). The user's email address is only used for the "reply-to" functionality so you can reply directly to them.
+**Important:** All contact form emails will be sent to `example@gmail.com` (your email). The user's email address is only used for the "reply-to" functionality so you can reply directly to them.
 
 ### 3. Gmail App Password Setup
 1. Go to your Google Account settings: https://myaccount.google.com/
@@ -83,7 +83,7 @@ npm run test-contact
 - Includes sender information
 - Formatted message content
 - Reply-to set to sender's email
-- **Email Flow:** User's form → Your email (raoofkottayil@gmail.com) → You can reply directly to user
+- **Email Flow:** User's form → Your email (example@gmail.com) → You can reply directly to user
 
 ## 🔧 Troubleshooting
 

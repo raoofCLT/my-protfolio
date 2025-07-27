@@ -54,34 +54,8 @@ const Projects = () => {
       ],
       status: "Completed",
       category: "E-commerce",
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      image: "/Projects/Yara E-commerce.png",
       githubUrl: "https://github.com/raoofCLT/Yara-e-commerce-app"
-    },
-    {
-      title: "StartupHub",
-      year: "2024",
-      description:
-        "Community platform for startup profiles and investor connections.",
-      longDescription:
-        "A Next.js & TypeScript-based platform where users create startup profiles and connect with investors. Features include GitHub auth, real-time updates, and Sanity CMS for content.",
-      tech: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN", "Sanity"],
-      metrics: [
-        "🧑‍💼 GitHub Auth",
-        "📈 Real-time Updates",
-        "🧰 CMS Powered"
-      ],
-      features: [
-        "GitHub authentication with NextAuth.js",
-        "Dynamic startup profile management",
-        "Search & filtering features",
-        "Real-time updates and content management"
-      ],
-      status: "Completed",
-      category: "Community Platform",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      githubUrl: "https://github.com/raoofCLT/Startup-Hub"
     },
     {
       title: "Libraria – E-Library Platform",
@@ -104,9 +78,32 @@ const Projects = () => {
       ],
       status: "Completed",
       category: "E-library",
-      image:
-        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
+      image: "/Projects/Libraria.png",
       githubUrl: "https://github.com/raoofCLT/Libraria-Client"
+    },
+    {
+      title: "StartupHub",
+      year: "2024",
+      description:
+        "Community platform for startup profiles and investor connections.",
+      longDescription:
+        "A Next.js & TypeScript-based platform where users create startup profiles and connect with investors. Features include GitHub auth, real-time updates, and Sanity CMS for content.",
+      tech: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN", "Sanity"],
+      metrics: [
+        "🧑‍💼 GitHub Auth",
+        "📈 Real-time Updates",
+        "🧰 CMS Powered"
+      ],
+      features: [
+        "GitHub authentication with NextAuth.js",
+        "Dynamic startup profile management",
+        "Search & filtering features",
+        "Real-time updates and content management"
+      ],
+      status: "Completed",
+      category: "Community Platform",
+      image: "/Projects/StartupHub.png",
+      githubUrl: "https://github.com/raoofCLT/Startup-Hub"
     },
     {
       title: "Chatzo Social Messaging",
@@ -129,11 +126,10 @@ const Projects = () => {
       status: "Completed",
       category: "Social Media",
       image:
-        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
       githubUrl: "https://github.com/raoofCLT/Chatzo"
     }
   ];
-  
 
 
   return (
