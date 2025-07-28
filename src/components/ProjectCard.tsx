@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ExternalLink, Github, Calendar, X, ArrowRight } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
@@ -26,6 +26,20 @@ interface ProjectCardProps {
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { elementRef, hasBeenVisible } = useIntersectionObserver({ threshold: 0.1 });
+
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen]);
 
   return (
     <>
