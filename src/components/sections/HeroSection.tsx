@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
 
 export const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -8,6 +8,12 @@ export const HeroSection = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const socialLinks = [
+    { icon: Github, href: "https://github.com", label: "GitHub" },
+    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+  ];
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 px-4 py-20">
@@ -104,6 +110,32 @@ export const HeroSection = () => {
             Contact Me
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
+        </motion.div>
+
+        {/* Social Links */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+          className="mt-12"
+        >
+          <p className="text-slate-400 text-center mb-6">Follow Me</p>
+          <div className="flex justify-center gap-4">
+            {socialLinks.map((social, index) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                className="w-12 h-12 bg-slate-800/50 border border-slate-700/50 rounded-full flex items-center justify-center hover:border-blue-400/50 hover:scale-110 transition-all duration-300 group"
+              >
+                <social.icon className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors duration-300" />
+              </motion.a>
+            ))}
+          </div>
         </motion.div>
       </div>
 

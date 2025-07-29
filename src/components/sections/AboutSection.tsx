@@ -30,12 +30,50 @@ export const AboutSection = () => {
       </div>
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Text Content */}
+          {/* Profile Image - Shows first on mobile */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex justify-center lg:justify-end order-1 lg:order-2"
+          >
+            <div className="relative">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 p-1"
+              >
+                <div className="w-full h-full rounded-full bg-slate-900" />
+              </motion.div>
+              
+              <motion.img
+                src="/profilepic.jpeg"
+                alt="Abdul Raoof"
+                className="relative z-10 w-80 h-80 rounded-full object-cover border-4 border-slate-800"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
+              
+              {/* Floating Elements */}
+              <motion.div
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute top-10 -right-10 w-20 h-20 bg-gradient-to-r from-blue-400/20 to-purple-500/20 rounded-full blur-xl"
+              />
+              <motion.div
+                animate={{ y: [10, -10, 10] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute bottom-10 -left-10 w-16 h-16 bg-gradient-to-r from-purple-400/20 to-blue-500/20 rounded-full blur-xl"
+              />
+            </div>
+          </motion.div>
+
+          {/* Text Content - Shows second on mobile */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-8 order-2 lg:order-1"
           >
             <motion.h2 
               className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8"
@@ -86,44 +124,6 @@ export const AboutSection = () => {
                 </span>
               ))}
             </motion.div>
-          </motion.div>
-
-          {/* Profile Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex justify-center lg:justify-end"
-          >
-            <div className="relative">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 p-1"
-              >
-                <div className="w-full h-full rounded-full bg-slate-900" />
-              </motion.div>
-              
-              <motion.img
-                src="/profilepic.jpeg"
-                alt="Abdul Raoof"
-                className="relative z-10 w-80 h-80 rounded-full object-cover border-4 border-slate-800"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              />
-              
-              {/* Floating Elements */}
-              <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute top-10 -right-10 w-20 h-20 bg-gradient-to-r from-blue-400/20 to-purple-500/20 rounded-full blur-xl"
-              />
-              <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute bottom-10 -left-10 w-16 h-16 bg-gradient-to-r from-purple-400/20 to-blue-500/20 rounded-full blur-xl"
-              />
-            </div>
           </motion.div>
         </div>
       </div>
