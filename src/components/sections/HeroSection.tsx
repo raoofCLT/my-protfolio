@@ -80,6 +80,15 @@ export const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
+          <a
+            href="/Abdul Raoof.pdf"
+            download="Abdul_Raoof_CV.pdf"
+            className="group px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white font-medium hover:shadow-xl hover:shadow-green-500/25 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+          >
+            Download CV
+            <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
+          </a>
+
           <button
             onClick={() => scrollToSection('projects')}
             className="group px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-medium hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 flex items-center gap-2"

@@ -45,7 +45,29 @@ export const ProjectsSection = () => {
   const { ref, isInView } = useScrollReveal();
 
   return (
-    <section id="projects" ref={ref} className="min-h-screen flex items-center bg-slate-900 py-20">
+    <section id="projects" ref={ref} className="relative min-h-screen flex items-center bg-slate-900 py-20 overflow-hidden">
+      {/* Animated Background Particles */}
+      <div className="absolute inset-0">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-green-400/20 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [null, -12, 12],
+              opacity: [0.2, 0.7, 0.2],
+            }}
+            transition={{
+              duration: 6 + Math.random() * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.h2 
           className="text-5xl font-bold text-center text-white mb-16"

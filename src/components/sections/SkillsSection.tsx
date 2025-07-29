@@ -29,7 +29,29 @@ export const SkillsSection = () => {
   const { ref, isInView } = useScrollReveal();
 
   return (
-    <section id="skills" ref={ref} className="h-screen flex items-center bg-slate-900">
+    <section id="skills" ref={ref} className="relative h-screen flex items-center bg-slate-900 overflow-hidden">
+      {/* Animated Background Particles */}
+      <div className="absolute inset-0">
+        {[...Array(25)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-purple-400/20 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [null, -10, 10],
+              opacity: [0.2, 0.6, 0.2],
+            }}
+            transition={{
+              duration: 5 + Math.random() * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.h2 
           className="text-5xl font-bold text-center text-white mb-16"
@@ -41,7 +63,7 @@ export const SkillsSection = () => {
           <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"> Skills</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}

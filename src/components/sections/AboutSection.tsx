@@ -5,7 +5,29 @@ export const AboutSection = () => {
   const { ref, isInView } = useScrollReveal();
 
   return (
-    <section id="about" ref={ref} className="h-screen flex items-center bg-slate-900">
+    <section id="about" ref={ref} className="relative h-screen flex items-center bg-slate-900 overflow-hidden">
+      {/* Animated Background Particles */}
+      <div className="absolute inset-0">
+        {[...Array(30)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-400/20 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [null, -15, 15],
+              opacity: [0.2, 0.8, 0.2],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}

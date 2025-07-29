@@ -38,7 +38,29 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" ref={ref} className="min-h-screen flex items-center bg-slate-900 py-20">
+    <section id="contact" ref={ref} className="relative min-h-screen flex items-center bg-slate-900 py-20 overflow-hidden">
+      {/* Animated Background Particles */}
+      <div className="absolute inset-0">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-emerald-400/20 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [null, -8, 8],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{
+              duration: 7 + Math.random() * 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.h2 
           className="text-5xl font-bold text-center text-white mb-16"
