@@ -5,7 +5,7 @@ export const AboutSection = () => {
   const { ref, isInView } = useScrollReveal();
 
   return (
-    <section id="about" ref={ref} className="relative h-screen flex items-center bg-slate-900 overflow-hidden">
+    <section id="about" ref={ref} className="relative min-h-screen flex items-center bg-slate-900 overflow-hidden px-4 py-20">
       {/* Animated Background Particles */}
       <div className="absolute inset-0">
         {[...Array(30)].map((_, i) => (
@@ -38,7 +38,7 @@ export const AboutSection = () => {
             className="space-y-8"
           >
             <motion.h2 
-              className="text-5xl font-bold text-white mb-8"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.2 }}

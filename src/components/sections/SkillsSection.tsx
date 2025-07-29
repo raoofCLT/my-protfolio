@@ -29,7 +29,7 @@ export const SkillsSection = () => {
   const { ref, isInView } = useScrollReveal();
 
   return (
-    <section id="skills" ref={ref} className="relative h-screen flex items-center bg-slate-900 overflow-hidden">
+    <section id="skills" ref={ref} className="relative min-h-screen flex items-center bg-slate-900 overflow-hidden px-4 py-20">
       {/* Animated Background Particles */}
       <div className="absolute inset-0">
         {[...Array(25)].map((_, i) => (

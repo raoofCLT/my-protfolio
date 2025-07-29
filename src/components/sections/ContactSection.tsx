@@ -63,7 +63,7 @@ export const ContactSection = () => {
       </div>
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.h2 
-          className="text-5xl font-bold text-center text-white mb-16"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}

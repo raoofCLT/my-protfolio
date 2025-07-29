@@ -10,7 +10,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 px-4 py-20">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
       
@@ -45,7 +45,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1 
-            className="text-6xl md:text-8xl font-bold text-white mb-6"
+            className="text-4xl sm:text-6xl md:text-8xl font-bold text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -56,7 +56,7 @@ export const HeroSection = () => {
         </motion.div>
 
         <motion.h2 
-          className="text-2xl md:text-3xl text-slate-300 mb-8 font-light"
+          className="text-xl sm:text-2xl md:text-3xl text-slate-300 mb-8 font-light"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
