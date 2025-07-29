@@ -2,33 +2,26 @@ import { motion } from 'framer-motion';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const skillCategories = {
+  //  'React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Chakra UI', 'HTML5', 'CSS3', 'JavaScript', 'Redux'
   Frontend: [
-    'React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Vue.js', 'HTML5', 'CSS3', 'JavaScript'
+    'React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Redux'
   ],
   Backend: [
-    'Node.js', 'Express', 'Python', 'Django', 'FastAPI', 'REST APIs', 'GraphQL'
+    "Node.js", "Express", "GraphQL", "REST APIs","JWT","Socket.io"
   ],
-  Database: [
-    'MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'Firebase', 'Supabase'
+  'Database & Cloud': [
+    'MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'AWS','Vercel'
   ],
-  Cloud: [
-    'AWS', 'Google Cloud', 'Vercel', 'Netlify', 'Digital Ocean'
-  ],
-  DevOps: [
-    'Docker', 'Git', 'GitHub Actions', 'CI/CD', 'Linux'
-  ],
-  Tools: [
-    'VS Code', 'Postman', 'Figma', 'Jira', 'Slack', 'Notion'
+  'Tools & Platforms' : [
+    'VS Code', 'Postman', 'Figma', 'Git', 'Vercel', 'CI/CD'
   ]
 };
 
 const categoryColors = {
   Frontend: 'from-blue-400 to-cyan-400',
   Backend: 'from-green-400 to-emerald-400',
-  Database: 'from-purple-400 to-pink-400',
-  Cloud: 'from-orange-400 to-red-400',
-  DevOps: 'from-indigo-400 to-purple-400',
-  Tools: 'from-yellow-400 to-orange-400'
+  'Database & Cloud': 'from-purple-400 to-pink-400',
+  'Tools & Platforms' : 'from-yellow-400 to-orange-400'
 };
 
 export const SkillsSection = () => {
@@ -69,7 +62,7 @@ export const SkillsSection = () => {
           <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"> Skills</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2  gap-6 max-w-5xl mx-auto">
           {Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
             <motion.div
               key={category}

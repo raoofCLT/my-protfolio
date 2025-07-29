@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send, CheckCircle, AlertCircle, Instagram, Facebook } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useToast } from '../../hooks/use-toast';
 
 export const ContactSection = () => {
   const { ref, isInView } = useScrollReveal();
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,39 +14,127 @@ export const ContactSection = () => {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+
+  const validateForm = () => {
+    const newErrors: {[key: string]: string} = {};
+    
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+    if (!formData.subject.trim()) newErrors.subject = 'Subject is required';
+    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    else if (formData.message.length < 10) newErrors.message = 'Message must be at least 10 characters';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      toast({
+        title: "Validation Error",
+        description: "Please fix the errors below and try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try { 
+      // Send form data to backend API
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        toast({
+          title: "Message Sent Successfully!",
+          description: result.message || "Thank you for reaching out. I'll get back to you within 24 hours.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+        setErrors({});
+      } else {
+        throw new Error(result.message || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast({
+        title: "Failed to Send Message",
+        description: error instanceof Error ? error.message : "There was an error sending your message. Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+  const handleFocus = (fieldName: string) => {
+    setFocusedField(fieldName);
   };
 
-  const socialLinks = [
-    { icon: Github, href: "https://github.com", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  ];
+  const handleBlur = () => {
+    setFocusedField(null);
+  };
+
+  const getLabelClass = (fieldName: string) => {
+    const hasValue = formData[fieldName as keyof typeof formData]?.trim().length > 0;
+    const isFocused = focusedField === fieldName;
+    
+    if (hasValue || isFocused) {
+      return 'absolute left-6 top-1 text-xs text-blue-400 transition-all duration-300';
+    } else {
+      return 'absolute left-6 top-4 text-slate-400 transition-all duration-300';
+    }
+  };
 
   const contactInfo = [
-    { icon: Mail, value: "abdul.raoof@example.com", href: "mailto:abdul.raoof@example.com" },
-    { icon: Phone, value: "+1 (555) 123-4567", href: "tel:+15551234567" },
-    { icon: MapPin, value: "San Francisco, CA", href: "#" },
+    { icon: Mail, value: "raoofkottayil@gmail.com", href: "mailto:raoofkottayil@gmail.com" },
+    { icon: Phone, value: "+91 90728 93647", href: "tel:+919072893647" },
+    { icon: MapPin, value: "Kerala, India", href: "#" },
   ];
 
   return (
     <section id="contact" ref={ref} className="relative min-h-screen flex items-center bg-slate-900 py-20 overflow-hidden">
       {/* Animated Background Particles */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-emerald-400/20 rounded-full"
+            className="absolute w-1 h-1 bg-emerald-400/20 rounded-full pointer-events-none"
             initial={{
               x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
@@ -61,7 +151,7 @@ export const ContactSection = () => {
           />
         ))}
       </div>
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <motion.h2 
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -97,7 +187,7 @@ export const ContactSection = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-slate-800/50 border border-slate-700/50 rounded-xl hover:border-blue-400/50 transition-all duration-300 hover:scale-105 group"
+                  className="flex items-center gap-4 p-4 bg-slate-800/50 border border-slate-700/50 rounded-xl hover:border-blue-400/50 transition-all duration-300 hover:scale-105 group relative z-20"
                 >
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <item.icon className="w-5 h-5 text-white" />
@@ -108,27 +198,6 @@ export const ContactSection = () => {
                 </motion.a>
               ))}
             </div>
-
-            {/* Social Links */}
-            <div className="pt-8">
-              <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
-              <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    className="w-12 h-12 bg-slate-800/50 border border-slate-700/50 rounded-full flex items-center justify-center hover:border-blue-400/50 hover:scale-110 transition-all duration-300 group"
-                  >
-                    <social.icon className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors duration-300" />
-                  </motion.a>
-                ))}
-              </div>
-            </div>
           </motion.div>
 
           {/* Contact Form */}
@@ -136,6 +205,7 @@ export const ContactSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative z-20"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -145,13 +215,24 @@ export const ContactSection = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 peer"
+                    onFocus={() => handleFocus('name')}
+                    onBlur={handleBlur}
+                    className={`w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:outline-none transition-all duration-300 peer relative z-30 ${
+                      errors.name ? 'border-red-400/50 focus:border-red-400' : 'focus:border-blue-400'
+                    }`}
                     placeholder="Your Name"
                     required
+                    aria-describedby={errors.name ? 'name-error' : undefined}
                   />
-                  <label className="absolute left-6 top-4 text-slate-400 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-400 peer-valid:top-1 peer-valid:text-xs">
+                  <label className={getLabelClass('name')}>
                     Your Name
                   </label>
+                  {errors.name && (
+                    <p id="name-error" className="text-red-400 text-sm mt-1 flex items-center gap-1">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
 
                 <div className="relative">
@@ -160,13 +241,24 @@ export const ContactSection = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 peer"
+                    onFocus={() => handleFocus('email')}
+                    onBlur={handleBlur}
+                    className={`w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:outline-none transition-all duration-300 peer relative z-30 ${
+                      errors.email ? 'border-red-400/50 focus:border-red-400' : 'focus:border-blue-400'
+                    }`}
                     placeholder="Your Email"
                     required
+                    aria-describedby={errors.email ? 'email-error' : undefined}
                   />
-                  <label className="absolute left-6 top-4 text-slate-400 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-400 peer-valid:top-1 peer-valid:text-xs">
+                  <label className={getLabelClass('email')}>
                     Your Email
                   </label>
+                  {errors.email && (
+                    <p id="email-error" className="text-red-400 text-sm mt-1 flex items-center gap-1">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -176,13 +268,24 @@ export const ContactSection = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 peer"
+                  onFocus={() => handleFocus('subject')}
+                  onBlur={handleBlur}
+                  className={`w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:outline-none transition-all duration-300 peer relative z-30 ${
+                    errors.subject ? 'border-red-400/50 focus:border-red-400' : 'focus:border-blue-400'
+                  }`}
                   placeholder="Subject"
                   required
+                  aria-describedby={errors.subject ? 'subject-error' : undefined}
                 />
-                <label className="absolute left-6 top-4 text-slate-400 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-400 peer-valid:top-1 peer-valid:text-xs">
+                <label className={getLabelClass('subject')}>
                   Subject
                 </label>
+                {errors.subject && (
+                  <p id="subject-error" className="text-red-400 text-sm mt-1 flex items-center gap-1">
+                    <AlertCircle className="w-4 h-4" />
+                    {errors.subject}
+                  </p>
+                )}
               </div>
 
               <div className="relative">
@@ -190,23 +293,49 @@ export const ContactSection = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
+                  onFocus={() => handleFocus('message')}
+                  onBlur={handleBlur}
                   rows={6}
-                  className="w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:border-blue-400 focus:outline-none transition-all duration-300 peer resize-none"
+                  maxLength={500}
+                  className={`w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:outline-none transition-all duration-300 peer resize-none relative z-30 ${
+                    errors.message ? 'border-red-400/50 focus:border-red-400' : 'focus:border-blue-400'
+                  }`}
                   placeholder="Your Message"
                   required
+                  aria-describedby={errors.message ? 'message-error' : undefined}
                 />
-                <label className="absolute left-6 top-4 text-slate-400 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-slate-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-400 peer-valid:top-1 peer-valid:text-xs">
+                <label className={getLabelClass('message')}>
                   Your Message
                 </label>
+                {errors.message && (
+                  <p id="message-error" className="text-red-400 text-sm mt-1 flex items-center gap-1">
+                    <AlertCircle className="w-4 h-4" />
+                    {errors.message}
+                  </p>
+                )}
+                <div className="text-sm text-slate-400 mt-2">
+                  {formData.message.length}/500 characters
+                </div>
               </div>
 
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white font-medium hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+                disabled={isSubmitting}
+                whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white font-medium hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3 relative z-30"
               >
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Sending Message...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
               </motion.button>
             </form>
           </motion.div>
