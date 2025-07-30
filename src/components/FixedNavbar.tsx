@@ -51,6 +51,7 @@ export const FixedNavbar = () => {
   if (isMobile) {
     return (
       <>
+        {/* Mobile Hamburger Button */}
         <motion.nav
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -60,45 +61,135 @@ export const FixedNavbar = () => {
             damping: 20,
             duration: 0.6
           }}
-          className="fixed top-4 right-4 z-40 bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-full p-3 shadow-2xl shadow-black/20"
+          className="fixed top-4 right-4 z-50 bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-full p-3 shadow-2xl shadow-black/20"
         >
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-white"
+            className="text-white relative z-10"
           >
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            <motion.div
+              animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.div>
           </motion.button>
         </motion.nav>
 
+        {/* Mobile Menu Overlay */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: -20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="fixed top-16 right-4 z-30 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 shadow-2xl shadow-black/20"
-            >
-              <div className="flex flex-col space-y-2">
-                {sections.map((section) => (
-                  <motion.button
-                    key={section.id}
-                    onClick={() => scrollToSection(section.id)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`relative px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-left ${
-                      activeSection === section.id
-                        ? 'text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500'
-                        : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
-                    }`}
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+                onClick={() => setIsMobileMenuOpen(false)}
+              />
+              
+              {/* Mobile Menu */}
+              <motion.div
+                initial={{ x: "100%", opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: "100%", opacity: 0 }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                  duration: 0.4
+                }}
+                className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-l border-slate-700/50 z-40 shadow-2xl"
+              >
+                <div className="flex flex-col h-full">
+                  {/* Header */}
+                  <div className="p-6 border-b border-slate-700/50">
+                    <motion.h2 
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="text-xl font-bold text-white bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                    >
+                      Navigation
+                    </motion.h2>
+                  </div>
+
+                  {/* Navigation Links */}
+                  <div className="flex-1 p-6">
+                    <div className="flex flex-col space-y-3">
+                      {sections.map((section, index) => (
+                        <motion.button
+                          key={section.id}
+                          initial={{ opacity: 0, x: 50 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 + (index * 0.1) }}
+                          onClick={() => scrollToSection(section.id)}
+                          whileHover={{ 
+                            scale: 1.02,
+                            x: 10,
+                            transition: { duration: 0.2 }
+                          }}
+                          whileTap={{ scale: 0.98 }}
+                          className={`relative group px-6 py-4 rounded-2xl text-left transition-all duration-300 ${
+                            activeSection === section.id
+                              ? 'bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 text-white border border-purple-500/30'
+                              : 'text-slate-300 hover:text-white hover:bg-slate-700/30'
+                          }`}
+                        >
+                          {/* Active indicator */}
+                          {activeSection === section.id && (
+                            <motion.div
+                              layoutId="mobileActiveSection"
+                              className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-r-full"
+                              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                            />
+                          )}
+                          
+                          {/* Hover effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          
+                          <motion.span 
+                            className="relative z-10 font-medium text-lg"
+                            animate={{
+                              fontWeight: activeSection === section.id ? 600 : 500
+                            }}
+                          >
+                            {section.label}
+                          </motion.span>
+                          
+                          {/* Arrow indicator for active */}
+                          {activeSection === section.id && (
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              className="absolute right-4 top-1/2 -translate-y-1/2"
+                            >
+                              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
+                            </motion.div>
+                          )}
+                        </motion.button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Footer */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="p-6 border-t border-slate-700/50"
                   >
-                    {section.label}
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
+                    <p className="text-xs text-slate-400 text-center">
+                      Tap outside to close
+                    </p>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </>
