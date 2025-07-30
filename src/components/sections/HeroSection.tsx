@@ -18,9 +18,6 @@ export const HeroSection = () => {
     const platform = navigator.platform;
     const location = window.location.href;
 
-    console.log("🚀 Starting CV download process...");
-    console.log("📧 Attempting to send notification to backend...");
-
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/download-cv`,
@@ -33,41 +30,17 @@ export const HeroSection = () => {
           location,
         }
       );
-
-      console.log("✅ Notification sent successfully:", response.data);
     } catch (err) {
-      console.error("❌ Failed to send download notification:", err);
-
-      // More detailed error logging
-      if (err.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.error("📊 Server response error:", {
-          status: err.response.status,
-          data: err.response.data,
-          headers: err.response.headers,
-        });
-      } else if (err.request) {
-        // The request was made but no response was received
-        console.error("🌐 Network error - no response received:", err.request);
-        console.error(
-          "💡 This usually means the backend server is not running on port 5000"
-        );
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error("⚙️ Request setup error:", err.message);
-      }
+      console.log(err);
     }
 
     // Proceed with CV download regardless of notification success
-    console.log("📄 Proceeding with CV download...");
     const link = document.createElement("a");
     link.href = "/Abdul Raoof.pdf";
     link.download = "Abdul_Raoof_CV.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    console.log("✅ CV download initiated");
   };
 
   const socialLinks = [
