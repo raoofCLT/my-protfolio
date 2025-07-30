@@ -178,11 +178,6 @@ export const ProjectsSection = () => {
           <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"> Projects</span>
         </motion.h2>
 
-        {/* Debug indicator */}
-        <div className="text-center text-white mb-4 text-sm">
-          {showAllProjects ? 'Showing all projects' : 'Showing 4 projects'}
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {displayedProjects.map((project, index) => (
             <motion.div

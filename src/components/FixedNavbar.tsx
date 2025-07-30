@@ -60,13 +60,13 @@ export const FixedNavbar = () => {
             damping: 20,
             duration: 0.6
           }}
-          className="fixed top-4 right-4 z-40 bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-full p-3 shadow-2xl shadow-black/20"
+          className="fixed top-4 right-4 z-40 bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-full p-2 shadow-2xl shadow-black/20"
         >
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-white"
+            className="text-white flex items-center justify-center w-8 h-8 leading-none"
           >
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </motion.button>
@@ -79,7 +79,7 @@ export const FixedNavbar = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: -20 }}
               transition={{ duration: 0.2 }}
-              className="fixed top-16 right-4 z-30 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 shadow-2xl shadow-black/20"
+              className="fixed top-20 right-4 z-30 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 shadow-2xl shadow-black/20"
             >
               <div className="flex flex-col space-y-2">
                 {sections.map((section) => (
@@ -115,7 +115,7 @@ export const FixedNavbar = () => {
         damping: 20,
         duration: 0.6
       }}
-      className="fixed top-4 left-1/2 transform -translate-x-1/2 z-40 bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-full px-6 py-3 shadow-2xl shadow-black/20"
+      className="fixed top-4 left-0 right-0 mx-auto w-fit z-40 bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-full px-4 sm:px-6 py-3 shadow-2xl shadow-black/20"
     >
       <div className="flex items-center space-x-1">
         {sections.map((section) => (
