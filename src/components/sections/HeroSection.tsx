@@ -23,7 +23,7 @@ export const HeroSection = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/download-cv",
+        `${import.meta.env.VITE_API_BASE_URL}/api/download-cv`,
         {
           name: "Anonymous", // You can collect this from a form if needed
           deviceInfo,
