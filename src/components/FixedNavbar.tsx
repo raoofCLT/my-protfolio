@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Menu, X } from 'lucide-react';
 
 const sections = [
   { id: 'home', label: 'Home' },
@@ -12,6 +14,8 @@ const sections = [
 export const FixedNavbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isHovered, setIsHovered] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +43,67 @@ export const FixedNavbar = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    if (isMobile) {
+      setIsMobileMenuOpen(false);
+    }
   };
+
+  if (isMobile) {
+    return (
+      <>
+        <motion.nav
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 100, 
+            damping: 20,
+            duration: 0.6
+          }}
+          className="fixed top-4 right-4 z-40 bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-full p-3 shadow-2xl shadow-black/20"
+        >
+          <motion.button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-white"
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </motion.button>
+        </motion.nav>
+
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="fixed top-16 right-4 z-30 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 shadow-2xl shadow-black/20"
+            >
+              <div className="flex flex-col space-y-2">
+                {sections.map((section) => (
+                  <motion.button
+                    key={section.id}
+                    onClick={() => scrollToSection(section.id)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`relative px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-left ${
+                      activeSection === section.id
+                        ? 'text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
+                    }`}
+                  >
+                    {section.label}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </>
+    );
+  }
 
   return (
     <motion.nav
