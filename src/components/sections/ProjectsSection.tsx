@@ -90,7 +90,7 @@ const projects = [
       "Built an e-library app using React, Chakra UI, and Node.js backend. Features include book borrowing for 15 days, due date tracking, secure auth with JWT, and admin panel for book/user management.",
     tech: ["React", "Chakra UI", "Recoil", "Node.js", "Express", "MongoDB", "JWT"],
     metrics: [
-      "🚀 Live on Vercel",
+      "🚀 Admin panel",
       "👤 Auth with JWT",
       "📚 300+ Books",
     ],
