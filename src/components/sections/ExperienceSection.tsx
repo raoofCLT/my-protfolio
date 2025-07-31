@@ -6,27 +6,23 @@ const experiences = [
   {
     company: "CODO AI Innovations",
     position: "Frontend Developer",
-    duration: "December 2024 - Present",
-    location: "Remote | Kerala, India",
-    description:
-      "Develop and maintain responsive user interfaces using React and Tailwind CSS while ensuring cross-browser compatibility and seamless API integration.",
+    duration: "Dec 2024 - Present",
+    location: "Remote",
+    description: "Developing responsive UI components with React and Tailwind CSS.",
     achievements: [
-      "Collaborated with designers and backend teams to deliver consistent UI/UX",
-      "Resolved front-end issues to improve reliability and performance",
-      "Contributed to accessible design and responsive architecture"
+      "Collaborated with design and backend teams",
+      "Improved front-end performance and reliability"
     ]
   },
   {
     company: "Freelance Projects",
     position: "Full Stack Developer",
-    duration: "October 2024 - Present",
+    duration: "Oct 2024 - Present",
     location: "Remote",
-    description:
-      "Build full-stack applications using React, Tailwind CSS, Node.js, and Firebase, handling both frontend and backend development for scalable web solutions.",
+    description: "Building full-stack applications with React, Node.js, and Firebase.",
     achievements: [
-      "Created REST APIs with Node.js and integrated MongoDB/PostgreSQL",
-      "Implemented Firebase for authentication and real-time features",
-      "Deployed projects on Vercel using CI/CD workflows"
+      "Created REST APIs and integrated databases",
+      "Deployed projects with CI/CD workflows"
     ]
   }
 ];
@@ -56,7 +52,7 @@ export const ExperienceSection = () => {
           My <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Experience</span>
         </motion.h2>
 
-        <div className="space-y-12">
+        <div className="space-y-8">
           {experiences.map((experience, index) => (
             <motion.div
               key={index}
@@ -65,56 +61,55 @@ export const ExperienceSection = () => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className="group"
             >
-              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10">
-                <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-500 hover:shadow-xl hover:shadow-blue-500/10">
+                <div className="flex flex-col lg:flex-row lg:items-start gap-4">
                   {/* Company Logo/Icon */}
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Building2 className="w-8 h-8 text-white" />
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Building2 className="w-6 h-6 text-white" />
                     </div>
                   </div>
 
                   {/* Experience Details */}
                   <div className="flex-1">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-3">
                       <div>
-                        <h3 className="text-2xl font-bold text-white mb-1">
+                        <h3 className="text-xl font-bold text-white mb-1">
                           {experience.position}
                         </h3>
-                        <h4 className="text-xl text-blue-400 font-semibold">
+                        <h4 className="text-lg text-blue-400 font-semibold">
                           {experience.company}
                         </h4>
                       </div>
                       
                       <div className="flex flex-col lg:text-right mt-2 lg:mt-0">
-                        <div className="flex items-center text-slate-300 mb-1">
-                          <Calendar className="w-4 h-4 mr-2" />
+                        <div className="flex items-center text-slate-300 mb-1 text-sm">
+                          <Calendar className="w-3 h-3 mr-2" />
                           {experience.duration}
                         </div>
-                        <div className="flex items-center text-slate-300">
-                          <MapPin className="w-4 h-4 mr-2" />
+                        <div className="flex items-center text-slate-300 text-sm">
+                          <MapPin className="w-3 h-3 mr-2" />
                           {experience.location}
                         </div>
                       </div>
                     </div>
 
-                    <p className="text-slate-300 text-lg mb-6 leading-relaxed">
+                    <p className="text-slate-300 mb-4 text-sm leading-relaxed">
                       {experience.description}
                     </p>
 
                     {/* Achievements */}
                     <div>
-                      <h5 className="text-white font-semibold mb-3">Key Achievements:</h5>
-                      <ul className="space-y-2">
+                      <ul className="space-y-1">
                         {experience.achievements.map((achievement, achIndex) => (
                           <motion.li
                             key={achIndex}
                             initial={{ opacity: 0, x: -20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ duration: 0.5, delay: (index * 0.2) + (achIndex * 0.1) }}
-                            className="flex items-start text-slate-300"
+                            className="flex items-start text-slate-300 text-sm"
                           >
-                            <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mt-2 mr-3 flex-shrink-0" />
+                            <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mt-1.5 mr-2 flex-shrink-0" />
                             {achievement}
                           </motion.li>
                         ))}
