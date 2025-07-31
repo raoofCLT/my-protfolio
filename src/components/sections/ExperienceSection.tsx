@@ -8,12 +8,14 @@ const experiences = [
     position: "Frontend Developer",
     duration: "December 2024 - Present",
     location: "Remote | Kerala, India",
+    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQERydTRc7i5Pg/company-logo_200_200/company-logo_200_200/0/1732527011160/codo_ai_logo?e=1756944000&v=beta&t=d21-GsPDbU-l7t4AmuxcALr1EBS-iFGX1cyj6XU0BW4"
   },
   {
     company: "Freelance Projects",
     position: "Full Stack Developer",
     duration: "Oct 2024 - Present",
-    location: "Remote",
+    location: "Remote"
+    // no logo
   }
 ];
 
@@ -56,7 +58,15 @@ export const ExperienceSection = () => {
                   {/* Company Logo/Icon */}
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Building2 className="w-6 h-6 text-white" />
+                      {experience.logo ? (
+                        <img
+                          src={experience.logo}
+                          alt={experience.company + " Logo"}
+                          className="w-8 h-8 object-contain"
+                        />
+                      ) : (
+                        <Building2 className="w-6 h-6 text-white" />
+                      )}
                     </div>
                   </div>
 
