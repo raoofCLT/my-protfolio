@@ -29,8 +29,8 @@ export const SkillsSection = () => {
 
   return (
     <section id="skills" ref={ref} className="relative min-h-screen flex items-center overflow-hidden px-4 py-20 bg-slate-900">
-      {/* Background Effects - Same as Hero */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+      {/* Background Effects - Same as Hero but darker */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-gray-900 to-black" />
 
       {/* Animated Background Particles - Same as Hero */}
       <div className="absolute inset-0">

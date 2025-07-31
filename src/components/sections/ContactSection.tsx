@@ -128,7 +128,7 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" ref={ref} className="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <section id="contact" ref={ref} className="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-br from-slate-950 via-gray-900 to-black">
       {/* Background Elements - Same as About/Experience */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />

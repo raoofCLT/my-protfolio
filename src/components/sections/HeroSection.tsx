@@ -56,7 +56,7 @@ export const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 px-4 py-20"
     >
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-gray-900 to-black" />
 
       {/* Animated Background Particles */}
       <div className="absolute inset-0">

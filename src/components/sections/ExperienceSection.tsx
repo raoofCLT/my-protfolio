@@ -48,7 +48,7 @@ export const ExperienceSection = () => {
     <section
       id="experience"
       ref={ref}
-      className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-4 relative overflow-hidden"
+      className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-black py-20 px-4 relative overflow-hidden"
     >
       {/* Background Elements - Same as About */}
       <div className="absolute inset-0">
