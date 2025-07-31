@@ -54,7 +54,7 @@ export const SkillsSection = () => {
           />
         ))}
       </div>
-      <div className="container mx-auto px-6 max-w-6xl">
+      <div className="container mx-auto px-6  max-w-6xl relative z-10">
         <motion.h2 
           className="text-5xl font-bold text-center text-white mb-16"
           initial={{ opacity: 0, y: 20 }}

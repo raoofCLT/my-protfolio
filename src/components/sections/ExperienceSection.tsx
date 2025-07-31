@@ -37,12 +37,11 @@ export const ExperienceSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-bold text-center mb-16"
+          className="text-5xl font-bold text-center mb-16"
         >
           My <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Experience</span>
         </motion.h2>
 
-        <div className="space-y-8">
         <div className="space-y-8">
           {experiences.map((experience, index) => (
             <motion.div
