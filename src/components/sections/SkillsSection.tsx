@@ -28,23 +28,26 @@ export const SkillsSection = () => {
   const { ref, isInView } = useScrollReveal();
 
   return (
-    <section id="skills" ref={ref} className="relative min-h-screen flex items-center bg-slate-900 overflow-hidden px-4 py-20">
-      {/* Animated Background Particles */}
+    <section id="skills" ref={ref} className="relative min-h-screen flex items-center overflow-hidden px-4 py-20 bg-slate-900">
+      {/* Background Effects - Same as Hero */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+
+      {/* Animated Background Particles - Same as Hero */}
       <div className="absolute inset-0">
-        {[...Array(25)].map((_, i) => (
+        {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-purple-400/20 rounded-full"
+            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
             initial={{
               x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
             }}
             animate={{
-              y: [null, -10, 10],
-              opacity: [0.2, 0.6, 0.2],
+              y: [null, -20, 20],
+              opacity: [0.3, 1, 0.3],
             }}
             transition={{
-              duration: 5 + Math.random() * 2,
+              duration: 3 + Math.random() * 2,
               repeat: Infinity,
               ease: "easeInOut",
             }}

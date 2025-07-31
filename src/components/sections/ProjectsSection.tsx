@@ -144,23 +144,26 @@ export const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" ref={ref} className="relative min-h-screen flex items-center bg-slate-900 py-20 overflow-hidden">
-      {/* Animated Background Particles */}
+    <section id="projects" ref={ref} className="relative min-h-screen flex items-center overflow-hidden py-20 bg-slate-900">
+      {/* Background Effects - Same as Hero */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+
+      {/* Animated Background Particles - Same as Hero */}
       <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-green-400/20 rounded-full"
+            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
             initial={{
               x: Math.random() * window.innerWidth,
               y: Math.random() * window.innerHeight,
             }}
             animate={{
-              y: [null, -12, 12],
-              opacity: [0.2, 0.7, 0.2],
+              y: [null, -20, 20],
+              opacity: [0.3, 1, 0.3],
             }}
             transition={{
-              duration: 6 + Math.random() * 2,
+              duration: 3 + Math.random() * 2,
               repeat: Infinity,
               ease: "easeInOut",
             }}

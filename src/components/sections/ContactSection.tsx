@@ -128,28 +128,11 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" ref={ref} className="relative min-h-screen flex items-center bg-slate-900 py-20 overflow-hidden">
-      {/* Animated Background Particles */}
+    <section id="contact" ref={ref} className="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Background Elements - Same as About/Experience */}
       <div className="absolute inset-0 z-0">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-emerald-400/20 rounded-full pointer-events-none"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              y: [null, -8, 8],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 7 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
       </div>
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <motion.h2 
