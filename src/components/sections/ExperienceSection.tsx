@@ -4,39 +4,29 @@ import { Calendar, MapPin, Building2 } from 'lucide-react';
 
 const experiences = [
   {
-    company: "Tech Solutions Inc",
-    position: "Senior Frontend Developer",
-    duration: "2022 - Present",
-    location: "Remote",
-    description: "Led frontend development team, built scalable React applications, and mentored junior developers.",
-    achievements: [
-      "Improved application performance by 40%",
-      "Led migration to TypeScript",
-      "Mentored 5+ junior developers"
-    ]
-  },
-  {
-    company: "Digital Innovations Ltd",
-    position: "Full Stack Developer",
-    duration: "2020 - 2022",
-    location: "New York, NY",
-    description: "Developed end-to-end web applications using modern technologies and collaborated with cross-functional teams.",
-    achievements: [
-      "Built 15+ web applications",
-      "Reduced loading time by 50%",
-      "Implemented CI/CD pipelines"
-    ]
-  },
-  {
-    company: "StartupHub Co",
+    company: "CODO AI Innovations",
     position: "Frontend Developer",
-    duration: "2019 - 2020",
-    location: "San Francisco, CA",
-    description: "Focused on creating responsive user interfaces and optimizing user experience for startup clients.",
+    duration: "December 2024 - Present",
+    location: "Remote | Kerala, India",
+    description:
+      "Develop and maintain responsive user interfaces using React and Tailwind CSS while ensuring cross-browser compatibility and seamless API integration.",
     achievements: [
-      "Delivered 20+ client projects",
-      "Increased user engagement by 35%",
-      "Established design system"
+      "Collaborated with designers and backend teams to deliver consistent UI/UX",
+      "Resolved front-end issues to improve reliability and performance",
+      "Contributed to accessible design and responsive architecture"
+    ]
+  },
+  {
+    company: "Freelance Projects",
+    position: "Full Stack Developer",
+    duration: "October 2024 - Present",
+    location: "Remote",
+    description:
+      "Build full-stack applications using React, Tailwind CSS, Node.js, and Firebase, handling both frontend and backend development for scalable web solutions.",
+    achievements: [
+      "Created REST APIs with Node.js and integrated MongoDB/PostgreSQL",
+      "Implemented Firebase for authentication and real-time features",
+      "Deployed projects on Vercel using CI/CD workflows"
     ]
   }
 ];
