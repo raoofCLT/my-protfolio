@@ -12,7 +12,7 @@ const experiences = [
   {
     company: "Freelance Projects",
     position: "Full Stack Developer",
-    duration: "October 2024 - Present",
+    duration: "Oct 2024 - Present",
     location: "Remote",
   }
 ];
@@ -43,6 +43,7 @@ export const ExperienceSection = () => {
         </motion.h2>
 
         <div className="space-y-8">
+        <div className="space-y-8">
           {experiences.map((experience, index) => (
             <motion.div
               key={index}
@@ -55,8 +56,8 @@ export const ExperienceSection = () => {
                 <div className="flex flex-col lg:flex-row lg:items-center gap-6">
                   {/* Company Logo/Icon */}
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Building2 className="w-8 h-8 text-white" />
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Building2 className="w-6 h-6 text-white" />
                     </div>
                   </div>
 
@@ -64,10 +65,10 @@ export const ExperienceSection = () => {
                   <div className="flex-1">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
                       <div>
-                        <h3 className="text-2xl font-bold text-white mb-1">
+                        <h3 className="text-xl font-bold text-white mb-1">
                           {experience.position}
                         </h3>
-                        <h4 className="text-xl text-blue-400 font-semibold">
+                        <h4 className="text-lg text-blue-400 font-semibold">
                           {experience.company}
                         </h4>
                       </div>
@@ -77,8 +78,8 @@ export const ExperienceSection = () => {
                           <Calendar className="w-4 h-4 mr-2" />
                           {experience.duration}
                         </div>
-                        <div className="flex items-center text-slate-300">
-                          <MapPin className="w-4 h-4 mr-2" />
+                        <div className="flex items-center text-slate-300 text-sm">
+                          <MapPin className="w-3 h-3 mr-2" />
                           {experience.location}
                         </div>
                       </div>
