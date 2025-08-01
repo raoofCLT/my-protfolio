@@ -126,11 +126,6 @@ export const ContactSection = () => {
     { icon: MapPin, value: "Kerala, India", href: "#", label: "Location" },
   ];
 
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/yourusername", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-  ];
-
   return (
     <section id="contact" ref={ref} className="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-br from-slate-950 via-gray-900 to-black">
       {/* Background Elements - Same as About/Experience */}
@@ -149,24 +144,24 @@ export const ContactSection = () => {
           <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"> Touch</span>
         </motion.h2>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-20 items-start">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-8 flex flex-col justify-center h-full"
           >
-            <div>
-              <h3 className="text-3xl font-bold text-white mb-4">Let's Connect</h3>
-              <p className="text-slate-400 leading-relaxed mb-8 text-lg">
+            <div className="text-center lg:text-left">
+              <h3 className="text-3xl font-bold text-white mb-6">Let's Connect</h3>
+              <p className="text-slate-400 leading-relaxed mb-10 text-lg max-w-md mx-auto lg:mx-0">
                 Ready to bring your ideas to life? I'm here to help transform your vision into reality. 
                 Let's discuss your next project!
               </p>
             </div>
 
             {/* Contact Details */}
-            <div className="space-y-4">
+            <div className="space-y-6 max-w-md mx-auto lg:mx-0 w-full">
               {contactInfo.map((item, index) => (
                 <motion.a
                   key={index}
@@ -174,45 +169,20 @@ export const ContactSection = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                  className="flex items-center gap-5 p-5 bg-slate-800/30 backdrop-blur-sm border border-slate-700/30 rounded-2xl hover:bg-slate-800/50 hover:border-blue-400/50 transition-all duration-300 hover:scale-[1.02] group relative z-20"
+                  className="flex items-center gap-6 p-6 bg-slate-800/30 backdrop-blur-sm border border-slate-700/30 rounded-2xl hover:bg-slate-800/50 hover:border-blue-400/50 transition-all duration-300 hover:scale-[1.02] group relative z-20 w-full"
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <item.icon className="w-6 h-6 text-white" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
+                    <item.icon className="w-7 h-7 text-white" />
                   </div>
-                  <div>
-                    <p className="text-sm text-slate-400 mb-1">{item.label}</p>
-                    <span className="text-white font-medium group-hover:text-blue-300 transition-colors duration-300">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-slate-400 mb-1 font-medium">{item.label}</p>
+                    <span className="text-white text-lg font-medium group-hover:text-blue-300 transition-colors duration-300 block truncate">
                       {item.value}
                     </span>
                   </div>
                 </motion.a>
               ))}
             </div>
-
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="pt-6"
-            >
-              <h4 className="text-white font-semibold mb-4">Follow Me</h4>
-              <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-12 h-12 bg-slate-800/50 border border-slate-700/50 rounded-xl flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-600 hover:border-transparent transition-all duration-300 group"
-                  >
-                    <social.icon className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors duration-300" />
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Contact Form */}
