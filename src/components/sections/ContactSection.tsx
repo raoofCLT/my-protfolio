@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send, CheckCircle, AlertCircle, Instagram, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send, AlertCircle } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useToast } from '../../hooks/use-toast';
 
 export const ContactSection = () => {
@@ -121,9 +121,14 @@ export const ContactSection = () => {
   };
 
   const contactInfo = [
-    { icon: Mail, value: "raoofkottayil@gmail.com", href: "mailto:raoofkottayil@gmail.com" },
-    { icon: Phone, value: "+91 90728 93647", href: "tel:+919072893647" },
-    { icon: MapPin, value: "Kerala, India", href: "#" },
+    { icon: Mail, value: "raoofkottayil@gmail.com", href: "mailto:raoofkottayil@gmail.com", label: "Email" },
+    { icon: Phone, value: "+91 90728 93647", href: "tel:+919072893647", label: "Phone" },
+    { icon: MapPin, value: "Kerala, India", href: "#", label: "Location" },
+  ];
+
+  const socialLinks = [
+    { icon: Github, href: "https://github.com/yourusername", label: "GitHub" },
+    { icon: Linkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
   ];
 
   return (
@@ -153,15 +158,15 @@ export const ContactSection = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-semibold text-white mb-6">Let's Connect</h3>
-              <p className="text-slate-400 leading-relaxed mb-8">
-                I'm always open to discussing new opportunities, interesting projects, 
-                or just having a chat about technology. Feel free to reach out!
+              <h3 className="text-3xl font-bold text-white mb-4">Let's Connect</h3>
+              <p className="text-slate-400 leading-relaxed mb-8 text-lg">
+                Ready to bring your ideas to life? I'm here to help transform your vision into reality. 
+                Let's discuss your next project!
               </p>
             </div>
 
             {/* Contact Details */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               {contactInfo.map((item, index) => (
                 <motion.a
                   key={index}
@@ -169,17 +174,45 @@ export const ContactSection = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-slate-800/50 border border-slate-700/50 rounded-xl hover:border-blue-400/50 transition-all duration-300 hover:scale-105 group relative z-20"
+                  className="flex items-center gap-5 p-5 bg-slate-800/30 backdrop-blur-sm border border-slate-700/30 rounded-2xl hover:bg-slate-800/50 hover:border-blue-400/50 transition-all duration-300 hover:scale-[1.02] group relative z-20"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <item.icon className="w-5 h-5 text-white" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <item.icon className="w-6 h-6 text-white" />
                   </div>
-                  <span className="text-slate-300 group-hover:text-white transition-colors duration-300">
-                    {item.value}
-                  </span>
+                  <div>
+                    <p className="text-sm text-slate-400 mb-1">{item.label}</p>
+                    <span className="text-white font-medium group-hover:text-blue-300 transition-colors duration-300">
+                      {item.value}
+                    </span>
+                  </div>
                 </motion.a>
               ))}
             </div>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="pt-6"
+            >
+              <h4 className="text-white font-semibold mb-4">Follow Me</h4>
+              <div className="flex gap-4">
+                {socialLinks.map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-12 h-12 bg-slate-800/50 border border-slate-700/50 rounded-xl flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-600 hover:border-transparent transition-all duration-300 group"
+                  >
+                    <social.icon className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors duration-300" />
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Contact Form */}
