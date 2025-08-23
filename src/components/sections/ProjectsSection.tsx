@@ -339,7 +339,7 @@ export const ProjectsSection = () => {
                         className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white font-medium text-center hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 h-12"
                       >
                         <ExternalLink className="w-4 h-4" />
-                        Live Demo
+                        Live
                       </a>
                     ) : (
                       <button 
