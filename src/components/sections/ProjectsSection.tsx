@@ -10,7 +10,7 @@ const projects = [
     description: "Frontend for a large-scale education platform used by 20,000+ users.",
     longDescription:
       "Designed and developed the entire frontend using React, Tailwind CSS, and Redux. Built 9 dashboards to manage users, batches, payments, and notifications. Delivered a responsive and performant UI.",
-    tech: ["React", "Tailwind CSS", "Redux"],
+    tech: ["React","Python", "Tailwind CSS", "Redux"],
     metrics: [
       "👥 20,000+ Active Users",
       "📊 9 Key Operations Dashboards",
@@ -29,12 +29,36 @@ const projects = [
     featured: false,
   },
   {
+    title: "Evoka Communications",
+    year: "2025",
+    description: "Creative agency platform for managing clients, projects, and production teams.",
+    longDescription:
+      "Developed a production management platform for a creative agency to manage clients, projects, and internal teams. The system supports task assignment across roles like HR, creative leads, copywriters, and coordinators, with work-hour tracking and approval workflows.",
+    tech: ["React", "TypeScript", "Python", "Django", "PostgreSQL"],
+    metrics: [
+      "👥 Multi-role Team Workflows",
+      "📂 Client & Project Management",
+      "⏱️ Work-hour Tracking & Approvals",
+    ],
+    features: [
+      "Client onboarding and project creation",
+      "Task distribution to production staff and creatives",
+      "Review and approval workflows for deliverables",
+      "Work-hour calculation and progress tracking",
+    ],
+    status: "Live",
+    category: "Creative Agency Platform",
+    image: "/Projects/Evoka Communications.png",
+    liveUrl: "https://communications.moajmalnk.in/",
+    featured: false,
+  },
+  {
     title: "Calc (Data Analytics Platform)",
     year: "2025",
     description: "Data analytics platform for education data export and visualization.",
     longDescription:
       "Developed a platform to analyze educational data with interactive dashboards. Supported export, printing, and reporting features to empower data-driven decisions.",
-    tech: ["React", "Tailwind CSS", "Redux"],
+    tech: ["React", "TypeScript", "Tailwind CSS", "Redux", "Python"],
     metrics: [
       "📈 Visualize Data",
       "📄 Export Reports",
@@ -48,7 +72,7 @@ const projects = [
     status: "Live",
     category: "Education Platform",
     image: "/Projects/Calc.png",
-    liveUrl: "https://albedo-calc.vercel.app/",
+    liveUrl: "https://calc.albedoedu.com/",
     featured: false,
   },
   {
@@ -57,7 +81,7 @@ const projects = [
     description: "Kerala’s first advertising school platform managing students and projects.",
     longDescription:
       "Built the frontend and integrated APIs for student management, payments, attendance, and assignments. Supported live project-based learning with portfolio management.",
-    tech: ["React", "Tailwind CSS", "API Integrations"],
+    tech: ["React", "TypeScript", "Tailwind CSS", "API Integrations", "Python"],
     metrics: [
       "🎓 13000+ Users",
       "💳 Payments management",
@@ -72,7 +96,7 @@ const projects = [
     status: "Live",
     category: "Education Platform",
     image: "/Projects/Evoka.png",
-    liveUrl: "https://evokaschool.vercel.app/",
+    liveUrl: "https://evoka.moajmalnk.com/",
     featured: false,
   },
   {
@@ -81,7 +105,7 @@ const projects = [
     description: "Online dress retail with user auth and payment integration.",
     longDescription:
       "Developed a scalable e-commerce app with React, Node.js, and Express. Features user authentication, shopping cart, payment gateway integration, and admin controls.",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
+    tech: ["React", "Node.js", "Express", "PostgreSQL"],
     metrics: [
       "💳 Payment Transactions",
       "🛠️ Admin Controlled Products",
@@ -106,7 +130,7 @@ const projects = [
     description: "Community platform for startup profiles and investor connections.",
     longDescription:
       "Created a Next.js and TypeScript platform where users showcase startups and connect with investors. Features GitHub auth, real-time updates, and CMS content management.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN", "Sanity"],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "ShadCN", "Sanity", "MongoDB"],
     metrics: [
       "🧑‍💼 Verified Startup Profiles",
       "📈 Monthly Active Investors",
@@ -130,7 +154,7 @@ const projects = [
     description: "Digital library with book lending and secure admin features.",
     longDescription:
       "Built an e-library with React, Chakra UI, and Node.js backend. Features book borrowing with due dates, JWT authentication, and admin panel for managing books and users.",
-    tech: ["React", "Chakra UI", "Recoil", "Node.js", "Express", "MongoDB", "JWT"],
+    tech: ["React", "Chakra UI", "Recoil", "Node.js", "Express","JWT"],
     metrics: [
       "🚀 Admin Managed Books",
       "📅 Borrowing System",
