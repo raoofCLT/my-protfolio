@@ -1,36 +1,33 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Premium Dark Mode Design System */
+/* Enhanced design system with improved performance */
 
 @layer base {
   :root {
-    --background: 222 47% 4%;
+    --background: 220 13% 3%;
     --foreground: 210 40% 98%;
-    --card: 222 47% 6%;
+    --card: 220 13% 5%;
     --card-foreground: 210 40% 98%;
-    --popover: 222 47% 6%;
+    --popover: 220 13% 5%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 4%;
-    --secondary: 222 47% 10%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 220 13% 3%;
+    --secondary: 220 13% 8%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 222 47% 8%;
-    --muted-foreground: 215 20% 55%;
-    --accent: 262 83% 58%;
+    --muted: 220 13% 6%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 220 13% 8%;
     --accent-foreground: 210 40% 98%;
-    --destructive: 0 84% 60%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 222 47% 15%;
-    --input: 222 47% 10%;
-    --ring: 217 91% 60%;
-    --radius: 0.75rem;
-    
-    /* Neon accents */
-    --neon-blue: 217 91% 60%;
-    --neon-purple: 262 83% 58%;
-    --neon-pink: 330 81% 60%;
+    --border: 220 13% 15%;
+    --input: 220 13% 8%;
+    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.5rem;
+    --space-dark: #0a0a0a;
   }
 }
 
@@ -50,7 +47,7 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #0a0a1a 0%, #050510 50%, #000000 100%);
+    background: radial-gradient(ellipse at center, #0f0f23 0%, #050505 35%, #000000 100%) !important;
   }
 
   /* Hide Scrollbar */
@@ -63,6 +60,10 @@
   }
 
   ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
     background: transparent;
   }
 }
