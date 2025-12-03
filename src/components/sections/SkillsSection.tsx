@@ -1,102 +1,124 @@
 import { motion } from 'framer-motion';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { SparkleEffect } from '../animations/SparkleEffect';
+import { FloatingParticles } from '../animations/FloatingParticles';
 
 const skillCategories = {
-  //  'React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Chakra UI', 'HTML5', 'CSS3', 'JavaScript', 'Redux'
   Frontend: [
-    'React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Redux'
+    { name: 'React', level: 95 },
+    { name: 'TypeScript', level: 90 },
+    { name: 'Next.js', level: 85 },
+    { name: 'React Native', level: 80 },
+    { name: 'Tailwind CSS', level: 95 },
+    { name: 'Redux', level: 85 },
   ],
   Backend: [
-    "Node.js", "Express", "GraphQL", "REST APIs","JWT","Socket.io"
+    { name: 'Node.js', level: 85 },
+    { name: 'Express', level: 85 },
+    { name: 'GraphQL', level: 70 },
+    { name: 'REST APIs', level: 90 },
+    { name: 'Socket.io', level: 75 },
+    { name: 'JWT', level: 85 },
   ],
   'Database & Cloud': [
-    'MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'AWS','Vercel'
+    { name: 'MongoDB', level: 85 },
+    { name: 'PostgreSQL', level: 80 },
+    { name: 'Firebase', level: 75 },
+    { name: 'AWS', level: 70 },
+    { name: 'Vercel', level: 90 },
+    { name: 'MySQL', level: 75 },
   ],
-  'Tools & Platforms' : [
-    'VS Code', 'Postman', 'Figma', 'Git', 'Vercel', 'CI/CD'
-  ]
+  'Tools': [
+    { name: 'Git', level: 90 },
+    { name: 'VS Code', level: 95 },
+    { name: 'Figma', level: 80 },
+    { name: 'Postman', level: 90 },
+    { name: 'Docker', level: 65 },
+    { name: 'CI/CD', level: 70 },
+  ],
 };
 
-const categoryColors = {
+const categoryGradients = {
   Frontend: 'from-blue-400 to-cyan-400',
   Backend: 'from-green-400 to-emerald-400',
   'Database & Cloud': 'from-purple-400 to-pink-400',
-  'Tools & Platforms' : 'from-yellow-400 to-orange-400'
+  'Tools': 'from-orange-400 to-yellow-400',
 };
 
 export const SkillsSection = () => {
   const { ref, isInView } = useScrollReveal();
 
   return (
-    <section id="skills" ref={ref} className="relative min-h-screen flex items-center overflow-hidden px-4 py-20 bg-slate-900">
-      {/* Background Effects - Same as Hero but darker */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-gray-900 to-black" />
+    <section id="skills" ref={ref} className="relative min-h-screen flex items-center overflow-hidden px-4 py-24">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-black" />
+      
+      {/* Floating Blobs */}
+      <div className="absolute top-1/3 -right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/3 -left-32 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+      
+      <FloatingParticles count={35} />
 
-      {/* Animated Background Particles - Same as Hero */}
-      <div className="absolute inset-0">
-        {[...Array(50)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              y: [null, -20, 20],
-              opacity: [0.3, 1, 0.3],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-      <div className="container mx-auto px-6  max-w-6xl relative z-10">
-        <motion.h2 
-          className="text-5xl font-bold text-center text-white mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        {/* Section Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
+          className="text-center mb-16 relative"
         >
-          Technical
-          <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"> Skills</span>
-        </motion.h2>
+          <SparkleEffect count={8} />
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+            Technical{" "}
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Skills
+            </span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            Technologies I work with to bring ideas to life
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2  gap-6 max-w-5xl mx-auto">
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
             <motion.div
               key={category}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.15 }}
+              whileHover={{ scale: 1.02, y: -5 }}
               className="group"
             >
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10 h-full">
+              <div className="p-6 bg-slate-800/30 backdrop-blur-xl border border-slate-700/30 rounded-2xl hover:border-blue-400/30 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 h-full">
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${categoryColors[category as keyof typeof categoryColors]}`} />
-                  <h3 className="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300">
+                  <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${categoryGradients[category as keyof typeof categoryGradients]}`} />
+                  <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300">
                     {category}
                   </h3>
                 </div>
 
-                {/* Skills Grid */}
-                <div className="grid grid-cols-2 gap-3">
+                {/* Skills List */}
+                <div className="space-y-4">
                   {skills.map((skill, skillIndex) => (
                     <motion.div
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.4, delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
-                      className="group/skill"
+                      key={skill.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.4, delay: categoryIndex * 0.15 + skillIndex * 0.05 }}
                     >
-                      <div className="px-3 py-2 bg-slate-700/30 rounded-lg border border-slate-600/20 hover:border-blue-400/40 transition-all duration-300 hover:scale-105">
-                        <span className="text-slate-300 text-sm font-medium group-hover/skill:text-white transition-colors duration-300">
-                          {skill}
-                        </span>
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="text-slate-300 text-sm font-medium">{skill.name}</span>
+                        <span className="text-slate-400 text-xs">{skill.level}%</span>
+                      </div>
+                      <div className="h-2 bg-slate-700/50 rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
+                          transition={{ duration: 1, delay: categoryIndex * 0.15 + skillIndex * 0.05, ease: "easeOut" }}
+                          className={`h-full bg-gradient-to-r ${categoryGradients[category as keyof typeof categoryGradients]} rounded-full`}
+                        />
                       </div>
                     </motion.div>
                   ))}
@@ -106,16 +128,16 @@ export const SkillsSection = () => {
           ))}
         </div>
 
-        {/* Skills Summary */}
+        {/* Summary */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 text-center"
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-12 text-center"
         >
-          <p className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
-            Continuously learning and adapting to new technologies. These skills represent my current expertise, 
-            with a focus on creating scalable, maintainable, and user-friendly applications.
+          <p className="text-slate-400 text-lg max-w-3xl mx-auto">
+            Continuously learning and adapting to new technologies. Always excited to explore 
+            emerging tools and frameworks to deliver better solutions.
           </p>
         </motion.div>
       </div>
