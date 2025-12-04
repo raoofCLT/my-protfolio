@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, AlertCircle } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { useState } from 'react';
 import { useToast } from '../../hooks/use-toast';
@@ -46,7 +46,6 @@ export const ContactSection = () => {
     setIsSubmitting(true);
     
     try { 
-      // Send form data to backend API
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/contact`, {
         method: 'POST',
         headers: {
@@ -63,7 +62,6 @@ export const ContactSection = () => {
           description: result.message || "Thank you for reaching out. I'll get back to you within 24 hours.",
         });
         
-        // Reset form
         setFormData({
           name: '',
           email: '',
@@ -78,7 +76,7 @@ export const ContactSection = () => {
       console.error('Form submission error:', error);
       toast({
         title: "Failed to Send Message",
-        description: error instanceof Error ? error.message : "There was an error sending your message. Please try again or contact me directly.",
+        description: error instanceof Error ? error.message : "There was an error sending your message. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -92,7 +90,6 @@ export const ContactSection = () => {
       ...formData,
       [name]: value
     });
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors({
         ...errors,
@@ -114,9 +111,9 @@ export const ContactSection = () => {
     const isFocused = focusedField === fieldName;
     
     if (hasValue || isFocused) {
-      return 'absolute left-6 top-1 text-xs text-blue-400 transition-all duration-300';
+      return 'absolute left-4 top-1 text-xs text-gold transition-all duration-300';
     } else {
-      return 'absolute left-6 top-4 text-slate-400 transition-all duration-300';
+      return 'absolute left-4 top-3 text-muted-foreground transition-all duration-300 text-sm';
     }
   };
 
@@ -127,41 +124,44 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" ref={ref} className="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-br from-slate-950 via-gray-900 to-black">
-      {/* Background Elements - Same as About/Experience */}
+    <section id="contact" ref={ref} className="relative min-h-screen flex items-center py-20 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0B0B0B] to-[#151515]" />
+      
+      {/* Subtle glow effects */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-48 h-48 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gold/5 rounded-full blur-3xl" />
       </div>
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+
+      <div className="container mx-auto px-6 max-w-5xl relative z-10">
         <motion.h2 
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-16"
+          className="text-3xl sm:text-4xl font-bold text-center text-foreground mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
         >
           Get In
-          <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"> Touch</span>
+          <span className="text-gold-gradient"> Touch</span>
         </motion.h2>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-6"
           >
             <div>
-              <h3 className="text-3xl font-bold text-white mb-2">Let's Connect</h3>
-              <p className="text-slate-400 leading-relaxed mb-8 text-lg">
-                Ready to bring your ideas to life? I'm here to help transform your vision into reality. 
-                Let's discuss your next project!
+              <h3 className="text-2xl font-bold text-foreground mb-2">Let's Connect</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Ready to bring your ideas to life? I'm here to help transform your vision into reality.
               </p>
             </div>
 
             {/* Contact Details */}
-            <div className="space-y-4">
+            <div className="space-y-3">
               {contactInfo.map((item, index) => (
                 item.href ? (
                   <motion.a
@@ -170,14 +170,14 @@ export const ContactSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                    className="flex items-center gap-5 p-5 bg-slate-800/30 backdrop-blur-sm border border-slate-700/30 rounded-2xl hover:bg-slate-800/50 hover:border-blue-400/50 transition-all duration-300 hover:scale-[1.02] group relative z-20"
+                    className="flex items-center gap-4 p-4 glass-card rounded-xl hover:border-gold/30 transition-all duration-300 group"
                   >
-                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <item.icon className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 bg-gradient-to-br from-gold to-gold-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <item.icon className="w-5 h-5 text-black" />
                     </div>
                     <div>
-                      <p className="text-sm text-slate-400 mb-1">{item.label}</p>
-                      <span className="text-white font-medium group-hover:text-blue-300 transition-colors duration-300">
+                      <p className="text-xs text-muted-subtle">{item.label}</p>
+                      <span className="text-foreground text-sm font-medium group-hover:text-gold transition-colors duration-300">
                         {item.value}
                       </span>
                     </div>
@@ -188,14 +188,14 @@ export const ContactSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                    className="flex items-center gap-5 p-5 bg-slate-800/30 backdrop-blur-sm border border-slate-700/30 rounded-2xl group relative z-20"
+                    className="flex items-center gap-4 p-4 glass-card rounded-xl"
                   >
-                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
-                      <item.icon className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 bg-gradient-to-br from-gold to-gold-accent rounded-xl flex items-center justify-center">
+                      <item.icon className="w-5 h-5 text-black" />
                     </div>
                     <div>
-                      <p className="text-sm text-slate-400 mb-1">{item.label}</p>
-                      <span className="text-white font-medium">
+                      <p className="text-xs text-muted-subtle">{item.label}</p>
+                      <span className="text-foreground text-sm font-medium">
                         {item.value}
                       </span>
                     </div>
@@ -210,10 +210,9 @@ export const ContactSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative z-20"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="relative">
                   <input
                     type="text"
@@ -222,19 +221,16 @@ export const ContactSection = () => {
                     onChange={handleInputChange}
                     onFocus={() => handleFocus('name')}
                     onBlur={handleBlur}
-                    className={`w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:outline-none transition-all duration-300 peer relative z-30 ${
-                      errors.name ? 'border-red-400/50 focus:border-red-400' : 'focus:border-blue-400'
+                    className={`w-full px-4 py-3 bg-secondary border border-border rounded-xl text-foreground placeholder-transparent focus:outline-none gold-focus transition-all duration-300 text-sm ${
+                      errors.name ? 'border-destructive/50 focus:border-destructive' : ''
                     }`}
                     placeholder="Your Name"
                     required
-                    aria-describedby={errors.name ? 'name-error' : undefined}
                   />
-                  <label className={getLabelClass('name')}>
-                    Your Name
-                  </label>
+                  <label className={getLabelClass('name')}>Your Name</label>
                   {errors.name && (
-                    <p id="name-error" className="text-red-400 text-sm mt-1 flex items-center gap-1">
-                      <AlertCircle className="w-4 h-4" />
+                    <p className="text-destructive text-xs mt-1 flex items-center gap-1">
+                      <AlertCircle className="w-3 h-3" />
                       {errors.name}
                     </p>
                   )}
@@ -248,19 +244,16 @@ export const ContactSection = () => {
                     onChange={handleInputChange}
                     onFocus={() => handleFocus('email')}
                     onBlur={handleBlur}
-                    className={`w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:outline-none transition-all duration-300 peer relative z-30 ${
-                      errors.email ? 'border-red-400/50 focus:border-red-400' : 'focus:border-blue-400'
+                    className={`w-full px-4 py-3 bg-secondary border border-border rounded-xl text-foreground placeholder-transparent focus:outline-none gold-focus transition-all duration-300 text-sm ${
+                      errors.email ? 'border-destructive/50 focus:border-destructive' : ''
                     }`}
                     placeholder="Your Email"
                     required
-                    aria-describedby={errors.email ? 'email-error' : undefined}
                   />
-                  <label className={getLabelClass('email')}>
-                    Your Email
-                  </label>
+                  <label className={getLabelClass('email')}>Your Email</label>
                   {errors.email && (
-                    <p id="email-error" className="text-red-400 text-sm mt-1 flex items-center gap-1">
-                      <AlertCircle className="w-4 h-4" />
+                    <p className="text-destructive text-xs mt-1 flex items-center gap-1">
+                      <AlertCircle className="w-3 h-3" />
                       {errors.email}
                     </p>
                   )}
@@ -275,19 +268,16 @@ export const ContactSection = () => {
                   onChange={handleInputChange}
                   onFocus={() => handleFocus('subject')}
                   onBlur={handleBlur}
-                  className={`w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:outline-none transition-all duration-300 peer relative z-30 ${
-                    errors.subject ? 'border-red-400/50 focus:border-red-400' : 'focus:border-blue-400'
+                  className={`w-full px-4 py-3 bg-secondary border border-border rounded-xl text-foreground placeholder-transparent focus:outline-none gold-focus transition-all duration-300 text-sm ${
+                    errors.subject ? 'border-destructive/50 focus:border-destructive' : ''
                   }`}
                   placeholder="Subject"
                   required
-                  aria-describedby={errors.subject ? 'subject-error' : undefined}
                 />
-                <label className={getLabelClass('subject')}>
-                  Subject
-                </label>
+                <label className={getLabelClass('subject')}>Subject</label>
                 {errors.subject && (
-                  <p id="subject-error" className="text-red-400 text-sm mt-1 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
+                  <p className="text-destructive text-xs mt-1 flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3" />
                     {errors.subject}
                   </p>
                 )}
@@ -300,44 +290,41 @@ export const ContactSection = () => {
                   onChange={handleInputChange}
                   onFocus={() => handleFocus('message')}
                   onBlur={handleBlur}
-                  rows={6}
+                  rows={4}
                   maxLength={500}
-                  className={`w-full px-6 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-transparent focus:outline-none transition-all duration-300 peer resize-none relative z-30 ${
-                    errors.message ? 'border-red-400/50 focus:border-red-400' : 'focus:border-blue-400'
+                  className={`w-full px-4 py-3 bg-secondary border border-border rounded-xl text-foreground placeholder-transparent focus:outline-none gold-focus transition-all duration-300 resize-none text-sm ${
+                    errors.message ? 'border-destructive/50 focus:border-destructive' : ''
                   }`}
                   placeholder="Your Message"
                   required
-                  aria-describedby={errors.message ? 'message-error' : undefined}
                 />
-                <label className={getLabelClass('message')}>
-                  Your Message
-                </label>
+                <label className={getLabelClass('message')}>Your Message</label>
                 {errors.message && (
-                  <p id="message-error" className="text-red-400 text-sm mt-1 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
+                  <p className="text-destructive text-xs mt-1 flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3" />
                     {errors.message}
                   </p>
                 )}
-                <div className="text-sm text-slate-400 mt-2">
-                  {formData.message.length}/500 characters
+                <div className="text-xs text-muted-subtle mt-1">
+                  {formData.message.length}/500
                 </div>
               </div>
 
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
-                whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white font-medium hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3 relative z-30"
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                className="w-full px-6 py-3 bg-gradient-to-r from-gold to-gold-accent rounded-xl text-black font-medium hover:shadow-xl hover:shadow-gold/20 transition-all duration-300 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Sending Message...
+                    <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                    Sending...
                   </>
                 ) : (
                   <>
-                    <Send className="w-5 h-5" />
+                    <Send className="w-4 h-4" />
                     Send Message
                   </>
                 )}

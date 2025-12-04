@@ -2,49 +2,48 @@ import { motion } from 'framer-motion';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const skillCategories = {
-  //  'React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Chakra UI', 'HTML5', 'CSS3', 'JavaScript', 'Redux'
   Frontend: [
     'React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Redux'
   ],
   Backend: [
-    "Node.js", "Express", "GraphQL", "REST APIs","JWT","Socket.io"
+    "Node.js", "Express", "GraphQL", "REST APIs", "JWT", "Socket.io"
   ],
   'Database & Cloud': [
-    'MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'AWS','Vercel'
+    'MongoDB', 'PostgreSQL', 'MySQL', 'Firebase', 'AWS', 'Vercel'
   ],
-  'Tools & Platforms' : [
+  'Tools & Platforms': [
     'VS Code', 'Postman', 'Figma', 'Git', 'Vercel', 'CI/CD'
   ]
 };
 
 const categoryColors = {
-  Frontend: 'from-blue-400 to-cyan-400',
-  Backend: 'from-green-400 to-emerald-400',
-  'Database & Cloud': 'from-purple-400 to-pink-400',
-  'Tools & Platforms' : 'from-yellow-400 to-orange-400'
+  Frontend: 'from-gold to-gold-accent',
+  Backend: 'from-gold-accent to-gold-soft',
+  'Database & Cloud': 'from-gold-soft to-gold-highlight',
+  'Tools & Platforms': 'from-gold-highlight to-gold'
 };
 
 export const SkillsSection = () => {
   const { ref, isInView } = useScrollReveal();
 
   return (
-    <section id="skills" ref={ref} className="relative min-h-screen flex items-center overflow-hidden px-4 py-20 bg-slate-900">
-      {/* Background Effects - Same as Hero but darker */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-gray-900 to-black" />
+    <section id="skills" ref={ref} className="relative min-h-screen flex items-center overflow-hidden px-4 py-20">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#151515] via-[#0B0B0B] to-black" />
 
-      {/* Animated Background Particles - Same as Hero */}
+      {/* Subtle Gold Particles */}
       <div className="absolute inset-0">
-        {[...Array(50)].map((_, i) => (
+        {[...Array(25)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+            className="absolute w-1 h-1 bg-gold/20 rounded-full"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
             }}
             animate={{
-              y: [null, -20, 20],
-              opacity: [0.3, 1, 0.3],
+              y: [null, -15, 15],
+              opacity: [0.2, 0.5, 0.2],
             }}
             transition={{
               duration: 3 + Math.random() * 2,
@@ -54,47 +53,48 @@ export const SkillsSection = () => {
           />
         ))}
       </div>
-      <div className="container mx-auto px-6  max-w-6xl relative z-10">
+
+      <div className="container mx-auto px-6 max-w-5xl relative z-10">
         <motion.h2 
-          className="text-5xl font-bold text-center text-white mb-16"
+          className="text-3xl sm:text-4xl font-bold text-center text-foreground mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8 }}
         >
           Technical
-          <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"> Skills</span>
+          <span className="text-gold-gradient"> Skills</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2  gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
           {Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
             <motion.div
               key={category}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.15 }}
               className="group"
             >
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10 h-full">
+              <div className="glass-card rounded-xl p-5 h-full">
                 {/* Category Header */}
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${categoryColors[category as keyof typeof categoryColors]}`} />
-                  <h3 className="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${categoryColors[category as keyof typeof categoryColors]}`} />
+                  <h3 className="text-lg font-semibold text-foreground group-hover:text-gold transition-colors duration-300">
                     {category}
                   </h3>
                 </div>
 
                 {/* Skills Grid */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-2">
                   {skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skill}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.4, delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
+                      transition={{ duration: 0.4, delay: categoryIndex * 0.15 + skillIndex * 0.05 }}
                       className="group/skill"
                     >
-                      <div className="px-3 py-2 bg-slate-700/30 rounded-lg border border-slate-600/20 hover:border-blue-400/40 transition-all duration-300 hover:scale-105">
-                        <span className="text-slate-300 text-sm font-medium group-hover/skill:text-white transition-colors duration-300">
+                      <div className="px-2.5 py-1.5 bg-secondary/50 rounded-lg border border-border hover:border-gold/30 transition-all duration-300 hover:scale-105">
+                        <span className="text-muted-foreground text-sm group-hover/skill:text-foreground transition-colors duration-300">
                           {skill}
                         </span>
                       </div>
@@ -111,11 +111,11 @@ export const SkillsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 text-center"
+          className="mt-10 text-center"
         >
-          <p className="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
-            Continuously learning and adapting to new technologies. These skills represent my current expertise, 
-            with a focus on creating scalable, maintainable, and user-friendly applications.
+          <p className="text-muted-subtle text-sm max-w-2xl mx-auto">
+            Continuously learning and adapting to new technologies. Focus on creating scalable, 
+            maintainable, and user-friendly applications.
           </p>
         </motion.div>
       </div>
