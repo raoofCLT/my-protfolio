@@ -15,7 +15,6 @@ const experiences = [
     position: "Full Stack Developer",
     duration: "Oct 2024 - Present",
     location: "Remote"
-    // no logo
   }
 ];
 
@@ -26,69 +25,72 @@ export const ExperienceSection = () => {
     <section
       id="experience"
       ref={ref}
-      className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-black py-20 px-4 relative overflow-hidden"
+      className="min-h-screen py-20 px-4 relative overflow-hidden"
     >
-      {/* Background Elements - Same as About */}
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#151515] via-[#0B0B0B] to-black" />
+
+      {/* Subtle glow effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-48 h-48 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gold/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-bold text-center mb-16"
+          className="text-3xl sm:text-4xl font-bold text-center mb-12"
         >
-          My <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Experience</span>
+          My <span className="text-gold-gradient">Experience</span>
         </motion.h2>
 
-        <div className="space-y-8">
+        <div className="space-y-4">
           {experiences.map((experience, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className="group"
             >
-              <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10">
-                <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+              <div className="glass-card rounded-xl p-5 hover:border-gold/30 transition-all duration-500">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                   {/* Company Logo/Icon */}
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 bg-gradient-to-br from-gold to-gold-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       {experience.logo ? (
                         <img
                           src={experience.logo}
                           alt={experience.company + " Logo"}
-                          className="w-8 h-8 object-contain"
+                          className="w-6 h-6 object-contain"
                         />
                       ) : (
-                        <Building2 className="w-6 h-6 text-white" />
+                        <Building2 className="w-5 h-5 text-black" />
                       )}
                     </div>
                   </div>
 
                   {/* Experience Details */}
                   <div className="flex-1">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                       <div>
-                        <h3 className="text-xl font-bold text-white mb-1">
+                        <h3 className="text-lg font-bold text-foreground mb-0.5">
                           {experience.position}
                         </h3>
-                        <h4 className="text-lg text-blue-400 font-semibold">
+                        <h4 className="text-gold font-medium text-sm">
                           {experience.company}
                         </h4>
                       </div>
                       
-                      <div className="flex flex-col lg:text-right mt-4 lg:mt-0">
-                        <div className="flex items-center text-slate-300 mb-2">
-                          <Calendar className="w-4 h-4 mr-2" />
+                      <div className="flex flex-col sm:text-right mt-2 sm:mt-0">
+                        <div className="flex items-center text-muted-foreground text-sm">
+                          <Calendar className="w-3 h-3 mr-1.5" />
                           {experience.duration}
                         </div>
-                        <div className="flex items-center text-slate-300 text-sm">
-                          <MapPin className="w-3 h-3 mr-2" />
+                        <div className="flex items-center text-muted-subtle text-xs mt-1">
+                          <MapPin className="w-3 h-3 mr-1.5" />
                           {experience.location}
                         </div>
                       </div>

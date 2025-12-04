@@ -11,7 +11,6 @@ export const HeroSection = () => {
   };
 
   const handleDownloadCV = async () => {
-    // Collect only the specific data you want in the email
     const deviceInfo = navigator.platform + " - " + navigator.userAgent;
     const userAgent = navigator.userAgent;
     const referrer = document.referrer;
@@ -19,10 +18,10 @@ export const HeroSection = () => {
     const location = window.location.href;
 
     try {
-      const response = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}/api/download-cv`,
         {
-          name: "Anonymous", // You can collect this from a form if needed
+          name: "Anonymous",
           deviceInfo,
           userAgent,
           referrer,
@@ -34,7 +33,6 @@ export const HeroSection = () => {
       console.log(err);
     }
 
-    // Proceed with CV download regardless of notification success
     const link = document.createElement("a");
     link.href = "/Abdul Raoof.pdf";
     link.download = "Abdul_Raoof_CV.pdf";
@@ -53,27 +51,27 @@ export const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 px-4 py-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20"
     >
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-gray-900 to-black" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0B0B0B] to-[#151515]" />
 
-      {/* Animated Background Particles */}
+      {/* Subtle Gold Particles */}
       <div className="absolute inset-0">
-        {[...Array(50)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+            className="absolute w-1 h-1 bg-gold/20 rounded-full"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
             }}
             animate={{
-              y: [null, -20, 20],
-              opacity: [0.3, 1, 0.3],
+              y: [null, -15, 15],
+              opacity: [0.2, 0.5, 0.2],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 4 + Math.random() * 2,
               repeat: Infinity,
               ease: "easeInOut",
             }}
@@ -89,21 +87,20 @@ export const HeroSection = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-4xl sm:text-6xl md:text-8xl font-bold text-white mb-6"
+            className="text-4xl sm:text-6xl md:text-8xl font-bold text-foreground mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Abdul
-            <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              {" "}
-              Raoof
+            <span className="text-gold-gradient">
+              {" "}Raoof
             </span>
           </motion.h1>
         </motion.div>
 
         <motion.h2
-          className="text-xl sm:text-2xl md:text-3xl text-slate-300 mb-8 font-light"
+          className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-8 font-light"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -112,7 +109,7 @@ export const HeroSection = () => {
         </motion.h2>
 
         <motion.p
-          className="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed"
+          className="text-lg text-muted-subtle mb-12 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -124,33 +121,33 @@ export const HeroSection = () => {
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <button
             onClick={handleDownloadCV}
-            className="group px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white font-medium hover:shadow-xl hover:shadow-green-500/25 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            className="group px-6 py-3 bg-gradient-to-r from-gold to-gold-accent rounded-full text-black font-medium hover:shadow-xl hover:shadow-gold/25 transition-all duration-300 hover:scale-105 flex items-center gap-2"
           >
             Download CV
-            <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
+            <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" />
           </button>
 
           <button
             onClick={() => scrollToSection("projects")}
-            className="group px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-medium hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            className="group px-6 py-3 border border-gold/30 rounded-full text-gold font-medium hover:border-gold hover:bg-gold/5 transition-all duration-300 hover:scale-105 flex items-center gap-2"
           >
             View My Work
-            <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
+            <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" />
           </button>
 
           <button
             onClick={() => scrollToSection("contact")}
-            className="group px-8 py-4 border-2 border-slate-600 rounded-full text-white font-medium hover:border-blue-400 hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            className="group px-6 py-3 border border-border rounded-full text-foreground font-medium hover:border-gold/50 hover:text-gold transition-all duration-300 hover:scale-105 flex items-center gap-2"
           >
             Contact Me
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
         </motion.div>
 
@@ -161,8 +158,8 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 1.0 }}
           className="mt-12"
         >
-          <p className="text-slate-400 text-center mb-6">Follow Me</p>
-          <div className="flex justify-center gap-4">
+          <p className="text-muted-subtle text-center mb-4 text-sm">Follow Me</p>
+          <div className="flex justify-center gap-3">
             {socialLinks.map((social, index) => (
               <motion.a
                 key={social.label}
@@ -172,9 +169,9 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-                className="w-12 h-12 bg-slate-800/50 border border-slate-700/50 rounded-full flex items-center justify-center hover:border-blue-400/50 hover:scale-110 transition-all duration-300 group"
+                className="w-10 h-10 bg-secondary border border-border rounded-full flex items-center justify-center hover:border-gold/50 hover:scale-110 transition-all duration-300 group"
               >
-                <social.icon className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors duration-300" />
+                <social.icon className="w-4 h-4 text-muted-foreground group-hover:text-gold transition-colors duration-300" />
               </motion.a>
             ))}
           </div>
@@ -189,14 +186,14 @@ export const HeroSection = () => {
         transition={{ duration: 1, delay: 1.5 }}
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-slate-400 rounded-full flex justify-center"
+          className="w-5 h-8 border border-gold/30 rounded-full flex justify-center"
         >
           <motion.div
-            animate={{ y: [0, 12, 0] }}
+            animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-slate-400 rounded-full mt-2"
+            className="w-0.5 h-2 bg-gold/50 rounded-full mt-1.5"
           />
         </motion.div>
       </motion.div>
