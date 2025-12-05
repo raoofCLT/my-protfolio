@@ -8,118 +8,133 @@ const navLinks = [
   { name: 'About', path: '/about' },
   { name: 'Projects', path: '/projects' },
   { name: 'Experience', path: '/experience' },
+  { name: 'Services', path: '/services' },
   { name: 'Contact', path: '/contact' },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setHidden(currentScrollY > lastScrollY && currentScrollY > 100);
+      setLastScrollY(currentScrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-2' : 'py-3'
-      }`}
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: hidden ? -100 : 0 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      className="fixed top-0 left-0 right-0 z-50 navbar-glass"
     >
-      <div className="max-w-5xl mx-auto px-4">
-        <div
-          className={`flex items-center justify-between px-4 py-2 rounded-full transition-all duration-300 ${
-            scrolled
-              ? 'bg-[#0B0B0B]/90 backdrop-blur-md border border-gold-DEFAULT/10'
-              : 'bg-transparent'
-          }`}
-        >
-          {/* Logo */}
-          <Link
-            to="/"
-            className="text-sm font-semibold tracking-wide text-foreground hover:text-gold-DEFAULT transition-colors"
-          >
-            AR<span className="text-gold-DEFAULT">.</span>
-          </Link>
+      <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-1">
+          <span className="text-lg font-bold text-foreground">Abdul</span>
+          <span className="text-lg font-bold text-gold-DEFAULT">.</span>
+        </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`relative text-xs font-medium tracking-wide transition-colors ${
-                  location.pathname === link.path
-                    ? 'text-gold-DEFAULT'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                {link.name}
-                {location.pathname === link.path && (
-                  <motion.span
-                    layoutId="activeNav"
-                    className="absolute -bottom-1 left-0 right-0 h-px bg-gold-DEFAULT"
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
-
-          {/* Hire Me Button */}
-          <Link
-            to="/contact"
-            className="hidden md:block text-xs font-medium px-4 py-1.5 rounded-full border border-gold-DEFAULT/50 text-gold-DEFAULT hover:bg-gold-DEFAULT hover:text-background transition-all duration-300"
-          >
-            Hire Me
-          </Link>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground p-1"
-          >
-            {isOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`relative text-xs font-medium uppercase tracking-wider transition-colors duration-300 ${
+                location.pathname === link.path
+                  ? 'text-gold-DEFAULT'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              {link.name}
+              {location.pathname === link.path && (
+                <motion.span
+                  layoutId="navIndicator"
+                  className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-gradient-to-r from-gold-DEFAULT to-gold-accent rounded-full"
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                />
+              )}
+            </Link>
+          ))}
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="md:hidden mt-2 p-4 rounded-2xl bg-[#0B0B0B]/95 backdrop-blur-md border border-gold-DEFAULT/10"
-            >
-              <div className="flex flex-col gap-3">
-                {navLinks.map((link) => (
+        {/* CTA Button */}
+        <Link
+          to="/contact"
+          className="hidden md:block text-xs font-semibold px-5 py-2 rounded-full btn-gold-outline"
+        >
+          Hire Me
+        </Link>
+
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-foreground p-2"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden bg-[#0B0B0B] border-t border-border/50"
+          >
+            <div className="px-6 py-4 space-y-1">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.path}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
                   <Link
-                    key={link.path}
                     to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-sm font-medium py-2 px-3 rounded-lg transition-colors ${
+                    className={`block py-3 text-sm font-medium transition-colors ${
                       location.pathname === link.path
-                        ? 'text-gold-DEFAULT bg-gold-DEFAULT/10'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-card'
+                        ? 'text-gold-DEFAULT'
+                        : 'text-muted-foreground'
                     }`}
                   >
                     {link.name}
                   </Link>
-                ))}
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+                className="pt-4"
+              >
                 <Link
                   to="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="text-sm font-medium py-2 px-3 rounded-lg text-center border border-gold-DEFAULT/50 text-gold-DEFAULT mt-2"
+                  className="block text-center text-sm font-semibold py-3 rounded-lg btn-gold"
                 >
                   Hire Me
                 </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </nav>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
