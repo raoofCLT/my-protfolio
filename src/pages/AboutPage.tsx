@@ -1,137 +1,148 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, MapPin, Briefcase, Code2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { PageLayout } from '@/components/layout/PageLayout';
 
 const skills = [
-  { category: 'Frontend', items: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js'] },
-  { category: 'Backend', items: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL'] },
-  { category: 'Tools', items: ['Git', 'Docker', 'AWS', 'Figma'] },
+  { name: 'React / Next.js', level: 95 },
+  { name: 'TypeScript', level: 90 },
+  { name: 'Node.js / Express', level: 88 },
+  { name: 'MongoDB / PostgreSQL', level: 85 },
+  { name: 'Tailwind CSS', level: 92 },
+  { name: 'REST / GraphQL APIs', level: 87 },
 ];
 
-const highlights = [
-  { icon: GraduationCap, label: 'Education', value: 'Computer Science' },
-  { icon: MapPin, label: 'Location', value: 'Available Remote' },
-  { icon: Briefcase, label: 'Status', value: 'Open to Work' },
-  { icon: Code2, label: 'Focus', value: 'Full-Stack' },
+const strengths = [
+  'Clean, maintainable code architecture',
+  'Performance optimization expert',
+  'Responsive & accessible design',
+  'Agile development methodology',
+  'Strong problem-solving skills',
+  'Excellent communication',
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
 
 export const AboutPage = () => {
   return (
     <PageLayout>
-      <div className="max-w-5xl mx-auto px-4 py-12">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <p className="text-xs font-medium text-gold-DEFAULT tracking-widest uppercase mb-2">
-            Get to know me
-          </p>
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
-            About <span className="text-gold-gradient">Me</span>
-          </h1>
-        </motion.div>
-
-        {/* Two Column Layout */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Bio Section */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Header */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-16"
           >
-            <div className="p-6 rounded-xl bg-card/50 border border-border/50">
-              <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold-DEFAULT" />
-                Biography
-              </h2>
-              <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
-                <p>
-                  I'm a passionate Full-Stack Developer with expertise in building
-                  modern web applications. With a strong foundation in both frontend
-                  and backend technologies, I create seamless digital experiences.
-                </p>
-                <p>
-                  My journey in tech started with curiosity and has evolved into a
-                  deep love for clean code, elegant solutions, and continuous learning.
-                  I thrive in collaborative environments and enjoy tackling complex
-                  challenges.
-                </p>
-              </div>
-            </div>
-
-            {/* Highlights Grid */}
-            <div className="grid grid-cols-2 gap-3">
-              {highlights.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                  className="p-4 rounded-xl bg-card/30 border border-border/30 hover:border-gold-DEFAULT/20 transition-colors"
-                >
-                  <item.icon className="w-4 h-4 text-gold-DEFAULT mb-2" />
-                  <p className="text-xs text-muted-foreground">{item.label}</p>
-                  <p className="text-sm font-medium text-foreground">{item.value}</p>
-                </motion.div>
-              ))}
-            </div>
+            <p className="text-xs font-medium text-gold-DEFAULT tracking-[0.2em] uppercase mb-3">
+              About Me
+            </p>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+              Building Digital{' '}
+              <span className="text-gold-gradient">Excellence</span>
+            </h1>
           </motion.div>
 
-          {/* Skills Section */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-4"
-          >
-            <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold-DEFAULT" />
-              Skills & Technologies
-            </h2>
+          {/* Two Column Layout */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Left - Bio & Strengths */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {/* Profile Card */}
+              <motion.div variants={itemVariants} className="glass-card rounded-2xl p-6 mb-8">
+                <div className="flex items-start gap-5">
+                  <img
+                    src="/profilepic.jpeg"
+                    alt="Abdul Raoof"
+                    className="w-20 h-20 rounded-xl object-cover border border-gold-DEFAULT/20"
+                  />
+                  <div>
+                    <h2 className="text-lg font-semibold text-foreground mb-1">Abdul Raoof</h2>
+                    <p className="text-sm text-gold-DEFAULT mb-2">Full-Stack Developer</p>
+                    <p className="text-xs text-muted-foreground">Based in India • Available for remote work</p>
+                  </div>
+                </div>
+              </motion.div>
 
-            {skills.map((skillGroup, groupIndex) => (
-              <motion.div
-                key={groupIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.3 + groupIndex * 0.1 }}
-                className="p-4 rounded-xl bg-card/50 border border-border/50"
-              >
-                <p className="text-xs font-medium text-gold-DEFAULT uppercase tracking-wider mb-3">
-                  {skillGroup.category}
+              {/* Bio */}
+              <motion.div variants={itemVariants} className="mb-8">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  I'm a passionate full-stack developer with 3+ years of experience 
+                  creating modern web applications. I specialize in the MERN stack 
+                  and have a keen eye for UI/UX design.
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {skillGroup.items.map((skill, skillIndex) => (
-                    <span
-                      key={skillIndex}
-                      className="px-3 py-1 text-xs rounded-full bg-card border border-border/50 text-foreground hover:border-gold-DEFAULT/30 transition-colors"
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  My approach combines clean code principles with creative problem-solving 
+                  to deliver exceptional digital products that exceed client expectations.
+                </p>
+              </motion.div>
+
+              {/* Strengths */}
+              <motion.div variants={itemVariants}>
+                <h3 className="text-sm font-semibold text-foreground mb-4">Key Strengths</h3>
+                <div className="space-y-2.5">
+                  {strengths.map((strength, index) => (
+                    <motion.div
+                      key={strength}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 + index * 0.08 }}
+                      className="flex items-center gap-3"
                     >
-                      <span className="w-1 h-1 inline-block rounded-full bg-gold-DEFAULT mr-1.5" />
-                      {skill}
-                    </span>
+                      <CheckCircle2 className="w-4 h-4 text-gold-DEFAULT flex-shrink-0" />
+                      <span className="text-xs text-muted-foreground">{strength}</span>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>
-            ))}
+            </motion.div>
 
-            {/* Download CV */}
-            <motion.a
-              href="/Abdul Raoof.pdf"
-              download
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.6 }}
-              className="inline-flex items-center gap-2 px-5 py-2 mt-4 rounded-full border border-gold-DEFAULT/50 text-gold-DEFAULT text-sm font-medium hover:bg-gold-DEFAULT hover:text-background transition-all duration-300"
+            {/* Right - Skills */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
             >
-              Download Resume
-            </motion.a>
-          </motion.div>
+              <h3 className="text-sm font-semibold text-foreground mb-6">Technical Skills</h3>
+              <div className="space-y-5">
+                {skills.map((skill, index) => (
+                  <motion.div
+                    key={skill.name}
+                    variants={itemVariants}
+                    className="glass-card rounded-xl p-4"
+                  >
+                    <div className="flex justify-between items-center mb-2.5">
+                      <span className="text-sm font-medium text-foreground">{skill.name}</span>
+                      <span className="text-xs text-gold-DEFAULT font-medium">{skill.level}%</span>
+                    </div>
+                    <div className="h-1.5 bg-background-offset rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${skill.level}%` }}
+                        transition={{ duration: 1, delay: 0.4 + index * 0.1, ease: [0.23, 1, 0.32, 1] }}
+                        className="h-full bg-gradient-to-r from-gold-DEFAULT to-gold-accent rounded-full"
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </div>
+      </section>
     </PageLayout>
   );
 };
