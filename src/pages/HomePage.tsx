@@ -81,16 +81,45 @@ export const HomePage = () => {
                 </span>
               </motion.div>
 
-              {/* Name with animated underline */}
+              {/* Name with eraser reveal effect */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-foreground leading-[1.1] mb-5">
-                Hi, I'm{' '}
-                <span className="relative inline-block">
+                <motion.span
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  Hi, I'm{' '}
+                </motion.span>
+                <span className="relative inline-block overflow-hidden">
+                  {/* Eraser mask overlay */}
+                  <motion.span
+                    className="absolute inset-0 bg-background z-10"
+                    initial={{ x: 0 }}
+                    animate={{ x: '105%' }}
+                    transition={{ 
+                      delay: 0.5, 
+                      duration: 1.2, 
+                      ease: [0.76, 0, 0.24, 1] 
+                    }}
+                  />
+                  {/* Gold accent reveal bar */}
+                  <motion.span
+                    className="absolute inset-y-0 w-[3px] bg-gradient-to-b from-gold-DEFAULT via-gold-accent to-gold-DEFAULT z-20"
+                    initial={{ x: 0, opacity: 1 }}
+                    animate={{ x: '3400%', opacity: 0 }}
+                    transition={{ 
+                      delay: 0.5, 
+                      duration: 1.2, 
+                      ease: [0.76, 0, 0.24, 1],
+                      opacity: { delay: 1.5, duration: 0.3 }
+                    }}
+                  />
                   <span className="text-gold-gradient">Abdul Raoof</span>
                   <motion.span
                     className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-gold-DEFAULT via-gold-accent to-transparent"
                     initial={{ scaleX: 0, originX: 0 }}
                     animate={{ scaleX: 1 }}
-                    transition={{ delay: 0.9, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    transition={{ delay: 1.7, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                   />
                 </span>
               </h1>
