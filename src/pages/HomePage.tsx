@@ -7,7 +7,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/Scr
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { FloatingShapes } from '@/components/ui/FloatingShapes';
-
+import EraserEffect from '@/components/ui/EraserEffect';
 const roles = [
   'Full-Stack Developer',
   'React Architect',
@@ -38,6 +38,12 @@ export const HomePage = () => {
       <FloatingShapes />
       
       <section className="relative min-h-[calc(100vh-3.5rem)] flex items-center overflow-hidden">
+        {/* Mouse eraser effect overlay */}
+        <EraserEffect 
+          className="z-[5]" 
+          overlayColor="rgba(0, 0, 0, 0.35)" 
+          brushSize={70} 
+        />
         {/* Ambient glow */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none">
           <motion.div
