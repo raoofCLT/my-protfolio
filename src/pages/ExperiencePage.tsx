@@ -1,172 +1,213 @@
-import { motion, useInView } from 'framer-motion';
-import { Briefcase, Calendar, MapPin, ArrowRight } from 'lucide-react';
-import { PageLayout } from '@/components/layout/PageLayout';
-import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { FloatingShapes } from '@/components/ui/FloatingShapes';
-import { useRef } from 'react';
+import { motion, Variants } from "framer-motion";
+import {
+  Briefcase,
+  History,
+  Calendar,
+  Building2,
+  Trophy,
+  Users,
+  Target,
+} from "lucide-react";
+import { PageLayout } from "@/components/layout/PageLayout";
+import { FloatingShapes } from "@/components/ui/FloatingShapes";
+import { GlassCard } from "@/components/ui/GlassCard";
 
 const experiences = [
   {
-    title: 'Senior Full-Stack Developer',
-    company: 'Tech Innovations Inc.',
-    location: 'Remote',
-    period: '2023 - Present',
-    description: 'Leading development of enterprise web applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.',
-    achievements: ['Led team of 5 developers', 'Improved performance by 40%', 'Architected microservices'],
+    role: "Senior Full-Stack Developer",
+    company: "Tech Innovations Inc.",
+    period: "2023 - Present",
+    logo: "TI",
   },
   {
-    title: 'Full-Stack Developer',
-    company: 'Digital Solutions Ltd.',
-    location: 'Hybrid',
-    period: '2022 - 2023',
-    description: 'Built scalable web applications and RESTful APIs. Collaborated with cross-functional teams to deliver high-quality software solutions.',
-    achievements: ['Delivered 12+ projects', 'Reduced load time by 60%', 'Implemented CI/CD pipelines'],
+    role: "Full-Stack Developer",
+    company: "Digital Solutions Ltd.",
+    period: "2022 - 2023",
+    logo: "DS",
   },
   {
-    title: 'Frontend Developer',
-    company: 'Creative Agency',
-    location: 'On-site',
-    period: '2021 - 2022',
-    description: 'Developed responsive user interfaces and implemented modern frontend frameworks. Focused on performance optimization and accessibility.',
-    achievements: ['Built 20+ responsive sites', 'A11y compliance', 'Component library creation'],
+    role: "Frontend Developer",
+    company: "Creative Agency",
+    period: "2021 - 2022",
+    logo: "CA",
   },
   {
-    title: 'Junior Developer',
-    company: 'StartUp Ventures',
-    location: 'On-site',
-    period: '2020 - 2021',
-    description: 'Started my professional journey building web applications. Gained hands-on experience with JavaScript, React, and database management.',
-    achievements: ['Rapid skill development', 'Agile methodology', 'Full-stack exposure'],
+    role: "Junior Developer",
+    company: "StartUp Ventures",
+    period: "2020 - 2021",
+    logo: "SV",
   },
 ];
 
-const TimelineItem = ({ exp, index }: { exp: typeof experiences[0]; index: number }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
-  const isLeft = index % 2 === 0;
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 50, damping: 20 },
+  },
+};
+
+export const ExperiencePage = () => {
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`relative flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-    >
-      {/* Timeline Dot */}
-      <motion.div 
-        className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 z-10"
-        initial={{ scale: 0 }}
-        animate={isInView ? { scale: 1 } : {}}
-        transition={{ delay: 0.4, type: 'spring', stiffness: 200 }}
-      >
-        <div className="relative">
-          <div className="w-3 h-3 rounded-full bg-gradient-to-r from-gold-DEFAULT to-gold-accent shadow-[0_0_20px_rgba(212,165,66,0.4)]" />
-          <motion.div
-            className="absolute inset-0 rounded-full bg-gold-DEFAULT/20"
-            animate={{ scale: [1, 2.5, 1], opacity: [0.4, 0, 0.4] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
-        </div>
-      </motion.div>
+    <PageLayout>
+      <div className="min-h-screen bg-[#030303] selection:bg-gold-DEFAULT/30 pt-4 pb-20 overflow-x-hidden">
+        <FloatingShapes />
+        <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
-      {/* Content Card */}
-      <div className={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${isLeft ? 'md:pr-8' : 'md:pl-8'}`}>
         <motion.div
-          className="glass-card rounded-xl p-5 group cursor-default"
-          whileHover={{ y: -4, scale: 1.01 }}
-          transition={{ duration: 0.3 }}
+          className="max-w-[1240px] mx-auto px-4 md:px-6 relative z-10 space-y-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="tech-badge flex items-center gap-1">
-              <Calendar className="w-3 h-3" />
-              {exp.period}
-            </span>
-            <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/[0.03] text-muted-foreground/70">
-              <MapPin className="w-3 h-3 inline mr-1" />
-              {exp.location}
-            </span>
+          {/* --- TOP ROW: HEADER SECTION (Matches Home/Projects) --- */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Title Card (Col-8) */}
+            <GlassCard className="lg:col-span-8 p-8 md:p-12 flex flex-col justify-end relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors min-h-[320px]">
+              <div className="absolute top-0 right-0 p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:-rotate-12">
+                <Briefcase size={240} className="text-white" />
+              </div>
+
+              <div className="relative z-10">
+                <motion.div
+                  variants={itemVariants}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6 backdrop-blur-md w-fit"
+                >
+                  <Briefcase size={12} className="text-gold" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-gold">
+                    Career Path
+                  </span>
+                </motion.div>
+
+                <motion.h1
+                  variants={itemVariants}
+                  className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-[0.9] mb-4"
+                >
+                  Professional <br />{" "}
+                  <span className="text-gold-gradient">Journey.</span>
+                </motion.h1>
+
+                <motion.p
+                  variants={itemVariants}
+                  className="text-gold-pale/80 text-lg max-w-xl leading-relaxed"
+                >
+                  A timeline of impactful roles and contributions across the
+                  tech industry.
+                </motion.p>
+              </div>
+            </GlassCard>
+
+            {/* Stats Summary (Col-4) */}
+            <GlassCard className="lg:col-span-4 p-8 flex flex-col justify-between hover:border-gold/30 transition-colors bg-gradient-to-br from-white/5 to-transparent">
+              <div>
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="p-3 bg-black/50 rounded-xl border border-white/10 text-white">
+                    <History size={24} />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">Overview</div>
+                    <div className="text-[10px] text-white/50 uppercase tracking-widest">
+                      Career Stats
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center text-gold">
+                      <Trophy size={18} />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-white leading-none">
+                        4+
+                      </div>
+                      <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
+                        Years Exp.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white/80">
+                      <Building2 size={18} />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-white leading-none">
+                        3
+                      </div>
+                      <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
+                        Companies
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white/80">
+                      <Users size={18} />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-white leading-none">
+                        Lead
+                      </div>
+                      <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
+                        Current Role
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </GlassCard>
           </div>
-          
-          <h3 className="text-base sm:text-lg font-semibold text-foreground mb-1 group-hover:text-gold-DEFAULT transition-colors">
-            {exp.title}
-          </h3>
-          <p className="text-xs sm:text-sm text-gold-DEFAULT/70 mb-3 flex items-center gap-1.5">
-            <Briefcase className="w-3 h-3" />
-            {exp.company}
-          </p>
-          <p className="text-xs sm:text-[13px] text-muted-foreground/80 leading-relaxed mb-4">
-            {exp.description}
-          </p>
-          
-          <div className="flex flex-wrap gap-1.5">
-            {exp.achievements.map((achievement) => (
-              <span key={achievement} className="text-[10px] px-2 py-1 rounded bg-white/[0.03] text-muted-foreground/70 flex items-center gap-1">
-                <ArrowRight className="w-2.5 h-2.5 text-gold-DEFAULT/60" />
-                {achievement}
-              </span>
+
+          {/* --- BOTTOM ROW: EXPERIENCE GRID (Bento Style) --- */}
+          {/* Matches the Grid look of Homes Tech Stack or Projects */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {experiences.map((exp, idx) => (
+              <GlassCard
+                key={idx}
+                className="group relative flex flex-col justify-between min-h-[220px] p-8 hover:border-gold/30 transition-all duration-300 bg-gold/[0.02] hover:bg-gold/[0.04]"
+                noPadding
+              >
+                {/* Top Row: Logo & Period */}
+                <div className="flex justify-between items-start mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 group-hover:border-gold/30 group-hover:text-gold transition-all duration-300">
+                    {exp.logo}
+                  </div>
+
+                  <div className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs font-mono text-white/60 group-hover:text-gold group-hover:border-gold/20 transition-colors">
+                    {exp.period}
+                  </div>
+                </div>
+
+                {/* Bottom Row: Role & Company */}
+                <div>
+                  <h3 className="text-2xl font-bold text-white group-hover:text-gold transition-colors mb-2">
+                    {exp.role}
+                  </h3>
+                  <div className="flex items-center gap-2 text-white/50 text-sm font-medium">
+                    <Building2 size={14} />
+                    {exp.company}
+                  </div>
+                </div>
+
+                {/* Decorative background element */}
+                {/* <div className="absolute bottom-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity transform group-hover:scale-110 group-hover:-rotate-12 duration-500">
+                  <Briefcase size={120} />
+                </div> */}
+              </GlassCard>
             ))}
           </div>
         </motion.div>
       </div>
-      <div className="hidden md:block md:w-[calc(50%-2rem)]" />
-    </motion.div>
-  );
-};
-
-export const ExperiencePage = () => {
-  const timelineRef = useRef(null);
-  const isTimelineInView = useInView(timelineRef, { once: true });
-
-  return (
-    <PageLayout>
-      <FloatingShapes />
-      
-      <section className="py-12 sm:py-16 md:py-20 relative z-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <ScrollReveal>
-            <div className="text-center mb-10 sm:mb-14">
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: 32 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="block h-[2px] bg-gradient-to-r from-gold-DEFAULT to-transparent mx-auto mb-4"
-              />
-              <p className="text-[10px] font-medium text-gold-DEFAULT/80 tracking-[0.25em] uppercase mb-3">
-                Career Path
-              </p>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Work <span className="text-gold-gradient">Experience</span>
-              </h1>
-              <p className="text-sm sm:text-[15px] text-muted-foreground/80 max-w-lg mx-auto">
-                A journey through my professional career, showcasing growth and achievements.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div ref={timelineRef} className="relative">
-            <motion.div
-              initial={{ height: 0 }}
-              animate={isTimelineInView ? { height: '100%' } : {}}
-              transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute left-1/2 transform -translate-x-1/2 w-px hidden md:block"
-              style={{ background: 'linear-gradient(180deg, #D4A542 0%, rgba(212,165,66,0.2) 50%, transparent 100%)' }}
-            />
-            <motion.div
-              initial={{ height: 0 }}
-              animate={isTimelineInView ? { height: '100%' } : {}}
-              transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute left-4 w-px md:hidden"
-              style={{ background: 'linear-gradient(180deg, #D4A542 0%, rgba(212,165,66,0.2) 50%, transparent 100%)' }}
-            />
-            <div className="space-y-6 sm:space-y-10">
-              {experiences.map((exp, index) => (
-                <TimelineItem key={exp.title} exp={exp} index={index} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
     </PageLayout>
   );
 };

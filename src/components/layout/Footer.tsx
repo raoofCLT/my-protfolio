@@ -1,23 +1,27 @@
-import { Link } from 'react-router-dom';
-import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Link } from "react-router-dom";
+import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/abdulraoof', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/abdulraoof', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:contact@abdulraoof.com', label: 'Email' },
+  { icon: Github, href: "https://github.com/abdulraoof", label: "GitHub" },
+  {
+    icon: Linkedin,
+    href: "https://linkedin.com/in/abdulraoof",
+    label: "LinkedIn",
+  },
+  { icon: Mail, href: "mailto:contact@abdulraoof.com", label: "Email" },
 ];
 
 export const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <footer className="relative">
       {/* Gold gradient divider */}
       <div className="h-px bg-gradient-to-r from-transparent via-gold-DEFAULT/20 to-transparent" />
-      
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Copyright */}
@@ -27,10 +31,16 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div className="flex items-center gap-6">
-            <Link to="/projects" className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors">
+            <Link
+              to="/projects"
+              className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
+            >
               Projects
             </Link>
-            <Link to="/contact" className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors">
+            <Link
+              to="/contact"
+              className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
+            >
               Contact
             </Link>
           </div>
@@ -50,7 +60,7 @@ export const Footer = () => {
                 <social.icon size={15} />
               </motion.a>
             ))}
-            
+
             {/* Scroll to top */}
             <motion.button
               onClick={scrollToTop}

@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Experience', path: '/experience' },
-  { name: 'Services', path: '/services' },
-  { name: 'Contact', path: '/contact' },
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Experience", path: "/experience" },
+
+  { name: "Contact", path: "/contact" },
 ];
 
 export const Navbar = () => {
@@ -26,8 +26,8 @@ export const Navbar = () => {
       setScrolled(currentScrollY > 20);
       setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   useEffect(() => {
@@ -37,12 +37,12 @@ export const Navbar = () => {
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
@@ -52,19 +52,19 @@ export const Navbar = () => {
       animate={{ y: hidden ? -100 : 0 }}
       transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'navbar-glass shadow-lg shadow-black/20' : 'bg-transparent'
+        scrolled ? "navbar-glass shadow-lg shadow-black/20" : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-1 group">
-          <motion.span 
+          <motion.span
             className="text-lg sm:text-xl font-bold text-foreground"
             whileHover={{ x: 2 }}
           >
             Abdul
           </motion.span>
-          <motion.span 
+          <motion.span
             className="text-lg sm:text-xl font-bold text-gold-DEFAULT"
             animate={{ opacity: [1, 0.5, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -81,8 +81,8 @@ export const Navbar = () => {
               to={link.path}
               className={`relative text-xs font-medium uppercase tracking-wider transition-colors duration-300 py-2 ${
                 location.pathname === link.path
-                  ? 'text-gold-DEFAULT'
-                  : 'text-muted-foreground hover:text-foreground'
+                  ? "text-gold-DEFAULT"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {link.name}
@@ -90,7 +90,7 @@ export const Navbar = () => {
                 <motion.span
                   layoutId="navIndicator"
                   className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-gradient-to-r from-gold-DEFAULT to-gold-accent rounded-full"
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 />
               )}
             </Link>
@@ -103,7 +103,10 @@ export const Navbar = () => {
           className="hidden lg:flex items-center gap-2 text-xs font-semibold px-5 py-2.5 rounded-full btn-gold-outline group"
         >
           Hire Me
-          <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+          <ArrowRight
+            size={14}
+            className="transition-transform group-hover:translate-x-1"
+          />
         </Link>
 
         {/* Mobile Toggle */}
@@ -115,7 +118,7 @@ export const Navbar = () => {
         >
           <AnimatePresence mode="wait">
             <motion.div
-              key={isOpen ? 'close' : 'menu'}
+              key={isOpen ? "close" : "menu"}
               initial={{ opacity: 0, rotate: -90 }}
               animate={{ opacity: 1, rotate: 0 }}
               exit={{ opacity: 0, rotate: 90 }}
@@ -139,12 +142,12 @@ export const Navbar = () => {
               className="fixed inset-0 bg-background/80 backdrop-blur-sm lg:hidden"
               onClick={() => setIsOpen(false)}
             />
-            
+
             {/* Menu Panel */}
             <motion.div
-              initial={{ opacity: 0, x: '100%' }}
+              initial={{ opacity: 0, x: "100%" }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
+              exit={{ opacity: 0, x: "100%" }}
               transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="fixed top-14 right-0 bottom-0 w-full sm:w-80 bg-background-deep border-l border-border/50 lg:hidden overflow-y-auto"
             >
@@ -160,8 +163,8 @@ export const Navbar = () => {
                       to={link.path}
                       className={`flex items-center justify-between py-4 text-base font-medium transition-colors border-b border-border/30 ${
                         location.pathname === link.path
-                          ? 'text-gold-DEFAULT'
-                          : 'text-muted-foreground hover:text-foreground'
+                          ? "text-gold-DEFAULT"
+                          : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
                       {link.name}
@@ -171,7 +174,7 @@ export const Navbar = () => {
                     </Link>
                   </motion.div>
                 ))}
-                
+
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}

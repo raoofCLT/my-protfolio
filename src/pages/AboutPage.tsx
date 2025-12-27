@@ -1,214 +1,299 @@
-import { motion } from 'framer-motion';
-import { CheckCircle2, Code, Palette, Database, Globe, Server } from 'lucide-react';
-import { PageLayout } from '@/components/layout/PageLayout';
-import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/ScrollReveal';
-import { FloatingShapes } from '@/components/ui/FloatingShapes';
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import {
+  User2,
+  Heart,
+  Zap,
+  Layers,
+  BookOpen,
+  ChevronRight,
+} from "lucide-react";
+import { PageLayout } from "@/components/layout/PageLayout";
+import { FloatingShapes } from "@/components/ui/FloatingShapes";
+import { GlassCard } from "@/components/ui/GlassCard";
 
-const skills = [
-  { name: 'React / Next.js', level: 95, icon: Code },
-  { name: 'TypeScript', level: 90, icon: Code },
-  { name: 'Node.js / Express', level: 88, icon: Server },
-  { name: 'MongoDB / PostgreSQL', level: 85, icon: Database },
-  { name: 'Tailwind CSS', level: 92, icon: Palette },
-  { name: 'REST / GraphQL APIs', level: 87, icon: Globe },
+/* --- Animation Variants --- */
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring" as const, stiffness: 50, damping: 20 },
+  },
+};
+
+/* --- Icons for Infinite Slider --- */
+const techIcons = [
+  {
+    name: "React",
+    src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+  },
+  {
+    name: "Next.js",
+    src: "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
+  },
+  {
+    name: "TypeScript",
+    src: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg",
+  },
+  {
+    name: "Node.js",
+    src: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
+  },
+  {
+    name: "Tailwind",
+    src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+  },
+  {
+    name: "PostgreSQL",
+    src: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
+  },
+  {
+    name: "Docker",
+    src: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg",
+  },
+  {
+    name: "AWS",
+    src: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+  },
+  {
+    name: "Figma",
+    src: "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg",
+  },
+  {
+    name: "Git",
+    src: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg",
+  },
+  {
+    name: "Redis",
+    src: "https://upload.wikimedia.org/wikipedia/commons/6/64/Logo-redis.svg",
+  },
+  {
+    name: "MongoDB",
+    src: "https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg",
+  },
 ];
 
-const strengths = [
-  'Clean, maintainable code architecture',
-  'Performance optimization expert',
-  'Responsive & accessible design',
-  'Agile development methodology',
-  'Strong problem-solving skills',
-  'Excellent communication',
+const values = [
+  {
+    icon: Layers,
+    title: "Engineering",
+    desc: "Robust architectures, clean patterns, and maintainable codebases.",
+  },
+  {
+    icon: Zap,
+    title: "Performance",
+    desc: "High-performance applications with sub-second latency.",
+  },
+  {
+    icon: Heart,
+    title: "Product",
+    desc: "User-centric design thinking merged with technical excellence.",
+  },
 ];
 
-const techStack = [
-  { name: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind'] },
-  { name: 'Backend', items: ['Node.js', 'Express', 'Python', 'GraphQL'] },
-  { name: 'Database', items: ['MongoDB', 'PostgreSQL', 'Redis', 'Firebase'] },
-  { name: 'Tools', items: ['Git', 'Docker', 'AWS', 'Figma'] },
-];
+const TechCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % techIcons.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  // We want to animate the *pair* entering/leaving, or individual items.
+  // Ideally, keys should track the specific item index or name.
+  const icon1 = techIcons[currentIndex];
+  const icon2 = techIcons[(currentIndex + 1) % techIcons.length];
+
+  return (
+    <div className="flex items-center justify-around gap-2 h-24 relative overflow-hidden">
+      <AnimatePresence mode="popLayout">
+        {[icon1, icon2].map((tech, i) => (
+          <motion.div
+            key={`${tech.name}-${i}`}
+            className="flex-1 flex flex-col items-center justify-center gap-2 min-w-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{
+              duration: 0.5,
+              ease: "backOut",
+              delay: i * 0.1,
+            }}
+          >
+            <div className="h-16 w-16 relative flex items-center justify-center">
+              <img
+                src={tech.src}
+                alt={tech.name}
+                className="w-12 h-12 object-contain drop-shadow-lg"
+              />
+            </div>
+            <span className="text-[10px] font-mono text-gold/60 uppercase tracking-wider truncate w-full text-center">
+              {tech.name}
+            </span>
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export const AboutPage = () => {
   return (
     <PageLayout>
-      <FloatingShapes />
-      
-      <section className="py-12 sm:py-16 md:py-20 relative z-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {/* Header */}
-          <ScrollReveal>
-            <div className="mb-10 sm:mb-14">
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: 32 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="block h-[2px] bg-gradient-to-r from-gold-DEFAULT to-transparent mb-4"
-              />
-              <p className="text-[10px] font-medium text-gold-DEFAULT/80 tracking-[0.25em] uppercase mb-3">
-                About Me
-              </p>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-                Building Digital{' '}
-                <span className="text-gold-gradient">Excellence</span>
-              </h1>
-            </div>
-          </ScrollReveal>
+      <div className="min-h-screen bg-background selection:bg-gold/30 pt-6 pb-20 overflow-x-hidden relative">
+        <FloatingShapes />
+        <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
-          {/* Two Column Layout */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Left - Bio & Strengths */}
-            <div className="space-y-6">
-              {/* Profile Card */}
-              <ScrollReveal direction="left">
-                <motion.div 
-                  className="glass-card-premium rounded-2xl p-5 sm:p-6"
-                  whileHover={{ scale: 1.01 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
-                    <div className="relative image-glow">
-                      <motion.img
-                        src="/profilepic.jpeg"
-                        alt="Abdul Raoof"
-                        className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl object-cover"
-                        style={{
-                          border: '2px solid rgba(212, 165, 66, 0.2)',
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      {/* Glow effect */}
-                      <div className="absolute -inset-2 rounded-xl bg-gradient-to-r from-gold-DEFAULT/20 via-transparent to-gold-DEFAULT/20 opacity-0 hover:opacity-100 transition-opacity blur-xl -z-10" />
-                    </div>
-                    <div className="flex-1">
-                      <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-1">Abdul Raoof</h2>
-                      <p className="text-sm text-gold-DEFAULT/80 mb-3">Full-Stack Developer</p>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="tech-badge">3+ Years Exp</span>
-                        <span className="tech-badge">Remote Ready</span>
-                      </div>
+        <motion.div
+          className="max-w-[1100px] mx-auto px-4 md:px-6 relative z-10 space-y-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* --- SECTION 1: Intro (8/4 Grid) --- */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[400px]">
+            {/* Left: Typography Focus - Spans 8 cols */}
+            <GlassCard className="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors h-full">
+              <motion.div
+                variants={itemVariants}
+                className="flex items-center gap-3 relative z-10"
+              >
+                <div className="h-px w-12 bg-gold" />
+                <span className="text-gold text-sm font-bold uppercase tracking-widest">
+                  About Me
+                </span>
+              </motion.div>
+
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
+              >
+                Architecting <br />
+                <span className="text-gold-gradient">Digital Success.</span>
+              </motion.h1>
+
+              <motion.p
+                variants={itemVariants}
+                className="text-gold-pale/80 text-lg leading-relaxed max-w-xl mt-6 relative z-10"
+              >
+                I'm a Full Stack Engineer focused on building scalable,
+                accessible, and performant web applications that solve
+                real-world problems.
+              </motion.p>
+            </GlassCard>
+
+            {/* Right: Unique Profile Composition - Spans 4 cols */}
+            <div className="lg:col-span-4 h-full flex items-center justify-center perspective-1000">
+              <motion.div
+                variants={itemVariants}
+                className="relative w-full h-full min-h-[400px] group"
+              >
+                <GlassCard className="w-full h-full !p-0 overflow-hidden relative border-gold/20 group-hover:border-gold/50 transition-colors bg-black/40">
+                  <img
+                    src="/profilepic.jpeg"
+                    alt="Abdul Raoof"
+                    className="w-full h-full object-cover object-top grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                  />
+
+                  {/* Gradient Overlay for Text Readability if needed */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+
+                  {/* Floating Tech Badge */}
+                  <div className="absolute top-4 right-4 z-20">
+                    <div className="bg-black/60 backdrop-blur-xl rounded-lg border border-gold/20 px-3 py-1.5 flex items-center gap-2">
+                      <span className="animate-pulse w-2 h-2 rounded-full bg-gold"></span>
+                      <span className="text-[10px] font-bold text-white uppercase tracking-widest">
+                        PTR-01
+                      </span>
                     </div>
                   </div>
-                </motion.div>
-              </ScrollReveal>
-
-              {/* Bio */}
-              <ScrollReveal delay={0.1}>
-                <div className="space-y-4 pl-1">
-                  <p className="text-sm sm:text-[15px] text-muted-foreground/90 leading-relaxed">
-                    I'm a passionate full-stack developer with 3+ years of experience 
-                    creating modern web applications. I specialize in the MERN stack 
-                    and have a keen eye for UI/UX design.
-                  </p>
-                  <p className="text-sm sm:text-[15px] text-muted-foreground/90 leading-relaxed">
-                    My approach combines clean code principles with creative problem-solving 
-                    to deliver exceptional digital products that exceed client expectations.
-                  </p>
-                </div>
-              </ScrollReveal>
-
-              {/* Strengths */}
-              <ScrollReveal delay={0.2}>
-                <div className="pt-2">
-                  <h3 className="text-xs font-semibold text-foreground/90 mb-4 flex items-center gap-3">
-                    <span className="w-5 h-[1px] bg-gradient-to-r from-gold-DEFAULT to-transparent" />
-                    Key Strengths
-                  </h3>
-                  <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {strengths.map((strength) => (
-                      <StaggerItem key={strength}>
-                        <motion.div
-                          className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-white/[0.02] transition-colors group"
-                          whileHover={{ x: 4 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <CheckCircle2 className="w-3.5 h-3.5 text-gold-DEFAULT/70 flex-shrink-0 group-hover:text-gold-DEFAULT transition-colors" />
-                          <span className="text-xs sm:text-[13px] text-muted-foreground/80 group-hover:text-muted-foreground transition-colors">{strength}</span>
-                        </motion.div>
-                      </StaggerItem>
-                    ))}
-                  </StaggerContainer>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            {/* Right - Skills */}
-            <div className="space-y-6">
-              <ScrollReveal direction="right">
-                <h3 className="text-xs font-semibold text-foreground/90 mb-5 flex items-center gap-3">
-                  <span className="w-5 h-[1px] bg-gradient-to-r from-gold-DEFAULT to-transparent" />
-                  Technical Skills
-                </h3>
-              </ScrollReveal>
-              
-              <StaggerContainer className="space-y-3">
-                {skills.map((skill, index) => (
-                  <StaggerItem key={skill.name}>
-                    <motion.div
-                      className="glass-card rounded-xl p-4 group cursor-default"
-                      whileHover={{ scale: 1.01, y: -2 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="flex justify-between items-center mb-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-gold-DEFAULT/8 flex items-center justify-center group-hover:bg-gold-DEFAULT/15 transition-colors">
-                            <skill.icon className="w-4 h-4 text-gold-DEFAULT/80" />
-                          </div>
-                          <span className="text-sm font-medium text-foreground/90">{skill.name}</span>
-                        </div>
-                        <span className="text-[11px] text-gold-DEFAULT/70 font-medium">{skill.level}%</span>
-                      </div>
-                      <div className="skill-bar">
-                        <motion.div
-                          className="skill-bar-fill"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.2, delay: 0.2 + index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-                        />
-                      </div>
-                    </motion.div>
-                  </StaggerItem>
-                ))}
-              </StaggerContainer>
-
-              {/* Tech Stack Grid */}
-              <ScrollReveal delay={0.3}>
-                <div className="mt-6 pt-4">
-                  <div className="section-divider mb-6" />
-                  <h3 className="text-xs font-semibold text-foreground/90 mb-4 flex items-center gap-3">
-                    <span className="w-5 h-[1px] bg-gradient-to-r from-gold-DEFAULT to-transparent" />
-                    Tech Stack
-                  </h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {techStack.map((category, idx) => (
-                      <motion.div
-                        key={category.name}
-                        className="glass-card rounded-xl p-4"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        whileHover={{ scale: 1.02 }}
-                      >
-                        <p className="text-[10px] text-gold-DEFAULT/60 uppercase tracking-wider mb-2">{category.name}</p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {category.items.map((item) => (
-                            <span key={item} className="tech-badge">
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
+                </GlassCard>
+              </motion.div>
             </div>
           </div>
-        </div>
-      </section>
+
+          {/* --- SECTION 2: Journey Grid (4/8 Grid) --- */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Stats Box - Spans 4 cols */}
+            <GlassCard className="lg:col-span-4 flex flex-col justify-between p-8 hover:border-gold/30 transition-colors h-full">
+              <div>
+                <div className="flex items-center gap-2 mb-6">
+                  <BookOpen size={20} className="text-white" />
+                  <span className="text-gold text-xs font-bold uppercase tracking-widest">
+                    My Journey
+                  </span>
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-6 leading-tight">
+                  Brief history of code & chaos.
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 mt-auto mb-6">
+                <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
+                  <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors">
+                    4+
+                  </div>
+                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest">
+                    Years
+                  </div>
+                </div>
+                <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
+                  <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors">
+                    20+
+                  </div>
+                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest">
+                    Projects
+                  </div>
+                </div>
+              </div>
+
+              {/* Tech Carousel (Replacing Static Link) */}
+              <div className="pt-6 border-t border-gold/10">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-gold-pale/50 mb-3">
+                  Currently using
+                </div>
+                <TechCarousel />
+              </div>
+            </GlassCard>
+
+            {/* Narrative Box - Spans 8 cols */}
+            <GlassCard className="lg:col-span-8 p-8 md:p-12 hover:border-gold/30 transition-colors flex flex-col justify-center h-full">
+              <div className="space-y-6 text-gold-pale/80 text-lg leading-relaxed font-light">
+                <p>
+                  My coding journey began with a simple curiosity, but it has
+                  evolved into a disciplined craft. I don't just write code; I
+                  architect systems that are robust, scalable, and easy to
+                  maintain.
+                </p>
+                <p>
+                  Specializing in the modern React ecosystem, I view every
+                  project as an opportunity to solve complex efficiency
+                  problems. Whether it's optimizing database queries or refining
+                  UI interactions, I prioritize technical excellence.
+                </p>
+                <p>
+                  I believe that great software is the result of clear thinking
+                  and precise execution.
+                </p>
+              </div>
+            </GlassCard>
+          </div>
+        </motion.div>
+      </div>
     </PageLayout>
   );
 };
