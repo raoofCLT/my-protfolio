@@ -95,22 +95,28 @@ const ProjectCard = () => {
   const [active, setActive] = useState(0);
   const projects = [
     {
-      title: "NeoCommerce",
-      category: "E-Commerce",
-      desc: "Headless Shopify solution.",
-      stack: ["Next.js", "Shopify"],
+      title: "ALBEDO Educator",
+      category: "Education Platform",
+      desc: "Frontend for a large-scale education platform used by 20,000+ users.",
+      stack: ["React", "Redux", "Tailwind"],
     },
     {
-      title: "FinDash",
-      category: "Fintech",
-      desc: "Banking analytics board.",
-      stack: ["D3.js", "React"],
+      title: "Evoka",
+      category: "Agency Platform",
+      desc: "Creative agency platform for managing clients, projects, and production teams.",
+      stack: ["React", "Django", "PostgreSQL"],
     },
     {
-      title: "PromptAI",
-      category: "SaaS",
-      desc: "AI Content Platform.",
-      stack: ["Python", "OpenAI"],
+      title: "Calc",
+      category: "Data Analytics",
+      desc: "Data analytics platform for education data export and visualization.",
+      stack: ["React", "Python", "Redux"],
+    },
+    {
+      title: "Evoka School",
+      category: "Education",
+      desc: "Advertising school platform managing students, payments, and projects.",
+      stack: ["React", "API", "Tailwind"],
     },
   ];
 

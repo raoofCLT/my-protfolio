@@ -52,6 +52,10 @@ const techIcons = [
     src: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
   },
   {
+    name: "Express.js",
+    src: "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png",
+  },
+  {
     name: "Tailwind",
     src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
   },
@@ -60,28 +64,60 @@ const techIcons = [
     src: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
   },
   {
-    name: "Docker",
-    src: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg",
-  },
-  {
-    name: "AWS",
-    src: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
-  },
-  {
-    name: "Figma",
-    src: "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg",
-  },
-  {
-    name: "Git",
-    src: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg",
-  },
-  {
     name: "Redis",
     src: "https://upload.wikimedia.org/wikipedia/commons/6/64/Logo-redis.svg",
   },
   {
     name: "MongoDB",
     src: "https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg",
+  },
+  {
+    name: "Redux",
+    src: "https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png",
+  },
+  {
+    name: "Git",
+    src: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg",
+  },
+  {
+    name: "Material UI",
+    src: "https://img.icons8.com/color/480/material-ui.png",
+  },
+  {
+    name: "HTML",
+    src: "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg",
+  },
+  {
+    name: "ShadCN",
+    src: "https://avatars.githubusercontent.com/u/139895814?s=200&v=4",
+  },
+  {
+    name: "CSS",
+    src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg",
+  },
+  {
+    name: "JavaScript",
+    src: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+  },
+  {
+    name: "Bootstrap",
+    src: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg",
+  },
+  {
+    name: "Socket.io",
+    src: "https://upload.wikimedia.org/wikipedia/commons/9/96/Socket-io.svg",
+  },
+  {
+    name: "Vite",
+    src: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg",
+  },
+  {
+    name: "Chakra UI",
+    src: "https://www.vectorlogo.zone/logos/chakra-ui/chakra-ui-icon.svg",
+  },
+  {
+    name: "Postman",
+    src: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg",
   },
 ];
 
@@ -104,50 +140,45 @@ const values = [
 ];
 
 const TechCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % techIcons.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
-
-  // We want to animate the *pair* entering/leaving, or individual items.
-  // Ideally, keys should track the specific item index or name.
-  const icon1 = techIcons[currentIndex];
-  const icon2 = techIcons[(currentIndex + 1) % techIcons.length];
+  // Initialize with shuffled icons to avoid empty state on mount
+  const [marqueeList] = useState(() =>
+    [...techIcons].sort(() => Math.random() - 0.5)
+  );
 
   return (
-    <div className="flex items-center justify-around gap-2 h-24 relative overflow-hidden">
-      <AnimatePresence mode="popLayout">
-        {[icon1, icon2].map((tech, i) => (
-          <motion.div
-            key={`${tech.name}-${i}`}
-            className="flex-1 flex flex-col items-center justify-center gap-2 min-w-0"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{
-              duration: 0.5,
-              ease: "backOut",
-              delay: i * 0.1,
-            }}
-          >
-            <div className="h-16 w-16 relative flex items-center justify-center">
+    <>
+      <style>
+        {`
+          @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-70%); }
+          }
+          .animate-marquee {
+            animation: marquee 10s linear infinite;
+          }
+          .paused-on-hover:hover .animate-marquee {
+            animation-play-state: paused;
+          }
+        `}
+      </style>
+      <div className="relative flex w-full overflow-hidden select-none py-2 paused-on-hover">
+        <div className="flex gap-4 items-center w-max animate-marquee">
+          {[...marqueeList, ...marqueeList].map((tech, i) => (
+            <div
+              key={i}
+              className="group shrink-0 relative flex items-center justify-center p-3 rounded-xl transition-all duration-300 hover:bg-white/5"
+              title={tech.name}
+            >
               <img
                 src={tech.src}
                 alt={tech.name}
-                className="w-12 h-12 object-contain drop-shadow-lg"
+                className="w-10 h-10 object-contain transition-transform duration-300 transform group-hover:scale-110"
               />
             </div>
-            <span className="text-[10px] font-mono text-gold/60 uppercase tracking-wider truncate w-full text-center">
-              {tech.name}
-            </span>
-          </motion.div>
-        ))}
-      </AnimatePresence>
-    </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 
@@ -264,7 +295,7 @@ export const AboutPage = () => {
               {/* Tech Carousel (Replacing Static Link) */}
               <div className="pt-6 border-t border-gold/10">
                 <div className="text-[10px] font-bold uppercase tracking-widest text-gold-pale/50 mb-3">
-                  Currently using
+                  Technologies
                 </div>
                 <TechCarousel />
               </div>

@@ -35,60 +35,208 @@ const itemVariants: Variants = {
 
 const projects = [
   {
-    title: "Evoka",
+    title: "ALBEDO Educator Platform",
+    year: "2024",
     description:
-      "AI-powered event management platform with smart scheduling and real-time collaboration features.",
-    image: "/Projects/Evoka.png",
-    tech: ["React", "Node.js", "MongoDB", "AI"],
-    live: "#",
-    code: "#",
-    featured: true,
+      "Frontend for a large-scale education platform used by 20,000+ users.",
+    longDescription:
+      "Designed and developed the entire frontend using React, Tailwind CSS, and Redux. Built 9 dashboards to manage users, batches, payments, and notifications. Delivered a responsive and performant UI.",
+    tech: ["React", "Python", "Tailwind CSS", "Redux"],
+    metrics: [
+      "👥 20,000+ Active Users",
+      "📊 9 Key Operations Dashboards",
+      "⚡ Reduced Page Load",
+    ],
+    features: [
+      "User and batch management dashboards",
+      "Real-time notifications and updates",
+      "Modern, responsive interface",
+      "Scalable frontend architecture",
+    ],
+    status: "Live",
+    category: "Education Platform",
+    image: "/Projects/Albedo Educator.png",
+    liveUrl: "https://operations.albedoedu.com/",
+    featured: false,
   },
   {
-    title: "Libraria",
+    title: "Evoka Communications",
+    year: "2025",
     description:
-      "Modern library management system with real-time tracking and automated cataloging.",
-    image: "/Projects/Libraria.png",
-    tech: ["Next.js", "PostgreSQL", "Prisma"],
-    live: "#",
-    code: "#",
+      "Creative agency platform for managing clients, projects, and production teams.",
+    longDescription:
+      "Developed a production management platform for a creative agency to manage clients, projects, and internal teams. The system supports task assignment across roles like HR, creative leads, copywriters, and coordinators, with work-hour tracking and approval workflows.",
+    tech: ["React", "TypeScript", "Python", "Django", "PostgreSQL"],
+    metrics: [
+      "👥 Multi-role Team Workflows",
+      "📂 Client & Project Management",
+      "⏱️ Work-hour Tracking & Approvals",
+    ],
+    features: [
+      "Client onboarding and project creation",
+      "Task distribution to production staff and creatives",
+      "Review and approval workflows for deliverables",
+      "Work-hour calculation and progress tracking",
+    ],
+    status: "Live",
+    category: "Creative Agency Platform",
+    image: "/Projects/Evoka Communications.png",
+    liveUrl: "https://communications.moajmalnk.in/",
+    featured: false,
+  },
+  {
+    title: "Calc (Data Analytics Platform)",
+    year: "2025",
+    description:
+      "Data analytics platform for education data export and visualization.",
+    longDescription:
+      "Developed a platform to analyze educational data with interactive dashboards. Supported export, printing, and reporting features to empower data-driven decisions.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Redux", "Python"],
+    metrics: [
+      "📈 Visualize Data",
+      "📄 Export Reports",
+      "⚡ Real-time Dashboard",
+    ],
+    features: [
+      "Comprehensive data visualization dashboards",
+      "Export and print reporting tools",
+      "User-friendly and interactive UI",
+    ],
+    status: "Live",
+    category: "Education Platform",
+    image: "/Projects/Calc.png",
+    liveUrl: "https://calc.albedoedu.com/",
+    featured: false,
+  },
+  {
+    title: "Evoka School of Advertising Platform",
+    year: "2025",
+    description:
+      "Kerala’s first advertising school platform managing students and projects.",
+    longDescription:
+      "Built the frontend and integrated APIs for student management, payments, attendance, and assignments. Supported live project-based learning with portfolio management.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "API Integrations", "Python"],
+    metrics: [
+      "🎓 13000+ Users",
+      "💳 Payments management",
+      "📚 Assignments management",
+    ],
+    features: [
+      "Student records and attendance management",
+      "Payment processing and tracking",
+      "Assignment and portfolio system",
+      "Seamless API integrations",
+    ],
+    status: "Live",
+    category: "Education Platform",
+    image: "/Projects/Evoka.png",
+    liveUrl: "https://evoka.moajmalnk.com/",
+    featured: false,
+  },
+  {
+    title: "Yara E-commerce Platform",
+    year: "2024",
+    description: "Online dress retail with user auth and payment integration.",
+    longDescription:
+      "Developed a scalable e-commerce app with React, Node.js, and Express. Features user authentication, shopping cart, payment gateway integration, and admin controls.",
+    tech: ["React", "Node.js", "Express", "PostgreSQL"],
+    metrics: [
+      "💳 Payment Transactions",
+      "🛠️ Admin Controlled Products",
+      "🔐 User Authentication",
+    ],
+    features: [
+      "User login and authentication",
+      "Shopping cart and checkout workflow",
+      "Payment gateway integration",
+      "Admin dashboard and controls",
+      "Responsive design",
+    ],
+    status: "Completed",
+    category: "E-commerce",
+    image: "/Projects/Yara E-commerce.png",
+    githubUrl: "https://github.com/raoofCLT/Yara-e-commerce-app",
+    featured: false,
   },
   {
     title: "StartupHub",
+    year: "2024",
     description:
-      "Platform connecting startups with investors, mentors, and resources for growth.",
+      "Community platform for startup profiles and investor connections.",
+    longDescription:
+      "Created a Next.js and TypeScript platform where users showcase startups and connect with investors. Features GitHub auth, real-time updates, and CMS content management.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "ShadCN",
+      "Sanity",
+      "MongoDB",
+    ],
+    metrics: [
+      "🧑‍💼 Verified Startup Profiles",
+      "📈 Monthly Active Investors",
+      "⚡ Real-time Data Synchronization",
+    ],
+    features: [
+      "GitHub authentication with NextAuth.js",
+      "Startup profile creation and discovery",
+      "Search, filtering, and dynamic content",
+      "Real-time updates",
+    ],
+    status: "Completed",
+    category: "Community Platform",
     image: "/Projects/StartupHub.png",
-    tech: ["React", "Express", "MongoDB"],
-    live: "#",
-    code: "#",
+    githubUrl: "https://github.com/raoofCLT/Startup-Hub",
+    featured: false,
   },
   {
-    title: "Yara E-commerce",
-    description:
-      "Full-featured e-commerce platform with payment integration and inventory management.",
-    image: "/Projects/Yara E-commerce.png",
-    tech: ["React", "Node.js", "Stripe"],
-    live: "#",
-    code: "#",
-    featured: true,
+    title: "Libraria – E-Library Platform",
+    year: "2024",
+    description: "Digital library with book lending and secure admin features.",
+    longDescription:
+      "Built an e-library with React, Chakra UI, and Node.js backend. Features book borrowing with due dates, JWT authentication, and admin panel for managing books and users.",
+    tech: ["React", "Chakra UI", "Recoil", "Node.js", "Express", "JWT"],
+    metrics: [
+      "🚀 Admin Managed Books",
+      "📅 Borrowing System",
+      "🔔 Due Date Alerts",
+    ],
+    features: [
+      "15-day borrowing system with alerts",
+      "Admin management panel",
+      "JWT-based secure authentication",
+      "Due date tracking and notifications",
+    ],
+    status: "Completed",
+    category: "E-library",
+    image: "/Projects/Libraria.png",
+    githubUrl: "https://github.com/raoofCLT/Libraria-Client",
+    featured: false,
   },
   {
-    title: "Albedo Educator",
-    description:
-      "Educational platform with interactive learning modules and progress tracking.",
-    image: "/Projects/Albedo Educator.png",
-    tech: ["React", "Firebase", "Tailwind"],
-    live: "#",
-    code: "#",
-  },
-  {
-    title: "Smart Calculator",
-    description:
-      "Advanced calculator with scientific functions, history, and theme customization.",
-    image: "/Projects/Calc.png",
-    tech: ["React", "TypeScript"],
-    live: "#",
-    code: "#",
+    title: "Chatzo Social Messaging",
+    year: "2024",
+    description: "Real-time social app for messaging and commenting.",
+    longDescription:
+      "Built a secure social platform with React, Node.js, and Socket.io. Features real-time chat, posts, likes, comments, and JWT authentication to foster community engagement.",
+    tech: ["React", "Node.js", "Socket.io", "JWT"],
+    metrics: [
+      "💬 Active Chat Rooms",
+      "🔐 User Authentication",
+      "👥 Community Members",
+    ],
+    features: [
+      "Real-time chatting and posts",
+      "Likes and comments on posts",
+      "Secure authentication with JWT",
+    ],
+    status: "Completed",
+    category: "Social Media",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+    githubUrl: "https://github.com/raoofCLT/Chatzo",
+    featured: false,
   },
 ];
 
@@ -173,88 +321,112 @@ export const ProjectsPage = () => {
           </div>
 
           {/* --- PROJECTS COMPACT LIST GRID --- */}
-          <GlassCard className="p-6 md:p-10 border-gold/10 bg-black/40">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-h-[800px] overflow-y-auto pr-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-              {projects.map((project, idx) => (
-                <motion.div
-                  key={idx}
-                  variants={itemVariants}
-                  className="group relative flex flex-col gap-6 p-6 rounded-3xl border border-gold/20 bg-gold/[0.02] shadow-[0_0_30px_-5px_rgba(212,165,66,0.1)] overflow-hidden"
-                >
-                  {/* Thumbnail */}
-                  <div className="relative w-full h-48 shrink-0 overflow-hidden rounded-2xl border border-gold/10 shadow-inner">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
-                    />
-                    {project.featured && (
-                      <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-gold/90 text-black text-[10px] font-bold uppercase tracking-wider shadow-lg">
-                        Featured
+          {/* --- PROJECTS LIST SECTION --- */}
+          <div className="flex flex-col gap-32">
+            {projects.map((project, idx) => (
+              <motion.div
+                key={idx}
+                variants={itemVariants}
+                className={`flex flex-col lg:flex-row gap-12 lg:gap-20 items-center ${
+                  idx % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
+              >
+                {/* Image Section */}
+                <div className="w-full lg:w-3/5 group relative">
+                  <div className="absolute inset-0 bg-gold/5 blur-[100px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+                  <GlassCard className="relative p-2 overflow-hidden border-gold/10 group-hover:border-gold/30 transition-all duration-500">
+                    <div className="relative overflow-hidden rounded-xl bg-black/50">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                      />
+                      {/* Overlay Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                    </div>
+                  </GlassCard>
+                </div>
+
+                {/* Content Section */}
+                <div className="w-full lg:w-2/5 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5 font-mono">
+                      0{idx + 1}
+                    </span>
+                    <div className="h-px bg-gold/20 flex-1" />
+                    <span className="text-xs font-bold text-gold/80 uppercase tracking-widest px-3 py-1 rounded-full bg-gold/10 border border-gold/20">
+                      {project.year}
+                    </span>
+                  </div>
+
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+                    {project.title}
+                  </h3>
+
+                  <div className="flex items-center gap-2 mb-6 text-sm">
+                    <span className="text-gold">{project.category}</span>
+                    <span className="text-white/20">•</span>
+                    <span className="text-white/60">{project.status}</span>
+                  </div>
+
+                  <p className="text-white/70 text-base leading-relaxed mb-8">
+                    {project.longDescription}
+                  </p>
+
+                  {/* Metrics Grid */}
+                  <div className="grid grid-cols-2 gap-4 mb-8">
+                    {project.metrics?.map((metric, i) => (
+                      <div
+                        key={i}
+                        className="bg-white/5 border border-white/5 rounded-lg p-3"
+                      >
+                        <p className="text-gold/90 text-xs font-bold mb-1">
+                          {metric.split(" ")[0]}
+                        </p>
+                        <p className="text-white/50 text-[10px] uppercase tracking-wide">
+                          {metric.split(" ").slice(1).join(" ")}
+                        </p>
                       </div>
+                    ))}
+                  </div>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="px-3 py-1 rounded-md bg-gold/5 border border-gold/10 text-[11px] font-mono text-gold/60"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex items-center gap-4">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        className="px-6 py-3 rounded-xl bg-gold text-black font-bold text-sm tracking-wide hover:bg-white transition-colors flex items-center gap-2"
+                      >
+                        Visit Project <ExternalLink size={16} />
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        className="px-6 py-3 rounded-xl bg-transparent border border-white/20 text-white font-bold text-sm tracking-wide hover:bg-white/10 transition-colors flex items-center gap-2"
+                      >
+                        Source Code <Github size={16} />
+                      </a>
                     )}
                   </div>
-
-                  {/* Content */}
-                  <div className="flex flex-col flex-1 min-w-0">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-gold tracking-tight mb-2">
-                          {project.title}
-                        </h3>
-                        <div className="flex items-center gap-2">
-                          <div className="h-px w-8 bg-gold/30" />
-                          <span className="text-[10px] font-mono text-gold/60 uppercase tracking-widest">
-                            Project 0{idx + 1}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Always Visible Links */}
-                      <div className="flex gap-2">
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          className="p-2.5 rounded-xl bg-gold/10 text-gold border border-gold/20 hover:bg-gold hover:text-black transition-all"
-                          title="View Live Demo"
-                        >
-                          <ExternalLink size={18} />
-                        </a>
-                        <a
-                          href={project.code}
-                          target="_blank"
-                          className="p-2.5 rounded-xl bg-white/5 text-white/70 border border-white/10 hover:bg-white/10 hover:text-white transition-all"
-                          title="View Codebase"
-                        >
-                          <Github size={18} />
-                        </a>
-                      </div>
-                    </div>
-
-                    <p className="text-white/80 text-sm leading-relaxed mb-6 font-light">
-                      {project.description}
-                    </p>
-
-                    <div className="mt-auto">
-                      <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3">
-                        Technologies
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tech.map((t) => (
-                          <span
-                            key={t}
-                            className="px-3 py-1.5 rounded-lg bg-black/40 border border-gold/10 text-[11px] font-mono text-gold/80"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </GlassCard>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </PageLayout>

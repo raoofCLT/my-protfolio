@@ -29,7 +29,7 @@ export const GlassCard = ({
   return (
     <motion.div
       className={`group relative bg-[#0E0E0E]/80 backdrop-blur-xl border border-[#D4A542]/20 rounded-[2rem] overflow-hidden ${
-        noPadding ? "" : "p-6 sm:p-8"
+        noPadding ? "" : "p-6"
       } ${className}`}
       onMouseMove={handleMouseMove}
       onClick={onClick}
