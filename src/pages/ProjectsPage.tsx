@@ -304,7 +304,7 @@ export const ProjectsPage = () => {
               </div>
 
               <a
-                href="https://github.com/abdulraoof"
+                href="https://github.com/raoofCLT"
                 target="_blank"
                 className="group flex items-center justify-between w-full px-4 py-3 rounded-xl bg-gold/10 border border-gold/20 hover:bg-gold/20 transition-all"
                 rel="noreferrer"

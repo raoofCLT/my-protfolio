@@ -276,7 +276,7 @@ export const AboutPage = () => {
               <div className="grid grid-cols-2 gap-4 mt-auto mb-6">
                 <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
                   <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors">
-                    4+
+                    2+
                   </div>
                   <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest">
                     Years
@@ -284,7 +284,7 @@ export const AboutPage = () => {
                 </div>
                 <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
                   <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors">
-                    20+
+                    15+
                   </div>
                   <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest">
                     Projects

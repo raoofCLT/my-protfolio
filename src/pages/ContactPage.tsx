@@ -175,7 +175,7 @@ export const ContactPage = () => {
                 <div className="flex flex-col gap-3">
                   <button
                     onClick={() =>
-                      handleCopy("contact@abdulraoof.com", "Email")
+                      handleCopy("raoofkottayil@gmail.com", "Email")
                     }
                     className="group relative flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:bg-gold/5 hover:border-gold/20 transition-all text-left w-full h-[88px]"
                   >
@@ -187,7 +187,7 @@ export const ContactPage = () => {
                         Email
                       </div>
                       <div className="text-sm font-medium text-white group-hover:text-gold truncate">
-                        contact@abdulraoof.com
+                        raoofkottayil@gmail.com
                       </div>
                     </div>
                     <div className="text-white/20 group-hover:text-gold transition-colors">
@@ -200,7 +200,7 @@ export const ContactPage = () => {
                   </button>
 
                   <button
-                    onClick={() => handleCopy("+919876543210", "Phone")}
+                    onClick={() => handleCopy("+919072893647", "Phone")}
                     className="group relative flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:bg-gold/5 hover:border-gold/20 transition-all text-left w-full h-[88px]"
                   >
                     <div className="w-12 h-12 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
@@ -211,7 +211,7 @@ export const ContactPage = () => {
                         Phone
                       </div>
                       <div className="text-sm font-medium text-white group-hover:text-gold truncate">
-                        +91 98765 43210
+                        +91 9072893647
                       </div>
                     </div>
                     <div className="text-white/20 group-hover:text-gold transition-colors">
@@ -241,7 +241,7 @@ export const ContactPage = () => {
                 {/* Social Grid - Compact (2x2) */}
                 <div className="grid grid-cols-2 gap-3 h-full">
                   <a
-                    href="https://github.com/abdulraoof"
+                    href="https://github.com/raoofCLT"
                     target="_blank"
                     className="group flex flex-col items-center justify-center gap-2 p-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-black hover:border-white/20 hover:text-white transition-all h-[100px]"
                   >
@@ -254,7 +254,7 @@ export const ContactPage = () => {
                     </span>
                   </a>
                   <a
-                    href="https://linkedin.com/in/abdulraoof"
+                    href="https://www.linkedin.com/in/raoof-clt"
                     target="_blank"
                     className="group flex flex-col items-center justify-center gap-2 p-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-[#0077b5]/10 hover:border-[#0077b5]/30 hover:text-[#0077b5] transition-all h-[100px]"
                   >
@@ -267,7 +267,7 @@ export const ContactPage = () => {
                     </span>
                   </a>
                   <a
-                    href="https://instagram.com/abdulraoof"
+                    href="https://www.instagram.com/raoof_clt/"
                     target="_blank"
                     className="group flex flex-col items-center justify-center gap-2 p-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-[#E1306C]/10 hover:border-[#E1306C]/30 hover:text-[#E1306C] transition-all h-[100px]"
                   >
@@ -280,7 +280,7 @@ export const ContactPage = () => {
                     </span>
                   </a>
                   <a
-                    href="https://x.com/abdulraoof"
+                    href="https://x.com/raoof_CLT"
                     target="_blank"
                     className="group flex flex-col items-center justify-center gap-2 p-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/30 hover:text-white transition-all h-[100px]"
                   >

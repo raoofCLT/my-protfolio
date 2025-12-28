@@ -309,7 +309,7 @@ export const HomePage = () => {
                 </div>
                 <div>
                   <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">
-                    3+
+                    2+
                   </div>
                   <div className="text-xs text-gold-pale/50 uppercase tracking-widest font-bold">
                     Years Experience
@@ -328,7 +328,7 @@ export const HomePage = () => {
                 </div>
                 <div>
                   <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">
-                    15+
+                    10+
                   </div>
                   <div className="text-xs text-gold-pale/50 uppercase tracking-widest font-bold">
                     Happy Clients
@@ -363,9 +363,18 @@ export const HomePage = () => {
                 </h2>
 
                 <div className="flex gap-3">
-                  <SocialButton icon={Github} href="https://github.com" />
-                  <SocialButton icon={Linkedin} href="https://linkedin.com" />
-                  <SocialButton icon={Mail} href="mailto:hello@example.com" />
+                  <SocialButton
+                    icon={Github}
+                    href="https://github.com/raoofCLT"
+                  />
+                  <SocialButton
+                    icon={Linkedin}
+                    href="https://linkedin.com/in/raoof-clt"
+                  />
+                  <SocialButton
+                    icon={Mail}
+                    href="mailto:raoofkottayil@gmail.com"
+                  />
                 </div>
               </div>
             </GlassCard>

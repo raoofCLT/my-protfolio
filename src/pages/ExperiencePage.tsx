@@ -130,7 +130,7 @@ export const ExperiencePage = () => {
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-white leading-none">
-                        4+
+                        2+
                       </div>
                       <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
                         Years Exp.
@@ -143,7 +143,7 @@ export const ExperiencePage = () => {
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-white leading-none">
-                        3
+                        1
                       </div>
                       <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
                         Companies
@@ -156,7 +156,7 @@ export const ExperiencePage = () => {
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-white leading-none">
-                        Lead
+                        Frontend Developer
                       </div>
                       <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
                         Current Role

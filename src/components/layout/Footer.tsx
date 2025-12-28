@@ -3,13 +3,13 @@ import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/abdulraoof", label: "GitHub" },
+  { icon: Github, href: "https://github.com/raoofCLT", label: "GitHub" },
   {
     icon: Linkedin,
-    href: "https://linkedin.com/in/abdulraoof",
+    href: "https://linkedin.com/in/raoof-clt",
     label: "LinkedIn",
   },
-  { icon: Mail, href: "mailto:contact@abdulraoof.com", label: "Email" },
+  { icon: Mail, href: "mailto:raoofkottayil@gmail.com", label: "Email" },
 ];
 
 export const Footer = () => {
@@ -32,10 +32,28 @@ export const Footer = () => {
           {/* Quick Links */}
           <div className="flex items-center gap-6">
             <Link
+              to="/"
+              className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
+            >
+              About
+            </Link>
+            <Link
               to="/projects"
               className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
             >
               Projects
+            </Link>
+            <Link
+              to="/experience"
+              className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
+            >
+              Experience
             </Link>
             <Link
               to="/contact"
