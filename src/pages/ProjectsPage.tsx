@@ -81,7 +81,7 @@ const projects = [
     status: "Live",
     category: "Creative Agency Platform",
     image: "/Projects/Evoka Communications.png",
-    liveUrl: "https://communications.moajmalnk.in/",
+    liveUrl: "https://crm.evoka.in/",
     featured: false,
   },
   {
@@ -130,7 +130,7 @@ const projects = [
     status: "Live",
     category: "Education Platform",
     image: "/Projects/Evoka.png",
-    liveUrl: "https://evoka.moajmalnk.com/",
+    liveUrl: "https://crm.evokaschool.com/",
     featured: false,
   },
   {
