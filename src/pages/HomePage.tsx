@@ -303,8 +303,8 @@ export const HomePage = () => {
                     />
                   </Link>
                   <a
-                    href="/Abdul Raoof.pdf"
-                    download
+                    href="/Abdul_Raoof_CV.pdf"
+                    download="Abdul_Raoof_CV.pdf"
                     onClick={handleDownloadCV}
                     className="group px-7 py-3.5 rounded-xl bg-transparent border border-gold/30 text-gold-pale font-bold text-sm hover:border-gold/60 transition-all flex items-center gap-2"
                   >
@@ -374,7 +374,7 @@ export const HomePage = () => {
                 <img
                   src="/profilepic.jpeg"
                   alt="Abdul Raoof"
-                  className="w-full h-full object-cover grayscale-[0.8] group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110 origin-top"
+                  className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-110 origin-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
               </div>
@@ -424,22 +424,22 @@ export const HomePage = () => {
                 <TechCard
                   icon={Code2}
                   title="Frontend"
-                  desc="React, Next.js, Tailwind"
+                  desc="React, Next.js, TypeScript, HTML, CSS, JavaScript, Redux"
+                />
+                <TechCard
+                  icon={LayoutGrid}
+                  title="UI Frameworks"
+                  desc="Tailwind, ShadCN, Material UI, Chakra UI, Bootstrap"
                 />
                 <TechCard
                   icon={Database}
-                  title="Backend"
-                  desc="Node, Postgres, Redis"
+                  title="Backend & DB"
+                  desc="Node.js, Express.js, Socket.io, PostgreSQL, MongoDB, Redis"
                 />
                 <TechCard
-                  icon={Smartphone}
-                  title="Mobile"
-                  desc="React Native, Expo"
-                />
-                <TechCard
-                  icon={Server}
-                  title="DevOps"
-                  desc="Docker, AWS, Vercel"
+                  icon={Terminal}
+                  title="Tools"
+                  desc="Git, Postman, Vite"
                 />
               </div>
             </GlassCard>
@@ -471,15 +471,21 @@ export const HomePage = () => {
 
             <div className="flex gap-4 md:gap-8 overflow-hidden w-full md:w-auto mask-gradient h-full items-center">
               <div className="flex gap-8 items-center text-xs font-bold uppercase tracking-widest text-gold/40 animate-marquee whitespace-nowrap">
-                <span>Web Development</span>
+                <span>Frontend Architecture</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>App Design</span>
+                <span>Backend Engineering</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>System Architecture</span>
+                <span>Interactive Experiences</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>Consulting</span>
+                <span>Database Design</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>SEO Optimization</span>
+                <span>Modern UI/UX</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
+                <span>API Development</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
+                <span>Real-time Systems</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
+                <span>Performance Tuning</span>
               </div>
             </div>
           </GlassCard>

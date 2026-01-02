@@ -7,6 +7,7 @@ import {
   Layers,
   BookOpen,
   ChevronRight,
+  Cpu,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { FloatingShapes } from "@/components/ui/FloatingShapes";
@@ -199,6 +200,10 @@ export const AboutPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[400px]">
             {/* Left: Typography Focus - Spans 8 cols */}
             <GlassCard className="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors h-full">
+              <div className="absolute top-0 right-0 p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
+                <Cpu size={240} />
+              </div>
+
               <motion.div
                 variants={itemVariants}
                 className="flex items-center gap-3 relative z-10"
@@ -221,9 +226,9 @@ export const AboutPage = () => {
                 variants={itemVariants}
                 className="text-gold-pale/80 text-lg leading-relaxed max-w-xl mt-6 relative z-10"
               >
-                I'm a Full Stack Engineer focused on building scalable,
-                accessible, and performant web applications that solve
-                real-world problems.
+                I’m a Full Stack Engineer focused on designing and building
+                scalable, accessible, and high-performance web applications that
+                solve real-world problems with clean and maintainable code.
               </motion.p>
             </GlassCard>
 
@@ -269,7 +274,7 @@ export const AboutPage = () => {
                   </span>
                 </div>
                 <h3 className="text-3xl font-bold text-white mb-6 leading-tight">
-                  Brief history of code & chaos.
+                  From curiosity to clean code.
                 </h3>
               </div>
 
@@ -289,6 +294,9 @@ export const AboutPage = () => {
                   <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest">
                     Projects
                   </div>
+                  <div className="text-[9px] text-gold-pale/30 mt-1">
+                    Real-world & Production-ready
+                  </div>
                 </div>
               </div>
 
@@ -305,20 +313,25 @@ export const AboutPage = () => {
             <GlassCard className="lg:col-span-8 p-8 md:p-12 hover:border-gold/30 transition-colors flex flex-col justify-center h-full">
               <div className="space-y-6 text-gold-pale/80 text-lg leading-relaxed font-light">
                 <p>
-                  My coding journey began with a simple curiosity, but it has
-                  evolved into a disciplined craft. I don't just write code; I
-                  architect systems that are robust, scalable, and easy to
-                  maintain.
+                  My journey into coding started with curiosity and gradually
+                  evolved into a disciplined engineering mindset. I don’t just
+                  write code — I design robust, scalable, and maintainable
+                  systems built to last.
                 </p>
                 <p>
-                  Specializing in the modern React ecosystem, I view every
-                  project as an opportunity to solve complex efficiency
-                  problems. Whether it's optimizing database queries or refining
-                  UI interactions, I prioritize technical excellence.
+                  With a strong focus on the modern React ecosystem, I approach
+                  every project as an opportunity to improve performance,
+                  usability, and efficiency. From optimizing data flows to
+                  refining UI interactions, I care deeply about quality and
+                  detail.
                 </p>
                 <p>
-                  I believe that great software is the result of clear thinking
-                  and precise execution.
+                  I believe great software is built through clear thinking,
+                  thoughtful design, and precise execution.
+                </p>
+                <p className="pt-2 text-gold/90 font-medium">
+                  I enjoy building products that are simple to use, efficient
+                  under the hood, and meaningful in real life.
                 </p>
               </div>
             </GlassCard>

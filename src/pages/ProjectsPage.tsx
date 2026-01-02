@@ -256,29 +256,36 @@ export const ProjectsPage = () => {
           {/* --- HEADER SECTION (8/4 Grid) --- */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Left: Title Card */}
-            <GlassCard className="lg:col-span-8 p-8 md:p-12 flex flex-col justify-end relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors min-h-[300px]">
-              <div className="absolute top-0 right-0 p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6">
-                <LayoutGrid size={240} className="text-white" />
+            <GlassCard className="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors h-full min-h-[400px]">
+              <div className="absolute top-0 right-0 p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
+                <LayoutGrid size={240} />
               </div>
 
-              <motion.div variants={itemVariants} className="relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6 backdrop-blur-md">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gold">
-                    Portfolio 2024
-                  </span>
-                </div>
-
-                <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-[0.9] mb-4">
-                  Selected <br />
-                  <span className="text-gold-gradient">Masterpieces.</span>
-                </h1>
-
-                <p className="text-gold-pale/80 text-lg max-w-xl leading-relaxed">
-                  A curated collection of scalable systems, responsive
-                  interfaces, and digital products engineered with precision.
-                </p>
+              <motion.div
+                variants={itemVariants}
+                className="flex items-center gap-3 relative z-10"
+              >
+                <div className="h-px w-12 bg-gold" />
+                <span className="text-gold text-sm font-bold uppercase tracking-widest">
+                  Portfolio 2024
+                </span>
               </motion.div>
+
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
+              >
+                Selected <br />
+                <span className="text-gold-gradient">Masterpieces.</span>
+              </motion.h1>
+
+              <motion.p
+                variants={itemVariants}
+                className="text-gold-pale/80 text-lg leading-relaxed max-w-xl mt-6 relative z-10"
+              >
+                A curated collection of scalable systems, responsive interfaces,
+                and digital products engineered with precision.
+              </motion.p>
             </GlassCard>
 
             {/* Right: GitHub / Status Card */}

@@ -146,30 +146,37 @@ export const ContactPage = () => {
           {/* --- HEADER ROW (8/4) --- */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
             {/* Main Hero - Compact */}
-            <GlassCard className="lg:col-span-8 p-6 md:p-8 flex flex-col justify-end relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors min-h-[240px]">
-              <div className="absolute top-0 right-0 p-8 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-12">
-                <MessageSquare size={180} className="text-white" />
+            <GlassCard className="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors h-full min-h-[400px]">
+              <div className="absolute top-0 right-0 p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
+                <MessageSquare size={240} />
               </div>
 
-              <div className="relative z-10 w-full md:w-3/4">
-                <motion.div
-                  variants={itemVariants}
-                  className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-gold/10 border border-gold/20 mb-4 backdrop-blur-md w-fit"
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gold">
-                    Contact
-                  </span>
-                </motion.div>
+              <motion.div
+                variants={itemVariants}
+                className="flex items-center gap-3 relative z-10"
+              >
+                <div className="h-px w-12 bg-gold" />
+                <span className="text-gold text-sm font-bold uppercase tracking-widest">
+                  Contact
+                </span>
+              </motion.div>
 
-                <motion.h1
-                  variants={itemVariants}
-                  className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-[0.95] mb-2"
-                >
-                  Let's build <br />
-                  <span className="text-gold-gradient">something epic.</span>
-                </motion.h1>
-              </div>
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
+              >
+                Let's build <br />
+                <span className="text-gold-gradient">something epic.</span>
+              </motion.h1>
+
+              <motion.p
+                variants={itemVariants}
+                className="text-gold-pale/80 text-lg leading-relaxed max-w-xl mt-6 relative z-10"
+              >
+                Have a project in mind or just want to say hi? I'm always open
+                to discussing new ideas, opportunities, and finding ways to
+                collaborate.
+              </motion.p>
             </GlassCard>
 
             {/* Live Status & Time - Compact */}
