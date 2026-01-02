@@ -20,6 +20,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { FloatingShapes } from "@/components/ui/FloatingShapes";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -69,20 +70,65 @@ export const ContactPage = () => {
     setTimeout(() => setCopied(""), 2000);
   };
 
+  // Credentials from .env
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_PUBLIC_KEY || !EMAILJS_TEMPLATE_ID) {
+      console.error("EmailJS Env Vars:", {
+        service: !!EMAILJS_SERVICE_ID,
+        template: !!EMAILJS_TEMPLATE_ID,
+        key: !!EMAILJS_PUBLIC_KEY,
+      });
+      toast({
+        title: "Configuration Error",
+        description:
+          "EmailJS keys are missing. Try restarting the terminal to load the .env file.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
-    setTimeout(() => {
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setIsSubmitted(false);
-    }, 3000);
+
+    try {
+      const templateParams = {
+        name: formData.name, // Matches {{name}} in your template
+        email: formData.email, // Matches {{email}} in "To Email"
+        title: formData.subject, // Matches {{title}} in your template
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setIsSubmitted(true);
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+      setTimeout(() => {
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setIsSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

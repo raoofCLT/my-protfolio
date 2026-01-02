@@ -17,6 +17,7 @@ import {
   Mail,
   Sparkles,
 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { FloatingShapes } from "@/components/ui/FloatingShapes";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -202,6 +203,29 @@ const ProjectCard = () => {
 // --- Main Page ---
 
 export const HomePage = () => {
+  // Credentials from .env
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+  const handleDownloadCV = async () => {
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          to_name: "Abdul Raoof",
+          message: `CV Downloaded by user on ${navigator.platform}`,
+          platform: navigator.platform,
+          userAgent: navigator.userAgent,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+    } catch (error) {
+      console.error("Error tracking download:", error);
+    }
+  };
+
   return (
     <PageLayout>
       <div className="min-h-screen bg-background selection:bg-gold/30 pt-4 pb-20 overflow-x-hidden">
@@ -281,6 +305,7 @@ export const HomePage = () => {
                   <a
                     href="/Abdul Raoof.pdf"
                     download
+                    onClick={handleDownloadCV}
                     className="group px-7 py-3.5 rounded-xl bg-transparent border border-gold/30 text-gold-pale font-bold text-sm hover:border-gold/60 transition-all flex items-center gap-2"
                   >
                     <Download
