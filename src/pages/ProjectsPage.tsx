@@ -38,7 +38,7 @@ const projects = [
     title: "ALBEDO Educator Platform",
     year: "2024",
     description:
-      "Frontend for a large-scale education platform used by 20,000+ users.",
+      "Platform for a large-scale education platform used by 20,000+ users.",
     longDescription:
       "Designed and developed the entire frontend using React, Tailwind CSS, and Redux. Built 9 dashboards to manage users, batches, payments, and notifications. Delivered a responsive and performant UI.",
     tech: ["React", "Python", "Tailwind CSS", "Redux"],

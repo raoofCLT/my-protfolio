@@ -98,7 +98,7 @@ const ProjectCard = () => {
     {
       title: "ALBEDO Educator",
       category: "Education Platform",
-      desc: "Frontend for a large-scale education platform used by 20,000+ users.",
+      desc: "Platform for a large-scale education platform used by 20,000+ users.",
       stack: ["React", "Redux", "Tailwind"],
     },
     {
