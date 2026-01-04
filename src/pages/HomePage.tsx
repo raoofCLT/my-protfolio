@@ -21,6 +21,7 @@ import emailjs from "@emailjs/browser";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { FloatingShapes } from "@/components/ui/FloatingShapes";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { Testimonials } from "@/components/Testimonials";
 
 // --- Animation Variants ---
 
@@ -450,7 +451,10 @@ export const HomePage = () => {
             </GlassCard>
           </div>
 
-          {/* --- ROW 3: Services Ticker --- */}
+          {/* --- ROW 3: Testimonials --- */}
+          <Testimonials />
+
+          {/* --- ROW 4: Services Ticker --- */}
           <GlassCard className="flex flex-col md:flex-row items-center justify-between gap-6 !p-6 md:!p-8 hover:border-gold/50 transition-colors duration-500">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-gold flex items-center justify-center text-white font-bold shadow-[0_0_20px_rgba(212,165,66,0.3)]">

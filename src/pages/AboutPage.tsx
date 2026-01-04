@@ -209,8 +209,8 @@ export const AboutPage = () => {
                 className="flex items-center gap-3 relative z-10"
               >
                 <div className="h-px w-12 bg-gold" />
-                <span className="text-gold text-sm font-bold uppercase tracking-widest">
-                  About Me
+                <span className="text-gold font-medium tracking-wider uppercase text-sm">
+                  Full Stack Developer
                 </span>
               </motion.div>
 
@@ -218,8 +218,8 @@ export const AboutPage = () => {
                 variants={itemVariants}
                 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
               >
-                Architecting <br />
-                <span className="text-gold-gradient">Digital Success.</span>
+                Full Stack Engineer <br />
+                <span className="text-gold-gradient">React Specialist.</span>
               </motion.h1>
 
               <motion.p
@@ -336,6 +336,83 @@ export const AboutPage = () => {
               </div>
             </GlassCard>
           </div>
+
+          {/* --- SECTION 3: Skills & Tech - Categorized --- */}
+          <GlassCard className="p-8 md:p-10">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2 bg-gold/10 rounded-lg border border-gold/20 text-white">
+                <Zap size={20} />
+              </div>
+              <h3 className="text-xl font-bold text-white uppercase tracking-widest">
+                Technical Toolkit
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                {
+                  category: "Languages",
+                  skills: [
+                    "JavaScript (ES6+)",
+                    "TypeScript",
+                    "Python",
+                    "HTML5",
+                    "CSS3",
+                    "SQL",
+                  ],
+                },
+                {
+                  category: "Frontend",
+                  skills: [
+                    "React",
+                    "Next.js",
+                    "Redux",
+                    "Tailwind CSS",
+                    "Framer Motion",
+                    "ShadCN UI",
+                  ],
+                },
+                {
+                  category: "Backend",
+                  skills: [
+                    "Node.js",
+                    "Express",
+                    "Django",
+                    "PostgreSQL",
+                    "MongoDB",
+                    "Redis",
+                  ],
+                },
+                {
+                  category: "Tools & DevOps",
+                  skills: [
+                    "Git",
+                    "GitHub",
+                    "Vite",
+                    "Postman",
+                    "Figma",
+                    "Vercel",
+                  ],
+                },
+              ].map((group) => (
+                <div key={group.category} className="space-y-4">
+                  <h4 className="text-gold text-sm font-bold uppercase tracking-wider border-b border-gold/10 pb-2">
+                    {group.category}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1.5 rounded-md bg-white/5 border border-white/10 text-xs font-medium text-white/80 hover:border-gold/30 hover:text-gold transition-colors cursor-default"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </GlassCard>
         </motion.div>
       </div>
     </PageLayout>

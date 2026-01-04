@@ -53,6 +53,9 @@ const projects = [
       "Modern, responsive interface",
       "Scalable frontend architecture",
     ],
+    role: "Frontend Lead",
+    problemSolved:
+      "Managing 20,000+ users and complex batch operations manually was inefficient and prone to errors.",
     status: "Live",
     category: "Education Platform",
     image: "/Projects/Albedo Educator.png",
@@ -78,6 +81,9 @@ const projects = [
       "Review and approval workflows for deliverables",
       "Work-hour calculation and progress tracking",
     ],
+    role: "Full Stack Engineer",
+    problemSolved:
+      "Agency workflow was fragmented across emails and spreadsheets, causing delays and miscommunication.",
     status: "Live",
     category: "Creative Agency Platform",
     image: "/Projects/Evoka Communications.png",
@@ -102,6 +108,9 @@ const projects = [
       "Export and print reporting tools",
       "User-friendly and interactive UI",
     ],
+    role: "Frontend Developer",
+    problemSolved:
+      "Educational data was scattered and difficult to visualize for strategic decision-making.",
     status: "Live",
     category: "Education Platform",
     image: "/Projects/Calc.png",
@@ -127,6 +136,9 @@ const projects = [
       "Assignment and portfolio system",
       "Seamless API integrations",
     ],
+    role: "Full Stack Developer",
+    problemSolved:
+      "Need for a centralized platform to manage creative student portfolios, payments, and academic progress.",
     status: "Live",
     category: "Education Platform",
     image: "/Projects/Evoka.png",
@@ -152,6 +164,9 @@ const projects = [
       "Admin dashboard and controls",
       "Responsive design",
     ],
+    role: "Full Stack Developer",
+    problemSolved:
+      "Building a scalable retail platform with secure payments and inventory management.",
     status: "Completed",
     category: "E-commerce",
     image: "/Projects/Yara E-commerce.png",
@@ -184,6 +199,9 @@ const projects = [
       "Search, filtering, and dynamic content",
       "Real-time updates",
     ],
+    role: "Lead Developer",
+    problemSolved:
+      "Connecting startups with investors was a manual, opaque process lacking a central directory.",
     status: "Completed",
     category: "Community Platform",
     image: "/Projects/StartupHub.png",
@@ -208,6 +226,9 @@ const projects = [
       "JWT-based secure authentication",
       "Due date tracking and notifications",
     ],
+    role: "Full Stack Developer",
+    problemSolved:
+      "Manual book tracking led to lost inventory and inefficiencies in smaller libraries.",
     status: "Completed",
     category: "E-library",
     image: "/Projects/Libraria.png",
@@ -231,6 +252,9 @@ const projects = [
       "Likes and comments on posts",
       "Secure authentication with JWT",
     ],
+    role: "Backend Developer",
+    problemSolved:
+      "Providing a secure, real-time communication channel for niche communities.",
     status: "Completed",
     category: "Social Media",
     image:
@@ -379,6 +403,25 @@ export const ProjectsPage = () => {
                   <p className="text-white/70 text-base leading-relaxed mb-8">
                     {project.longDescription}
                   </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 pl-4 border-l-2 border-gold/20">
+                    <div>
+                      <h4 className="text-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                        Role
+                      </h4>
+                      <p className="text-white/90 text-sm font-medium">
+                        {project.role}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-gold text-[10px] font-bold uppercase tracking-widest mb-1">
+                        Problem Solved
+                      </h4>
+                      <p className="text-white/80 text-sm leading-snug">
+                        {project.problemSolved}
+                      </p>
+                    </div>
+                  </div>
 
                   {/* Metrics Grid */}
                   <div className="grid grid-cols-2 gap-4 mb-8">
