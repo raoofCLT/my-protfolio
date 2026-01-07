@@ -143,7 +143,7 @@ export const ExperiencePage = () => {
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-white leading-none">
-                        2
+                        1
                       </div>
                       <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
                         Companies

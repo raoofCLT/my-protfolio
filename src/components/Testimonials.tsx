@@ -4,28 +4,30 @@ import { GlassCard } from "./ui/GlassCard";
 
 const testimonials = [
   {
-    name: "Sarah Jenkins",
-    role: "Product Manager at TechFlow",
+    name: "Mohammed Ajmal",
+    role: "Founder, CODO AI Innovations",
     content:
-      "Abdul is an exceptional developer who brings both technical expertise and creative problem-solving to the table. He delivered our platform ahead of schedule and the code quality was outstanding.",
-    avatar: "S",
-    color: "bg-blue-500",
+      "Raoof was the spark that brought our product experiences to life at CODO AI Innovations. He mastered the art of building fluid, responsive, and user-first interfaces with precision, creativity, and relentless consistency. A collaborative pillar who elevates the entire team.",
+    avatar: "MA",
+    image:
+      "https://media.licdn.com/dms/image/v2/D5603AQENBpYgPJvp_Q/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1730186966868?e=1769644800&v=beta&t=VcJFsa7F0oU7T_Vd6j8EaASkH1dwg3kKWXIRNsyw7YY",
+    color: "bg-orange-600",
+  },
+  {
+    name: "Lubaba PV",
+    role: "Full Stack Developer, CODO AI",
+    content:
+      "Working side by side with Rahoof was a fantastic experience. He has a unique ability to bridge backend brilliance and user impact, creating a development synergy that helped us ship products with speed and clarity.",
+    avatar: "L",
+    color: "bg-emerald-600",
   },
   {
     name: "David Chen",
     role: "Founder, StartupHub",
     content:
-      "Working with Abdul was a game-changer for our startup. He understood our vision immediately and translated it into a performant, scalable MVP that investors loved.",
+      "Abdul understood our vision immediately and translated it into a performant, scalable MVP. His attention to detail in the UI/UX is what sets him apart. He doesn't just write code; he cares about the user experience.",
     avatar: "D",
-    color: "bg-emerald-500",
-  },
-  {
-    name: "Elena Rodriguez",
-    role: "Creative Director, Evoka",
-    content:
-      "The attention to detail in the UI/UX is what sets Abdul apart. He doesn't just write code; he cares about the user experience. Highly recommended!",
-    avatar: "E",
-    color: "bg-purple-500",
+    color: "bg-blue-600",
   },
 ];
 
@@ -63,9 +65,17 @@ export const Testimonials = () => {
 
               <div className="flex items-center gap-3 border-t border-white/5 pt-4 mt-auto">
                 <div
-                  className={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center text-white font-bold text-sm shadow-lg`}
+                  className={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center text-white font-bold text-sm shadow-lg overflow-hidden`}
                 >
-                  {t.avatar}
+                  {t.image ? (
+                    <img
+                      src={t.image}
+                      alt={t.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    t.avatar
+                  )}
                 </div>
                 <div>
                   <div className="font-bold text-white text-sm">{t.name}</div>

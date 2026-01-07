@@ -6,6 +6,10 @@ import {
   ArrowUpRight,
   LayoutGrid,
   X,
+  Sparkles,
+  Cpu,
+  ChevronRight,
+  Activity,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { FloatingShapes } from "@/components/ui/FloatingShapes";
@@ -313,45 +317,193 @@ export const ProjectsPage = () => {
             </GlassCard>
 
             {/* Right: GitHub / Status Card */}
-            <GlassCard className="lg:col-span-4 p-8 flex flex-col justify-between hover:border-gold/30 transition-colors bg-gradient-to-br from-white/5 to-transparent">
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-black/50 rounded-xl border border-white/10 text-white">
-                    <Github size={24} />
+            <GlassCard className="lg:col-span-4 p-6 flex flex-col justify-between hover:border-gold/20 transition-all border-white/5 bg-gradient-to-tr from-white/5 via-transparent to-white/5 group/stats">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-1 h-1 rounded-full bg-gold animate-pulse shadow-[0_0_8px_rgba(255,184,0,0.5)]" />
+                    <h4 className="text-white font-bold text-[9px] uppercase tracking-[0.4em] opacity-40">
+                      Projects Overview
+                    </h4>
                   </div>
-                  <div>
-                    <div className="text-sm font-bold text-white">
-                      Open Source
+                </div>
+
+                <div className="grid grid-cols-1 gap-4">
+                  {/* Live Systems Card */}
+                  <div className="group/item relative overflow-hidden p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-gold/20 transition-all duration-500">
+                    <div className="relative z-10">
+                      <span className="text-white/30 text-[8px] uppercase font-bold tracking-[0.2em] mb-2 block group-hover/item:text-gold transition-colors">
+                        Live Systems
+                      </span>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-4xl font-light text-white leading-none tracking-tighter">
+                          04
+                        </span>
+                        <div className="flex gap-1 items-center">
+                          <span className="w-1 h-1 rounded-full bg-green-500 animate-pulse" />
+                          <span className="text-[9px] text-green-500/40 font-bold uppercase tracking-widest">
+                            Active
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-[10px] text-white/50 uppercase tracking-widest">
-                      Contributions
+                    <div className="absolute top-0 right-0 p-3 opacity-[0.02] group-hover/item:opacity-[0.08] transition-opacity duration-700">
+                      <Activity size={48} className="text-white" />
+                    </div>
+                  </div>
+
+                  {/* Completed Works Card */}
+                  <div className="group/item relative overflow-hidden p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-gold/20 transition-all duration-500">
+                    <div className="relative z-10">
+                      <span className="text-white/30 text-[8px] uppercase font-bold tracking-[0.2em] mb-2 block group-hover/item:text-gold transition-colors">
+                        Completed Works
+                      </span>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-4xl font-light text-white leading-none tracking-tighter">
+                          10
+                        </span>
+                        <span className="text-gold text-xl font-bold ml-0.5">
+                          +
+                        </span>
+                      </div>
+                    </div>
+                    <div className="absolute top-0 right-0 p-3 opacity-[0.02] group-hover/item:opacity-[0.08] transition-opacity duration-700">
+                      <LayoutGrid
+                        size={48}
+                        className="text-white transform rotate-12"
+                      />
                     </div>
                   </div>
                 </div>
-                <p className="text-sm text-white/60 leading-relaxed mb-6">
-                  Check out my code labs, experiments, and contributions to the
-                  open-source community.
-                </p>
               </div>
 
-              <a
-                href="https://github.com/raoofCLT"
-                target="_blank"
-                className="group flex items-center justify-between w-full px-4 py-3 rounded-xl bg-gold/10 border border-gold/20 hover:bg-gold/20 transition-all"
-                rel="noreferrer"
-              >
-                <span className="text-xs font-bold text-gold uppercase tracking-widest">
-                  View GitHub
-                </span>
-                <ArrowUpRight
-                  size={16}
-                  className="text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                />
-              </a>
+              <div className="pt-6">
+                <a
+                  href="https://github.com/raoofCLT"
+                  target="_blank"
+                  className="group flex items-center justify-between w-full px-5 py-4 rounded-xl bg-white/[0.03] border border-white/5 hover:bg-white/10 hover:border-gold/50 transition-all duration-500"
+                  rel="noreferrer"
+                >
+                  <div className="flex items-center gap-3">
+                    <Github
+                      size={18}
+                      className="text-white/20 group-hover:text-gold transition-colors"
+                    />
+                    <span className="text-[9px] font-bold text-white/40 group-hover:text-white uppercase tracking-widest transition-colors">
+                      Explore Sources
+                    </span>
+                  </div>
+                  <ArrowUpRight
+                    size={14}
+                    className="text-white/10 group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-500"
+                  />
+                </a>
+              </div>
             </GlassCard>
           </div>
 
           {/* --- PROJECTS COMPACT LIST GRID --- */}
+          {/* --- ACTIVE LAB (Ongoing Project) --- */}
+          <motion.div variants={itemVariants}>
+            <GlassCard className="p-6 md:p-8 border-gold/10 hover:border-gold/30 transition-all group overflow-hidden relative min-h-[350px] flex flex-col justify-center">
+              <div className="absolute top-0 right-0 p-8 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold pointer-events-none">
+                <Sparkles size={240} />
+              </div>
+
+              <div className="flex items-center gap-3 mb-8 relative z-10">
+                <div className="p-2 bg-gold/10 rounded-lg border border-gold/20 text-white">
+                  <Cpu size={20} />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white uppercase tracking-widest">
+                    Active Lab
+                  </h3>
+                  <p className="text-[9px] text-gold/50 uppercase tracking-widest font-bold">
+                    Now Engineering
+                  </p>
+                </div>
+                <div className="ml-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20 backdrop-blur-md shadow-inner">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-gold"></span>
+                  </span>
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-gold-pale">
+                    Current Project
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div className="lg:col-span-12 xl:col-span-7 space-y-6">
+                  <div>
+                    <h4 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight leading-tight">
+                      Zeeque <span className="text-gold-gradient">Plus</span>
+                    </h4>
+                    <p className="text-gold-pale/70 text-base leading-relaxed max-w-2xl">
+                      A comprehensive institutional dashboard designed to
+                      centralize and automate educational operations for
+                      multiple stakeholders. Architected with a multi-role RBAC
+                      system supporting Admins, Coordinators, Teachers, and
+                      Students.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+                    {[
+                      "👥 4 Specialized Dashboards",
+                      "💰 Integrated Wallet System",
+                      "📅 Conflict-Aware Scheduling",
+                      "🎫 Real-time Support",
+                    ].map((metric, i) => (
+                      <div
+                        key={i}
+                        className="bg-white/5 border border-white/5 rounded-lg p-2.5 flex items-center gap-2"
+                      >
+                        <span className="text-gold/90 text-xs font-bold whitespace-nowrap">
+                          {metric.split(" ")[0]}
+                        </span>
+                        <span className="text-white/50 text-[9px] uppercase tracking-wide">
+                          {metric.split(" ").slice(1).join(" ")}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "React",
+                      "TypeScript",
+                      "Tailwind CSS",
+                      "TanStack Query",
+                      "Framer Motion",
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[9px] bg-gold/5 border border-gold/10 px-2.5 py-1 rounded-md text-gold/60 font-mono group-hover:border-gold/30 group-hover:text-gold-pale transition-all"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="lg:col-span-12 xl:col-span-5 perspective-1000">
+                  <motion.div
+                    whileHover={{ rotateY: -5, rotateX: 5, scale: 1.02 }}
+                    className="relative rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.5)] border border-white/10 hover:border-gold/40 transition-all duration-700"
+                  >
+                    <img
+                      src="/Projects/ZeequePlus.png"
+                      alt="Zeeque Plus Preview"
+                      className="w-full aspect-video object-cover transition-transform duration-[2000ms] hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-transparent to-transparent opacity-60" />
+                  </motion.div>
+                </div>
+              </div>
+            </GlassCard>
+          </motion.div>
+
           {/* --- PROJECTS LIST SECTION --- */}
           <div className="flex flex-col gap-32">
             {projects.map((project, idx) => (
@@ -385,9 +537,6 @@ export const ProjectsPage = () => {
                       0{idx + 1}
                     </span>
                     <div className="h-px bg-gold/20 flex-1" />
-                    <span className="text-xs font-bold text-gold/80 uppercase tracking-widest px-3 py-1 rounded-full bg-gold/10 border border-gold/20">
-                      {project.year}
-                    </span>
                   </div>
 
                   <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
@@ -396,32 +545,29 @@ export const ProjectsPage = () => {
 
                   <div className="flex items-center gap-2 mb-6 text-sm">
                     <span className="text-gold">{project.category}</span>
-                    <span className="text-white/20">•</span>
-                    <span className="text-white/60">{project.status}</span>
+                    <div className="flex items-center gap-1">
+                      <div
+                        className={`w-1.5 h-1.5 rounded-full ${
+                          project.status === "Live"
+                            ? "bg-green-500 animate-pulse"
+                            : "bg-white/40"
+                        }`}
+                      />
+                      <span
+                        className={
+                          project.status === "Live"
+                            ? "text-green-500 font-bold"
+                            : "text-white/60"
+                        }
+                      >
+                        {project.status}
+                      </span>
+                    </div>
                   </div>
 
                   <p className="text-white/70 text-base leading-relaxed mb-8">
                     {project.longDescription}
                   </p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 pl-4 border-l-2 border-gold/20">
-                    <div>
-                      <h4 className="text-gold text-[10px] font-bold uppercase tracking-widest mb-1">
-                        Role
-                      </h4>
-                      <p className="text-white/90 text-sm font-medium">
-                        {project.role}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="text-gold text-[10px] font-bold uppercase tracking-widest mb-1">
-                        Problem Solved
-                      </h4>
-                      <p className="text-white/80 text-sm leading-snug">
-                        {project.problemSolved}
-                      </p>
-                    </div>
-                  </div>
 
                   {/* Metrics Grid */}
                   <div className="grid grid-cols-2 gap-4 mb-8">

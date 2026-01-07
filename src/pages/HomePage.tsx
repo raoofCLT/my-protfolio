@@ -452,7 +452,7 @@ export const HomePage = () => {
           </div>
 
           {/* --- ROW 3: Testimonials --- */}
-          <Testimonials />
+          {/* <Testimonials /> */}
 
           {/* --- ROW 4: Services Ticker --- */}
           <GlassCard className="flex flex-col md:flex-row items-center justify-between gap-6 !p-6 md:!p-8 hover:border-gold/50 transition-colors duration-500">

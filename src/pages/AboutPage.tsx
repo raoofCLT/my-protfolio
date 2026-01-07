@@ -8,6 +8,7 @@ import {
   BookOpen,
   ChevronRight,
   Cpu,
+  Sparkles,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { FloatingShapes } from "@/components/ui/FloatingShapes";
@@ -35,153 +36,6 @@ const itemVariants = {
 };
 
 /* --- Icons for Infinite Slider --- */
-const techIcons = [
-  {
-    name: "React",
-    src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-  },
-  {
-    name: "Next.js",
-    src: "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png",
-  },
-  {
-    name: "TypeScript",
-    src: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg",
-  },
-  {
-    name: "Node.js",
-    src: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
-  },
-  {
-    name: "Express.js",
-    src: "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png",
-  },
-  {
-    name: "Tailwind",
-    src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
-  },
-  {
-    name: "PostgreSQL",
-    src: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
-  },
-  {
-    name: "Redis",
-    src: "https://upload.wikimedia.org/wikipedia/commons/6/64/Logo-redis.svg",
-  },
-  {
-    name: "MongoDB",
-    src: "https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg",
-  },
-  {
-    name: "Redux",
-    src: "https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png",
-  },
-  {
-    name: "Git",
-    src: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg",
-  },
-  {
-    name: "Material UI",
-    src: "https://img.icons8.com/color/480/material-ui.png",
-  },
-  {
-    name: "HTML",
-    src: "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg",
-  },
-  {
-    name: "ShadCN",
-    src: "https://avatars.githubusercontent.com/u/139895814?s=200&v=4",
-  },
-  {
-    name: "CSS",
-    src: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg",
-  },
-  {
-    name: "JavaScript",
-    src: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-  },
-  {
-    name: "Bootstrap",
-    src: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg",
-  },
-  {
-    name: "Socket.io",
-    src: "https://upload.wikimedia.org/wikipedia/commons/9/96/Socket-io.svg",
-  },
-  {
-    name: "Vite",
-    src: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg",
-  },
-  {
-    name: "Chakra UI",
-    src: "https://www.vectorlogo.zone/logos/chakra-ui/chakra-ui-icon.svg",
-  },
-  {
-    name: "Postman",
-    src: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg",
-  },
-];
-
-const values = [
-  {
-    icon: Layers,
-    title: "Engineering",
-    desc: "Robust architectures, clean patterns, and maintainable codebases.",
-  },
-  {
-    icon: Zap,
-    title: "Performance",
-    desc: "High-performance applications with sub-second latency.",
-  },
-  {
-    icon: Heart,
-    title: "Product",
-    desc: "User-centric design thinking merged with technical excellence.",
-  },
-];
-
-const TechCarousel = () => {
-  // Initialize with shuffled icons to avoid empty state on mount
-  const [marqueeList] = useState(() =>
-    [...techIcons].sort(() => Math.random() - 0.5)
-  );
-
-  return (
-    <>
-      <style>
-        {`
-          @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-70%); }
-          }
-          .animate-marquee {
-            animation: marquee 10s linear infinite;
-          }
-          .paused-on-hover:hover .animate-marquee {
-            animation-play-state: paused;
-          }
-        `}
-      </style>
-      <div className="relative flex w-full overflow-hidden select-none py-2 paused-on-hover">
-        <div className="flex gap-4 items-center w-max animate-marquee">
-          {[...marqueeList, ...marqueeList].map((tech, i) => (
-            <div
-              key={i}
-              className="group shrink-0 relative flex items-center justify-center p-3 rounded-xl transition-all duration-300 hover:bg-white/5"
-              title={tech.name}
-            >
-              <img
-                src={tech.src}
-                alt={tech.name}
-                className="w-10 h-10 object-contain transition-transform duration-300 transform group-hover:scale-110"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
-};
 
 export const AboutPage = () => {
   return (
@@ -278,34 +132,39 @@ export const AboutPage = () => {
                 </h3>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mt-auto mb-6">
+              <div className="grid grid-cols-2 gap-4 mt-auto">
                 <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
                   <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors">
                     2+
                   </div>
-                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest">
-                    Years
+                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest font-bold">
+                    Years Exp.
                   </div>
                 </div>
                 <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
                   <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors">
                     15+
                   </div>
-                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest">
+                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest font-bold">
                     Projects
                   </div>
-                  <div className="text-[9px] text-gold-pale/30 mt-1">
-                    Real-world & Production-ready
+                </div>
+                <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
+                  <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors">
+                    10+
+                  </div>
+                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest font-bold">
+                    Happy Clients
                   </div>
                 </div>
-              </div>
-
-              {/* Tech Carousel (Replacing Static Link) */}
-              <div className="pt-6 border-t border-gold/10">
-                <div className="text-[10px] font-bold uppercase tracking-widest text-gold-pale/50 mb-3">
-                  Technologies
+                <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
+                  <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors uppercase">
+                    50k+
+                  </div>
+                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest font-bold">
+                    User Impact
+                  </div>
                 </div>
-                <TechCarousel />
               </div>
             </GlassCard>
 
@@ -337,7 +196,7 @@ export const AboutPage = () => {
             </GlassCard>
           </div>
 
-          {/* --- SECTION 3: Skills & Tech - Categorized --- */}
+          {/* --- SECTION 4: Skills & Tech - Categorized --- */}
           <GlassCard className="p-8 md:p-10">
             <div className="flex items-center gap-3 mb-8">
               <div className="p-2 bg-gold/10 rounded-lg border border-gold/20 text-white">
