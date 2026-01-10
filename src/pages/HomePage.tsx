@@ -265,19 +265,10 @@ export const HomePage = () => {
 
                 <motion.h1
                   variants={itemVariants}
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-bold text-white tracking-tight leading-[1.05] mb-6"
+                  className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
                 >
-                  Crafting{" "}
-                  <span className="text-gold-gradient inline-block relative">
-                    digital
-                    <motion.span
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 1, duration: 0.8 }}
-                      className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent"
-                    />
-                  </span>
-                  <br /> excellence.
+                  Full Stack Engineer <br />
+                  <span className="text-gold-gradient">React Specialist.</span>
                 </motion.h1>
 
                 <motion.p
@@ -329,9 +320,9 @@ export const HomePage = () => {
                       className="fill-current text-white group-hover:text-gold transition-colors"
                     />
                   </div>
-                  <span className="text-[10px] font-mono text-gold-pale/50 px-2 py-1 rounded bg-gold/5">
+                  {/* <span className="text-[10px] font-mono text-gold-pale/50 px-2 py-1 rounded bg-gold/5">
                     Lvl. 03
-                  </span>
+                  </span> */}
                 </div>
                 <div>
                   <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">
@@ -348,9 +339,9 @@ export const HomePage = () => {
                   <div className="p-2.5 bg-gold/10 rounded-xl border border-gold/20 text-white shadow-sm transition-colors group-hover:text-gold">
                     <Globe size={20} />
                   </div>
-                  <span className="text-[10px] font-mono text-gold-pale/50 px-2 py-1 rounded bg-gold/5">
+                  {/* <span className="text-[10px] font-mono text-gold-pale/50 px-2 py-1 rounded bg-gold/5">
                     Global
-                  </span>
+                  </span> */}
                 </div>
                 <div>
                   <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">

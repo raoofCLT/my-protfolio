@@ -70,10 +70,19 @@ export const AboutPage = () => {
 
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-bold text-white tracking-tight leading-[1.05] mb-6"
               >
-                Full Stack Engineer <br />
-                <span className="text-gold-gradient">React Specialist.</span>
+                Crafting{" "}
+                <span className="text-gold-gradient inline-block relative">
+                  digital
+                  <motion.span
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                    className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent"
+                  />
+                </span>
+                <br /> excellence.
               </motion.h1>
 
               <motion.p
@@ -106,9 +115,9 @@ export const AboutPage = () => {
                   <div className="absolute top-4 right-4 z-20">
                     <div className="bg-black/60 backdrop-blur-xl rounded-lg border border-gold/20 px-3 py-1.5 flex items-center gap-2">
                       <span className="animate-pulse w-2 h-2 rounded-full bg-gold"></span>
-                      <span className="text-[10px] font-bold text-white uppercase tracking-widest">
+                      {/* <span className="text-[10px] font-bold text-white uppercase tracking-widest">
                         PTR-01
-                      </span>
+                      </span> */}
                     </div>
                   </div>
                 </GlassCard>
