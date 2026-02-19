@@ -7,21 +7,21 @@
     /* Backgrounds: Strict Black Palette */
     --background: 0 0% 0%; /* #000000 */
     --foreground: 0 0% 100%; /* #FFFFFF */
-    
+
     /* Secondary is now GOLD, not Gray */
     --secondary: 43 68% 55%; /* #D4A542 */
     --secondary-foreground: 0 0% 0%;
-    
+
     /* Muted is now darker Gold, not Gray */
     --muted: 43 68% 20%; /* Gold-tinted dark */
     --muted-foreground: 43 68% 85%; /* #FFE4A8 approx */
-    
+
     --card: 0 0% 5.5%; /* #0E0E0E */
     --card-foreground: 0 0% 100%;
-    
+
     --popover: 0 0% 5.5%;
     --popover-foreground: 0 0% 100%;
-    
+
     --border: 43 68% 30%; /* Gold-tinted border */
     --input: 43 68% 20%;
     --ring: 43 68% 55%;
@@ -34,7 +34,7 @@
   * {
     @apply border-white/10; /* Default subtle white, but often overridden by gold */
   }
-  
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -43,7 +43,12 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -61,32 +66,48 @@
     transition: background 0.3s;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #D4A542; /* Bright Gold */
+    background: #d4a542; /* Bright Gold */
   }
 }
 
 @layer utilities {
   .text-gold-gradient {
     /* Gold Shades: #D4A542 -> #F2C572 */
-    background: linear-gradient(135deg, #D4A542 0%, #F2C572 100%);
+    background: linear-gradient(135deg, #d4a542 0%, #f2c572 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .mask-gradient {
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
   }
 
   @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   .animate-marquee {
     animation: marquee 30s linear infinite;
     display: flex;
-    min-width: 100%;
+    width: max-content; /* Ensure container expands to fit all items */
   }
 }

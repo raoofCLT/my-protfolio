@@ -89,7 +89,7 @@ export const AboutPage = () => {
                 variants={itemVariants}
                 className="text-gold-pale/80 text-lg leading-relaxed max-w-xl mt-6 relative z-10"
               >
-                I’m a Full Stack Engineer focused on designing and building
+                I’m a Frontend Engineer focused on designing and building
                 scalable, accessible, and high-performance web applications that
                 solve real-world problems with clean and maintainable code.
               </motion.p>

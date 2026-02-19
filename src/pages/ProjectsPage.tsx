@@ -437,7 +437,7 @@ export const ProjectsPage = () => {
                 <div className="lg:col-span-12 xl:col-span-7 space-y-6">
                   <div>
                     <h4 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight leading-tight">
-                      Zeeque <span className="text-gold-gradient">Plus</span>
+                      ZeeQue <span className="text-gold-gradient">Plus</span>
                     </h4>
                     <p className="text-gold-pale/70 text-base leading-relaxed max-w-2xl">
                       A comprehensive institutional dashboard designed to

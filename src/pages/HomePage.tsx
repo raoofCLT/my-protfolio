@@ -16,12 +16,12 @@ import {
   Smartphone,
   Mail,
   Sparkles,
+  Lock,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { FloatingShapes } from "@/components/ui/FloatingShapes";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Testimonials } from "@/components/Testimonials";
 
 // --- Animation Variants ---
 
@@ -67,14 +67,18 @@ const TechCard = ({
   icon: Icon,
   title,
   desc,
+  className = "",
+  children,
 }: {
   icon: any;
   title: string;
-  desc: string;
+  desc?: string;
+  className?: string;
+  children?: React.ReactNode;
 }) => (
   <motion.div
     whileHover={{ y: -5 }}
-    className="p-4 rounded-2xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-all group/item cursor-default"
+    className={`p-4 rounded-2xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-all group/item cursor-default ${className}`}
   >
     {/* 
        UPDATED TECH CARD ICON:
@@ -85,9 +89,13 @@ const TechCard = ({
       <Icon size={20} />
     </div>
     <h4 className="font-bold text-white text-sm mb-1">{title}</h4>
-    <p className="text-[10px] text-gold-pale/60 leading-relaxed font-medium">
-      {desc}
-    </p>
+    {children ? (
+      children
+    ) : (
+      <p className="text-[10px] text-gold-pale/60 leading-relaxed font-medium">
+        {desc}
+      </p>
+    )}
   </motion.div>
 );
 
@@ -101,24 +109,36 @@ const ProjectCard = () => {
       category: "Education Platform",
       desc: "Platform for a large-scale education platform used by 20,000+ users.",
       stack: ["React", "Redux", "Tailwind"],
+      id: "albedo",
+      icon: Code2, // Using generic avail icon
+      liveUrl: "https://operations.albedoedu.com/",
     },
     {
       title: "Evoka",
       category: "Agency Platform",
       desc: "Creative agency platform for managing clients, projects, and production teams.",
       stack: ["React", "Django", "PostgreSQL"],
+      id: "evoka",
+      icon: LayoutGrid,
+      liveUrl: "https://crm.evoka.in/",
     },
     {
       title: "Calc",
       category: "Data Analytics",
       desc: "Data analytics platform for education data export and visualization.",
       stack: ["React", "Python", "Redux"],
+      id: "calc",
+      icon: Database,
+      liveUrl: "https://calc.albedoedu.com/",
     },
     {
       title: "Evoka School",
       category: "Education",
       desc: "Advertising school platform managing students, payments, and projects.",
       stack: ["React", "API", "Tailwind"],
+      id: "evoka-school",
+      icon: Server,
+      liveUrl: "https://crm.evokaschool.com/",
     },
   ];
 
@@ -126,16 +146,23 @@ const ProjectCard = () => {
   useEffect(() => {
     const timer = setInterval(
       () => setActive((prev) => (prev + 1) % projects.length),
-      4000
+      5000,
     );
     return () => clearInterval(timer);
   }, []);
 
+  const CurrentIcon = projects[active].icon;
+
   return (
-    <div className="h-full flex flex-col justify-between">
-      <div className="flex justify-between items-start mb-6">
-        <div className="p-2.5 bg-gold/10 rounded-xl border border-gold/20 backdrop-blur-md shadow-sm text-white group-hover:text-gold transition-colors">
-          <LayoutGrid size={20} />
+    <div className="h-full flex flex-col justify-between relative overflow-hidden group/project">
+      {/* Background Watermark */}
+      <div className="absolute -right-12 -bottom-12 opacity-[0.03] group-hover/project:opacity-[0.08] transition-opacity duration-500 scale-150 rotate-12">
+        <CurrentIcon size={240} className="text-gold" />
+      </div>
+
+      <div className="flex justify-between items-start mb-8 relative z-10">
+        <div className="p-3 bg-gold/10 rounded-xl border border-gold/20 backdrop-blur-md shadow-sm text-gold">
+          <CurrentIcon size={24} />
         </div>
         <Link
           to="/projects"
@@ -149,50 +176,86 @@ const ProjectCard = () => {
         </Link>
       </div>
 
-      <div className="relative flex-1 min-h-[140px] flex items-center">
+      <div className="relative flex-1 flex items-center z-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
-            initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
-            transition={{ duration: 0.4 }}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="w-full"
           >
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 bg-gold rounded-full" />
-              <div className="text-gold text-[10px] font-bold uppercase tracking-widest">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
+              <div className="text-gold text-xs font-bold uppercase tracking-widest">
                 {projects[active].category}
               </div>
             </div>
-            <h3 className="text-3xl font-bold text-white mb-2 tracking-tight">
+
+            <h3 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight leading-none">
               {projects[active].title}
             </h3>
-            <p className="text-sm text-gold-pale/70 mb-4 line-clamp-2">
+
+            <p className="text-sm md:text-base text-gold-pale/70 mb-8 leading-relaxed max-w-[90%]">
               {projects[active].desc}
             </p>
-            <div className="flex gap-2">
+
+            <div className="flex flex-wrap gap-2 mb-8">
               {projects[active].stack.map((s) => (
                 <span
                   key={s}
-                  className="text-[10px] bg-gold/10 border border-gold/20 px-2.5 py-1 rounded-md text-gold-pale font-mono"
+                  className="text-[10px] bg-gold/5 border border-gold/10 px-3 py-1.5 rounded-full text-gold-pale font-medium"
                 >
                   {s}
                 </span>
               ))}
+            </div>
+
+            <div className="flex flex-col gap-4 mt-auto border-t border-gold/10 pt-4">
+              {/* Metadata Row */}
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                  </span>
+                  Live Production
+                </div>
+                <div className="flex items-center gap-2 text-[10px] font-bold text-gold-pale/50 uppercase tracking-wider">
+                  <Lock size={10} />
+                  Enterprise • Private Codebase
+                </div>
+              </div>
+
+              {/* Action Button */}
+              {projects[active].liveUrl && (
+                <a
+                  href={projects[active].liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-gold hover:text-white transition-colors group/link w-fit"
+                >
+                  Visit Live Site
+                  <ArrowRight
+                    size={14}
+                    className="group-hover/link:translate-x-1 transition-transform"
+                  />
+                </a>
+              )}
             </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Pagination */}
-      <div className="flex gap-1.5 mt-6 pt-6 border-t border-gold/10">
+      <div className="flex gap-2 mt-auto pt-6 border-t border-gold/10 relative z-10">
         {projects.map((_, i) => (
           <button
             key={i}
             onClick={() => setActive(i)}
-            className={`h-1 rounded-full transition-all duration-500 ease-out ${
-              active === i ? "w-10 bg-gold" : "w-2 bg-gold/20 hover:bg-gold/50"
+            className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
+              active === i ? "w-12 bg-gold" : "w-2 bg-gold/20 hover:bg-gold/50"
             }`}
           />
         ))}
@@ -220,7 +283,7 @@ export const HomePage = () => {
           platform: navigator.platform,
           userAgent: navigator.userAgent,
         },
-        EMAILJS_PUBLIC_KEY
+        EMAILJS_PUBLIC_KEY,
       );
     } catch (error) {
       console.error("Error tracking download:", error);
@@ -267,7 +330,7 @@ export const HomePage = () => {
                   variants={itemVariants}
                   className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
                 >
-                  Full Stack Engineer <br />
+                  Frontend Engineer <br />
                   <span className="text-gold-gradient">React Specialist.</span>
                 </motion.h1>
 
@@ -275,7 +338,7 @@ export const HomePage = () => {
                   variants={itemVariants}
                   className="text-base md:text-lg text-gold-pale/70 max-w-lg mb-8 leading-relaxed"
                 >
-                  I'm Abdul Raoof, a Full Stack Engineer. I build accessible,
+                  I'm Abdul Raoof, a Frontend Engineer. I build accessible,
                   pixel-perfect, and performant web applications with modern
                   architecture.
                 </motion.p>
@@ -433,6 +496,22 @@ export const HomePage = () => {
                   title="Tools"
                   desc="Git, Postman, Vite"
                 />
+                <TechCard
+                  icon={Sparkles}
+                  title="Currently Learning"
+                  className="col-span-2"
+                >
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {["Electron JS", "Python"].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 rounded-md bg-gold/10 border border-gold/20 text-[10px] font-bold text-gold-pale hover:text-gold hover:border-gold/40 transition-colors"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </TechCard>
               </div>
             </GlassCard>
 
@@ -442,45 +521,76 @@ export const HomePage = () => {
             </GlassCard>
           </div>
 
-          {/* --- ROW 3: Testimonials --- */}
-          {/* <Testimonials /> */}
-
           {/* --- ROW 4: Services Ticker --- */}
-          <GlassCard className="flex flex-col md:flex-row items-center justify-between gap-6 !p-6 md:!p-8 hover:border-gold/50 transition-colors duration-500">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gold flex items-center justify-center text-white font-bold shadow-[0_0_20px_rgba(212,165,66,0.3)]">
-                <Sparkles
-                  size={20}
-                  className="fill-current animate-pulse bg-white/0"
-                />
+          <GlassCard className="!p-0 hover:border-gold/50 transition-colors duration-500 relative overflow-hidden h-auto min-h-[120px]">
+            <div className="flex flex-col md:flex-row items-center gap-6 p-6 md:p-8 h-full w-full">
+              {/* Header Section */}
+              <div className="flex items-center gap-4 w-full md:w-auto relative z-20 flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-gold flex-shrink-0 flex items-center justify-center text-white font-bold shadow-[0_0_20px_rgba(212,165,66,0.3)]">
+                  <Sparkles
+                    size={20}
+                    className="fill-current animate-pulse bg-white/0"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-bold text-white leading-tight">
+                    Let's work together
+                  </h3>
+                  <p className="text-xs text-gold-pale/70 mt-1 truncate">
+                    Open for Freelance & Full-time
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-bold text-white">
-                  Let's work together
-                </h3>
-                <p className="text-xs text-gold-pale/70 mt-0.5">
-                  Open for Freelance & Full-time opportunities
-                </p>
-              </div>
-            </div>
 
-            <div className="flex gap-4 md:gap-8 overflow-hidden w-full md:w-auto mask-gradient h-full items-center">
-              <div className="flex gap-8 items-center text-xs font-bold uppercase tracking-widest text-gold/40 animate-marquee whitespace-nowrap">
-                <span>Frontend Architecture</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>Backend Engineering</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>Interactive Experiences</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>Database Design</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>Modern UI/UX</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>API Development</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>Real-time Systems</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-gold/20" />
-                <span>Performance Tuning</span>
+              {/* Marquee Section */}
+              <div className="relative z-10 w-full overflow-hidden mask-gradient py-2 md:flex-1">
+                <div
+                  className="flex gap-8 items-center text-xs font-bold uppercase tracking-widest text-gold/40 animate-marquee whitespace-nowrap"
+                  style={{ animationDuration: "20s" }}
+                >
+                  <span>Frontend Architecture</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Backend Engineering</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Desktop Applications</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Interactive Experiences</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Software Development</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Database Design</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Modern UI/UX</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>API Development</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Real-time Systems</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Performance Tuning</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+
+                  {/* Duplicate Content for Seamless Loop */}
+                  <span>Frontend Architecture</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Backend Engineering</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Desktop Applications</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Interactive Experiences</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Software Development</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Database Design</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Modern UI/UX</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>API Development</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Real-time Systems</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                  <span>Performance Tuning</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold/20 flex-shrink-0" />
+                </div>
               </div>
             </div>
           </GlassCard>

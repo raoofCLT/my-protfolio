@@ -156,7 +156,7 @@ export const ExperiencePage = () => {
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-white leading-none">
-                        Frontend
+                        Frontend Engineer
                       </div>
                       <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
                         Current Role

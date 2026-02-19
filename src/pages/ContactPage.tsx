@@ -15,6 +15,8 @@ import {
   Copy,
   Check,
   Instagram,
+  Zap,
+  Briefcase,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { FloatingShapes } from "@/components/ui/FloatingShapes";
@@ -53,15 +55,6 @@ export const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [copied, setCopied] = useState("");
-
-  const getTime = () => {
-    const date = new Date();
-    return date.toLocaleTimeString("en-US", {
-      timeZone: "Asia/Kolkata",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
 
   const handleCopy = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
@@ -107,7 +100,7 @@ export const ContactPage = () => {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         templateParams,
-        EMAILJS_PUBLIC_KEY
+        EMAILJS_PUBLIC_KEY,
       );
 
       setIsSubmitted(true);
@@ -179,39 +172,53 @@ export const ContactPage = () => {
               </motion.p>
             </GlassCard>
 
-            {/* Live Status & Time - Compact */}
+            {/* Services & Availability - Compact */}
             <div className="lg:col-span-4 grid grid-cols-1 gap-4">
-              <GlassCard className="flex-1 p-5 flex flex-col justify-between group hover:border-gold/30 bg-gradient-to-br from-white/5 to-transparent">
-                <div className="flex justify-between items-center mb-2">
-                  <div className="p-2 bg-black/40 rounded-lg border border-white/10 text-white group-hover:text-gold transition-colors">
-                    <Globe2 size={18} />
-                  </div>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/5 border border-white/5 text-white/40">
-                    IST
-                  </span>
+              {/* Service Focus */}
+              <GlassCard className="flex-1 p-5 flex flex-col justify-center group hover:border-gold/30 bg-gradient-to-br from-white/5 to-transparent relative overflow-hidden">
+                <div className="absolute top-2 right-2 opacity-10 group-hover:scale-110 transition-transform text-gold">
+                  <Zap size={40} />
                 </div>
-                <div>
-                  <div className="text-[10px] text-white/50 uppercase tracking-widest font-bold">
-                    Local Time
+                <div className="relative z-10">
+                  <div className="text-[10px] text-gold/60 uppercase tracking-widest font-bold mb-3">
+                    Services
                   </div>
-                  <div className="text-2xl font-bold text-white font-mono tracking-tight">
-                    {getTime()}
-                  </div>
+                  <ul className="space-y-2">
+                    {[
+                      "Full Stack Web Apps",
+                      "Desktop Applications",
+                      "Backend Architecture",
+                      "Modern Frontend & UI/UX",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="text-sm font-bold text-white flex items-center gap-2"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-gold" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </GlassCard>
 
-              <GlassCard className="flex-1 p-5 flex items-center justify-between group hover:border-green-500/30 hover:bg-green-500/[0.02]">
-                <div className="flex items-center gap-3">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-                  </span>
+              {/* Status */}
+              <GlassCard className="flex-1 p-5 flex flex-col justify-center group hover:border-gold/30 bg-gradient-to-br from-white/5 to-transparent relative overflow-hidden">
+                <div className="absolute top-2 right-2 opacity-10 group-hover:scale-110 transition-transform text-gold">
+                  <Briefcase size={40} />
+                </div>
+
+                <div className="flex items-center gap-4 relative z-10">
+                  <div className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                  </div>
                   <div>
-                    <div className="text-sm font-bold text-white group-hover:text-green-400 transition-colors">
-                      Open for Work
+                    <div className="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors">
+                      Ready to Start
                     </div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-wide">
-                      Responding within 24h
+                    <div className="text-[10px] text-white/50 uppercase tracking-wide font-medium mt-0.5">
+                      Open for Freelance & Full-time
                     </div>
                   </div>
                 </div>
@@ -252,29 +259,51 @@ export const ContactPage = () => {
                     </div>
                   </button>
 
-                  <button
-                    onClick={() => handleCopy("+919072893647", "Phone")}
-                    className="group relative flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:bg-gold/5 hover:border-gold/20 transition-all text-left w-full h-[88px]"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
-                      <Phone size={20} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-[10px] text-white/40 uppercase tracking-widest font-bold mb-0.5">
-                        Phone
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      onClick={() => handleCopy("+919072893647", "Phone IN")}
+                      className="group relative flex flex-col justify-center p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-gold/5 hover:border-gold/20 transition-all text-left h-[100px]"
+                    >
+                      <div className="mb-3 w-8 h-8 rounded-lg bg-black/40 border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+                        <Phone size={16} />
                       </div>
-                      <div className="text-sm font-medium text-white group-hover:text-gold truncate">
+                      <div className="text-[9px] text-white/40 uppercase tracking-widest font-bold mb-0.5">
+                        Phone (IN)
+                      </div>
+                      <div className="text-xs font-medium text-white group-hover:text-gold truncate">
                         +91 9072893647
                       </div>
-                    </div>
-                    <div className="text-white/20 group-hover:text-gold transition-colors">
-                      {copied === "Phone" ? (
-                        <Check size={16} />
-                      ) : (
-                        <Copy size={16} />
-                      )}
-                    </div>
-                  </button>
+                      <div className="absolute top-3 right-3 text-white/20 group-hover:text-gold transition-colors">
+                        {copied === "Phone IN" ? (
+                          <Check size={14} />
+                        ) : (
+                          <Copy size={14} />
+                        )}
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => handleCopy("056 929 6653", "Phone UAE")}
+                      className="group relative flex flex-col justify-center p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-gold/5 hover:border-gold/20 transition-all text-left h-[100px]"
+                    >
+                      <div className="mb-3 w-8 h-8 rounded-lg bg-black/40 border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+                        <Phone size={16} />
+                      </div>
+                      <div className="text-[9px] text-white/40 uppercase tracking-widest font-bold mb-0.5">
+                        Phone (UAE)
+                      </div>
+                      <div className="text-xs font-medium text-white group-hover:text-gold truncate">
+                        056 929 6653
+                      </div>
+                      <div className="absolute top-3 right-3 text-white/20 group-hover:text-gold transition-colors">
+                        {copied === "Phone UAE" ? (
+                          <Check size={14} />
+                        ) : (
+                          <Copy size={14} />
+                        )}
+                      </div>
+                    </button>
+                  </div>
 
                   <div className="group relative flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-gold/20 transition-all w-full h-[88px]">
                     <div className="w-12 h-12 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
