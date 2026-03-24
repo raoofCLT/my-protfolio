@@ -3,55 +3,56 @@ import { motion } from 'framer-motion';
 export const FloatingShapes = () => {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Large gradient orb - top right */}
-      <motion.div
-        className="absolute -top-60 -right-60 w-[700px] h-[700px] rounded-full opacity-[0.04]"
-        style={{
-          background: 'radial-gradient(circle, #D4A542 0%, transparent 60%)',
-        }}
-        animate={{
-          scale: [1, 1.05, 1],
-          x: [0, 15, 0],
-          y: [0, -15, 0],
-        }}
-        transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      
-      {/* Medium orb - bottom left */}
-      <motion.div
-        className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full opacity-[0.03]"
-        style={{
-          background: 'radial-gradient(circle, #F2C572 0%, transparent 60%)',
-        }}
-        animate={{
-          scale: [1, 1.08, 1],
-          x: [0, -10, 0],
-          y: [0, 15, 0],
-        }}
-        transition={{ duration: 30, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      {/* Cinematic flowing gradient - red/gold like soharon */}
+      <div className="absolute inset-0">
+        {/* Main flowing shape */}
+        <motion.div
+          className="absolute top-1/4 left-1/3 w-[900px] h-[900px] opacity-[0.12]"
+          style={{
+            background: 'radial-gradient(ellipse at center, #D4A542 0%, #8B3A1A 30%, transparent 65%)',
+            filter: 'blur(80px)',
+          }}
+          animate={{
+            x: [0, 50, -30, 0],
+            y: [0, -40, 30, 0],
+            scale: [1, 1.15, 0.95, 1],
+            rotate: [0, 15, -10, 0],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+        />
 
-      {/* Center accent */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-[0.015]"
-        style={{
-          background: 'radial-gradient(circle, #D4A542 0%, transparent 50%)',
-        }}
-        animate={{
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-      />
+        {/* Secondary warm accent */}
+        <motion.div
+          className="absolute top-1/2 right-1/4 w-[600px] h-[600px] opacity-[0.08]"
+          style={{
+            background: 'radial-gradient(ellipse at center, #C74B2A 0%, #6B2010 40%, transparent 65%)',
+            filter: 'blur(100px)',
+          }}
+          animate={{
+            x: [0, -40, 20, 0],
+            y: [0, 30, -50, 0],
+            scale: [1, 1.1, 1.05, 1],
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+        />
 
-      {/* Subtle grid */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.012]">
-        <defs>
-          <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
-            <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#D4A542" strokeWidth="0.3" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-      </svg>
+        {/* Deep gold bottom glow */}
+        <motion.div
+          className="absolute -bottom-40 left-1/4 w-[700px] h-[500px] opacity-[0.06]"
+          style={{
+            background: 'radial-gradient(ellipse at center, #F2C572 0%, #D4A542 30%, transparent 60%)',
+            filter: 'blur(90px)',
+          }}
+          animate={{
+            x: [0, 30, -20, 0],
+            y: [0, -20, 10, 0],
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </div>
+
+      {/* Very subtle noise texture */}
+      <div className="absolute inset-0 opacity-[0.015] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
     </div>
   );
 };
