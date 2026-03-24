@@ -13,8 +13,10 @@ import { HomePage } from "@/pages/HomePage";
 import { AboutPage } from "@/pages/AboutPage";
 import { ProjectsPage } from "@/pages/ProjectsPage";
 import { ExperiencePage } from "@/pages/ExperiencePage";
-
 import { ContactPage } from "@/pages/ContactPage";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { ScrollToTop } from "@/components/ui/SmoothScroll";
 
 const queryClient = new QueryClient();
 
@@ -22,16 +24,18 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/experience" element={<ExperiencePage />} />
-
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
-    </AnimatePresence>
+    <>
+      <ScrollToTop />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </AnimatePresence>
+    </>
   );
 };
 
@@ -41,6 +45,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <Router>
+        <ScrollProgress />
+        <CustomCursor />
         <AnimatedRoutes />
       </Router>
     </TooltipProvider>
