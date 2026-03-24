@@ -40,7 +40,7 @@ const itemVariants = {
 export const AboutPage = () => {
   return (
     <PageLayout>
-      <div className="min-h-screen bg-background selection:bg-gold/30 pt-6 pb-20 overflow-x-hidden relative">
+      <div className="min-h-screen bg-background selection:bg-gold/30 pt-8 pb-24 overflow-x-hidden relative">
         <FloatingShapes />
         <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
