@@ -126,7 +126,7 @@ export const ContactPage = () => {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-[#030303] selection:bg-gold-DEFAULT/30 pt-4 pb-20 overflow-x-hidden">
+      <div className="min-h-screen bg-background selection:bg-gold/30 pt-8 pb-24 overflow-x-hidden">
         <FloatingShapes />
         <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
 
