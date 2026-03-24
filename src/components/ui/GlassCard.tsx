@@ -1,18 +1,19 @@
 import React from "react";
-import { motion, useMotionTemplate, useSpring } from "framer-motion";
+import { motion, useMotionTemplate, useSpring, type HTMLMotionProps } from "framer-motion";
+
+type GlassCardProps = {
+  children: React.ReactNode;
+  className?: string;
+  noPadding?: boolean;
+  onClick?: () => void;
+};
 
 export const GlassCard = ({
   children,
   className = "",
   noPadding = false,
   onClick,
-  ...props
-}: {
-  children: React.ReactNode;
-  className?: string;
-  noPadding?: boolean;
-  onClick?: () => void;
-} & React.HTMLAttributes<HTMLDivElement>) => {
+}: GlassCardProps) => {
   const mouseX = useSpring(0, { stiffness: 500, damping: 100 });
   const mouseY = useSpring(0, { stiffness: 500, damping: 100 });
 
@@ -33,7 +34,6 @@ export const GlassCard = ({
       } ${className}`}
       onMouseMove={handleMouseMove}
       onClick={onClick}
-      {...props}
     >
       {/* Grid Pattern Background - Tinted Gold */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(212,165,66,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,165,66,0.03)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-50" />
