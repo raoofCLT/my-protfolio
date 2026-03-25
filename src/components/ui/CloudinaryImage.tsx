@@ -17,7 +17,7 @@ export const CloudinaryImage = ({
   aspectRatio = "auto" 
 }: CloudinaryImageProps) => {
   // Replace with your actual Cloudinary Cloud Name in .env
-  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || "demo";
+  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || "dc6hniypp";
   
   // f_auto: best format
   // q_auto: best quality
