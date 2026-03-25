@@ -65,11 +65,11 @@ export const Navbar = () => {
             Abdul
           </motion.span>
           <motion.span
-            className="text-lg sm:text-xl font-bold text-gold-DEFAULT"
+            className="text-lg sm:text-xl font-bold text-gold"
             animate={{ opacity: [1, 0.5, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            .
+            Raoof
           </motion.span>
         </Link>
 
@@ -79,18 +79,30 @@ export const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`relative text-xs font-medium uppercase tracking-wider transition-colors duration-300 py-2 ${
+              className={`relative px-4 py-2 text-xs font-medium uppercase tracking-wider transition-all duration-300 flex flex-col items-center group ${
                 location.pathname === link.path
-                  ? "text-gold-DEFAULT"
+                  ? "text-gold"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              {link.name}
+              <span className="relative z-10">{link.name}</span>
+
+              {/* Activation Capsule - Local animation to prevent ghosting */}
               {location.pathname === link.path && (
-                <motion.span
-                  layoutId="navIndicator"
-                  className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-gradient-to-r from-gold-DEFAULT to-gold-accent rounded-full"
-                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="absolute inset-0 bg-gold/5 border border-gold/20 rounded-full -z-0"
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                />
+              )}
+
+              {/* Accent bottom line - Scaled entry */}
+              {location.pathname === link.path && (
+                <motion.div
+                  initial={{ opacity: 0, scaleX: 0 }}
+                  animate={{ opacity: 0.5, scaleX: 1 }}
+                  className="absolute -bottom-1 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent"
                 />
               )}
             </Link>
@@ -161,15 +173,15 @@ export const Navbar = () => {
                   >
                     <Link
                       to={link.path}
-                      className={`flex items-center justify-between py-4 text-base font-medium transition-colors border-b border-border/30 ${
+                      className={`relative flex items-center justify-between px-4 py-4 text-base font-medium transition-all rounded-xl border border-transparent ${
                         location.pathname === link.path
-                          ? "text-gold-DEFAULT"
+                          ? "text-gold bg-gold/5 border-gold/20"
                           : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
                       {link.name}
                       {location.pathname === link.path && (
-                        <span className="w-2 h-2 rounded-full bg-gold-DEFAULT" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_rgba(212,165,66,0.8)]" />
                       )}
                     </Link>
                   </motion.div>

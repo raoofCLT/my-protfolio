@@ -20,7 +20,7 @@ export const Footer = () => {
   return (
     <footer className="relative">
       {/* Gold gradient divider */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gold-DEFAULT/20 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -33,31 +33,31 @@ export const Footer = () => {
           <div className="flex items-center gap-6">
             <Link
               to="/"
-              className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
+              className="text-[11px] text-muted-foreground/60 hover:text-gold transition-colors"
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
+              className="text-[11px] text-muted-foreground/60 hover:text-gold transition-colors"
             >
               About
             </Link>
             <Link
               to="/projects"
-              className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
+              className="text-[11px] text-muted-foreground/60 hover:text-gold transition-colors"
             >
               Projects
             </Link>
             <Link
               to="/experience"
-              className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
+              className="text-[11px] text-muted-foreground/60 hover:text-gold transition-colors"
             >
               Experience
             </Link>
             <Link
               to="/contact"
-              className="text-[11px] text-muted-foreground/60 hover:text-gold-DEFAULT transition-colors"
+              className="text-[11px] text-muted-foreground/60 hover:text-gold transition-colors"
             >
               Contact
             </Link>
@@ -71,7 +71,7 @@ export const Footer = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground/50 hover:text-gold-DEFAULT transition-colors"
+                className="text-muted-foreground/50 hover:text-gold transition-colors"
                 aria-label={social.label}
                 whileHover={{ y: -2 }}
               >
@@ -82,7 +82,7 @@ export const Footer = () => {
             {/* Scroll to top */}
             <motion.button
               onClick={scrollToTop}
-              className="ml-2 w-8 h-8 rounded-full bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-muted-foreground/50 hover:text-gold-DEFAULT hover:border-gold-DEFAULT/20 transition-colors"
+              className="ml-2 w-8 h-8 rounded-full bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-muted-foreground/50 hover:text-gold hover:border-gold/20 transition-colors"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -11,7 +11,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { FloatingShapes } from "@/components/ui/FloatingShapes";
+import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
 import { GlassCard } from "@/components/ui/GlassCard";
 
 /* --- Animation Variants --- */
@@ -40,9 +40,13 @@ const itemVariants = {
 export const AboutPage = () => {
   return (
     <PageLayout>
-      <div className="min-h-screen bg-background selection:bg-gold/30 pt-6 pb-20 overflow-x-hidden relative">
-        <FloatingShapes />
-        <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+      <div className="min-h-screen bg-[#030303] selection:bg-gold/30 pt-6 pb-20 overflow-x-hidden relative">
+        <FuturisticBackground />
+
+        {/* Digital Scan Lines Overlay */}
+        <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
+
+        <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-20" />
 
         <motion.div
           className="max-w-[1100px] mx-auto px-4 md:px-6 relative z-10 space-y-8"
@@ -75,12 +79,12 @@ export const AboutPage = () => {
                 Crafting{" "}
                 <span className="text-gold-gradient inline-block relative">
                   digital
-                  <motion.span
+                  {/* <motion.span
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ delay: 1, duration: 0.8 }}
                     className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent"
-                  />
+                  /> */}
                 </span>
                 <br /> excellence.
               </motion.h1>

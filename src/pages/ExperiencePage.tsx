@@ -8,8 +8,9 @@ import {
   LayoutGrid,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { FloatingShapes } from "@/components/ui/FloatingShapes";
+import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { CloudinaryImage } from "@/components/ui/CloudinaryImage";
 
 const experiences = [
   {
@@ -18,7 +19,7 @@ const experiences = [
     type: "Full-time",
     period: "Dec 2024 - Present",
     location: "Malappuram, Kerala, India (Hybrid)",
-    logo: "CodoLogo.png",
+    logo: "CodoLogo_lcvhyp",
     description: [
       "Develop and maintain responsive web interfaces using modern frontend technologies.",
       "Ensure cross-browser and cross-device compatibility for a consistent user experience.",
@@ -32,7 +33,7 @@ const experiences = [
     type: "Freelance",
     period: "Nov 2023 - Present",
     location: "Remote",
-    logo: "FreelanceLogo.png",
+    logo: "FreelanceLogo_lfjnjq",
     description: [
       "Worked on multiple freelance projects delivering full-stack web solutions from concept to deployment.",
       "Built scalable frontend interfaces and secure backend APIs.",
@@ -63,9 +64,13 @@ const itemVariants: Variants = {
 export const ExperiencePage = () => {
   return (
     <PageLayout>
-      <div className="min-h-screen bg-[#030303] selection:bg-gold-DEFAULT/30 pt-4 pb-20 overflow-x-hidden">
-        <FloatingShapes />
-        <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+      <div className="min-h-screen bg-[#030303] selection:bg-gold/30 pt-4 pb-20 overflow-x-hidden relative">
+        <FuturisticBackground />
+
+        {/* Digital Scan Lines Overlay */}
+        <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
+
+        <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-20" />
 
         <motion.div
           className="max-w-[1240px] mx-auto px-4 md:px-6 relative z-10 space-y-6"
@@ -96,7 +101,15 @@ export const ExperiencePage = () => {
                 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
               >
                 Professional <br />
-                <span className="text-gold-gradient">Journey.</span>
+                <span className="text-gold-gradient">
+                  Journey.
+                  {/* <motion.span
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                    className="absolute -bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent "
+                  /> */}
+                </span>
               </motion.h1>
 
               <motion.p
@@ -179,16 +192,13 @@ export const ExperiencePage = () => {
               >
                 {/* Top Row: Logo & Period */}
                 <div className="flex justify-between items-start mb-6">
-                  {exp.logo.includes(".") || exp.logo.includes("http") ? (
-                    <div className="w-14 h-14 rounded-2xl bg-white border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 overflow-hidden">
-                      <img
-                        src={
-                          exp.logo.startsWith("http")
-                            ? exp.logo
-                            : `/${exp.logo}`
-                        }
+                  {exp.logo ? (
+                    <div className="w-14 h-14 rounded-2xl bg-white border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 overflow-hidden p-2">
+                      <CloudinaryImage
+                        publicId={exp.logo}
                         alt={exp.company}
-                        className="w-full h-full object-cover"
+                        width={200}
+                        className="w-full h-full object-contain"
                       />
                     </div>
                   ) : (

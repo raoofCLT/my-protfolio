@@ -12,8 +12,10 @@ import {
   Activity,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { FloatingShapes } from "@/components/ui/FloatingShapes";
+import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
 import { GlassCard } from "@/components/ui/GlassCard";
+
+import { CloudinaryImage } from "@/components/ui/CloudinaryImage";
 
 // --- Animation Variants ---
 
@@ -62,7 +64,7 @@ const projects = [
       "Managing 20,000+ users and complex batch operations manually was inefficient and prone to errors.",
     status: "Live",
     category: "Education Platform",
-    image: "/Projects/Albedo Educator.png",
+    image: "Albedo_Educator_kgofmk",
     liveUrl: "https://operations.albedoedu.com/",
     featured: false,
   },
@@ -90,7 +92,7 @@ const projects = [
       "Agency workflow was fragmented across emails and spreadsheets, causing delays and miscommunication.",
     status: "Live",
     category: "Creative Agency Platform",
-    image: "/Projects/Evoka Communications.png",
+    image: "Evoka_Communications_vzleam",
     liveUrl: "https://crm.evoka.in/",
     featured: false,
   },
@@ -117,7 +119,7 @@ const projects = [
       "Educational data was scattered and difficult to visualize for strategic decision-making.",
     status: "Live",
     category: "Education Platform",
-    image: "/Projects/Calc.png",
+    image: "Calc_hq9nyw",
     liveUrl: "https://calc.albedoedu.com/",
     featured: false,
   },
@@ -145,7 +147,7 @@ const projects = [
       "Need for a centralized platform to manage creative student portfolios, payments, and academic progress.",
     status: "Live",
     category: "Education Platform",
-    image: "/Projects/Evoka.png",
+    image: "Evoka_wyilwq",
     liveUrl: "https://crm.evokaschool.com/",
     featured: false,
   },
@@ -173,7 +175,7 @@ const projects = [
       "Building a scalable retail platform with secure payments and inventory management.",
     status: "Completed",
     category: "E-commerce",
-    image: "/Projects/Yara E-commerce.png",
+    image: "Yara_E-commerce_xjaphj",
     githubUrl: "https://github.com/raoofCLT/Yara-e-commerce-app",
     featured: false,
   },
@@ -208,7 +210,7 @@ const projects = [
       "Connecting startups with investors was a manual, opaque process lacking a central directory.",
     status: "Completed",
     category: "Community Platform",
-    image: "/Projects/StartupHub.png",
+    image: "StartupHub_ra8jnx",
     githubUrl: "https://github.com/raoofCLT/Startup-Hub",
     featured: false,
   },
@@ -235,7 +237,7 @@ const projects = [
       "Manual book tracking led to lost inventory and inefficiencies in smaller libraries.",
     status: "Completed",
     category: "E-library",
-    image: "/Projects/Libraria.png",
+    image: "Libraria_e6srce",
     githubUrl: "https://github.com/raoofCLT/Libraria-Client",
     featured: false,
   },
@@ -271,9 +273,13 @@ const projects = [
 export const ProjectsPage = () => {
   return (
     <PageLayout>
-      <div className="min-h-screen bg-[#030303] selection:bg-gold-DEFAULT/30 pt-4 pb-20 overflow-x-hidden">
-        <FloatingShapes />
-        <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+      <div className="min-h-screen bg-[#030303] selection:bg-gold/30 pt-4 pb-20 overflow-x-hidden relative">
+        <FuturisticBackground />
+
+        {/* Digital Scan Lines Overlay */}
+        <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
+
+        <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-20" />
 
         <motion.div
           className="max-w-[1240px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 space-y-12"
@@ -304,7 +310,15 @@ export const ProjectsPage = () => {
                 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
               >
                 Selected <br />
-                <span className="text-gold-gradient">Masterpieces.</span>
+                <span className="text-gold-gradient">
+                  Masterpieces.
+                  {/* <motion.span
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                    className="absolute -bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent"
+                  /> */}
+                </span>
               </motion.h1>
 
               <motion.p
@@ -492,9 +506,10 @@ export const ProjectsPage = () => {
                     whileHover={{ rotateY: -5, rotateX: 5, scale: 1.02 }}
                     className="relative rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.5)] border border-white/10 hover:border-gold/40 transition-all duration-700"
                   >
-                    <img
-                      src="/Projects/ZeequePlus.png"
+                    <CloudinaryImage
+                      publicId="ZeequePlus_ezemwu"
                       alt="Zeeque Plus Preview"
+                      width={1200}
                       className="w-full aspect-video object-cover transition-transform duration-[2000ms] hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-transparent to-transparent opacity-60" />
@@ -519,11 +534,20 @@ export const ProjectsPage = () => {
                   <div className="absolute inset-0 bg-gold/5 blur-[100px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
                   <GlassCard className="relative p-2 overflow-hidden border-gold/10 group-hover:border-gold/30 transition-all duration-500">
                     <div className="relative overflow-hidden rounded-xl bg-black/50">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
-                      />
+                      {project.image.startsWith("http") ? (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                        />
+                      ) : (
+                        <CloudinaryImage
+                          publicId={project.image}
+                          alt={project.title}
+                          width={1000}
+                          className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                        />
+                      )}
                       {/* Overlay Gradient */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                     </div>

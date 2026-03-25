@@ -15,6 +15,8 @@ import { ProjectsPage } from "@/pages/ProjectsPage";
 import { ExperiencePage } from "@/pages/ExperiencePage";
 
 import { ContactPage } from "@/pages/ContactPage";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
 const queryClient = new QueryClient();
 
@@ -41,7 +43,11 @@ const App = () => (
       <Toaster />
       <Sonner />
       <Router>
-        <AnimatedRoutes />
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <AnimatedRoutes />
+          <Footer />
+        </div>
       </Router>
     </TooltipProvider>
   </QueryClientProvider>

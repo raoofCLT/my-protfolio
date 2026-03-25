@@ -1,30 +1,34 @@
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { Navbar } from './Navbar';
-import { Footer } from './Footer';
 
 interface PageLayoutProps {
   children: ReactNode;
 }
 
 const pageVariants = {
-  initial: { opacity: 0, y: 10 },
+  initial: { opacity: 0, y: 20 },
   animate: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] as const }
+    transition: { 
+      duration: 0.6, 
+      ease: [0.22, 1, 0.36, 1] as const,
+      staggerChildren: 0.1
+    }
   },
   exit: { 
     opacity: 0, 
-    y: -10,
-    transition: { duration: 0.3, ease: 'easeIn' as const }
+    y: -20,
+    transition: { 
+      duration: 0.5, 
+      ease: [0.22, 1, 0.36, 1] as const 
+    }
   }
 };
 
 export const PageLayout = ({ children }: PageLayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
       <motion.main
         variants={pageVariants}
         initial="initial"
@@ -34,7 +38,6 @@ export const PageLayout = ({ children }: PageLayoutProps) => {
       >
         {children}
       </motion.main>
-      <Footer />
     </div>
   );
 };

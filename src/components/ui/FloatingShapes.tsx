@@ -72,7 +72,7 @@ export const FloatingShapes = () => {
       {[...Array(12)].map((_, i) => (
         <motion.div
           key={`dot-${i}`}
-          className="absolute w-1 h-1 rounded-full bg-gold-DEFAULT/30"
+          className="absolute w-1 h-1 rounded-full bg-gold/30"
           style={{
             left: `${5 + i * 8}%`,
             top: `${10 + (i % 5) * 20}%`,

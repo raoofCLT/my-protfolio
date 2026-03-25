@@ -20,8 +20,9 @@ import {
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { FloatingShapes } from "@/components/ui/FloatingShapes";
+import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { CloudinaryImage } from "@/components/ui/CloudinaryImage";
 
 // --- Animation Variants ---
 
@@ -109,8 +110,8 @@ const ProjectCard = () => {
       category: "Education Platform",
       desc: "Platform for a large-scale education platform used by 20,000+ users.",
       stack: ["React", "Redux", "Tailwind"],
-      id: "albedo",
-      icon: Code2, // Using generic avail icon
+      image: "Albedo_Educator_kgofmk",
+      icon: Code2,
       liveUrl: "https://operations.albedoedu.com/",
     },
     {
@@ -118,7 +119,7 @@ const ProjectCard = () => {
       category: "Agency Platform",
       desc: "Creative agency platform for managing clients, projects, and production teams.",
       stack: ["React", "Django", "PostgreSQL"],
-      id: "evoka",
+      image: "Evoka_Communications_vzleam",
       icon: LayoutGrid,
       liveUrl: "https://crm.evoka.in/",
     },
@@ -127,7 +128,7 @@ const ProjectCard = () => {
       category: "Data Analytics",
       desc: "Data analytics platform for education data export and visualization.",
       stack: ["React", "Python", "Redux"],
-      id: "calc",
+      image: "Calc_hq9nyw",
       icon: Database,
       liveUrl: "https://calc.albedoedu.com/",
     },
@@ -136,7 +137,7 @@ const ProjectCard = () => {
       category: "Education",
       desc: "Advertising school platform managing students, payments, and projects.",
       stack: ["React", "API", "Tailwind"],
-      id: "evoka-school",
+      image: "Evoka_wyilwq",
       icon: Server,
       liveUrl: "https://crm.evokaschool.com/",
     },
@@ -187,8 +188,11 @@ const ProjectCard = () => {
             className="w-full"
           >
             <div className="flex items-center gap-2 mb-4">
+              <span className="text-[10px] font-mono text-gold/30">
+                UID-00{active + 1}
+              </span>
               <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
-              <div className="text-gold text-xs font-bold uppercase tracking-widest">
+              <div className="text-gold text-[10px] font-mono font-bold uppercase tracking-[0.2em]">
                 {projects[active].category}
               </div>
             </div>
@@ -292,11 +296,14 @@ export const HomePage = () => {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-background selection:bg-gold/30 pt-4 pb-20 overflow-x-hidden">
-        <FloatingShapes />
+      <div className="min-h-screen bg-[#030303] selection:bg-gold/30 pt-4 pb-20 overflow-x-hidden relative">
+        <FuturisticBackground />
+
+        {/* Digital Scan Lines Overlay */}
+        <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
 
         {/* Subtle Background Noise Texture */}
-        <div className="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+        <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-20" />
 
         <motion.div
           className="max-w-[1240px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 space-y-6"
@@ -331,7 +338,15 @@ export const HomePage = () => {
                   className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
                 >
                   Frontend Engineer <br />
-                  <span className="text-gold-gradient">React Specialist.</span>
+                  <span className="text-gold-gradient">
+                    React Specialist.
+                    {/* <motion.span
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ delay: 1, duration: 0.8 }}
+                      className="absolute -bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent"
+                    /> */}
+                  </span>
                 </motion.h1>
 
                 <motion.p
@@ -426,9 +441,10 @@ export const HomePage = () => {
               noPadding
             >
               <div className="absolute inset-0">
-                <img
-                  src="/profilepic.jpeg"
+                <CloudinaryImage
+                  publicId="profilepic_cq3ypr"
                   alt="Abdul Raoof"
+                  width={600}
                   className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-110 origin-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
