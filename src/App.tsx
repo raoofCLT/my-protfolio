@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,27 +14,36 @@ import { HomePage } from "@/pages/HomePage";
 import { AboutPage } from "@/pages/AboutPage";
 import { ProjectsPage } from "@/pages/ProjectsPage";
 import { ExperiencePage } from "@/pages/ExperiencePage";
-
 import { ContactPage } from "@/pages/ContactPage";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 const queryClient = new QueryClient();
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
 const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/experience" element={<ExperiencePage />} />
-
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
-    </AnimatePresence>
+    <>
+      <ScrollToTop />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </AnimatePresence>
+    </>
   );
 };
 

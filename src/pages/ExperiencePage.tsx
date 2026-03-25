@@ -18,7 +18,7 @@ const experiences = [
     company: "CODO AI Innovations",
     type: "Full-time",
     period: "Dec 2024 - Present",
-    location: "Malappuram, Kerala, India (Hybrid)",
+    location: "Malappuram, Kerala, India",
     logo: "CodoLogo_lcvhyp",
     description: [
       "Develop and maintain responsive web interfaces using modern frontend technologies.",
@@ -79,100 +79,86 @@ export const ExperiencePage = () => {
           animate="visible"
         >
           {/* --- TOP ROW: HEADER SECTION (Matches Home/Projects) --- */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* --- TOP ROW: HEADER SECTION (Matches Portfolio Style) --- */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Title Card (Col-8) */}
-            <GlassCard className="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors h-full min-h-[400px]">
-              <div className="absolute top-0 right-0 p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
-                <Briefcase size={240} />
+            <GlassCard className="md:col-span-8 lg:col-span-8 p-6 md:p-12 flex flex-col justify-center relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors h-full min-h-[350px] md:min-h-[400px]">
+              <div className="absolute top-0 right-0 p-8 md:p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
+                <Briefcase size={180} className="md:size-[240px]" />
               </div>
 
               <motion.div
                 variants={itemVariants}
                 className="flex items-center gap-3 relative z-10"
               >
-                <div className="h-px w-12 bg-gold" />
-                <span className="text-gold text-sm font-bold uppercase tracking-widest">
+                <div className="h-px w-10 md:w-12 bg-gold" />
+                <span className="text-gold text-xs font-bold uppercase tracking-widest">
                   Career Path
                 </span>
               </motion.div>
 
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
+                className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight mt-6 relative z-10"
               >
                 Professional <br />
-                <span className="text-gold-gradient">
-                  Journey.
-                  {/* <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ delay: 1, duration: 0.8 }}
-                    className="absolute -bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent "
-                  /> */}
-                </span>
+                <span className="text-gold-gradient italic">Journey.</span>
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
-                className="text-gold-pale/80 text-lg leading-relaxed max-w-xl mt-6 relative z-10"
+                className="text-gold-pale/70 text-base md:text-lg leading-relaxed max-w-xl mt-6 relative z-10 font-medium"
               >
                 A timeline of impactful roles and contributions across the tech
-                industry.
+                industry, focused on engineering excellence.
               </motion.p>
             </GlassCard>
 
             {/* Stats Summary (Col-4) */}
-            <GlassCard className="lg:col-span-4 p-8 flex flex-col justify-between hover:border-gold/30 transition-colors bg-gradient-to-br from-white/5 to-transparent">
-              <div>
-                <div className="flex items-center gap-3 mb-8">
+            <GlassCard className="md:col-span-4 lg:col-span-4 p-8 md:p-10 flex flex-col justify-center relative overflow-hidden h-full group hover:border-gold/30 transition-colors bg-gradient-to-br from-white/5 to-transparent">
+              <div className="absolute -bottom-8 -right-8 opacity-[0.03] text-gold group-hover:scale-110 transition-transform duration-[2s]">
+                <Briefcase size={220} />
+              </div>
+
+              <div className="relative z-10 space-y-12">
+                <div className="flex items-center gap-3">
                   <div className="p-3 bg-black/50 rounded-xl border border-white/10 text-white">
-                    <History size={24} />
+                    <History size={20} />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-white">Overview</div>
-                    <div className="text-[10px] text-white/50 uppercase tracking-widest">
+                    <div className="text-sm font-black text-white uppercase tracking-wider leading-none">
+                      Metrics
+                    </div>
+                    <div className="text-xs text-white/30 uppercase tracking-[0.2em] mt-1">
                       Career Stats
                     </div>
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center text-gold">
-                      <Trophy size={18} />
+                <div className="space-y-8">
+                  <div className="flex items-center gap-5 group/stat">
+                    <div className="w-14 h-14 rounded-2xl bg-gold/5 border border-gold/10 flex items-center justify-center text-gold group-hover/stat:bg-gold/10 transition-colors shadow-lg">
+                      <Trophy size={26} />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-white leading-none">
+                      <div className="text-3xl font-black text-white leading-none tracking-tighter">
                         2+
                       </div>
-                      <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
+                      <div className="text-xs text-white/30 uppercase font-black tracking-widest mt-2">
                         Years Exp.
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white/80">
-                      <Building2 size={18} />
+                  <div className="flex items-center gap-5 group/stat">
+                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-white/40 group-hover/stat:border-gold/20 transition-colors shadow-lg">
+                      <Building2 size={26} />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-white leading-none">
-                        1
+                      <div className="text-3xl font-black text-white leading-none tracking-tighter">
+                        01
                       </div>
-                      <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
+                      <div className="text-xs text-white/30 uppercase font-black tracking-widest mt-2">
                         Companies
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white/80">
-                      <Users size={18} />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-white leading-none">
-                        Frontend Engineer
-                      </div>
-                      <div className="text-[10px] text-white/40 uppercase font-bold tracking-wider">
-                        Current Role
                       </div>
                     </div>
                   </div>
@@ -211,7 +197,7 @@ export const ExperiencePage = () => {
                     <div className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs font-mono text-white/60 group-hover:text-gold group-hover:border-gold/20 transition-colors inline-block mb-2">
                       {exp.period}
                     </div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-widest">
+                    <div className="text-xs text-white/30 uppercase tracking-[0.2em] font-black group-hover:text-gold transition-colors">
                       {exp.location}
                     </div>
                   </div>

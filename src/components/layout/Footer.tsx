@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 
 const socialLinks = [
@@ -12,6 +12,14 @@ const socialLinks = [
   { icon: Mail, href: "mailto:raoofkottayil@gmail.com", label: "Email" },
 ];
 
+const footerLinks = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Experience", path: "/experience" },
+  { name: "Contact", path: "/contact" },
+];
+
 export const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -20,6 +28,7 @@ export const Footer = () => {
   return (
     <footer className="relative">
       {/* Gold gradient divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
       <div className="h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6">

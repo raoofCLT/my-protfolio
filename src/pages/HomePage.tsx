@@ -25,39 +25,29 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { CloudinaryImage } from "@/components/ui/CloudinaryImage";
 
 // --- Animation Variants ---
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.12, delayChildren: 0.3 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring" as const, stiffness: 40, damping: 15 },
+    transition: { type: "spring" as const, stiffness: 35, damping: 15 },
   },
 };
 
 // --- Utility Components ---
-
 const SocialButton = ({ icon: Icon, href }: { icon: any; href: string }) => (
   <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    /* 
-       UPDATED SOCIAL ICON:
-       - Default: text-white
-       - Hover: text-gold
-    */
     className="w-10 h-10 flex items-center justify-center rounded-full bg-gold/5 border border-gold/10 hover:border-gold/30 hover:scale-110 active:scale-95 transition-all duration-300 text-white hover:text-gold group"
   >
     <Icon size={18} className="group-hover:rotate-12 transition-transform" />
@@ -81,11 +71,6 @@ const TechCard = ({
     whileHover={{ y: -5 }}
     className={`p-4 rounded-2xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-all group/item cursor-default ${className}`}
   >
-    {/* 
-       UPDATED TECH CARD ICON:
-       - Default: text-white
-       - Hover: text-gold
-    */}
     <div className="mb-4 text-white group-hover:text-gold transition-colors p-2 bg-black/40 rounded-lg w-fit">
       <Icon size={20} />
     </div>
@@ -93,7 +78,7 @@ const TechCard = ({
     {children ? (
       children
     ) : (
-      <p className="text-[10px] text-gold-pale/60 leading-relaxed font-medium">
+      <p className="text-xs lg:text-[13px] text-gold-pale/50 leading-relaxed font-semibold">
         {desc}
       </p>
     )}
@@ -101,12 +86,11 @@ const TechCard = ({
 );
 
 // --- Section Components ---
-
 const ProjectCard = () => {
   const [active, setActive] = useState(0);
   const projects = [
     {
-      title: "ALBEDO Educator",
+      title: "ALBEDO",
       category: "Education Platform",
       desc: "Platform for a large-scale education platform used by 20,000+ users.",
       stack: ["React", "Redux", "Tailwind"],
@@ -115,7 +99,7 @@ const ProjectCard = () => {
       liveUrl: "https://operations.albedoedu.com/",
     },
     {
-      title: "Evoka",
+      title: "EVOKA",
       category: "Agency Platform",
       desc: "Creative agency platform for managing clients, projects, and production teams.",
       stack: ["React", "Django", "PostgreSQL"],
@@ -124,7 +108,7 @@ const ProjectCard = () => {
       liveUrl: "https://crm.evoka.in/",
     },
     {
-      title: "Calc",
+      title: "CALC",
       category: "Data Analytics",
       desc: "Data analytics platform for education data export and visualization.",
       stack: ["React", "Python", "Redux"],
@@ -133,17 +117,16 @@ const ProjectCard = () => {
       liveUrl: "https://calc.albedoedu.com/",
     },
     {
-      title: "Evoka School",
-      category: "Education",
-      desc: "Advertising school platform managing students, payments, and projects.",
-      stack: ["React", "API", "Tailwind"],
-      image: "Evoka_wyilwq",
-      icon: Server,
-      liveUrl: "https://crm.evokaschool.com/",
+      title: "ZEEQUE",
+      category: "Personal Branding",
+      desc: "All-in-one platform for high-end personal branding and digital identity management.",
+      stack: ["React", "Tailwind", "Socket.io"],
+      image: "ZeequePlus_ezemwu",
+      icon: Smartphone,
+      liveUrl: "https://zeeque.plus/",
     },
   ];
 
-  // Auto-rotate
   useEffect(() => {
     const timer = setInterval(
       () => setActive((prev) => (prev + 1) % projects.length),
@@ -155,123 +138,105 @@ const ProjectCard = () => {
   const CurrentIcon = projects[active].icon;
 
   return (
-    <div className="h-full flex flex-col justify-between relative overflow-hidden group/project">
-      {/* Background Watermark */}
-      <div className="absolute -right-12 -bottom-12 opacity-[0.03] group-hover/project:opacity-[0.08] transition-opacity duration-500 scale-150 rotate-12">
+    <div className="h-full flex flex-col relative group/project">
+      {/* Background Watermark - Very Subtle */}
+      <div className="absolute -right-8 -bottom-8 opacity-[0.02] rotate-12 transition-transform duration-700 group-hover/project:scale-125 group-hover/project:-rotate-6">
         <CurrentIcon size={240} className="text-gold" />
       </div>
 
-      <div className="flex justify-between items-start mb-8 relative z-10">
-        <div className="p-3 bg-gold/10 rounded-xl border border-gold/20 backdrop-blur-md shadow-sm text-gold">
-          <CurrentIcon size={24} />
+      <div className="flex-1 flex flex-col relative z-20">
+        {/* Header: Icon + View All */}
+        <div className="flex items-start justify-between mb-10">
+          <div className="p-4 bg-gold/10 rounded-2xl border border-gold/20 text-gold shadow-glow-sm">
+            <CurrentIcon size={22} />
+          </div>
+          <Link
+            to="/projects"
+            className="group/link text-sm font-bold uppercase tracking-widest text-gold-pale/40 hover:text-gold transition-colors flex items-center gap-2"
+          >
+            Visit Gallery
+            <ArrowRight
+              size={16}
+              className="group-hover/link:translate-x-1 transition-transform"
+            />
+          </Link>
         </div>
-        <Link
-          to="/projects"
-          className="group text-[10px] font-bold uppercase tracking-widest text-gold-pale hover:text-gold transition-colors flex items-center gap-1 py-1"
-        >
-          View All{" "}
-          <ArrowRight
-            size={10}
-            className="group-hover:translate-x-1 transition-transform"
-          />
-        </Link>
-      </div>
 
-      <div className="relative flex-1 flex items-center z-10">
+        {/* Content: Title + Category */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="w-full"
+            exit={{ opacity: 0, x: 10 }}
+            transition={{ duration: 0.4 }}
           >
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-[10px] font-mono text-gold/30">
-                UID-00{active + 1}
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-sm font-mono text-gold/40 tracking-[0.2em] font-bold">
+                0{active + 1}.
               </span>
-              <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
-              <div className="text-gold text-[10px] font-mono font-bold uppercase tracking-[0.2em]">
+              <div className="h-px w-10 bg-gold/20" />
+              <div className="text-gold text-xs font-bold uppercase tracking-[0.4em]">
                 {projects[active].category}
               </div>
             </div>
 
-            <h3 className="text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight leading-none">
+            <h3 className="text-xl md:text-5xl font-black text-white mb-3 leading-[0.85] tracking-tighter">
               {projects[active].title}
             </h3>
 
-            <p className="text-sm md:text-base text-gold-pale/70 mb-8 leading-relaxed max-w-[90%]">
-              {projects[active].desc}
+            <p className="text-base lg:text-lg text-gold-pale/60 leading-snug mb-5 font-medium italic max-w-[95%]">
+              "{projects[active].desc}"
             </p>
 
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-3 mb-6">
               {projects[active].stack.map((s) => (
                 <span
                   key={s}
-                  className="text-[10px] bg-gold/5 border border-gold/10 px-3 py-1.5 rounded-full text-gold-pale font-medium"
+                  className="px-4 py-2 rounded-xl bg-gold/5 border border-gold/10 text-xs font-bold text-gold-pale/80"
                 >
                   {s}
                 </span>
               ))}
             </div>
-
-            <div className="flex flex-col gap-4 mt-auto border-t border-gold/10 pt-4">
-              {/* Metadata Row */}
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
-                  </span>
-                  Live Production
-                </div>
-                <div className="flex items-center gap-2 text-[10px] font-bold text-gold-pale/50 uppercase tracking-wider">
-                  <Lock size={10} />
-                  Enterprise • Private Codebase
-                </div>
-              </div>
-
-              {/* Action Button */}
-              {projects[active].liveUrl && (
-                <a
-                  href={projects[active].liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-bold text-gold hover:text-white transition-colors group/link w-fit"
-                >
-                  Visit Live Site
-                  <ArrowRight
-                    size={14}
-                    className="group-hover/link:translate-x-1 transition-transform"
-                  />
-                </a>
-              )}
-            </div>
           </motion.div>
         </AnimatePresence>
-      </div>
 
-      {/* Pagination */}
-      <div className="flex gap-2 mt-auto pt-6 border-t border-gold/10 relative z-10">
-        {projects.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setActive(i)}
-            className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
-              active === i ? "w-12 bg-gold" : "w-2 bg-gold/20 hover:bg-gold/50"
-            }`}
-          />
-        ))}
+        {/* Action: Visit Link */}
+        <div className="mt-auto flex items-center justify-between pt-8 border-t border-white/[0.05]">
+          <div className="flex gap-2.5">
+            {projects.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`h-2.5 rounded-full transition-all duration-500 ${
+                  active === i
+                    ? "w-12 bg-gold"
+                    : "w-2.5 bg-white/10 hover:bg-white/20"
+                }`}
+                aria-label={`Go to project ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {projects[active].liveUrl && (
+            <a
+              href={projects[active].liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-8 py-3 rounded-2xl bg-gold text-black text-sm font-black uppercase tracking-widest hover:shadow-glow transition-all"
+            >
+              Demo <ArrowRight size={18} />
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
 // --- Main Page ---
-
 export const HomePage = () => {
-  // Credentials from .env
   const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
@@ -311,12 +276,11 @@ export const HomePage = () => {
           initial="hidden"
           animate="visible"
         >
-          {/* --- ROW 1: Hero & Status --- */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
             {/* Hero Card */}
-            <GlassCard className="md:col-span-12 lg:col-span-8 flex flex-col justify-center min-h-[380px] relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
-                <Code2 size={240} />
+            <GlassCard className="md:col-span-8 lg:col-span-9 flex flex-col justify-center min-h-[300px] md:min-h-[380px] relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-8 md:p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
+                <Code2 size={160} className="md:size-[240px]" />
               </div>
 
               <div className="relative z-10 pr-4 md:pr-12">
@@ -335,27 +299,18 @@ export const HomePage = () => {
 
                 <motion.h1
                   variants={itemVariants}
-                  className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
                 >
                   Frontend Engineer <br />
-                  <span className="text-gold-gradient">
-                    React Specialist.
-                    {/* <motion.span
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 1, duration: 0.8 }}
-                      className="absolute -bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent"
-                    /> */}
-                  </span>
+                  <span className="text-gold-gradient">React Specialist.</span>
                 </motion.h1>
 
                 <motion.p
                   variants={itemVariants}
                   className="text-base md:text-lg text-gold-pale/70 max-w-lg mb-8 leading-relaxed"
                 >
-                  I'm Abdul Raoof, a Frontend Engineer. I build accessible,
-                  pixel-perfect, and performant web applications with modern
-                  architecture.
+                  I'm Abdul Raoof. I build accessible, pixel-perfect, and
+                  performant web applications with modern architecture.
                 </motion.p>
 
                 <motion.div
@@ -364,7 +319,7 @@ export const HomePage = () => {
                 >
                   <Link
                     to="/contact"
-                    className="group px-7 py-3.5 rounded-xl bg-gold text-black font-bold text-sm hover:opacity-90 transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(212,165,66,0.2)] hover:shadow-[0_0_30px_rgba(212,165,66,0.4)]"
+                    className="group px-7 py-3.5 rounded-xl bg-gold text-black font-bold text-sm hover:opacity-90 transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(212,165,66,0.25)] hover:shadow-[0_0_30px_rgba(212,165,66,0.4)]"
                   >
                     Let's Talk{" "}
                     <ArrowRight
@@ -388,56 +343,9 @@ export const HomePage = () => {
               </div>
             </GlassCard>
 
-            {/* Status / Quick Stats */}
-            <div className="md:col-span-12 lg:col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
-              <GlassCard className="flex flex-col justify-between h-full bg-gradient-to-br from-card to-transparent hover:border-gold/30 transition-colors duration-500">
-                <div className="flex justify-between items-start">
-                  <div className="p-2.5 bg-gold/10 rounded-xl border border-gold/20 text-white shadow-sm transition-colors group-hover:text-gold">
-                    <Zap
-                      size={20}
-                      className="fill-current text-white group-hover:text-gold transition-colors"
-                    />
-                  </div>
-                  {/* <span className="text-[10px] font-mono text-gold-pale/50 px-2 py-1 rounded bg-gold/5">
-                    Lvl. 03
-                  </span> */}
-                </div>
-                <div>
-                  <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">
-                    2+
-                  </div>
-                  <div className="text-xs text-gold-pale/50 uppercase tracking-widest font-bold">
-                    Years Experience
-                  </div>
-                </div>
-              </GlassCard>
-
-              <GlassCard className="flex flex-col justify-between h-full bg-gradient-to-br from-card to-transparent hover:border-gold/30 transition-colors duration-500">
-                <div className="flex justify-between items-start">
-                  <div className="p-2.5 bg-gold/10 rounded-xl border border-gold/20 text-white shadow-sm transition-colors group-hover:text-gold">
-                    <Globe size={20} />
-                  </div>
-                  {/* <span className="text-[10px] font-mono text-gold-pale/50 px-2 py-1 rounded bg-gold/5">
-                    Global
-                  </span> */}
-                </div>
-                <div>
-                  <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">
-                    10+
-                  </div>
-                  <div className="text-xs text-gold-pale/50 uppercase tracking-widest font-bold">
-                    Happy Clients
-                  </div>
-                </div>
-              </GlassCard>
-            </div>
-          </div>
-
-          {/* --- ROW 2: The Dashboard Grid --- */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
-            {/* 1. Profile Card (3 cols) */}
+            {/* Profile Card - MOVE TO TOP RIGHT */}
             <GlassCard
-              className="md:col-span-1 lg:col-span-3 min-h-[420px] !p-0 group relative overflow-hidden"
+              className="md:col-span-4 lg:col-span-3 min-h-[300px] md:min-h-[420px] !p-0 group relative overflow-hidden"
               noPadding
             >
               <div className="absolute inset-0">
@@ -474,65 +382,86 @@ export const HomePage = () => {
                 </div>
               </div>
             </GlassCard>
+          </div>
 
-            {/* 2. Tech Stack (5 cols) */}
-            <GlassCard className="md:col-span-1 lg:col-span-5 flex flex-col">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-gold/10 rounded-lg border border-gold/20 text-white">
-                  <Terminal size={20} />
+          {/* --- ROW 2: Balanced Grid (4:4:4) --- */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+            {/* Unified Stats & Summary (4 cols) */}
+            <GlassCard className="md:col-span-4 lg:col-span-4 flex flex-col h-full min-h-[320px] md:min-h-[360px] group/stat !p-5 md:!p-8">
+              <div className="flex-1 flex flex-col">
+                {/* Stats Grid */}
+                <div className="grid grid-cols-1 gap-3 md:gap-6 mb-8 md:mb-12">
+                  <div className="p-4 md:p-6 rounded-2xl bg-gold/10 border border-gold/20 hover:border-gold/30 transition-all flex flex-col items-center">
+                    <div className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-1 select-none">
+                      2+
+                    </div>
+                    <div className="text-[10px] md:text-xs text-gold-pale/50 uppercase tracking-[0.4em] font-black underline decoration-gold/20">
+                      Exp
+                    </div>
+                  </div>
+                  <div className="p-4 md:p-6 rounded-2xl bg-gold/10 border border-gold/20 hover:border-gold/30 transition-all flex flex-col items-center">
+                    <div className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-1 select-none">
+                      10+
+                    </div>
+                    <div className="text-[10px] md:text-xs text-gold-pale/50 uppercase tracking-[0.4em] font-black underline decoration-gold/20">
+                      Clients
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-sm font-bold text-white uppercase tracking-widest">
-                  Tech Stack
-                </h3>
-                <div className="flex-1 h-px bg-gold/10" />
-                <div className="flex gap-1">
-                  <div className="w-1.5 h-1.5 rounded-full bg-gold/30" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-gold/30" />
+
+                {/* Profile Highlight */}
+                <div className="mt-auto bg-black/60 rounded-2xl p-4 md:p-6 border border-white/5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Sparkles size={14} className="text-gold" />
+                    <span className="text-[10px] font-bold text-white uppercase tracking-widest">
+                      Bio
+                    </span>
+                  </div>
+                  <p className="text-xs text-gold-pale/60 leading-relaxed italic line-clamp-2 md:line-clamp-none">
+                    "Crafting digital experiences that merge architecture with
+                    futuristic aesthetics."
+                  </p>
                 </div>
               </div>
+            </GlassCard>
 
-              <div className="grid grid-cols-2 gap-2 flex-1">
+            {/* Tech Stack (8 cols on md, 4 on lg) */}
+            <GlassCard className="md:col-span-8 lg:col-span-4 flex flex-col h-full min-h-[320px] md:min-h-[360px] !p-5 md:!p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 md:p-3 bg-gold/10 rounded-xl border border-gold/20 text-gold">
+                  <Terminal size={18} className="md:size-6" />
+                </div>
+                <h3 className="text-xs font-bold text-white uppercase tracking-widest">
+                  Tech Stack
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 flex-1">
                 <TechCard
                   icon={Code2}
                   title="Frontend"
-                  desc="React, Next.js, TypeScript, HTML, CSS, JavaScript, Redux"
+                  desc="React, Next.js, TS, HTML, CSS"
                 />
                 <TechCard
                   icon={LayoutGrid}
-                  title="UI Frameworks"
-                  desc="Tailwind, ShadCN, Material UI, Chakra UI, Bootstrap"
+                  title="UI Kits"
+                  desc="Tailwind, ShadCN, MUI"
                 />
                 <TechCard
                   icon={Database}
-                  title="Backend & DB"
-                  desc="Node.js, Express.js, Socket.io, PostgreSQL, MongoDB, Redis"
+                  title="Backend"
+                  desc="Node, Express, PostgreSQL"
                 />
                 <TechCard
                   icon={Terminal}
                   title="Tools"
-                  desc="Git, Postman, Vite"
+                  desc="Git, Docker, Vite"
                 />
-                <TechCard
-                  icon={Sparkles}
-                  title="Currently Learning"
-                  className="col-span-2"
-                >
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {["Electron JS", "Python"].map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-1 rounded-md bg-gold/10 border border-gold/20 text-[10px] font-bold text-gold-pale hover:text-gold hover:border-gold/40 transition-colors"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </TechCard>
               </div>
             </GlassCard>
 
-            {/* 3. Featured Project (4 cols) */}
-            <GlassCard className="md:col-span-2 lg:col-span-4">
+            {/* Featured Project (Full width on md, 4 cols on lg) */}
+            <GlassCard className="md:col-span-12 lg:col-span-4 h-full min-h-[360px] !p-6 md:!p-8">
               <ProjectCard />
             </GlassCard>
           </div>

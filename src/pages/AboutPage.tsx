@@ -55,43 +55,37 @@ export const AboutPage = () => {
           animate="visible"
         >
           {/* --- SECTION 1: Intro (8/4 Grid) --- */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[400px]">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 min-h-[300px] md:min-h-[400px]">
             {/* Left: Typography Focus - Spans 8 cols */}
-            <GlassCard className="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors h-full">
-              <div className="absolute top-0 right-0 p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
-                <Cpu size={240} />
+            <GlassCard className="md:col-span-8 lg:col-span-8 p-6 md:p-12 flex flex-col justify-center relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors h-full">
+              <div className="absolute top-0 right-0 p-8 md:p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
+                <Cpu size={180} className="md:size-[240px]" />
               </div>
 
               <motion.div
                 variants={itemVariants}
                 className="flex items-center gap-3 relative z-10"
               >
-                <div className="h-px w-12 bg-gold" />
-                <span className="text-gold font-medium tracking-wider uppercase text-sm">
+                <div className="h-px w-10 md:w-12 bg-gold" />
+                <span className="text-gold font-bold tracking-widest uppercase text-xs">
                   Full Stack Developer
                 </span>
               </motion.div>
 
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-bold text-white tracking-tight leading-[1.05] mb-6"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-[4rem] font-black text-white tracking-tight leading-[1.05] mb-6 mt-4"
               >
                 Crafting{" "}
                 <span className="text-gold-gradient inline-block relative">
                   digital
-                  {/* <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ delay: 1, duration: 0.8 }}
-                    className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent"
-                  /> */}
                 </span>
                 <br /> excellence.
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
-                className="text-gold-pale/80 text-lg leading-relaxed max-w-xl mt-6 relative z-10"
+                className="text-gold-pale/70 text-base md:text-lg leading-relaxed max-w-xl mt-4 relative z-10 font-medium"
               >
                 I’m a Frontend Engineer focused on designing and building
                 scalable, accessible, and high-performance web applications that
@@ -99,91 +93,80 @@ export const AboutPage = () => {
               </motion.p>
             </GlassCard>
 
-            {/* Right: Unique Profile Composition - Spans 4 cols */}
-            <div className="lg:col-span-4 h-full flex items-center justify-center perspective-1000">
+            {/* Right: Profile Composition - Spans 4 cols */}
+            <div className="md:block hidden md:col-span-4 lg:col-span-4 h-full flex items-center justify-center">
               <motion.div
                 variants={itemVariants}
-                className="relative w-full h-full min-h-[400px] group"
+                className="relative w-full h-full min-h-[300px] md:min-h-[400px] group"
               >
                 <GlassCard className="w-full h-full !p-0 overflow-hidden relative border-gold/20 group-hover:border-gold/50 transition-colors bg-black/40">
                   <img
-                    src="/profilepic.jpeg"
+                    src="https://res.cloudinary.com/dc6hniypp/image/upload/v1774425330/profilepic_cq3ypr.jpg"
                     alt="Abdul Raoof"
                     className="w-full h-full object-cover object-top grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
                   />
-
-                  {/* Gradient Overlay for Text Readability if needed */}
-                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-
-                  {/* Floating Tech Badge */}
-                  <div className="absolute top-4 right-4 z-20">
-                    <div className="bg-black/60 backdrop-blur-xl rounded-lg border border-gold/20 px-3 py-1.5 flex items-center gap-2">
-                      <span className="animate-pulse w-2 h-2 rounded-full bg-gold"></span>
-                      {/* <span className="text-[10px] font-bold text-white uppercase tracking-widest">
-                        PTR-01
-                      </span> */}
-                    </div>
-                  </div>
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
                 </GlassCard>
               </motion.div>
             </div>
           </div>
 
           {/* --- SECTION 2: Journey Grid (4/8 Grid) --- */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Stats Box - Spans 4 cols */}
-            <GlassCard className="lg:col-span-4 flex flex-col justify-between p-8 hover:border-gold/30 transition-colors h-full">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {/* Stats Box - Spans 5 cols on tablets */}
+            <GlassCard className="md:col-span-5 lg:col-span-4 flex flex-col justify-between p-6 md:p-8 hover:border-gold/30 transition-colors h-full">
               <div>
-                <div className="flex items-center gap-2 mb-6">
-                  <BookOpen size={20} className="text-white" />
-                  <span className="text-gold text-xs font-bold uppercase tracking-widest">
+                <div className="flex items-center gap-3 mb-6">
+                  <BookOpen size={20} className="text-gold" />
+                  <span className="text-white text-[11px] font-black uppercase tracking-[0.2em]">
                     My Journey
                   </span>
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-6 leading-tight">
-                  From curiosity to clean code.
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-8 leading-tight tracking-tight">
+                  From curiosity to{" "}
+                  <span className="text-gold">clean code.</span>
                 </h3>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mt-auto">
+              <div className="grid grid-cols-2 gap-3 mt-auto">
                 <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
-                  <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors">
+                  <div className="text-3xl font-black text-white group-hover:text-gold transition-colors tracking-tighter">
                     2+
                   </div>
-                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest font-bold">
-                    Years Exp.
+                  <div className="text-xs text-gold-pale/50 uppercase tracking-widest font-bold">
+                    Exp.
                   </div>
                 </div>
                 <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
-                  <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors">
+                  <div className="text-3xl font-black text-white group-hover:text-gold transition-colors tracking-tighter">
                     15+
                   </div>
-                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest font-bold">
+                  <div className="text-xs text-gold-pale/50 uppercase tracking-widest font-bold">
                     Projects
                   </div>
                 </div>
                 <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
-                  <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors">
+                  <div className="text-3xl font-black text-white group-hover:text-gold transition-colors tracking-tighter">
                     10+
                   </div>
-                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest font-bold">
-                    Happy Clients
+                  <div className="text-xs text-gold-pale/50 uppercase tracking-widest font-bold">
+                    Clients
                   </div>
                 </div>
                 <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
-                  <div className="text-3xl font-bold text-white group-hover:text-gold transition-colors uppercase">
+                  <div className="text-3xl font-black text-white group-hover:text-gold transition-colors tracking-tighter">
                     50k+
                   </div>
-                  <div className="text-[10px] text-gold-pale/50 uppercase tracking-widest font-bold">
-                    User Impact
+                  <div className="text-xs text-gold-pale/50 uppercase tracking-widest font-bold">
+                    Impact
                   </div>
                 </div>
               </div>
             </GlassCard>
 
-            {/* Narrative Box - Spans 8 cols */}
-            <GlassCard className="lg:col-span-8 p-8 md:p-12 hover:border-gold/30 transition-colors flex flex-col justify-center h-full">
-              <div className="space-y-6 text-gold-pale/80 text-lg leading-relaxed font-light">
+            {/* Narrative Box - Spans 7 cols on tablets */}
+            <GlassCard className="md:col-span-7 lg:col-span-8 p-6 md:p-12 hover:border-gold/30 transition-colors flex flex-col justify-center h-full">
+              <div className="space-y-6 text-gold-pale/70 text-base md:text-lg leading-relaxed font-medium">
                 <p>
                   My journey into coding started with curiosity and gradually
                   evolved into a disciplined engineering mindset. I don’t just
@@ -197,13 +180,9 @@ export const AboutPage = () => {
                   refining UI interactions, I care deeply about quality and
                   detail.
                 </p>
-                <p>
-                  I believe great software is built through clear thinking,
-                  thoughtful design, and precise execution.
-                </p>
-                <p className="pt-2 text-gold/90 font-medium">
-                  I enjoy building products that are simple to use, efficient
-                  under the hood, and meaningful in real life.
+                <p className="pt-2 text-white font-bold italic border-l-2 border-gold pl-6">
+                  "I believe great software is built through clear thinking,
+                  thoughtful design, and precise execution."
                 </p>
               </div>
             </GlassCard>

@@ -288,42 +288,34 @@ export const ProjectsPage = () => {
           animate="visible"
         >
           {/* --- HEADER SECTION (8/4 Grid) --- */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Left: Title Card */}
-            <GlassCard className="lg:col-span-8 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors h-full min-h-[400px]">
-              <div className="absolute top-0 right-0 p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
-                <LayoutGrid size={240} />
+            <GlassCard className="md:col-span-8 lg:col-span-8 p-6 md:p-12 flex flex-col justify-center relative overflow-hidden group border-gold/10 hover:border-gold/30 transition-colors h-full min-h-[350px] md:min-h-[400px]">
+              <div className="absolute top-0 right-0 p-8 md:p-12 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold">
+                <LayoutGrid size={180} className="md:size-[240px]" />
               </div>
 
               <motion.div
                 variants={itemVariants}
                 className="flex items-center gap-3 relative z-10"
               >
-                <div className="h-px w-12 bg-gold" />
-                <span className="text-gold text-sm font-bold uppercase tracking-widest">
-                  Portfolio 2024
+                <div className="h-px w-10 md:w-12 bg-gold" />
+                <span className="text-gold text-xs font-bold uppercase tracking-widest">
+                  Portfolio 2025
                 </span>
               </motion.div>
 
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
+                className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight mt-6 relative z-10"
               >
                 Selected <br />
-                <span className="text-gold-gradient">
-                  Masterpieces.
-                  {/* <motion.span
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ delay: 1, duration: 0.8 }}
-                    className="absolute -bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-transparent"
-                  /> */}
-                </span>
+                <span className="text-gold-gradient">Masterpieces.</span>
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
-                className="text-gold-pale/80 text-lg leading-relaxed max-w-xl mt-6 relative z-10"
+                className="text-gold-pale/70 text-base md:text-lg leading-relaxed max-w-xl mt-6 relative z-10 font-medium"
               >
                 A curated collection of scalable systems, responsive interfaces,
                 and digital products engineered with precision.
@@ -331,13 +323,13 @@ export const ProjectsPage = () => {
             </GlassCard>
 
             {/* Right: GitHub / Status Card */}
-            <GlassCard className="lg:col-span-4 p-6 flex flex-col justify-between hover:border-gold/20 transition-all border-white/5 bg-gradient-to-tr from-white/5 via-transparent to-white/5 group/stats">
+            <GlassCard className="md:col-span-4 lg:col-span-4 p-6 flex flex-col justify-between hover:border-gold/20 transition-all border-white/5 bg-gradient-to-tr from-white/5 via-transparent to-white/5 group/stats">
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-1 h-1 rounded-full bg-gold animate-pulse shadow-[0_0_8px_rgba(255,184,0,0.5)]" />
-                    <h4 className="text-white font-bold text-[9px] uppercase tracking-[0.4em] opacity-40">
-                      Projects Overview
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse shadow-[0_0_8px_rgba(255,184,0,0.5)]" />
+                    <h4 className="text-white font-black text-xs uppercase tracking-[0.3em] opacity-40">
+                      Overview
                     </h4>
                   </div>
                 </div>
@@ -346,46 +338,37 @@ export const ProjectsPage = () => {
                   {/* Live Systems Card */}
                   <div className="group/item relative overflow-hidden p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-gold/20 transition-all duration-500">
                     <div className="relative z-10">
-                      <span className="text-white/30 text-[8px] uppercase font-bold tracking-[0.2em] mb-2 block group-hover/item:text-gold transition-colors">
+                      <span className="text-white/30 text-xs uppercase font-bold tracking-[0.2em] mb-2 block group-hover/item:text-gold transition-colors">
                         Live Systems
                       </span>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-light text-white leading-none tracking-tighter">
+                        <span className="text-4xl font-black text-white leading-none tracking-tighter">
                           04
                         </span>
                         <div className="flex gap-1 items-center">
-                          <span className="w-1 h-1 rounded-full bg-green-500 animate-pulse" />
-                          <span className="text-[9px] text-green-500/40 font-bold uppercase tracking-widest">
+                          {/* <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> */}
+                          <span className="text-xs text-green-500/60 font-black uppercase tracking-widest ml-1">
                             Active
                           </span>
                         </div>
                       </div>
-                    </div>
-                    <div className="absolute top-0 right-0 p-3 opacity-[0.02] group-hover/item:opacity-[0.08] transition-opacity duration-700">
-                      <Activity size={48} className="text-white" />
                     </div>
                   </div>
 
                   {/* Completed Works Card */}
                   <div className="group/item relative overflow-hidden p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-gold/20 transition-all duration-500">
                     <div className="relative z-10">
-                      <span className="text-white/30 text-[8px] uppercase font-bold tracking-[0.2em] mb-2 block group-hover/item:text-gold transition-colors">
-                        Completed Works
+                      <span className="text-white/30 text-xs uppercase font-bold tracking-[0.2em] mb-2 block group-hover/item:text-gold transition-colors">
+                        Completed
                       </span>
                       <div className="flex items-baseline gap-1">
-                        <span className="text-4xl font-light text-white leading-none tracking-tighter">
+                        <span className="text-4xl font-black text-white leading-none tracking-tighter">
                           10
                         </span>
-                        <span className="text-gold text-xl font-bold ml-0.5">
+                        <span className="text-gold text-2xl font-black ml-1">
                           +
                         </span>
                       </div>
-                    </div>
-                    <div className="absolute top-0 right-0 p-3 opacity-[0.02] group-hover/item:opacity-[0.08] transition-opacity duration-700">
-                      <LayoutGrid
-                        size={48}
-                        className="text-white transform rotate-12"
-                      />
                     </div>
                   </div>
                 </div>
@@ -403,12 +386,12 @@ export const ProjectsPage = () => {
                       size={18}
                       className="text-white/20 group-hover:text-gold transition-colors"
                     />
-                    <span className="text-[9px] font-bold text-white/40 group-hover:text-white uppercase tracking-widest transition-colors">
-                      Explore Sources
+                    <span className="text-xs font-bold text-white/40 group-hover:text-white uppercase tracking-[0.2em] transition-colors">
+                      Sources
                     </span>
                   </div>
                   <ArrowUpRight
-                    size={14}
+                    size={16}
                     className="text-white/10 group-hover:text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-500"
                   />
                 </a>
@@ -450,15 +433,18 @@ export const ProjectsPage = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
                 <div className="lg:col-span-12 xl:col-span-7 space-y-6">
                   <div>
-                    <h4 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight leading-tight">
-                      ZeeQue <span className="text-gold-gradient">Plus</span>
+                    <h3 className="text-8xl font-black bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5 font-mono absolute top-2 right-8 select-none">
+                      LAB
+                    </h3>
+                    <h4 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter leading-tight">
+                      ZEEQUE{" "}
+                      <span className="text-gold-gradient italic">Plus</span>
                     </h4>
-                    <p className="text-gold-pale/70 text-base leading-relaxed max-w-2xl">
+                    <p className="text-gold-pale/70 text-base md:text-lg leading-relaxed max-w-2xl font-medium">
                       A comprehensive institutional dashboard designed to
                       centralize and automate educational operations for
                       multiple stakeholders. Architected with a multi-role RBAC
-                      system supporting Admins, Coordinators, Teachers, and
-                      Students.
+                      system.
                     </p>
                   </div>
 
@@ -594,16 +580,16 @@ export const ProjectsPage = () => {
                   </p>
 
                   {/* Metrics Grid */}
-                  <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="grid grid-cols-2 gap-3 mb-8">
                     {project.metrics?.map((metric, i) => (
                       <div
                         key={i}
-                        className="bg-white/5 border border-white/5 rounded-lg p-3"
+                        className="bg-gold/5 border border-white/5 rounded-xl p-4 transition-colors hover:border-gold/20"
                       >
-                        <p className="text-gold/90 text-xs font-bold mb-1">
-                          {metric.split(" ")[0]}
+                        <p className="text-gold font-black text-xs mb-1">
+                          {metric.split(" ").slice(0, 1).join(" ")}
                         </p>
-                        <p className="text-white/50 text-[10px] uppercase tracking-wide">
+                        <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">
                           {metric.split(" ").slice(1).join(" ")}
                         </p>
                       </div>
@@ -611,11 +597,11 @@ export const ProjectsPage = () => {
                   </div>
 
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-8">
+                  <div className="flex flex-wrap gap-2.5 mb-10">
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="px-3 py-1 rounded-md bg-gold/5 border border-gold/10 text-[11px] font-mono text-gold/60"
+                        className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white/50 group-hover:text-gold group-hover:border-gold/20 transition-all"
                       >
                         {t}
                       </span>
