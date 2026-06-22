@@ -1,5 +1,66 @@
 export const projects = [
   {
+    title: "Accredit HSE Platform",
+    year: "2026",
+    description:
+      "High-performance bilingual safety training and compliance portal for a premier HSE consulting agency in Abu Dhabi.",
+    longDescription:
+      "Designed and developed a premium, bilingual B2B web platform for Accredit Management Consultancy (a member of the Tatweer Group) to streamline corporate safety course bookings. Built with a React SPA frontend and a Node.js/Express API, the system features state-driven English/Arabic translation capabilities, dynamic B2B brochure downloads, and interactive admin dashboards managing courses, testimonials, and safety inspection galleries in real-time.",
+    tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Zustand", "Express", "Node.js", "MongoDB", "Cloudinary"],
+    metrics: [
+      "🛡️ 10+ Years Active in Abu Dhabi",
+      "👨🎓 2,000+ Safety Professionals Trained",
+      "📈 98% First-Time Pass Rate",
+      "📋 15+ Accredited Safety Programs",
+    ],
+    features: [
+      "Dynamic B2B course intake scheduler with integrated WhatsApp booking flow",
+      "Bilingual localized interface (English/Arabic) powered by state-driven language store",
+      "Full-featured secure admin dashboard for real-time management of courses, testimonials, and gallery media",
+      "Custom brochure generation and validation pipeline using secure input fields",
+      "SEO-optimized local business scheme markup ranking for third-party inspections in UAE",
+    ],
+    role: "Full Stack Developer",
+    problemSolved:
+      "Digitizing an established offline safety institute, reducing B2B lead generation friction through dynamic brochures, and establishing strong search visibility for local HSE inspections in Musaffah, Abu Dhabi.",
+    status: "Live",
+    category: "Corporate & Compliance Platform",
+    image: "/Projects/Accredit.png",
+    liveUrl: "https://accredit.world/",
+    featured: true,
+    type: "website",
+  },
+  {
+    title: "Agaram Auto Repairs",
+    year: "2024",
+    description:
+      "High-performance web platform and booking solution for a premier automotive service center in Abu Dhabi.",
+    longDescription:
+      "Designed and developed a premium, responsive web platform for a leading multi-brand automotive workshop using TanStack Start (React) and TypeScript. Implemented a custom design system, an interactive brand profile viewer for 25+ manufacturers, a dynamic 12-discipline service catalog, a search-optimized car care blog, and a streamlined WhatsApp booking integration to optimize customer acquisition.",
+    tech: ["React", "TypeScript", "TanStack Start", "Tailwind CSS", "Framer Motion"],
+    metrics: [
+      "🚗 8,000+ Vehicles Serviced",
+      "⭐ 4.4 Google Star Rating",
+      "📈 3,000+ Happy Customers",
+    ],
+    features: [
+      "Dynamic 12-discipline automotive service catalog",
+      "Interactive vehicle brand profiling for 25+ marques",
+      "Automated WhatsApp booking flow & check-in triggers",
+      "Fluid, premium dark-mode interface with Framer Motion micro-animations",
+      "SEO-optimized local business scheme markup and semantic structure",
+    ],
+    role: "Full Stack Developer",
+    problemSolved:
+      "Transitioning a traditional offline workshop into a digital brand, reducing customer booking friction, and ranking for local automotive searches in Abu Dhabi.",
+    status: "Live",
+    category: "Automotive Platform",
+    image: "/Projects/Agaram.png",
+    liveUrl: "https://agaramautorepairs.ae/",
+    featured: true,
+    type: "website",
+  },
+  {
     title: "ALBEDO Educator Platform",
     year: "2024",
     description:

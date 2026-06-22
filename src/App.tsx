@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,33 +16,23 @@ import { ExperiencePage } from "@/pages/ExperiencePage";
 import { ContactPage } from "@/pages/ContactPage";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
 
 const queryClient = new QueryClient();
-
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
 
 const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
-    <>
-      <ScrollToTop />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/experience" element={<ExperiencePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-      </AnimatePresence>
-    </>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/experience" element={<ExperiencePage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </AnimatePresence>
   );
 };
 
@@ -53,7 +42,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <Router>
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen relative overflow-x-hidden">
+          <FuturisticBackground />
           <Navbar />
           <AnimatedRoutes />
           <Footer />

@@ -138,7 +138,7 @@ export const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="fixed top-20 left-0 right-0 bg-black/95 backdrop-blur-2xl lg:hidden border-t border-white/[0.04]"
+              className="fixed top-20 left-0 right-0 bg-black/95 backdrop-blur-2xl lg:hidden border-t border-white/[0.04] max-h-[calc(100vh-5rem)] overflow-y-auto pb-8"
             >
               <div className="px-6 py-8 space-y-1">
                 {navLinks.map((link, index) => (

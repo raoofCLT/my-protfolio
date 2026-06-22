@@ -8,7 +8,6 @@ import {
   LayoutGrid,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { CloudinaryImage } from "@/components/ui/CloudinaryImage";
 
@@ -65,7 +64,6 @@ export const ExperiencePage = () => {
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#030303] selection:bg-gold/30 pt-4 pb-20 overflow-x-hidden relative">
-        <FuturisticBackground />
 
         {/* Digital Scan Lines Overlay */}
         <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
@@ -135,7 +133,7 @@ export const ExperiencePage = () => {
                   </div>
                 </div>
 
-                <div className="space-y-8">
+                <div className="grid grid-cols-2 sm:grid-cols-1 gap-6 sm:gap-8">
                   <div className="flex items-center gap-5 group/stat">
                     <div className="w-14 h-14 rounded-2xl bg-gold/5 border border-gold/10 flex items-center justify-center text-gold group-hover/stat:bg-gold/10 transition-colors shadow-lg">
                       <Trophy size={26} />
@@ -177,9 +175,9 @@ export const ExperiencePage = () => {
                 noPadding
               >
                 {/* Top Row: Logo & Period */}
-                <div className="flex justify-between items-start mb-6">
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
                   {exp.logo ? (
-                    <div className="w-14 h-14 rounded-2xl bg-white border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 overflow-hidden p-2">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 overflow-hidden p-2">
                       <CloudinaryImage
                         publicId={exp.logo}
                         alt={exp.company}
@@ -188,16 +186,16 @@ export const ExperiencePage = () => {
                       />
                     </div>
                   ) : (
-                    <div className="w-16 h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 group-hover:border-gold/30 transition-all duration-300">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center text-xl sm:text-2xl shadow-lg group-hover:scale-110 group-hover:border-gold/30 transition-all duration-300">
                       {exp.logo}
                     </div>
                   )}
 
-                  <div className="text-right">
-                    <div className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs font-mono text-white/60 group-hover:text-gold group-hover:border-gold/20 transition-colors inline-block mb-2">
+                  <div className="text-left sm:text-right">
+                    <div className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[10px] sm:text-xs font-mono text-white/60 group-hover:text-gold group-hover:border-gold/20 transition-colors inline-block mb-2">
                       {exp.period}
                     </div>
-                    <div className="text-xs text-white/30 uppercase tracking-[0.2em] font-black group-hover:text-gold transition-colors">
+                    <div className="text-[10px] sm:text-xs text-white/30 uppercase tracking-[0.2em] font-black group-hover:text-gold transition-colors">
                       {exp.location}
                     </div>
                   </div>

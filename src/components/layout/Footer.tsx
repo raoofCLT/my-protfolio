@@ -39,7 +39,7 @@ export const Footer = () => {
           </p>
 
           {/* Quick Links */}
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 md:gap-6">
             <Link
               to="/"
               className="text-[11px] text-muted-foreground/60 hover:text-gold transition-colors"

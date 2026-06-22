@@ -11,7 +11,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
 import { GlassCard } from "@/components/ui/GlassCard";
 
 /* --- Animation Variants --- */
@@ -41,8 +40,6 @@ export const AboutPage = () => {
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#030303] selection:bg-gold/30 pt-6 pb-20 overflow-x-hidden relative">
-        <FuturisticBackground />
-
         {/* Digital Scan Lines Overlay */}
         <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
 
@@ -139,7 +136,7 @@ export const AboutPage = () => {
                 </div>
                 <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
                   <div className="text-3xl font-black text-white group-hover:text-gold transition-colors tracking-tighter">
-                    15+
+                    20+
                   </div>
                   <div className="text-xs text-gold-pale/50 uppercase tracking-widest font-bold">
                     Projects
@@ -147,7 +144,7 @@ export const AboutPage = () => {
                 </div>
                 <div className="p-4 rounded-xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-colors group">
                   <div className="text-3xl font-black text-white group-hover:text-gold transition-colors tracking-tighter">
-                    10+
+                    15+
                   </div>
                   <div className="text-xs text-gold-pale/50 uppercase tracking-widest font-bold">
                     Clients
@@ -199,7 +196,7 @@ export const AboutPage = () => {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {[
                 {
                   category: "Languages",

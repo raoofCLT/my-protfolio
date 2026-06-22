@@ -12,7 +12,6 @@ import {
   Activity,
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
 import { GlassCard } from "@/components/ui/GlassCard";
 
 import { CloudinaryImage } from "@/components/ui/CloudinaryImage";
@@ -41,6 +40,117 @@ const itemVariants: Variants = {
 
 const projects = [
   {
+    title: "Accredit HSE Platform",
+    year: "2026",
+    description:
+      "High-performance bilingual safety training and compliance portal for a premier HSE consulting agency in Abu Dhabi.",
+    longDescription:
+      "Designed and developed a premium, bilingual B2B web platform for Accredit Management Consultancy (a member of the Tatweer Group) to streamline corporate safety course bookings. Built with a React SPA frontend and a Node.js/Express API, the system features state-driven English/Arabic translation capabilities, dynamic B2B brochure downloads, and interactive admin dashboards managing courses, testimonials, and safety inspection galleries in real-time.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Zustand",
+      "Express",
+      "Node.js",
+      "MongoDB",
+      "Cloudinary",
+    ],
+    metrics: [
+      "🛡️ 10+ Years Active in Abu Dhabi",
+      "👨🎓 2,000+ Safety Professionals Trained",
+      "📈 98% First-Time Pass Rate",
+      "📋 15+ Accredited Safety Programs",
+    ],
+    features: [
+      "Dynamic B2B course intake scheduler with integrated WhatsApp booking flow",
+      "Bilingual localized interface (English/Arabic) powered by state-driven language store",
+      "Full-featured secure admin dashboard for real-time management of courses, testimonials, and gallery media",
+      "Custom brochure generation and validation pipeline using secure input fields",
+      "SEO-optimized local business scheme markup ranking for third-party inspections in UAE",
+    ],
+    role: "Full Stack Developer",
+    problemSolved:
+      "Digitizing an established offline safety institute, reducing B2B lead generation friction through dynamic brochures, and establishing strong search visibility for local HSE inspections in Musaffah, Abu Dhabi.",
+    status: "Live",
+    category: "Corporate & Compliance Platform",
+    image: "/Projects/Accredit.png",
+    featured: true,
+    type: "website",
+    liveUrl: "https://accredit.world/",
+  },
+  // {
+  //   title: "Agaram Auto Repairs",
+  //   year: "2024",
+  //   description:
+  //     "High-performance web platform and booking solution for a premier automotive service center in Abu Dhabi.",
+  //   longDescription:
+  //     "Designed and developed a premium, responsive web platform for a leading multi-brand automotive workshop using TanStack Start (React) and TypeScript. Implemented a custom design system, an interactive brand profile viewer for 25+ manufacturers, a dynamic 12-discipline service catalog, a search-optimized car care blog, and a streamlined WhatsApp booking integration to optimize customer acquisition.",
+  //   tech: [
+  //     "React",
+  //     "TypeScript",
+  //     "TanStack Start",
+  //     "Tailwind CSS",
+  //     "Framer Motion",
+  //   ],
+  //   metrics: [
+  //     "🚗 8,000+ Vehicles Serviced",
+  //     "⭐ 4.4 Google Star Rating",
+  //     "📈 3,000+ Happy Customers",
+  //   ],
+  //   features: [
+  //     "Dynamic 12-discipline automotive service catalog",
+  //     "Interactive vehicle brand profiling for 25+ marques",
+  //     "Automated WhatsApp booking flow & check-in triggers",
+  //     "Fluid, premium dark-mode interface with Framer Motion micro-animations",
+  //     "SEO-optimized local business scheme markup and semantic structure",
+  //   ],
+  //   role: "Full Stack Developer",
+  //   problemSolved:
+  //     "Transitioning a traditional offline workshop into a digital brand, reducing customer booking friction, and ranking for local automotive searches in Abu Dhabi.",
+  //   status: "Live",
+  //   category: "Automotive Platform",
+  //   image: "/Projects/Agaram.png",
+  //   featured: true,
+  //   type: "website",
+  //   liveUrl: "https://agaramautorepairs.ae/",
+  // },
+  {
+    title: "ZEEQUE Plus",
+    year: "2025",
+    description:
+      "A comprehensive institutional dashboard designed to centralize and automate educational operations.",
+    longDescription:
+      "A comprehensive institutional dashboard designed to centralize and automate educational operations for multiple stakeholders. Architected with a multi-role RBAC system.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "TanStack Query",
+      "Framer Motion",
+    ],
+    metrics: [
+      "👥 4 Specialized Dashboards",
+      "💰 Integrated Wallet System",
+      "📅 Conflict-Aware Scheduling",
+    ],
+    features: [
+      "Multi-role RBAC system",
+      "Integrated wallet system",
+      "Conflict-aware scheduling",
+      "Real-time support tickets",
+    ],
+    role: "Lead Developer",
+    problemSolved:
+      "Centralizing and automating educational operations for multiple stakeholders.",
+    status: "Live",
+    category: "Education Platform",
+    image: "/Projects/ZeequePlus.png",
+    featured: false,
+    type: "lms",
+  },
+  {
     title: "ALBEDO Educator Platform",
     year: "2024",
     description:
@@ -67,6 +177,7 @@ const projects = [
     image: "Albedo_Educator_kgofmk",
     liveUrl: "https://operations.albedoedu.com/",
     featured: false,
+    type: "lms",
   },
   {
     title: "Evoka Communications",
@@ -95,6 +206,7 @@ const projects = [
     image: "Evoka_Communications_vzleam",
     liveUrl: "https://crm.evoka.in/",
     featured: false,
+    type: "crm",
   },
   {
     title: "Calc (Data Analytics Platform)",
@@ -122,6 +234,7 @@ const projects = [
     image: "Calc_hq9nyw",
     liveUrl: "https://calc.albedoedu.com/",
     featured: false,
+    type: "crm",
   },
   {
     title: "Evoka School of Advertising Platform",
@@ -150,6 +263,7 @@ const projects = [
     image: "Evoka_wyilwq",
     liveUrl: "https://crm.evokaschool.com/",
     featured: false,
+    type: "lms",
   },
   {
     title: "Yara E-commerce Platform",
@@ -178,6 +292,7 @@ const projects = [
     image: "Yara_E-commerce_xjaphj",
     githubUrl: "https://github.com/raoofCLT/Yara-e-commerce-app",
     featured: false,
+    type: "ecommerce",
   },
   {
     title: "StartupHub",
@@ -213,6 +328,7 @@ const projects = [
     image: "StartupHub_ra8jnx",
     githubUrl: "https://github.com/raoofCLT/Startup-Hub",
     featured: false,
+    type: "ecommerce",
   },
   {
     title: "Libraria – E-Library Platform",
@@ -240,6 +356,7 @@ const projects = [
     image: "Libraria_e6srce",
     githubUrl: "https://github.com/raoofCLT/Libraria-Client",
     featured: false,
+    type: "lms",
   },
   {
     title: "Chatzo Social Messaging",
@@ -263,19 +380,31 @@ const projects = [
       "Providing a secure, real-time communication channel for niche communities.",
     status: "Completed",
     category: "Social Media",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    githubUrl: "https://github.com/raoofCLT/Chatzo",
+    image: "/Projects/Chatzo.png",
     featured: false,
+    type: "ecommerce",
   },
 ];
 
 export const ProjectsPage = () => {
+  const [activeTab, setActiveTab] = useState("all");
+
+  const tabs = [
+    { id: "all", name: "All Projects" },
+    { id: "lms", name: "LMS & Education" },
+    { id: "crm", name: "CRM & Management" },
+    { id: "ecommerce", name: "E-commerce & Social" },
+    { id: "website", name: "Websites & Portals" },
+  ];
+
+  const filteredProjects =
+    activeTab === "all"
+      ? projects
+      : projects.filter((p) => p.type === activeTab);
+
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#030303] selection:bg-gold/30 pt-4 pb-20 overflow-x-hidden relative">
-        <FuturisticBackground />
-
         {/* Digital Scan Lines Overlay */}
         <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
 
@@ -334,7 +463,7 @@ export const ProjectsPage = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
                   {/* Live Systems Card */}
                   <div className="group/item relative overflow-hidden p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-gold/20 transition-all duration-500">
                     <div className="relative z-10">
@@ -343,7 +472,10 @@ export const ProjectsPage = () => {
                       </span>
                       <div className="flex items-baseline gap-2">
                         <span className="text-4xl font-black text-white leading-none tracking-tighter">
-                          04
+                          {String(
+                            projects.filter((p) => p.status === "Live").length +
+                              3,
+                          ).padStart(2, "0")}
                         </span>
                         <div className="flex gap-1 items-center">
                           {/* <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> */}
@@ -363,7 +495,10 @@ export const ProjectsPage = () => {
                       </span>
                       <div className="flex items-baseline gap-1">
                         <span className="text-4xl font-black text-white leading-none tracking-tighter">
-                          10
+                          {String(
+                            projects.filter((p) => p.status === "Completed")
+                              .length + 15,
+                          ).padStart(2, "0")}
                         </span>
                         <span className="text-gold text-2xl font-black ml-1">
                           +
@@ -399,7 +534,6 @@ export const ProjectsPage = () => {
             </GlassCard>
           </div>
 
-          {/* --- PROJECTS COMPACT LIST GRID --- */}
           {/* --- ACTIVE LAB (Ongoing Project) --- */}
           <motion.div variants={itemVariants}>
             <GlassCard className="p-6 md:p-8 border-gold/10 hover:border-gold/30 transition-all group overflow-hidden relative min-h-[350px] flex flex-col justify-center">
@@ -433,27 +567,26 @@ export const ProjectsPage = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
                 <div className="lg:col-span-12 xl:col-span-7 space-y-6">
                   <div>
-                    <h3 className="text-8xl font-black bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5 font-mono absolute top-2 right-8 select-none">
-                      LAB
+                    <h3 className="text-5xl sm:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5 font-mono absolute top-2 right-4 sm:right-8 select-none">
+                      AUTO
                     </h3>
                     <h4 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tighter leading-tight">
-                      ZEEQUE{" "}
-                      <span className="text-gold-gradient italic">Plus</span>
+                      Agaram{" "}
+                      <span className="text-gold-gradient italic">
+                        Auto Repairs
+                      </span>
                     </h4>
                     <p className="text-gold-pale/70 text-base md:text-lg leading-relaxed max-w-2xl font-medium">
-                      A comprehensive institutional dashboard designed to
-                      centralize and automate educational operations for
-                      multiple stakeholders. Architected with a multi-role RBAC
-                      system.
+                      High-performance web platform and booking solution for a
+                      premier automotive service center in Abu Dhabi.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
                     {[
-                      "👥 4 Specialized Dashboards",
-                      "💰 Integrated Wallet System",
-                      "📅 Conflict-Aware Scheduling",
-                      "🎫 Real-time Support",
+                      "🚗 8,000+ Vehicles Serviced",
+                      "⭐ 4.4 Google Star Rating",
+                      "📈 3,000+ Happy Customers",
                     ].map((metric, i) => (
                       <div
                         key={i}
@@ -473,8 +606,8 @@ export const ProjectsPage = () => {
                     {[
                       "React",
                       "TypeScript",
+                      "TanStack Start",
                       "Tailwind CSS",
-                      "TanStack Query",
                       "Framer Motion",
                     ].map((tech) => (
                       <span
@@ -492,10 +625,9 @@ export const ProjectsPage = () => {
                     whileHover={{ rotateY: -5, rotateX: 5, scale: 1.02 }}
                     className="relative rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.5)] border border-white/10 hover:border-gold/40 transition-all duration-700"
                   >
-                    <CloudinaryImage
-                      publicId="ZeequePlus_ezemwu"
-                      alt="Zeeque Plus Preview"
-                      width={1200}
+                    <img
+                      src="/Projects/Agaram.png"
+                      alt="Agaram Auto Repairs Preview"
                       className="w-full aspect-video object-cover transition-transform duration-[2000ms] hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-transparent to-transparent opacity-60" />
@@ -505,133 +637,136 @@ export const ProjectsPage = () => {
             </GlassCard>
           </motion.div>
 
-          {/* --- PROJECTS LIST SECTION --- */}
-          <div className="flex flex-col gap-32">
-            {projects.map((project, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                className={`flex flex-col lg:flex-row gap-12 lg:gap-20 items-center ${
-                  idx % 2 === 1 ? "lg:flex-row-reverse" : ""
+          {/* --- CATEGORY TABS --- */}
+          <div className="flex flex-wrap gap-3 justify-center md:justify-start pt-6">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`relative px-6 py-3 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 ${
+                  activeTab === tab.id
+                    ? "text-black bg-gold shadow-[0_0_15px_rgba(212,165,66,0.3)] border border-gold"
+                    : "text-muted-foreground bg-white/5 border border-white/5 hover:border-gold/30 hover:text-white"
                 }`}
               >
-                {/* Image Section */}
-                <div className="w-full lg:w-3/5 group relative">
-                  <div className="absolute inset-0 bg-gold/5 blur-[100px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
-                  <GlassCard className="relative p-2 overflow-hidden border-gold/10 group-hover:border-gold/30 transition-all duration-500">
-                    <div className="relative overflow-hidden rounded-xl bg-black/50">
-                      {project.image.startsWith("http") ? (
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
-                        />
-                      ) : (
-                        <CloudinaryImage
-                          publicId={project.image}
-                          alt={project.title}
-                          width={1000}
-                          className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
-                        />
-                      )}
-                      {/* Overlay Gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
-                    </div>
-                  </GlassCard>
-                </div>
-
-                {/* Content Section */}
-                <div className="w-full lg:w-2/5 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5 font-mono">
-                      0{idx + 1}
-                    </span>
-                    <div className="h-px bg-gold/20 flex-1" />
-                  </div>
-
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
-                    {project.title}
-                  </h3>
-
-                  <div className="flex items-center gap-2 mb-6 text-sm">
-                    <span className="text-gold">{project.category}</span>
-                    <div className="flex items-center gap-1">
-                      <div
-                        className={`w-1.5 h-1.5 rounded-full ${
-                          project.status === "Live"
-                            ? "bg-green-500 animate-pulse"
-                            : "bg-white/40"
-                        }`}
-                      />
-                      <span
-                        className={
-                          project.status === "Live"
-                            ? "text-green-500 font-bold"
-                            : "text-white/60"
-                        }
-                      >
-                        {project.status}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="text-white/70 text-base leading-relaxed mb-8">
-                    {project.longDescription}
-                  </p>
-
-                  {/* Metrics Grid */}
-                  <div className="grid grid-cols-2 gap-3 mb-8">
-                    {project.metrics?.map((metric, i) => (
-                      <div
-                        key={i}
-                        className="bg-gold/5 border border-white/5 rounded-xl p-4 transition-colors hover:border-gold/20"
-                      >
-                        <p className="text-gold font-black text-xs mb-1">
-                          {metric.split(" ").slice(0, 1).join(" ")}
-                        </p>
-                        <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">
-                          {metric.split(" ").slice(1).join(" ")}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2.5 mb-10">
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white/50 group-hover:text-gold group-hover:border-gold/20 transition-all"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="flex items-center gap-4">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        className="px-6 py-3 rounded-xl bg-gold text-black font-bold text-sm tracking-wide hover:bg-white transition-colors flex items-center gap-2"
-                      >
-                        Visit Project <ExternalLink size={16} />
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        className="px-6 py-3 rounded-xl bg-transparent border border-white/20 text-white font-bold text-sm tracking-wide hover:bg-white/10 transition-colors flex items-center gap-2"
-                      >
-                        Source Code <Github size={16} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
+                {tab.name}
+              </button>
             ))}
+          </div>
+
+          {/* --- PROJECTS LIST SECTION --- */}
+          <div className="flex flex-col gap-16 sm:gap-24 lg:gap-32">
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, idx) => (
+                <motion.div
+                  key={project.title}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                  variants={itemVariants}
+                  className={`flex flex-col lg:flex-row gap-6 lg:gap-20 items-center ${
+                    idx % 2 === 1 ? "lg:flex-row-reverse" : ""
+                  }`}
+                >
+                  {/* Image Section */}
+                  <div className="w-full lg:w-3/5 group relative">
+                    <div className="absolute inset-0 bg-gold/5 blur-[100px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+                    <GlassCard className="relative p-2 overflow-hidden border-gold/10 group-hover:border-gold/30 transition-all duration-500">
+                      <div className="relative overflow-hidden rounded-xl bg-black/50">
+                        {project.image.startsWith("http") ||
+                        project.image.startsWith("/") ? (
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                          />
+                        ) : (
+                          <CloudinaryImage
+                            publicId={project.image}
+                            alt={project.title}
+                            width={1000}
+                            className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                          />
+                        )}
+                        {/* Overlay Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                      </div>
+                    </GlassCard>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="w-full lg:w-2/5 flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-6">
+                      <span className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5 font-mono">
+                        0{idx + 1}
+                      </span>
+                      <div className="h-px bg-gold/20 flex-1" />
+                    </div>
+
+                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+                      {project.title}
+                    </h3>
+
+                    <div className="flex items-center gap-2 mb-6 text-sm">
+                      <span className="text-gold">{project.category}</span>
+                      <div className="flex items-center gap-1">
+                        <div
+                          className={`w-1.5 h-1.5 rounded-full ${
+                            project.status === "Live"
+                              ? "bg-green-500 animate-pulse"
+                              : "bg-white/40"
+                          }`}
+                        />
+                        <span
+                          className={
+                            project.status === "Live"
+                              ? "text-green-500 font-bold"
+                              : "text-white/60"
+                          }
+                        >
+                          {project.status}
+                        </span>
+                      </div>
+                    </div>
+
+                    <p className="text-white/70 text-base leading-relaxed mb-8">
+                      {project.longDescription}
+                    </p>
+
+                    {/* Metrics Grid */}
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-8">
+                      {project.metrics?.map((metric, i) => (
+                        <div
+                          key={i}
+                          className="bg-gold/5 border border-white/5 rounded-xl p-3 sm:p-4 transition-colors hover:border-gold/20"
+                        >
+                          <p className="text-gold font-black text-xs mb-1">
+                            {metric.split(" ").slice(0, 1).join(" ")}
+                          </p>
+                          <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">
+                            {metric.split(" ").slice(1).join(" ")}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-2.5 mb-10">
+                      {project.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white/50 group-hover:text-gold group-hover:border-gold/20 transition-all"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         </motion.div>
       </div>

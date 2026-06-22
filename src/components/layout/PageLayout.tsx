@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface PageLayoutProps {
@@ -6,7 +6,6 @@ interface PageLayoutProps {
 }
 
 const pageVariants = {
-  initial: { opacity: 0, y: 20 },
   initial: { opacity: 0, y: 20 },
   animate: {
     opacity: 1,
@@ -28,6 +27,10 @@ const pageVariants = {
 };
 
 export const PageLayout = ({ children }: PageLayoutProps) => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <motion.main

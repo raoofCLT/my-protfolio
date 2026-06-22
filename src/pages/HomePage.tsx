@@ -20,7 +20,6 @@ import {
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { PageLayout } from "@/components/layout/PageLayout";
-import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { CloudinaryImage } from "@/components/ui/CloudinaryImage";
 
@@ -69,16 +68,16 @@ const TechCard = ({
 }) => (
   <motion.div
     whileHover={{ y: -5 }}
-    className={`p-4 rounded-2xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-all group/item cursor-default ${className}`}
+    className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-gold/5 border border-gold/10 hover:border-gold/30 transition-all group/item cursor-default ${className}`}
   >
-    <div className="mb-4 text-white group-hover:text-gold transition-colors p-2 bg-black/40 rounded-lg w-fit">
-      <Icon size={20} />
+    <div className="mb-3 sm:mb-4 text-white group-hover:text-gold transition-colors p-2 bg-black/40 rounded-lg w-fit">
+      <Icon size={18} className="sm:size-[20px]" />
     </div>
-    <h4 className="font-bold text-white text-sm mb-1">{title}</h4>
+    <h4 className="font-bold text-white text-xs sm:text-sm mb-1">{title}</h4>
     {children ? (
       children
     ) : (
-      <p className="text-xs lg:text-[13px] text-gold-pale/50 leading-relaxed font-semibold">
+      <p className="text-[11px] sm:text-xs lg:text-[13px] text-gold-pale/50 leading-relaxed font-semibold">
         {desc}
       </p>
     )}
@@ -181,7 +180,7 @@ const ProjectCard = () => {
               </div>
             </div>
 
-            <h3 className="text-xl md:text-5xl font-black text-white mb-3 leading-[0.85] tracking-tighter">
+            <h3 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-3 leading-[0.85] tracking-tighter">
               {projects[active].title}
             </h3>
 
@@ -189,11 +188,11 @@ const ProjectCard = () => {
               "{projects[active].desc}"
             </p>
 
-            <div className="flex flex-wrap gap-3 mb-6">
+            <div className="flex flex-wrap gap-2.5 mb-6">
               {projects[active].stack.map((s) => (
                 <span
                   key={s}
-                  className="px-4 py-2 rounded-xl bg-gold/5 border border-gold/10 text-xs font-bold text-gold-pale/80"
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gold/5 border border-gold/10 text-xs font-bold text-gold-pale/80"
                 >
                   {s}
                 </span>
@@ -204,7 +203,7 @@ const ProjectCard = () => {
 
         {/* Action: Visit Link */}
         <div className="mt-auto flex items-center justify-between pt-8 border-t border-white/[0.05]">
-          <div className="flex gap-2.5">
+          <div className="flex gap-2">
             {projects.map((_, i) => (
               <button
                 key={i}
@@ -218,17 +217,6 @@ const ProjectCard = () => {
               />
             ))}
           </div>
-
-          {projects[active].liveUrl && (
-            <a
-              href={projects[active].liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-8 py-3 rounded-2xl bg-gold text-black text-sm font-black uppercase tracking-widest hover:shadow-glow transition-all"
-            >
-              Demo <ArrowRight size={18} />
-            </a>
-          )}
         </div>
       </div>
     </div>
@@ -262,8 +250,6 @@ export const HomePage = () => {
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#030303] selection:bg-gold/30 pt-4 pb-20 overflow-x-hidden relative">
-        <FuturisticBackground />
-
         {/* Digital Scan Lines Overlay */}
         <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
 
@@ -299,7 +285,7 @@ export const HomePage = () => {
 
                 <motion.h1
                   variants={itemVariants}
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[0.9] tracking-tight mt-6 relative z-10"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-none sm:leading-[0.9] tracking-tight mt-6 relative z-10"
                 >
                   Frontend Engineer <br />
                   <span className="text-gold-gradient">React Specialist.</span>
@@ -390,7 +376,7 @@ export const HomePage = () => {
             <GlassCard className="md:col-span-4 lg:col-span-4 flex flex-col h-full min-h-[320px] md:min-h-[360px] group/stat !p-5 md:!p-8">
               <div className="flex-1 flex flex-col">
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 gap-3 md:gap-6 mb-8 md:mb-12">
+                <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-6 mb-8 md:mb-12">
                   <div className="p-4 md:p-6 rounded-2xl bg-gold/10 border border-gold/20 hover:border-gold/30 transition-all flex flex-col items-center">
                     <div className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-1 select-none">
                       2+
@@ -401,7 +387,7 @@ export const HomePage = () => {
                   </div>
                   <div className="p-4 md:p-6 rounded-2xl bg-gold/10 border border-gold/20 hover:border-gold/30 transition-all flex flex-col items-center">
                     <div className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-1 select-none">
-                      10+
+                      15+
                     </div>
                     <div className="text-[10px] md:text-xs text-gold-pale/50 uppercase tracking-[0.4em] font-black underline decoration-gold/20">
                       Clients
