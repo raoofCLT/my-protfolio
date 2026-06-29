@@ -7,6 +7,7 @@ const navLinks = [
   { name: "About", path: "/about" },
   { name: "Projects", path: "/projects" },
   { name: "Experience", path: "/experience" },
+  { name: "Services", path: "/services" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -52,20 +53,13 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-1 group">
-          <motion.span
-            className="text-xl font-bold text-white tracking-tight"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-          >
-            Abdul
-          </motion.span>
-          <motion.span
-            className="text-lg sm:text-xl font-bold text-gold"
-            animate={{ opacity: [1, 0.5, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            Raoof
-          </motion.span>
+        <Link to="/" className="flex items-center gap-2 group">
+          <img 
+            src="/AR%20LOGO.png" 
+            alt="AR Logo" 
+            className="h-10 sm:h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+            style={{ filter: "brightness(1.15) drop-shadow(0 0 10px rgba(201,168,76,0.6))" }}
+          />
         </Link>
 
         {/* Desktop Nav - Clean, widely spaced */}

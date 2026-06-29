@@ -335,10 +335,9 @@ export const HomePage = () => {
               noPadding
             >
               <div className="absolute inset-0">
-                <CloudinaryImage
-                  publicId="profilepic_cq3ypr"
+                <img
+                  src="/ME.jpg"
                   alt="Abdul Raoof"
-                  width={600}
                   className="w-full h-full object-cover transition-all duration-700 scale-100 group-hover:scale-110 origin-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />

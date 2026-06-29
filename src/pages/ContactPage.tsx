@@ -15,7 +15,9 @@ import {
   Instagram,
   Briefcase,
   X,
+  IdCard,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { useToast } from "@/hooks/use-toast";
@@ -215,7 +217,7 @@ export const ContactPage = () => {
             <div className="md:col-span-5 lg:col-span-5 flex flex-col gap-6">
               <div className="flex flex-col gap-4">
                 <button
-                  onClick={() => handleCopy("raoofkottayil@gmail.com", "Email")}
+                  onClick={() => handleCopy("raoofclt.dev@gmail.com", "Email")}
                   className="group relative flex items-center gap-4 p-5 md:p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-gold/5 hover:border-gold/20 transition-all text-left w-full h-[100px]"
                 >
                   <div className="w-12 h-12 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center text-gold group-hover:scale-110 transition-transform flex-shrink-0">
@@ -226,7 +228,7 @@ export const ContactPage = () => {
                       Direct Email
                     </div>
                     <div className="text-sm md:text-base font-bold text-white group-hover:text-gold truncate">
-                      raoofkottayil@gmail.com
+                      raoofclt.dev@gmail.com
                     </div>
                   </div>
                   <div className="text-white/20 group-hover:text-gold transition-colors flex-shrink-0">
@@ -240,8 +242,8 @@ export const ContactPage = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { label: "India", val: "9072893647", key: "Phone IN" },
-                    { label: "UAE", val: "056 929 6653", key: "Phone UAE" },
+                    { label: "India", val: "+91 9072893647", key: "Phone IN" },
+                    { label: "UAE", val: "+971 56 929 6653", key: "Phone UAE" },
                   ].map((p) => (
                     <button
                       key={p.key}
@@ -278,6 +280,20 @@ export const ContactPage = () => {
                     </div>
                   </div>
                 </div>
+
+                <Link to="/id-card" className="group relative flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-r from-[#C9A84C]/10 to-transparent border border-[#C9A84C]/20 hover:border-[#C9A84C]/40 hover:from-[#C9A84C]/20 transition-all text-left w-full h-[88px]">
+                  <div className="w-12 h-12 rounded-xl bg-black/40 border border-[#C9A84C]/20 flex items-center justify-center text-[#C9A84C] group-hover:scale-110 transition-transform flex-shrink-0 shadow-[0_0_15px_rgba(201,168,76,0.2)]">
+                    <IdCard size={22} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-xs text-[#C9A84C] uppercase tracking-[0.2em] font-black mb-1">
+                      Digital Badge
+                    </div>
+                    <div className="text-sm font-bold text-white truncate group-hover:text-[#C9A84C] transition-colors">
+                      View Identity Card
+                    </div>
+                  </div>
+                </Link>
               </div>
 
               {/* Social Grid */}
@@ -300,7 +316,7 @@ export const ContactPage = () => {
                   {
                     icon: Instagram,
                     label: "Instagram",
-                    url: "https://www.instagram.com/raoof_clt/",
+                    url: "https://www.instagram.com/raoof.clt/",
                     color: "group-hover:text-[#E1306C]",
                     bg: "group-hover:bg-[#E1306C]/10",
                   },

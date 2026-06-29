@@ -14,6 +14,8 @@ import { AboutPage } from "@/pages/AboutPage";
 import { ProjectsPage } from "@/pages/ProjectsPage";
 import { ExperiencePage } from "@/pages/ExperiencePage";
 import { ContactPage } from "@/pages/ContactPage";
+import { IdentityCardPage } from "@/pages/IdentityCardPage";
+import { ServicesPage } from "@/pages/ServicesPage";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
@@ -30,9 +32,25 @@ const AnimatedRoutes = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/experience" element={<ExperiencePage />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/id-card" element={<IdentityCardPage />} />
       </Routes>
     </AnimatePresence>
+  );
+};
+
+const AppLayout = () => {
+  const location = useLocation();
+  const isIdCardRoute = location.pathname === "/id-card";
+
+  return (
+    <div className="flex flex-col min-h-screen relative overflow-x-hidden">
+      <FuturisticBackground />
+      <Navbar />
+      <AnimatedRoutes />
+      <Footer />
+    </div>
   );
 };
 
@@ -42,12 +60,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <Router>
-        <div className="flex flex-col min-h-screen relative overflow-x-hidden">
-          <FuturisticBackground />
-          <Navbar />
-          <AnimatedRoutes />
-          <Footer />
-        </div>
+        <AppLayout />
       </Router>
     </TooltipProvider>
   </QueryClientProvider>

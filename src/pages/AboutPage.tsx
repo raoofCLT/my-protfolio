@@ -261,6 +261,17 @@ export const AboutPage = () => {
               ))}
             </div>
           </GlassCard>
+
+          {/* Bottom CTA to Services */}
+          <motion.div variants={itemVariants} className="pt-8 pb-4 flex justify-center">
+            <GlassCard className="max-w-2xl w-full p-8 md:p-10 text-center flex flex-col items-center group relative overflow-hidden border-gold/10 hover:border-gold/30 transition-colors">
+               <h3 className="text-2xl font-black text-white mb-3">Looking for a technical partner?</h3>
+               <p className="text-gold-pale/70 mb-8 max-w-lg text-sm font-medium">See how I can help you automate operations, increase revenue, and build a premium digital presence.</p>
+               <a href="/services" className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-gold hover:border-gold hover:text-black transition-all flex items-center gap-3">
+                 View My Services <ChevronRight size={16} />
+               </a>
+            </GlassCard>
+          </motion.div>
         </motion.div>
       </div>
     </PageLayout>
