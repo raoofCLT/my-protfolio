@@ -147,6 +147,7 @@ const projects = [
     status: "Live",
     category: "Education Platform",
     image: "/Projects/ZeequePlus.png",
+    liveUrl: "https://operations.zeequeplus.com/",
     featured: false,
     type: "lms",
   },
@@ -535,7 +536,13 @@ export const ProjectsPage = () => {
           </div>
 
           {/* --- ACTIVE LAB (Ongoing Project) --- */}
-          <motion.div variants={itemVariants}>
+          <motion.a
+            variants={itemVariants}
+            href="https://agaram-auto-repair-l5wrinwjs-raoofclts-projects.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="block"
+          >
             <GlassCard className="p-6 md:p-8 border-gold/10 hover:border-gold/30 transition-all group overflow-hidden relative min-h-[350px] flex flex-col justify-center">
               <div className="absolute top-0 right-0 p-8 opacity-[0.03] transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-6 text-gold pointer-events-none">
                 <Sparkles size={240} />
@@ -635,7 +642,7 @@ export const ProjectsPage = () => {
                 </div>
               </div>
             </GlassCard>
-          </motion.div>
+          </motion.a>
 
           {/* --- CATEGORY TABS --- */}
           <div className="flex flex-wrap gap-3 justify-center md:justify-start pt-6">
@@ -657,115 +664,235 @@ export const ProjectsPage = () => {
           {/* --- PROJECTS LIST SECTION --- */}
           <div className="flex flex-col gap-16 sm:gap-24 lg:gap-32">
             <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, idx) => (
-                <motion.div
-                  key={project.title}
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4 }}
-                  variants={itemVariants}
-                  className={`flex flex-col lg:flex-row gap-6 lg:gap-20 items-center ${
-                    idx % 2 === 1 ? "lg:flex-row-reverse" : ""
-                  }`}
-                >
-                  {/* Image Section */}
-                  <div className="w-full lg:w-3/5 group relative">
-                    <div className="absolute inset-0 bg-gold/5 blur-[100px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
-                    <GlassCard className="relative p-2 overflow-hidden border-gold/10 group-hover:border-gold/30 transition-all duration-500">
-                      <div className="relative overflow-hidden rounded-xl bg-black/50">
-                        {project.image.startsWith("http") ||
-                        project.image.startsWith("/") ? (
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
-                          />
-                        ) : (
-                          <CloudinaryImage
-                            publicId={project.image}
-                            alt={project.title}
-                            width={1000}
-                            className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
-                          />
-                        )}
-                        {/* Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+              {filteredProjects.map((project, idx) => {
+                const projectLink = project.liveUrl || project.githubUrl;
+                const isClickable = Boolean(projectLink);
+
+                if (isClickable) {
+                  return (
+                    <motion.a
+                      key={project.title}
+                      href={projectLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      layout
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4 }}
+                      variants={itemVariants}
+                      className={`flex flex-col lg:flex-row gap-6 lg:gap-20 items-center cursor-pointer ${
+                        idx % 2 === 1 ? "lg:flex-row-reverse" : ""
+                      }`}
+                    >
+                      {/* Image Section */}
+                      <div className="w-full lg:w-3/5 group relative">
+                        <div className="absolute inset-0 bg-gold/5 blur-[100px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+                        <GlassCard className="relative p-2 overflow-hidden border-gold/10 group-hover:border-gold/30 transition-all duration-500">
+                          <div className="relative overflow-hidden rounded-xl bg-black/50">
+                            {project.image.startsWith("http") ||
+                            project.image.startsWith("/") ? (
+                              <img
+                                src={project.image}
+                                alt={project.title}
+                                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                              />
+                            ) : (
+                              <CloudinaryImage
+                                publicId={project.image}
+                                alt={project.title}
+                                width={1000}
+                                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                              />
+                            )}
+                            {/* Overlay Gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                          </div>
+                        </GlassCard>
                       </div>
-                    </GlassCard>
-                  </div>
 
-                  {/* Content Section */}
-                  <div className="w-full lg:w-2/5 flex flex-col justify-center">
-                    <div className="flex items-center gap-3 mb-6">
-                      <span className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5 font-mono">
-                        0{idx + 1}
-                      </span>
-                      <div className="h-px bg-gold/20 flex-1" />
-                    </div>
-
-                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
-                      {project.title}
-                    </h3>
-
-                    <div className="flex items-center gap-2 mb-6 text-sm">
-                      <span className="text-gold">{project.category}</span>
-                      <div className="flex items-center gap-1">
-                        <div
-                          className={`w-1.5 h-1.5 rounded-full ${
-                            project.status === "Live"
-                              ? "bg-green-500 animate-pulse"
-                              : "bg-white/40"
-                          }`}
-                        />
-                        <span
-                          className={
-                            project.status === "Live"
-                              ? "text-green-500 font-bold"
-                              : "text-white/60"
-                          }
-                        >
-                          {project.status}
-                        </span>
-                      </div>
-                    </div>
-
-                    <p className="text-white/70 text-base leading-relaxed mb-8">
-                      {project.longDescription}
-                    </p>
-
-                    {/* Metrics Grid */}
-                    <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-8">
-                      {project.metrics?.map((metric, i) => (
-                        <div
-                          key={i}
-                          className="bg-gold/5 border border-white/5 rounded-xl p-3 sm:p-4 transition-colors hover:border-gold/20"
-                        >
-                          <p className="text-gold font-black text-xs mb-1">
-                            {metric.split(" ").slice(0, 1).join(" ")}
-                          </p>
-                          <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">
-                            {metric.split(" ").slice(1).join(" ")}
-                          </p>
+                      {/* Content Section */}
+                      <div className="w-full lg:w-2/5 flex flex-col justify-center">
+                        <div className="flex items-center gap-3 mb-6">
+                          <span className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5 font-mono">
+                            0{idx + 1}
+                          </span>
+                          <div className="h-px bg-gold/20 flex-1" />
                         </div>
-                      ))}
+
+                        <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+                          {project.title}
+                        </h3>
+
+                        <div className="flex items-center gap-2 mb-6 text-sm">
+                          <span className="text-gold">{project.category}</span>
+                          <div className="flex items-center gap-1">
+                            <div
+                              className={`w-1.5 h-1.5 rounded-full ${
+                                project.status === "Live"
+                                  ? "bg-green-500 animate-pulse"
+                                  : "bg-white/40"
+                              }`}
+                            />
+                            <span
+                              className={
+                                project.status === "Live"
+                                  ? "text-green-500 font-bold"
+                                  : "text-white/60"
+                              }
+                            >
+                              {project.status}
+                            </span>
+                          </div>
+                        </div>
+
+                        <p className="text-white/70 text-base leading-relaxed mb-8">
+                          {project.longDescription}
+                        </p>
+
+                        {/* Metrics Grid */}
+                        <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-8">
+                          {project.metrics?.map((metric, i) => (
+                            <div
+                              key={i}
+                              className="bg-gold/5 border border-white/5 rounded-xl p-3 sm:p-4 transition-colors hover:border-gold/20"
+                            >
+                              <p className="text-gold font-black text-xs mb-1">
+                                {metric.split(" ").slice(0, 1).join(" ")}
+                              </p>
+                              <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">
+                                {metric.split(" ").slice(1).join(" ")}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Tech Stack */}
+                        <div className="flex flex-wrap gap-2.5 mb-10">
+                          {project.tech.map((t) => (
+                            <span
+                              key={t}
+                              className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white/50 group-hover:text-gold group-hover:border-gold/20 transition-all"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.a>
+                  );
+                }
+
+                return (
+                  <motion.div
+                    key={project.title}
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4 }}
+                    variants={itemVariants}
+                    className={`flex flex-col lg:flex-row gap-6 lg:gap-20 items-center cursor-default ${
+                      idx % 2 === 1 ? "lg:flex-row-reverse" : ""
+                    }`}
+                  >
+                    {/* Image Section */}
+                    <div className="w-full lg:w-3/5 group relative">
+                      <div className="absolute inset-0 bg-gold/5 blur-[100px] rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+                      <GlassCard className="relative p-2 overflow-hidden border-gold/10 group-hover:border-gold/30 transition-all duration-500">
+                        <div className="relative overflow-hidden rounded-xl bg-black/50">
+                          {project.image.startsWith("http") ||
+                          project.image.startsWith("/") ? (
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                            />
+                          ) : (
+                            <CloudinaryImage
+                              publicId={project.image}
+                              alt={project.title}
+                              width={1000}
+                              className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                            />
+                          )}
+                          {/* Overlay Gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                        </div>
+                      </GlassCard>
                     </div>
 
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2.5 mb-10">
-                      {project.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white/50 group-hover:text-gold group-hover:border-gold/20 transition-all"
-                        >
-                          {t}
+                    {/* Content Section */}
+                    <div className="w-full lg:w-2/5 flex flex-col justify-center">
+                      <div className="flex items-center gap-3 mb-6">
+                        <span className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white/20 to-white/5 font-mono">
+                          0{idx + 1}
                         </span>
-                      ))}
+                        <div className="h-px bg-gold/20 flex-1" />
+                      </div>
+
+                      <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+                        {project.title}
+                      </h3>
+
+                      <div className="flex items-center gap-2 mb-6 text-sm">
+                        <span className="text-gold">{project.category}</span>
+                        <div className="flex items-center gap-1">
+                          <div
+                            className={`w-1.5 h-1.5 rounded-full ${
+                              project.status === "Live"
+                                ? "bg-green-500 animate-pulse"
+                                : "bg-white/40"
+                            }`}
+                          />
+                          <span
+                            className={
+                              project.status === "Live"
+                                ? "text-green-500 font-bold"
+                                : "text-white/60"
+                            }
+                          >
+                            {project.status}
+                          </span>
+                        </div>
+                      </div>
+
+                      <p className="text-white/70 text-base leading-relaxed mb-8">
+                        {project.longDescription}
+                      </p>
+
+                      {/* Metrics Grid */}
+                      <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-8">
+                        {project.metrics?.map((metric, i) => (
+                          <div
+                            key={i}
+                            className="bg-gold/5 border border-white/5 rounded-xl p-3 sm:p-4 transition-colors hover:border-gold/20"
+                          >
+                            <p className="text-gold font-black text-xs mb-1">
+                              {metric.split(" ").slice(0, 1).join(" ")}
+                            </p>
+                            <p className="text-white/40 text-[11px] font-bold uppercase tracking-wider">
+                              {metric.split(" ").slice(1).join(" ")}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Tech Stack */}
+                      <div className="flex flex-wrap gap-2.5 mb-10">
+                        {project.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white/50 group-hover:text-gold group-hover:border-gold/20 transition-all"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </AnimatePresence>
           </div>
         </motion.div>
