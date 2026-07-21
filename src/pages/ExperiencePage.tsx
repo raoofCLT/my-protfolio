@@ -10,37 +10,7 @@ import {
 import { PageLayout } from "@/components/layout/PageLayout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { CloudinaryImage } from "@/components/ui/CloudinaryImage";
-
-const experiences = [
-  {
-    role: "Frontend Developer",
-    company: "CODO AI Innovations",
-    type: "Full-time",
-    period: "Dec 2024 - Present",
-    location: "Malappuram, Kerala, India",
-    logo: "CodoLogo_lcvhyp",
-    description: [
-      "Develop and maintain responsive web interfaces using modern frontend technologies.",
-      "Ensure cross-browser and cross-device compatibility for a consistent user experience.",
-      "Work closely with UI/UX designers and backend engineers to integrate designs and APIs.",
-      "Debug and resolve frontend issues to improve application reliability and performance.",
-    ],
-  },
-  {
-    role: "Full-stack Developer",
-    company: "Freelance",
-    type: "Freelance",
-    period: "Nov 2023 - Present",
-    location: "Remote",
-    logo: "FreelanceLogo_lfjnjq",
-    description: [
-      "Worked on multiple freelance projects delivering full-stack web solutions from concept to deployment.",
-      "Built scalable frontend interfaces and secure backend APIs.",
-      "Communicated directly with clients to gather requirements and implement features efficiently.",
-    ],
-  },
-];
-
+import { experiences } from "@/data/portfolioData";
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -153,7 +123,7 @@ export const ExperiencePage = () => {
                     </div>
                     <div>
                       <div className="text-3xl font-black text-white leading-none tracking-tighter">
-                        01
+                        02
                       </div>
                       <div className="text-xs text-white/30 uppercase font-black tracking-widest mt-2">
                         Companies
@@ -178,16 +148,24 @@ export const ExperiencePage = () => {
                 <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
                   {exp.logo ? (
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 overflow-hidden p-2">
-                      <CloudinaryImage
-                        publicId={exp.logo}
-                        alt={exp.company}
-                        width={200}
-                        className="w-full h-full object-contain"
-                      />
+                      {exp.logo.startsWith("/") || exp.logo.startsWith("http") ? (
+                        <img
+                          src={exp.logo}
+                          alt={exp.company}
+                          className="w-full h-full object-contain"
+                        />
+                      ) : (
+                        <CloudinaryImage
+                          publicId={exp.logo}
+                          alt={exp.company}
+                          width={200}
+                          className="w-full h-full object-contain"
+                        />
+                      )}
                     </div>
                   ) : (
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center text-xl sm:text-2xl shadow-lg group-hover:scale-110 group-hover:border-gold/30 transition-all duration-300">
-                      {exp.logo}
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gold/5 border border-gold/10 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:border-gold/30 transition-all duration-300">
+                      <Building2 className="text-gold w-6 h-6" />
                     </div>
                   )}
 
@@ -207,10 +185,14 @@ export const ExperiencePage = () => {
                     {exp.role}
                   </h3>
                   <div className="flex items-center gap-2 text-white/50 text-sm font-medium">
-                    <Building2 size={14} />
-                    {exp.company}
-                    <span className="w-1 h-1 rounded-full bg-white/20 mx-1"></span>
-                    <span>{exp.type}</span>
+                    <Building2 size={14} className="text-white/40" />
+                    <span>{exp.company}</span>
+                    {exp.type && (
+                      <>
+                        <span className="w-1 h-1 rounded-full bg-white/20 mx-1"></span>
+                        <span>{exp.type}</span>
+                      </>
+                    )}
                   </div>
                 </div>
               </GlassCard>

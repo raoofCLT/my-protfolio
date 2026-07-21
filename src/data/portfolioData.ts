@@ -1,5 +1,37 @@
 export const projects = [
   {
+    title: "Accredit OS (ERP Platform)",
+    year: "2026",
+    description:
+      "Enterprise ERP and internal operational management platform for a premier UAE consultancy firm.",
+    longDescription:
+      "Designed and engineered a comprehensive, secure ERP and operations management platform for Accredit Management Consultancy. Built with a React and Tailwind CSS frontend and a Node.js/Express/Prisma/PostgreSQL backend. Developed a robust database architecture featuring transactional safety and concurrent lock protection for payout operations. Implemented a two-layer salary template and payroll transaction engine, real-time bulk adjustment spreadsheet interface, and a localized salary advance tracking ledger.",
+    tech: ["React", "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL", "Tailwind CSS", "Zustand", "Framer Motion"],
+    metrics: [
+      "📊 12+ Enterprise Modules (Training, Schedulers, HR)",
+      "💵 Automated Payroll & Advances (Contract Templates)",
+      "📈 Financial Accounting (Invoices, Receipts, Expenses)",
+      "🔐 RBAC Security & Auditing (Concurrency Safety)",
+    ],
+    features: [
+      "Bespoke multi-role workspace managing safety training courses, class schedules, and corporate clients",
+      "Contractual Salary Templates (Master Data) segregated from Monthly Payroll transaction logs",
+      "Spreadsheet-style bulk data entry grid for monthly adjustments with live Net Pay updates",
+      "Salary advance registry with automatic lifecycle status changes based on payroll approval",
+      "Pessimistic transaction locking (FOR UPDATE) preventing duplicate payouts and duplicate expenses",
+      "Bespoke responsive mobile navigation sidebar for multi-device operations",
+    ],
+    role: "Full Stack Developer",
+    problemSolved:
+      "Streamlining monthly payroll generation for HR, eliminating recurring manual adjustment errors via an inline spreadsheet editor, and enforcing strict concurrency constraints to prevent double payment leaks.",
+    status: "Live",
+    category: "Enterprise ERP System",
+    image: "/Projects/AccreditOS.png",
+    liveUrl: "https://os.accredit.world/",
+    featured: true,
+    type: "app",
+  },
+  {
     title: "Accredit HSE Platform",
     year: "2026",
     description:
@@ -268,18 +300,46 @@ export const projects = [
 
 export const experiences = [
   {
-    company: "CODO AI Innovations",
-    position: "Frontend Developer",
-    duration: "Dec 2024 - Present",
-    location: "Kerala, India",
-    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQERydTRc7i5Pg/company-logo_200_200/company-logo_200_200/0/1732527011160/codo_ai_logo?e=1756944000&v=beta&t=d21-GsPDbU-l7t4AmuxcALr1EBS-iFGX1cyj6XU0BW4",
+    role: "Website & ERP Systems Developer",
+    company: "Accredit Management Consultancy",
+    type: "Full-time",
+    period: "Jan 2026 - Present",
+    location: "Abu Dhabi, UAE",
+    logo: "/AccreditLogo.jpg",
+    description: [
+      "Lead development and maintenance of the company's website and internal ERP system.",
+      "Develop new features, optimize system performance, and fix bugs across the website and ERP platform.",
+      "Manage databases and implement business process improvements to support operations.",
+      "Create and manage digital content for the company's social media presence to strengthen brand and client engagement.",
+      "Support office administration, including documentation, correspondence, and financial record verification.",
+    ],
   },
   {
-    company: "Freelance Projects",
-    position: "Full Stack Developer",
-    duration: "Oct 2024 - Present",
+    role: "Frontend Developer",
+    company: "CODO AI Innovations",
+    type: "Full-time",
+    period: "Dec 2024 - Mar 2026",
+    location: "Kerala, India",
+    logo: "CodoLogo_lcvhyp",
+    description: [
+      "Built and maintained responsive web interfaces using React and Tailwind CSS.",
+      "Ensured compatibility across browsers and devices for a consistent user experience.",
+      "Collaborated with UI/UX and backend teams to integrate features and APIs smoothly.",
+      "Debugged and resolved issues across the stack, improving application stability and load performance.",
+    ],
+  },
+  {
+    role: "Full-stack Developer",
+    company: "Freelance",
+    type: "Freelance",
+    period: "Nov 2023 - Present",
     location: "Remote",
-    // no logo
+    logo: "FreelanceLogo_lfjnjq",
+    description: [
+      "Worked on multiple freelance projects delivering full-stack web solutions from concept to deployment.",
+      "Built scalable frontend interfaces and secure backend APIs.",
+      "Communicated directly with clients to gather requirements and implement features efficiently.",
+    ],
   },
 ];
 
