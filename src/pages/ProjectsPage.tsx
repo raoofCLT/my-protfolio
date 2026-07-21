@@ -189,7 +189,7 @@ export const ProjectsPage = () => {
           {/* --- ACTIVE LAB (Ongoing Project) --- */}
           <motion.a
             variants={itemVariants}
-            href="https://accredit.world"
+            href="https://accredit-os.vercel.app/"
             target="_blank"
             rel="noreferrer"
             className="block"
