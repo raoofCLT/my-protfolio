@@ -1,36 +1,47 @@
 export const projects = [
-  // {
-  //   title: "Accredit OS (ERP Platform)",
-  //   year: "2026",
-  //   description:
-  //     "Enterprise ERP and internal operational management platform for a premier UAE consultancy firm.",
-  //   longDescription:
-  //     "Designed and engineered a comprehensive, secure ERP and operations management platform for Accredit Management Consultancy. Built with a React and Tailwind CSS frontend and a Node.js/Express/Prisma/PostgreSQL backend. Developed a robust database architecture featuring transactional safety and concurrent lock protection for payout operations. Implemented a two-layer salary template and payroll transaction engine, real-time bulk adjustment spreadsheet interface, and a localized salary advance tracking ledger.",
-  //   tech: ["React", "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL", "Tailwind CSS", "Zustand", "Framer Motion"],
-  //   metrics: [
-  //     "📊 12+ Enterprise Modules (Training, Schedulers, HR)",
-  //     "💵 Automated Payroll & Advances (Contract Templates)",
-  //     "📈 Financial Accounting (Invoices, Receipts, Expenses)",
-  //     "🔐 RBAC Security & Auditing (Concurrency Safety)",
-  //   ],
-  //   features: [
-  //     "Bespoke multi-role workspace managing safety training courses, class schedules, and corporate clients",
-  //     "Contractual Salary Templates (Master Data) segregated from Monthly Payroll transaction logs",
-  //     "Spreadsheet-style bulk data entry grid for monthly adjustments with live Net Pay updates",
-  //     "Salary advance registry with automatic lifecycle status changes based on payroll approval",
-  //     "Pessimistic transaction locking (FOR UPDATE) preventing duplicate payouts and duplicate expenses",
-  //     "Bespoke responsive mobile navigation sidebar for multi-device operations",
-  //   ],
-  //   role: "Full Stack Developer",
-  //   problemSolved:
-  //     "Streamlining monthly payroll generation for HR, eliminating recurring manual adjustment errors via an inline spreadsheet editor, and enforcing strict concurrency constraints to prevent double payment leaks.",
-  //   status: "Live",
-  //   category: "Enterprise ERP System",
-  //   image: "/Projects/AccreditOS.png",
-  //   liveUrl: "https://os.accredit.world/",
-  //   featured: true,
-  //   type: "app",
-  // },
+  {
+    title: "TaskBoard Pro (Smart Team Task Board)",
+    year: "2026",
+    description:
+      "Enterprise MERN Stack Team Task & Workflow Management platform with role-based access control, Kanban board, Socket.io real-time engine, and aggregation analytics.",
+    longDescription:
+      "Engineered a full-stack MERN task management application featuring granular role-based authorization (Admin, Manager, Employee), Kanban sprint board with strict workflow transitions, Socket.io real-time room broadcasting, MongoDB $facet aggregation analytics, immutable activity audit logging, and custom date-time pickers. Fully containerized with Docker and live deployed on Vercel and Render.",
+    tech: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Socket.io",
+      "JWT",
+      "Tailwind CSS",
+      "Vite",
+      "Docker"
+    ],
+    metrics: [
+      "📋 Role-Based Access Control (Admin/Manager/Employee)",
+      "⚡ Real-Time Socket.io Workspace Synchronization",
+      "📊 MongoDB $Facet Executive Intelligence Analytics",
+      "🛡️ Strict 8 Active Task Guard & Audit Logging"
+    ],
+    features: [
+      "Strict state transition machine (Todo → In Progress → Review → Done)",
+      "Employee max 8 active task capacity protection with handover notes",
+      "Manager review approval loop with issue revision feedback prompts",
+      "Immutable activity audit log tracking every workspace, sprint, and task mutation",
+      "Soft-delete user cascading unassignment preserving historic snapshot",
+      "Persistent dark/light mode with custom date and time picker dialogs"
+    ],
+    role: "Full Stack Developer",
+    problemSolved:
+      "Eliminating workflow skipping in team task boards, enforcing active workload limits for employees, and delivering real-time multi-role project tracking.",
+    status: "Live",
+    category: "Enterprise Workflow System",
+    image: "/Projects/TaskBoardPro.png",
+    liveUrl: "https://task-board-pro-beta.vercel.app/",
+    githubUrl: "https://github.com/raoofCLT/Task-Board-Pro",
+    featured: true,
+    type: "app",
+  },
   {
     title: "Accredit HSE Platform",
     year: "2026",
@@ -360,7 +371,6 @@ export const experiences = [
 ];
 
 export const skillCategories = {
-  //  'React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Chakra UI', 'HTML5', 'CSS3', 'JavaScript', 'Redux'
   Frontend: [
     "React",
     "React Native",
