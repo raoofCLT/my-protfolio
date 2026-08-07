@@ -120,7 +120,6 @@ export const ContactPage = () => {
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#030303] selection:bg-gold/30 pt-4 pb-20 overflow-x-hidden relative">
-
         <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
         <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-20" />
 
@@ -281,7 +280,7 @@ export const ContactPage = () => {
                   </div>
                 </div>
 
-                <Link to="/id-card" className="group relative flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-r from-[#C9A84C]/10 to-transparent border border-[#C9A84C]/20 hover:border-[#C9A84C]/40 hover:from-[#C9A84C]/20 transition-all text-left w-full h-[88px]">
+                {/* <Link to="/id-card" className="group relative flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-r from-[#C9A84C]/10 to-transparent border border-[#C9A84C]/20 hover:border-[#C9A84C]/40 hover:from-[#C9A84C]/20 transition-all text-left w-full h-[88px]">
                   <div className="w-12 h-12 rounded-xl bg-black/40 border border-[#C9A84C]/20 flex items-center justify-center text-[#C9A84C] group-hover:scale-110 transition-transform flex-shrink-0 shadow-[0_0_15px_rgba(201,168,76,0.2)]">
                     <IdCard size={22} />
                   </div>
@@ -293,7 +292,7 @@ export const ContactPage = () => {
                       View Identity Card
                     </div>
                   </div>
-                </Link>
+                </Link> */}
               </div>
 
               {/* Social Grid */}

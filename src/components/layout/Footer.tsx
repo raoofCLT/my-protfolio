@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Mail, ArrowUp, Heart } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail, ArrowUp, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 
 const socialLinks = [
@@ -8,6 +8,11 @@ const socialLinks = [
     icon: Linkedin,
     href: "https://linkedin.com/in/raoof-clt",
     label: "LinkedIn",
+  },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/raoof.clt/",
+    label: "Instagram",
   },
   { icon: Mail, href: "mailto:raoofkottayil@gmail.com", label: "Email" },
 ];

@@ -115,23 +115,22 @@ export const ProjectsPage = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-1 gap-3 sm:gap-4">
                   {/* Live Systems Card */}
-                  <div className="group/item relative overflow-hidden p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-gold/20 transition-all duration-500">
+                  <div className="group/item relative overflow-hidden p-3.5 sm:p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-gold/20 transition-all duration-500">
                     <div className="relative z-10">
-                      <span className="text-white/30 text-xs uppercase font-bold tracking-[0.2em] mb-2 block group-hover/item:text-gold transition-colors">
+                      <span className="text-white/30 text-[10px] sm:text-xs uppercase font-bold tracking-wider sm:tracking-[0.2em] mb-1 sm:mb-2 block group-hover/item:text-gold transition-colors">
                         Live Systems
                       </span>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-black text-white leading-none tracking-tighter">
+                      <div className="flex flex-wrap items-baseline gap-1.5 sm:gap-2">
+                        <span className="text-2xl sm:text-4xl font-black text-white leading-none tracking-tighter">
                           {String(
                             projects.filter((p) => p.status === "Live").length +
                               3,
                           ).padStart(2, "0")}
                         </span>
                         <div className="flex gap-1 items-center">
-                          {/* <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> */}
-                          <span className="text-xs text-green-500/60 font-black uppercase tracking-widest ml-1">
+                          <span className="text-[10px] sm:text-xs text-green-500/80 font-black uppercase tracking-widest">
                             Active
                           </span>
                         </div>
@@ -140,19 +139,19 @@ export const ProjectsPage = () => {
                   </div>
 
                   {/* Completed Works Card */}
-                  <div className="group/item relative overflow-hidden p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-gold/20 transition-all duration-500">
+                  <div className="group/item relative overflow-hidden p-3.5 sm:p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-gold/20 transition-all duration-500">
                     <div className="relative z-10">
-                      <span className="text-white/30 text-xs uppercase font-bold tracking-[0.2em] mb-2 block group-hover/item:text-gold transition-colors">
+                      <span className="text-white/30 text-[10px] sm:text-xs uppercase font-bold tracking-wider sm:tracking-[0.2em] mb-1 sm:mb-2 block group-hover/item:text-gold transition-colors">
                         Completed
                       </span>
                       <div className="flex items-baseline gap-1">
-                        <span className="text-4xl font-black text-white leading-none tracking-tighter">
+                        <span className="text-2xl sm:text-4xl font-black text-white leading-none tracking-tighter">
                           {String(
                             projects.filter((p) => p.status === "Completed")
                               .length + 15,
                           ).padStart(2, "0")}
                         </span>
-                        <span className="text-gold text-2xl font-black ml-1">
+                        <span className="text-gold text-lg sm:text-2xl font-black ml-0.5">
                           +
                         </span>
                       </div>
@@ -301,12 +300,12 @@ export const ProjectsPage = () => {
           </motion.a>
 
           {/* --- CATEGORY TABS --- */}
-          <div className="flex flex-wrap gap-3 justify-center md:justify-start pt-6">
+          <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none no-scrollbar pt-2 px-1 sm:px-0 sm:flex-wrap sm:justify-start">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative px-6 py-3 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 ${
+                className={`relative shrink-0 px-4 py-2.5 sm:px-6 sm:py-3 rounded-full text-[11px] sm:text-xs font-black uppercase tracking-wider transition-all duration-300 ${
                   activeTab === tab.id
                     ? "text-black bg-gold shadow-[0_0_15px_rgba(212,165,66,0.3)] border border-gold"
                     : "text-muted-foreground bg-white/5 border border-white/5 hover:border-gold/30 hover:text-white"

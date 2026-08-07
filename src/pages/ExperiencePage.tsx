@@ -103,29 +103,29 @@ export const ExperiencePage = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-1 gap-6 sm:gap-8">
-                  <div className="flex items-center gap-5 group/stat">
-                    <div className="w-14 h-14 rounded-2xl bg-gold/5 border border-gold/10 flex items-center justify-center text-gold group-hover/stat:bg-gold/10 transition-colors shadow-lg">
-                      <Trophy size={26} />
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 sm:gap-6">
+                  <div className="flex items-center gap-3 sm:gap-4 p-3 rounded-xl bg-white/[0.02] border border-white/5 sm:bg-transparent sm:border-none group/stat">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold shrink-0 group-hover/stat:scale-105 transition-transform shadow-lg">
+                      <Trophy size={20} className="sm:size-[24px]" />
                     </div>
-                    <div>
-                      <div className="text-3xl font-black text-white leading-none tracking-tighter">
+                    <div className="min-w-0">
+                      <div className="text-xl sm:text-2xl font-black text-white leading-none tracking-tighter">
                         2+
                       </div>
-                      <div className="text-xs text-white/30 uppercase font-black tracking-widest mt-2">
+                      <div className="text-[10px] sm:text-xs text-white/40 uppercase font-black tracking-wider mt-1 truncate">
                         Years Exp.
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-5 group/stat">
-                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-white/40 group-hover/stat:border-gold/20 transition-colors shadow-lg">
-                      <Building2 size={26} />
+                  <div className="flex items-center gap-3 sm:gap-4 p-3 rounded-xl bg-white/[0.02] border border-white/5 sm:bg-transparent sm:border-none group/stat">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 shrink-0 group-hover/stat:scale-105 transition-transform shadow-lg">
+                      <Building2 size={20} className="sm:size-[24px]" />
                     </div>
-                    <div>
-                      <div className="text-3xl font-black text-white leading-none tracking-tighter">
+                    <div className="min-w-0">
+                      <div className="text-xl sm:text-2xl font-black text-white leading-none tracking-tighter">
                         02
                       </div>
-                      <div className="text-xs text-white/30 uppercase font-black tracking-widest mt-2">
+                      <div className="text-[10px] sm:text-xs text-white/40 uppercase font-black tracking-wider mt-1 truncate">
                         Companies
                       </div>
                     </div>

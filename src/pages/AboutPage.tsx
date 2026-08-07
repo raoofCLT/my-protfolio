@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   User2,
   Heart,
@@ -186,24 +187,34 @@ export const AboutPage = () => {
           </div>
 
           {/* --- SECTION 4: Skills & Tech - Categorized --- */}
-          <GlassCard className="p-8 md:p-10">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-2 bg-gold/10 rounded-lg border border-gold/20 text-white">
-                <Zap size={20} />
+          <GlassCard className="p-6 md:p-10 border-gold/20 relative overflow-hidden">
+            {/* Subtle radial glow background */}
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="flex items-center justify-between mb-8 pb-4 border-b border-gold/10 relative z-10">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 bg-gold/10 rounded-xl border border-gold/20 text-gold shadow-[0_0_15px_rgba(212,165,66,0.15)]">
+                  <Zap size={22} />
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-wider">
+                    Technical Toolkit
+                  </h3>
+                  <p className="text-xs text-gold-pale/50 font-medium mt-0.5">
+                    Technologies, frameworks & tools I build with
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-white uppercase tracking-widest">
-                Technical Toolkit
-              </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative z-10">
               {[
                 {
                   category: "Languages",
                   skills: [
-                    "JavaScript (ES6+)",
+                    "JavaScript",
                     "TypeScript",
-                    "Python",
+                    "Python (Learning)",
                     "HTML5",
                     "CSS3",
                     "SQL",
@@ -212,46 +223,68 @@ export const AboutPage = () => {
                 {
                   category: "Frontend",
                   skills: [
-                    "React",
+                    "React.js",
                     "Next.js",
-                    "Redux",
+                    "TanStack Start",
                     "Tailwind CSS",
-                    "Framer Motion",
                     "ShadCN UI",
+                    "Chakra UI",
+                    "Framer Motion",
+                    "Redux Toolkit",
+                    "Zustand",
+                    "Recoil",
+                    "TanStack Query",
+                    "React Router",
                   ],
                 },
                 {
-                  category: "Backend",
+                  category: "Backend & Database",
                   skills: [
                     "Node.js",
-                    "Express",
-                    "Django",
-                    "PostgreSQL",
+                    "Express.js",
                     "MongoDB",
-                    "Redis",
+                    "Mongoose",
+                    "PostgreSQL",
+                    "Prisma ORM",
+                    "Socket.io",
+                    "JWT Auth",
+                    "bcrypt",
+                    "REST APIs",
+                    "Cloudinary",
+                    "Sanity CMS",
                   ],
                 },
                 {
-                  category: "Tools & DevOps",
+                  category: "Tools & Platforms",
                   skills: [
                     "Git",
                     "GitHub",
+                    "Docker",
                     "Vite",
                     "Postman",
                     "Figma",
                     "Vercel",
+                    "Render",
+                    "npm",
+                    "VS Code",
                   ],
                 },
               ].map((group) => (
-                <div key={group.category} className="space-y-4">
-                  <h4 className="text-gold text-sm font-bold uppercase tracking-wider border-b border-gold/10 pb-2">
-                    {group.category}
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
+                <div
+                  key={group.category}
+                  className="flex flex-col p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-gold/30 hover:bg-white/[0.03] transition-all duration-300 group/cat"
+                >
+                  <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gold/10">
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold group-hover/cat:scale-125 transition-transform" />
+                    <h4 className="text-gold text-xs font-black uppercase tracking-[0.18em]">
+                      {group.category}
+                    </h4>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 content-start">
                     {group.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1.5 rounded-md bg-white/5 border border-white/10 text-xs font-medium text-white/80 hover:border-gold/30 hover:text-gold transition-colors cursor-default"
+                        className="px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-white/80 hover:text-gold hover:border-gold/30 hover:bg-gold/5 transition-all duration-200 cursor-default select-none"
                       >
                         {skill}
                       </span>
@@ -263,13 +296,24 @@ export const AboutPage = () => {
           </GlassCard>
 
           {/* Bottom CTA to Services */}
-          <motion.div variants={itemVariants} className="pt-8 pb-4 flex justify-center">
+          <motion.div
+            variants={itemVariants}
+            className="pt-8 pb-4 flex justify-center"
+          >
             <GlassCard className="max-w-2xl w-full p-8 md:p-10 text-center flex flex-col items-center group relative overflow-hidden border-gold/10 hover:border-gold/30 transition-colors">
-               <h3 className="text-2xl font-black text-white mb-3">Looking for a technical partner?</h3>
-               <p className="text-gold-pale/70 mb-8 max-w-lg text-sm font-medium">See how I can help you automate operations, increase revenue, and build a premium digital presence.</p>
-               <a href="/services" className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-gold hover:border-gold hover:text-black transition-all flex items-center gap-3">
-                 View My Services <ChevronRight size={16} />
-               </a>
+              <h3 className="text-2xl font-black text-white mb-3">
+                Looking for a technical partner?
+              </h3>
+              <p className="text-gold-pale/70 mb-8 max-w-lg text-sm font-medium">
+                See how I can help you automate operations, increase revenue,
+                and build a premium digital presence.
+              </p>
+              <Link
+                to="/services"
+                className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest hover:bg-gold hover:border-gold hover:text-black transition-all flex items-center gap-3"
+              >
+                View My Services <ChevronRight size={16} />
+              </Link>
             </GlassCard>
           </motion.div>
         </motion.div>

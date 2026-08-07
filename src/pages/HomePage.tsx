@@ -6,6 +6,7 @@ import {
   Download,
   Github,
   Linkedin,
+  Instagram,
   Code2,
   Terminal,
   Zap,
@@ -361,6 +362,10 @@ export const HomePage = () => {
                     href="https://linkedin.com/in/raoof-clt"
                   />
                   <SocialButton
+                    icon={Instagram}
+                    href="https://www.instagram.com/raoof.clt/"
+                  />
+                  <SocialButton
                     icon={Mail}
                     href="mailto:raoofkottayil@gmail.com"
                   />
@@ -375,20 +380,20 @@ export const HomePage = () => {
             <GlassCard className="md:col-span-4 lg:col-span-4 flex flex-col h-full min-h-[320px] md:min-h-[360px] group/stat !p-5 md:!p-8">
               <div className="flex-1 flex flex-col">
                 {/* Stats Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-6 mb-8 md:mb-12">
-                  <div className="p-4 md:p-6 rounded-2xl bg-gold/10 border border-gold/20 hover:border-gold/30 transition-all flex flex-col items-center">
-                    <div className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-1 select-none">
+                <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-6 mb-4 md:mb-12">
+                  <div className="p-4 md:p-6 rounded-2xl bg-gold/10 border border-gold/20 hover:border-gold/30 transition-all flex flex-col items-center justify-center">
+                    <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter mb-1 select-none">
                       2+
                     </div>
-                    <div className="text-[10px] md:text-xs text-gold-pale/50 uppercase tracking-[0.4em] font-black underline decoration-gold/20">
+                    <div className="text-[10px] md:text-xs text-gold-pale/50 uppercase tracking-[0.3em] md:tracking-[0.4em] font-black underline decoration-gold/20">
                       Exp
                     </div>
                   </div>
-                  <div className="p-4 md:p-6 rounded-2xl bg-gold/10 border border-gold/20 hover:border-gold/30 transition-all flex flex-col items-center">
-                    <div className="text-4xl md:text-5xl font-black text-white tracking-tighter mb-1 select-none">
+                  <div className="p-4 md:p-6 rounded-2xl bg-gold/10 border border-gold/20 hover:border-gold/30 transition-all flex flex-col items-center justify-center">
+                    <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter mb-1 select-none">
                       15+
                     </div>
-                    <div className="text-[10px] md:text-xs text-gold-pale/50 uppercase tracking-[0.4em] font-black underline decoration-gold/20">
+                    <div className="text-[10px] md:text-xs text-gold-pale/50 uppercase tracking-[0.3em] md:tracking-[0.4em] font-black underline decoration-gold/20">
                       Clients
                     </div>
                   </div>
@@ -396,13 +401,13 @@ export const HomePage = () => {
 
                 {/* Profile Highlight */}
                 <div className="mt-auto bg-black/60 rounded-2xl p-4 md:p-6 border border-white/5">
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-2 mb-2 md:mb-3">
                     <Sparkles size={14} className="text-gold" />
                     <span className="text-[10px] font-bold text-white uppercase tracking-widest">
                       Bio
                     </span>
                   </div>
-                  <p className="text-xs text-gold-pale/60 leading-relaxed italic line-clamp-2 md:line-clamp-none">
+                  <p className="text-xs text-gold-pale/60 leading-relaxed italic">
                     "Crafting digital experiences that merge architecture with
                     futuristic aesthetics."
                   </p>
@@ -425,22 +430,22 @@ export const HomePage = () => {
                 <TechCard
                   icon={Code2}
                   title="Frontend"
-                  desc="React, Next.js, TS, HTML, CSS"
+                  desc="React, TypeScript, Next.js, Tailwind CSS"
                 />
                 <TechCard
                   icon={LayoutGrid}
-                  title="UI Kits"
-                  desc="Tailwind, ShadCN, MUI"
+                  title="UI & State"
+                  desc="Zustand, Redux, Framer Motion, ShadCN"
                 />
                 <TechCard
                   icon={Database}
-                  title="Backend"
-                  desc="Node, Express, PostgreSQL"
+                  title="Backend & DB"
+                  desc="Node, Express, MongoDB, PostgreSQL"
                 />
                 <TechCard
                   icon={Terminal}
-                  title="Tools"
-                  desc="Git, Docker, Vite"
+                  title="DevOps & Tools"
+                  desc="Docker, Git, Vite, Postman, Vercel"
                 />
               </div>
             </GlassCard>

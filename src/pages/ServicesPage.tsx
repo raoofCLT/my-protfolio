@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { 
   ShoppingCart, Users, Database, Sparkles, ArrowRight, Code2, Globe, Monitor, 
   CheckCircle2, Search, PenTool, Rocket, LifeBuoy, Target, Briefcase, Zap
@@ -291,9 +292,9 @@ export const ServicesPage = () => {
                <Globe size={48} className="text-gold mb-6 opacity-80 group-hover:opacity-100 transition-opacity" />
                <h3 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">Have a business idea or system in mind?</h3>
                <p className="text-gold-pale/70 mb-10 max-w-lg text-lg">Let’s build a scalable digital product that automates, grows, and performs.</p>
-               <a href="/contact" className="px-10 py-5 rounded-xl bg-gold text-black font-black text-sm uppercase tracking-wider hover:opacity-90 transition-all flex items-center gap-3 shadow-[0_0_20px_rgba(212,165,66,0.3)] hover:shadow-[0_0_40px_rgba(212,165,66,0.5)] hover:-translate-y-1">
+               <Link to="/contact" className="px-10 py-5 rounded-xl bg-gold text-black font-black text-sm uppercase tracking-wider hover:opacity-90 transition-all flex items-center gap-3 shadow-[0_0_20px_rgba(212,165,66,0.3)] hover:shadow-[0_0_40px_rgba(212,165,66,0.5)] hover:-translate-y-1">
                  Start Your Project <ArrowRight size={18} />
-               </a>
+               </Link>
                
                <p className="mt-8 text-xs text-white/40 font-medium">
                  Perfect for startups needing MVPs, businesses needing automation, and founders wanting a premium web presence.
