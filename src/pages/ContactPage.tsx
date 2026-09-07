@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { useToast } from "@/hooks/use-toast";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import emailjs from "@emailjs/browser";
 
 const containerVariants: Variants = {
@@ -183,7 +184,7 @@ export const ContactPage = () => {
                         Available Now
                       </div>
                       <p className="text-xs text-white/30 font-bold uppercase tracking-[0.2em] mt-1.5">
-                        Open for 2025 Projects
+                        Open for Projects
                       </p>
                     </div>
                   </div>
@@ -193,16 +194,18 @@ export const ContactPage = () => {
                       Core Expertise
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      {["Full Stack", "Frontend Eng", "UI/UX Design"].map(
-                        (s) => (
-                          <span
-                            key={s}
-                            className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-xs font-black uppercase text-white/60 tracking-widest hover:border-gold/30 hover:text-gold transition-all duration-300"
-                          >
-                            {s}
-                          </span>
-                        ),
-                      )}
+                      {[
+                        "Frontend Developer",
+                        "Full Stack",
+                        "UI/UX Developer",
+                      ].map((s) => (
+                        <span
+                          key={s}
+                          className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-xs font-black uppercase text-white/60 tracking-widest hover:border-gold/30 hover:text-gold transition-all duration-300"
+                        >
+                          {s}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -241,28 +244,76 @@ export const ContactPage = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { label: "India", val: "+91 9072893647", key: "Phone IN" },
-                    { label: "UAE", val: "+971 56 929 6653", key: "Phone UAE" },
+                    {
+                      label: "India",
+                      val: "+91 9072893647",
+                      key: "Phone IN",
+                      waNumber: "919072893647",
+                      waMsg:
+                        "Hi Abdul Raoof, I'd like to connect via WhatsApp!",
+                    },
+                    {
+                      label: "UAE",
+                      val: "+971 56 929 6653",
+                      key: "Phone UAE",
+                      waNumber: "971569296653",
+                      waMsg:
+                        "Hi Abdul Raoof, I'd like to connect via WhatsApp!",
+                    },
                   ].map((p) => (
-                    <button
+                    <div
                       key={p.key}
-                      onClick={() => handleCopy(p.val, p.key)}
-                      className="group relative flex flex-col justify-center p-5 rounded-2xl bg-white/5 border border-white/5 hover:bg-gold/5 hover:border-gold/20 transition-all text-left h-[100px]"
+                      className="group relative flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-gold/20 hover:bg-white/[0.07] transition-all text-left min-h-[105px]"
                     >
-                      <div className="text-xs text-white/30 uppercase tracking-widest font-black mb-1.5">
-                        {p.label}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-white/30 uppercase tracking-widest font-black">
+                            {p.label}
+                          </span>
+                          {/* <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/20">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse" />
+                            WhatsApp
+                          </span> */}
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(p.val, p.key)}
+                          aria-label={`Copy ${p.label} phone number`}
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-gold/20 text-white/30 hover:text-gold transition-colors"
+                          title="Copy phone number"
+                        >
+                          {copied === p.key ? (
+                            <Check size={14} className="text-emerald-400" />
+                          ) : (
+                            <Copy size={14} />
+                          )}
+                        </button>
                       </div>
-                      <div className="text-[11px] font-bold text-white group-hover:text-gold truncate">
-                        {p.val}
+
+                      <div className="flex items-center justify-between gap-2 mt-2">
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(p.val, p.key)}
+                          className="text-[12px] font-bold text-white group-hover:text-gold transition-colors truncate text-left"
+                          title="Click to copy"
+                        >
+                          {p.val}
+                        </button>
+
+                        <a
+                          href={`https://wa.me/${p.waNumber}?text=${encodeURIComponent(
+                            p.waMsg,
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 px-1 py-1 rounded-md bg-[#25D366]/15 hover:bg-[#25D366] text-[#25D366] hover:text-black border border-[#25D366]/30 text-[11px] font-bold tracking-wide transition-all active:scale-95 shadow-sm flex-shrink-0"
+                          title={`Chat on WhatsApp with ${p.label} number`}
+                        >
+                          <WhatsAppIcon />
+                          {/* <span>Chat</span> */}
+                        </a>
                       </div>
-                      <div className="absolute top-4 right-4 text-white/20 group-hover:text-gold transition-colors">
-                        {copied === p.key ? (
-                          <Check size={14} />
-                        ) : (
-                          <Copy size={14} />
-                        )}
-                      </div>
-                    </button>
+                    </div>
                   ))}
                 </div>
 

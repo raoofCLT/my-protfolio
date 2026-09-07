@@ -19,6 +19,7 @@ import { ServicesPage } from "@/pages/ServicesPage";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
+import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const AppLayout = () => {
       <Navbar />
       <AnimatedRoutes />
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 };
