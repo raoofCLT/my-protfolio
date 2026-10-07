@@ -21,7 +21,7 @@ export const projects = [
       "📋 Role-Based Access Control (Admin/Manager/Employee)",
       "⚡ Real-Time Socket.io Workspace Synchronization",
       "📊 MongoDB $Facet Executive Intelligence Analytics",
-      "🛡️ Strict 8 Active Task Guard & Audit Logging",
+      "🛡️ Active Task Limit and Review and Approval System",
     ],
     features: [
       "Strict state transition machine (Todo → In Progress → Review → Done)",
@@ -35,7 +35,7 @@ export const projects = [
     problemSolved:
       "Eliminating workflow skipping in team task boards, enforcing active workload limits for employees, and delivering real-time multi-role project tracking.",
     status: "Live",
-    category: "CRM & Management",
+    category: "Task & Workflow Management",
     image: "/Projects/TaskBoardPro.png",
     liveUrl: "https://task-board-pro-beta.vercel.app/",
     githubUrl: "https://github.com/raoofCLT/Task-Board-Pro",
@@ -77,7 +77,7 @@ export const projects = [
     problemSolved:
       "Digitizing an established offline safety institute, reducing B2B lead generation friction through dynamic brochures, and establishing strong search visibility for local HSE inspections in Musaffah, Abu Dhabi.",
     status: "Live",
-    category: "Websites & Portals",
+    category: "Corporate HSE Portal",
     image: "/Projects/Accredit.png",
     liveUrl: "https://accredit.world/",
     featured: true,
@@ -113,7 +113,7 @@ export const projects = [
     problemSolved:
       "Transitioning a traditional offline workshop into a digital brand, reducing customer booking friction, and ranking for local automotive searches in Abu Dhabi.",
     // status: "Live",
-    category: "Websites & Portals",
+    category: "Automotive Service Platform",
     image: "/Projects/Agaram.png",
     // liveUrl: "https://agaramautorepairs.ae/",
     featured: true,
@@ -139,9 +139,12 @@ export const projects = [
       "Scalable frontend architecture",
     ],
     status: "Live",
-    category: "LMS & Education",
+    category: "EdTech & LMS Platform",
     image: "/Projects/Albedo Educator.png",
-    liveUrl: "https://operations.albedoedu.com/",
+    liveUrl:
+      "https://drive.google.com/file/d/12tRN41egz4bOiK0l6GvEOSQ9v2CxidUw/view?usp=sharing",
+    videoUrl:
+      "https://drive.google.com/file/d/12tRN41egz4bOiK0l6GvEOSQ9v2CxidUw/view?usp=sharing",
     featured: false,
     type: "lms",
   },
@@ -165,9 +168,12 @@ export const projects = [
       "Work-hour calculation and progress tracking",
     ],
     status: "Live",
-    category: "CRM & Management",
+    category: "Agency Management & CRM",
     image: "/Projects/Evoka Communications.png",
-    liveUrl: "https://communications.moajmalnk.in/",
+    liveUrl:
+      "https://drive.google.com/file/d/1MVyzal7hgZ0xQmfXP_ZENpmXbILhGz9J/view?usp=sharing",
+    videoUrl:
+      "https://drive.google.com/file/d/1MVyzal7hgZ0xQmfXP_ZENpmXbILhGz9J/view?usp=sharing",
     featured: false,
     type: "crm",
   },
@@ -190,7 +196,7 @@ export const projects = [
       "User-friendly and interactive UI",
     ],
     status: "Live",
-    category: "LMS & Education",
+    category: "Data Analytics & Reporting",
     image: "/Projects/Calc.png",
     liveUrl: "https://calc.albedoedu.com/",
     featured: false,
@@ -216,11 +222,47 @@ export const projects = [
       "Seamless API integrations",
     ],
     status: "Live",
-    category: "LMS & Education",
+    category: "EdTech & Student Portal",
     image: "/Projects/Evoka.png",
-    liveUrl: "https://evoka.moajmalnk.com/",
+    liveUrl:
+      "https://drive.google.com/file/d/1bPkaW2UhEYiNYbMrYQAhEYF2OzHcTadA/view?usp=sharing",
+    videoUrl:
+      "https://drive.google.com/file/d/1bPkaW2UhEYiNYbMrYQAhEYF2OzHcTadA/view?usp=sharing",
     featured: false,
     type: "lms",
+  },
+  {
+    title: "ZEEQUE+",
+    year: "2024",
+    description:
+      "All-in-one platform for high-end personal branding and digital identity management.",
+    longDescription:
+      "Designed and developed a comprehensive digital identity and personal branding web application. Features interactive profile showcases, real-time client engagement, custom portfolio theming, and responsive workflows designed for creative professionals.",
+    tech: ["React", "Tailwind CSS", "Socket.io", "TypeScript", "Node.js"],
+    metrics: [
+      "🌐 Digital Identity Management",
+      "⚡ Real-Time Profile Showcase",
+      "📱 Responsive Web Application",
+      "🎨 Custom Portfolio Theming",
+    ],
+    features: [
+      "Comprehensive personal branding and profile builder",
+      "Real-time interactive features with Socket.io",
+      "High-performance responsive UI with Tailwind CSS",
+      "Video walkthrough and screen demonstration",
+    ],
+    role: "Frontend Developer",
+    problemSolved:
+      "Empowering creators and professionals to establish an elevated digital identity and personal brand with real-time portfolio management.",
+    status: "Completed",
+    category: "Personal Branding & Identity",
+    image: "/Projects/ZeequePlus.png",
+    liveUrl:
+      "https://drive.google.com/file/d/1LUNFeI6jLjb1pf7-UoxHzzNEaqKFumUI/view?usp=sharing",
+    videoUrl:
+      "https://drive.google.com/file/d/1LUNFeI6jLjb1pf7-UoxHzzNEaqKFumUI/view?usp=sharing",
+    featured: true,
+    type: "social",
   },
   {
     title: "Yara E-commerce Platform",
@@ -242,7 +284,7 @@ export const projects = [
       "Responsive design",
     ],
     status: "Completed",
-    category: "E-commerce & Social",
+    category: "E-Commerce & Retail",
     image: "/Projects/Yara E-commerce.png",
     githubUrl: "https://github.com/raoofCLT/Yara-e-commerce-app",
     featured: false,
@@ -275,11 +317,11 @@ export const projects = [
       "Real-time updates",
     ],
     status: "Completed",
-    category: "E-commerce & Social",
+    category: "Startup Community & Network",
     image: "/Projects/StartupHub.png",
     githubUrl: "https://github.com/raoofCLT/Startup-Hub",
     featured: false,
-    type: "ecommerce",
+    type: "social",
   },
   {
     title: "Libraria – E-Library Platform",
@@ -300,7 +342,7 @@ export const projects = [
       "Due date tracking and notifications",
     ],
     status: "Completed",
-    category: "LMS & Education",
+    category: "Digital Library System",
     image: "/Projects/Libraria.png",
     githubUrl: "https://github.com/raoofCLT/Libraria-Client",
     featured: false,
@@ -324,29 +366,43 @@ export const projects = [
       "Secure authentication with JWT",
     ],
     status: "Completed",
-    category: "E-commerce & Social",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+    category: "Social Messaging & Real-Time Chat",
+    image: "/Projects/Chatzo.png",
     githubUrl: "https://github.com/raoofCLT/Chatzo",
     featured: false,
-    type: "ecommerce",
+    type: "social",
   },
 ];
 
-export const experiences = [
+export interface ExperienceItem {
+  role: string;
+  company: string;
+  type: string;
+  period: string;
+  location: string;
+  logo: string;
+  badge?: string;
+  website?: string;
+  websiteLabel?: string;
+  description: string[];
+}
+
+export const experiences: ExperienceItem[] = [
   {
-    role: "Website & ERP Systems Developer",
+    role: "Full-Stack Developer",
     company: "Accredit Management Consultancy",
     type: "Full-time",
     period: "Jan 2026 - Present",
     location: "Abu Dhabi, UAE",
     logo: "/AccreditLogo.jpg",
+    badge: "Active",
+    website: "https://accredit.world/",
+    websiteLabel: "accredit.world",
     description: [
-      "Lead development and maintenance of the company's website and internal ERP system.",
-      "Develop new features, optimize system performance, and fix bugs across the website and ERP platform.",
-      "Manage databases and implement business process improvements to support operations.",
-      "Create and manage digital content for the company's social media presence to strengthen brand and client engagement.",
-      "Support office administration, including documentation, correspondence, and financial record verification.",
+      "Architected and developed the company's internal ERP system (Accredit OS) for training registration, candidate follow-up, financial calculations, automated certificate generation, invoice and receipt creation, and executive reports.",
+      "Designed, developed, and deployed the official corporate website (accredit.world) with modern responsive UI/UX and SEO optimization.",
+      "Managed PostgreSQL and Supabase databases to automate operations and eliminate manual administrative tasks.",
+      "Supported digital office administration, documentation, and record verification.",
     ],
   },
   {
@@ -356,24 +412,26 @@ export const experiences = [
     period: "Dec 2024 - May 2026",
     location: "Kerala, India",
     logo: "CodoLogo_lcvhyp",
+    website: "https://www.codoai.in/",
+    websiteLabel: "codoai.in",
     description: [
       "Built and maintained responsive web interfaces using React and Tailwind CSS.",
       "Ensured compatibility across browsers and devices for a consistent user experience.",
       "Collaborated with UI/UX and backend teams to integrate features and APIs smoothly.",
-      "Debugged and resolved issues across the stack, improving application stability and load performance.",
+      "Debugged and resolved issues across the frontend, improving application stability and load performance.",
     ],
   },
   {
-    role: "Full-stack Developer",
-    company: "Freelance",
+    role: "Full-Stack Developer",
+    company: "Freelance & Independent Contracts",
     type: "Freelance",
     period: "Nov 2023 - Present",
     location: "Remote",
     logo: "FreelanceLogo_lfjnjq",
     description: [
-      "Worked on multiple freelance projects delivering full-stack web solutions from concept to deployment.",
-      "Built scalable frontend interfaces and secure backend APIs.",
-      "Communicated directly with clients to gather requirements and implement features efficiently.",
+      "Delivered end-to-end full-stack web applications and custom software solutions for international clients from concept to deployment.",
+      "Built responsive frontend interfaces with React/Next.js and secure RESTful backend APIs with Node.js, Express, MongoDB, and PostgreSQL.",
+      "Communicated directly with clients to gather requirements, iterate on feedback, and deploy production builds.",
     ],
   },
 ];

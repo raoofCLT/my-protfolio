@@ -40,7 +40,7 @@ export const FloatingShapes = () => {
 
         {/* Deep gold bottom glow */}
         <motion.div
-          key={`dot-${i}`}
+          key="gold-glow"
           className="absolute w-1 h-1 rounded-full bg-gold/30"
           style={{
             background:
@@ -56,7 +56,7 @@ export const FloatingShapes = () => {
       </div>
 
       {/* Very subtle noise texture */}
-      <div className="absolute inset-0 opacity-[0.015] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <div className="absolute inset-0 opacity-[0.015] bg-[url('/noise.svg')]" />
     </div>
   );
 };

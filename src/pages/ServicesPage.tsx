@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import { 
   ShoppingCart, Users, Database, Sparkles, ArrowRight, Code2, Globe, Monitor, 
@@ -115,7 +115,7 @@ const process = [
   { step: "05", title: "Support", desc: "Post-launch fixes and improvements", icon: LifeBuoy },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -123,7 +123,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 40, damping: 15 } },
 };
@@ -136,7 +136,7 @@ export const ServicesPage = () => {
         <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
 
         {/* Noise Texture */}
-        <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-20" />
+        <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('/noise.svg')] mix-blend-overlay z-20" />
 
         <motion.div
           className="max-w-[1100px] mx-auto px-4 md:px-6 relative z-10 space-y-12 md:space-y-16"

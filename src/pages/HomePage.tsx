@@ -18,6 +18,7 @@ import {
   Mail,
   Sparkles,
   Lock,
+  ArrowUpRight,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { PageLayout } from "@/components/layout/PageLayout";
@@ -96,7 +97,8 @@ const ProjectCard = () => {
       stack: ["React", "Redux", "Tailwind"],
       image: "Albedo_Educator_kgofmk",
       icon: Code2,
-      liveUrl: "https://operations.albedoedu.com/",
+      liveUrl:
+        "https://drive.google.com/file/d/12tRN41egz4bOiK0l6GvEOSQ9v2CxidUw/view?usp=sharing",
     },
     {
       title: "EVOKA",
@@ -105,16 +107,18 @@ const ProjectCard = () => {
       stack: ["React", "Django", "PostgreSQL"],
       image: "Evoka_Communications_vzleam",
       icon: LayoutGrid,
-      liveUrl: "https://crm.evoka.in/",
+      liveUrl:
+        "https://drive.google.com/file/d/1MVyzal7hgZ0xQmfXP_ZENpmXbILhGz9J/view?usp=sharing",
     },
     {
-      title: "CALC",
-      category: "Data Analytics",
-      desc: "Data analytics platform for education data export and visualization.",
-      stack: ["React", "Python", "Redux"],
-      image: "Calc_hq9nyw",
+      title: "ACCREDIT OS",
+      category: "ERP",
+      desc: "Enterprise ERP platform unifying multi-role operations, course scheduling, financial accounting, and payroll.",
+      stack: ["React", "Node", "Supabase"],
+      image: "Accredit_OS_k81f0i",
       icon: Database,
-      liveUrl: "https://calc.albedoedu.com/",
+      liveUrl:
+        "https://drive.google.com/file/d/1TC48Na4lcBJiw8LDMwcYeESwWlhe7vcH/view?usp=sharing",
     },
     {
       title: "ZEEQUE",
@@ -123,7 +127,8 @@ const ProjectCard = () => {
       stack: ["React", "Tailwind", "Socket.io"],
       image: "ZeequePlus_ezemwu",
       icon: Smartphone,
-      liveUrl: "https://zeeque.plus/",
+      liveUrl:
+        "https://drive.google.com/file/d/1LUNFeI6jLjb1pf7-UoxHzzNEaqKFumUI/view?usp=sharing",
     },
   ];
 
@@ -154,7 +159,7 @@ const ProjectCard = () => {
             to="/projects"
             className="group/link text-sm font-bold uppercase tracking-widest text-gold-pale/40 hover:text-gold transition-colors flex items-center gap-2"
           >
-            Visit Gallery
+            Visit Projects
             <ArrowRight
               size={16}
               className="group-hover/link:translate-x-1 transition-transform"
@@ -218,6 +223,25 @@ const ProjectCard = () => {
               />
             ))}
           </div>
+
+          {projects[active].liveUrl && (
+            <a
+              href={projects[active].liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="group/btn inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gold text-black font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-gold/20 hover:shadow-gold/40 hover:scale-105 active:scale-95 transition-all"
+            >
+              <span>
+                {projects[active].liveUrl.includes("drive.google.com")
+                  ? "Watch Demo"
+                  : "Live Preview"}
+              </span>
+              <ArrowUpRight
+                size={14}
+                className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+              />
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -255,7 +279,7 @@ export const HomePage = () => {
         <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,30px_100%]" />
 
         {/* Subtle Background Noise Texture */}
-        <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay z-20" />
+        <div className="fixed inset-0 pointer-events-none opacity-[0.02] bg-[url('/noise.svg')] mix-blend-overlay z-20" />
 
         <motion.div
           className="max-w-[1240px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 space-y-6"
