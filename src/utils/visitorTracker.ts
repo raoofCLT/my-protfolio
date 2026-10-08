@@ -93,16 +93,15 @@ function buildWhatsAppMessage(info: VisitorInfo): string {
 
   return [
     "🔔 *New Portfolio Visitor!*",
-    "",
-    `📍 *Location:* ${location}`,
-    `🏢 *Network/Org:* ${network}`,
-    `📱 *Device:* ${info.deviceType} (${info.os} - ${info.browser})`,
-    `🖥️ *Screen:* ${info.screenResolution}`,
-    `🌐 *Language:* ${info.language}`,
-    `🔗 *Source:* ${info.referrer}`,
-    `📄 *Page:* ${info.path}`,
-    `⏰ *Time:* ${info.visitedAt} (UAE)`,
-  ].join("\n");
+    `📍 Location: ${location}`,
+    `🏢 Network: ${network}`,
+    `📱 Device: ${info.deviceType} (${info.os} - ${info.browser})`,
+    `🖥️ Screen: ${info.screenResolution}`,
+    `🌐 Language: ${info.language}`,
+    `🔗 Source: ${info.referrer}`,
+    `📄 Page: ${info.path}`,
+    `⏰ Time: ${info.visitedAt} (UAE)`,
+  ].join(" • ");
 }
 
 /**
