@@ -134,18 +134,24 @@ export async function trackVisitor(options?: {
   }
 
   // Prevent spamming / duplicate notifications unless forced
+  const isLocalDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
   if (!options?.force) {
-    // Check session storage
+    // Check session storage (per tab)
     if (sessionStorage.getItem(STORAGE_SESSION_KEY)) {
+      console.log("[VisitorTracker] ℹ️ Visit already recorded for this tab session.");
       return;
     }
 
-    // Check cooldown in localStorage (2 hours)
-    const lastTracked = localStorage.getItem(STORAGE_TIME_KEY);
-    if (lastTracked) {
-      const elapsed = Date.now() - parseInt(lastTracked, 10);
-      if (elapsed < COOLDOWN_MS) {
-        return;
+    // Check cooldown in localStorage (skip strict cooldown on localhost for easy testing)
+    if (!isLocalDev) {
+      const lastTracked = localStorage.getItem(STORAGE_TIME_KEY);
+      if (lastTracked) {
+        const elapsed = Date.now() - parseInt(lastTracked, 10);
+        if (elapsed < 15 * 60 * 1000) { // 15 minutes cooldown for production
+          console.log("[VisitorTracker] ℹ️ Cooldown active: Visitor was already recorded recently.");
+          return;
+        }
       }
     }
   }
