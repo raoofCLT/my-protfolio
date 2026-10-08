@@ -20,6 +20,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FuturisticBackground } from "@/components/ui/FuturisticBackground";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { useVisitorTracker } from "@/hooks/useVisitorTracker";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const AnimatedRoutes = () => {
 };
 
 const AppLayout = () => {
+  useVisitorTracker();
   const location = useLocation();
   const isIdCardRoute = location.pathname === "/id-card";
 
