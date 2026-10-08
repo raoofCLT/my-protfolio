@@ -207,35 +207,17 @@ export async function trackVisitor(options?: {
 
     const message = buildWhatsAppMessage(visitorInfo);
 
-    // 3. Send WhatsApp Alert
-    // First, try serverless endpoint /api/track if available (e.g. on Vercel)
-    let sent = false;
-    try {
-      const proxyRes = await fetch("/api/track", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone, apiKey, message }),
-      });
-      if (proxyRes.ok) {
-        sent = true;
-      }
-    } catch {
-      // /api/track not present, proceed to direct client call
-    }
+    // 3. Send WhatsApp Alert directly from the visitor's browser
+    const callmebotUrl = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(
+      phone,
+    )}&text=${encodeURIComponent(message)}&apikey=${encodeURIComponent(apiKey)}`;
 
-    // If serverless proxy wasn't used or failed, call CallMeBot directly
-    if (!sent) {
-      const callmebotUrl = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(
-        phone,
-      )}&text=${encodeURIComponent(message)}&apikey=${encodeURIComponent(apiKey)}`;
-
-      // Use mode: 'no-cors' so the browser fires the GET request without CORS blocks
-      await fetch(callmebotUrl, {
-        method: "GET",
-        mode: "no-cors",
-        cache: "no-store",
-      });
-    }
+    // Use mode: 'no-cors' so browser executes the GET request without CORS blocks
+    await fetch(callmebotUrl, {
+      method: "GET",
+      mode: "no-cors",
+      cache: "no-store",
+    });
 
     // 4. Mark as tracked to prevent repeated pings
     sessionStorage.setItem(STORAGE_SESSION_KEY, "true");
