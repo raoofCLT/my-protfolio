@@ -12,7 +12,8 @@ export default async function handler(req: any, res: any) {
   const targetApiKey =
     apiKey ||
     process.env.CALLMEBOT_API_KEY ||
-    process.env.VITE_CALLMEBOT_API_KEY;
+    process.env.VITE_CALLMEBOT_API_KEY ||
+    "5622612";
 
   if (!targetApiKey) {
     return res.status(400).json({ error: "API key is missing" });
@@ -20,9 +21,9 @@ export default async function handler(req: any, res: any) {
 
   try {
     const url = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(
-      targetPhone
+      targetPhone,
     )}&text=${encodeURIComponent(message)}&apikey=${encodeURIComponent(
-      targetApiKey
+      targetApiKey,
     )}`;
     const response = await fetch(url);
     const text = await response.text();

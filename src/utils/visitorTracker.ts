@@ -56,9 +56,15 @@ function getBrowser(): string {
  */
 function getDeviceType(): "Mobile" | "Tablet" | "Desktop" {
   const ua = navigator.userAgent;
-  const isTablet = /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/i.test(ua);
+  const isTablet =
+    /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/i.test(
+      ua,
+    );
   if (isTablet) return "Tablet";
-  const isMobile = /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/i.test(ua) || window.innerWidth <= 768;
+  const isMobile =
+    /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/i.test(
+      ua,
+    ) || window.innerWidth <= 768;
   return isMobile ? "Mobile" : "Desktop";
 }
 
@@ -81,7 +87,8 @@ function getFormattedTime(): string {
  * Build clean WhatsApp message template
  */
 function buildWhatsAppMessage(info: VisitorInfo): string {
-  const location = [info.city, info.country].filter(Boolean).join(", ") || "Unknown Location";
+  const location =
+    [info.city, info.country].filter(Boolean).join(", ") || "Unknown Location";
   const network = info.isp || info.org || "Standard Network";
 
   return [
@@ -106,8 +113,14 @@ export async function trackVisitor(options?: {
   apiKeyOverride?: string;
   phoneOverride?: string;
 }) {
-  const phone = options?.phoneOverride || import.meta.env.VITE_CALLMEBOT_PHONE || "971569296653";
-  const apiKey = options?.apiKeyOverride || import.meta.env.VITE_CALLMEBOT_API_KEY || "";
+  const phone =
+    options?.phoneOverride ||
+    import.meta.env.VITE_CALLMEBOT_PHONE ||
+    "971569296653";
+  const apiKey =
+    options?.apiKeyOverride ||
+    import.meta.env.VITE_CALLMEBOT_API_KEY ||
+    "5622612";
 
   // Check if API key is not configured yet
   if (!apiKey) {
@@ -115,7 +128,7 @@ export async function trackVisitor(options?: {
       console.info(
         `%c[VisitorTracker]%c Ready! Add your CallMeBot API key to .env (VITE_CALLMEBOT_API_KEY) to start receiving WhatsApp alerts for phone: +${phone}`,
         "color: #25D366; font-weight: bold;",
-        "color: inherit;"
+        "color: inherit;",
       );
     }
     return;
@@ -213,7 +226,7 @@ export async function trackVisitor(options?: {
     // If serverless proxy wasn't used or failed, call CallMeBot directly
     if (!sent) {
       const callmebotUrl = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(
-        phone
+        phone,
       )}&text=${encodeURIComponent(message)}&apikey=${encodeURIComponent(apiKey)}`;
 
       // Use mode: 'no-cors' so the browser fires the GET request without CORS blocks
