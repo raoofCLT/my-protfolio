@@ -57,7 +57,7 @@ const services = [
       "Workflow automation",
       "Scalable backend architecture"
     ],
-    stack: ["Node.js", "Express", "React", "Docker", "PostgreSQL"],
+    stack: ["Node.js", "Express", "React", "PostgreSQL"],
     color: "#A855F7",
   },
   {

@@ -85,7 +85,7 @@ export const AboutPage = () => {
                 variants={itemVariants}
                 className="text-gold-pale/70 text-base md:text-lg leading-relaxed max-w-xl mt-4 relative z-10 font-medium"
               >
-                I’m a Frontend Engineer focused on designing and building
+                I’m a Full Stack Developer focused on designing and building
                 scalable, accessible, and high-performance web applications that
                 solve real-world problems with clean and maintainable code.
               </motion.p>
@@ -259,7 +259,6 @@ export const AboutPage = () => {
                   skills: [
                     "Git",
                     "GitHub",
-                    "Docker",
                     "Vite",
                     "Postman",
                     "Figma",

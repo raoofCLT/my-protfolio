@@ -5,7 +5,7 @@ export const projects = [
     description:
       "Enterprise MERN Stack Team Task & Workflow Management platform with role-based access control, Kanban board, Socket.io real-time engine, and aggregation analytics.",
     longDescription:
-      "Engineered a full-stack MERN task management application featuring granular role-based authorization (Admin, Manager, Employee), Kanban sprint board with strict workflow transitions, Socket.io real-time room broadcasting, MongoDB $facet aggregation analytics, immutable activity audit logging, and custom date-time pickers. Fully containerized with Docker and live deployed on Vercel and Render.",
+      "Engineered a full-stack MERN task management application featuring granular role-based authorization (Admin, Manager, Employee), Kanban sprint board with strict workflow transitions, Socket.io real-time room broadcasting, MongoDB $facet aggregation analytics, immutable activity audit logging, and custom date-time pickers. Live deployed on Vercel and Render.",
     tech: [
       "React",
       "Node.js",
@@ -15,7 +15,6 @@ export const projects = [
       "JWT",
       "Tailwind CSS",
       "Vite",
-      "Docker",
     ],
     metrics: [
       "📋 Role-Based Access Control (Admin/Manager/Employee)",

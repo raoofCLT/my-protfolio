@@ -312,7 +312,7 @@ export const HomePage = () => {
                   variants={itemVariants}
                   className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-none sm:leading-[0.9] tracking-tight mt-6 relative z-10"
                 >
-                  Frontend Engineer <br />
+                  Full Stack Developer <br />
                   <span className="text-gold-gradient">React Specialist.</span>
                 </motion.h1>
 
@@ -469,7 +469,7 @@ export const HomePage = () => {
                 <TechCard
                   icon={Terminal}
                   title="DevOps & Tools"
-                  desc="Docker, Git, Vite, Postman, Vercel"
+                  desc="Git, Vite, Postman, Vercel"
                 />
               </div>
             </GlassCard>
